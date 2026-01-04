@@ -14,6 +14,12 @@ interface RuleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRule(rule: RuleEntity)
 
+    @Query("SELECT * FROM usage_rules")
+    fun getAllRules(): Flow<List<RuleEntity>>
+
+    @Query("DELETE FROM usage_rules WHERE packageName = :packageName AND ruleType = :ruleType")
+    suspend fun deleteRule(packageName: String, ruleType: String)
+
     @Query("DELETE FROM usage_rules WHERE packageName = :packageName")
     suspend fun clearRules(packageName: String)
 }

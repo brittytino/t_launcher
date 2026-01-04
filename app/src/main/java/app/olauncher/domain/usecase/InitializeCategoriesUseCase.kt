@@ -37,24 +37,47 @@ class InitializeCategoriesUseCase(
 
     private fun determineDefaultCategory(packageName: String): CategoryType {
         return when {
-            packageName.contains("dialer") -> CategoryType.ESSENTIAL
-            packageName.contains("mms") -> CategoryType.ESSENTIAL
-            packageName.contains("contacts") -> CategoryType.ESSENTIAL
-            packageName.contains("maps") -> CategoryType.ESSENTIAL
-            packageName.contains("settings") -> CategoryType.NEUTRAL
-            packageName.contains("camera") -> CategoryType.NEUTRAL
-            packageName.contains("calculator") -> CategoryType.NEUTRAL
-            packageName.contains("calendar") -> CategoryType.PRODUCTIVE
-            packageName.contains("clock") -> CategoryType.ESSENTIAL
+            packageName.contains("dialer") -> CategoryType.PHONE
+            packageName.contains("contacts") -> CategoryType.PHONE
+            packageName.contains("telecom") -> CategoryType.PHONE
+            
+            packageName.contains("maps") -> CategoryType.MAPS
+            packageName.contains("waze") -> CategoryType.MAPS
+            packageName.contains("nav") -> CategoryType.MAPS
+            
+            packageName.contains("mms") -> CategoryType.MESSAGING
+            packageName.contains("message") -> CategoryType.MESSAGING
+            packageName.contains("whatsapp") -> CategoryType.MESSAGING
+            packageName.contains("signal") -> CategoryType.MESSAGING
+            packageName.contains("telegram") -> CategoryType.MESSAGING
+            
+            packageName.contains("music") -> CategoryType.MUSIC
+            packageName.contains("spotify") -> CategoryType.MUSIC
+            packageName.contains("audio") -> CategoryType.MUSIC
+            packageName.contains("podcast") -> CategoryType.MUSIC
+            
+            packageName.contains("settings") -> CategoryType.UTILITY
+            packageName.contains("camera") -> CategoryType.UTILITY
+            packageName.contains("calculator") -> CategoryType.UTILITY
+            packageName.contains("clock") -> CategoryType.UTILITY
+            
+            packageName.contains("calendar") -> CategoryType.PRODUCTIVITY
+            packageName.contains("note") -> CategoryType.PRODUCTIVITY
+            packageName.contains("task") -> CategoryType.PRODUCTIVITY
+            packageName.contains("doc") -> CategoryType.PRODUCTIVITY
+            packageName.contains("drive") -> CategoryType.PRODUCTIVITY
+            
             // Social/Procrastination defaults
-            packageName.contains("facebook") -> CategoryType.PROCRASTINATING
-            packageName.contains("instagram") -> CategoryType.PROCRASTINATING
-            packageName.contains("tiktok") -> CategoryType.PROCRASTINATING
-            packageName.contains("youtube") -> CategoryType.PROCRASTINATING
-            packageName.contains("twitter") -> CategoryType.PROCRASTINATING
-            packageName.contains("reddit") -> CategoryType.PROCRASTINATING
-            packageName.contains("game") -> CategoryType.PROCRASTINATING
-            else -> CategoryType.NEUTRAL
+            packageName.contains("facebook") -> CategoryType.SOCIAL
+            packageName.contains("instagram") -> CategoryType.SOCIAL
+            packageName.contains("tiktok") -> CategoryType.SOCIAL
+            packageName.contains("twitter") -> CategoryType.SOCIAL
+            packageName.contains("reddit") -> CategoryType.NEWS
+            packageName.contains("youtube") -> CategoryType.NEWS // Video = News/Ent
+            packageName.contains("netflix") -> CategoryType.NEWS // Video
+            packageName.contains("game") -> CategoryType.GAME
+            
+            else -> CategoryType.OTHER
         }
     }
 }

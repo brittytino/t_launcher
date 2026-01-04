@@ -91,6 +91,22 @@ class Prefs(context: Context) {
     private val CALENDAR_APP_PACKAGE = "CALENDAR_APP_PACKAGE"
     private val CALENDAR_APP_USER = "CALENDAR_APP_USER"
     private val CALENDAR_APP_CLASS_NAME = "CALENDAR_APP_CLASS_NAME"
+    
+    // T Launcher Extended Settings
+    private val SHORTCUT_PRIMARY_ACTION = "SHORTCUT_PRIMARY_ACTION"
+    private val SHORTCUT_SECONDARY_ACTION_1 = "SHORTCUT_SECONDARY_ACTION_1"
+    private val SHORTCUT_SECONDARY_ACTION_2 = "SHORTCUT_SECONDARY_ACTION_2"
+    private val STRICT_BLOCKING_ENABLED = "STRICT_BLOCKING_ENABLED"
+    private val COGNITIVE_ALARM_ENABLED = "COGNITIVE_ALARM_ENABLED"
+    private val MATH_TASKS_COUNT = "MATH_TASKS_COUNT"
+    private val ENFORCE_VOLUME_LOCK = "ENFORCE_VOLUME_LOCK"
+    private val ESCALATION_MODE_ENABLED = "ESCALATION_MODE_ENABLED"
+    private val NOTIFICATION_FILTERING_ENABLED = "NOTIFICATION_FILTERING_ENABLED"
+    private val PRODUCTIVITY_TODO_ENABLED = "PRODUCTIVITY_TODO_ENABLED"
+    private val PRODUCTIVITY_NOTES_ENABLED = "PRODUCTIVITY_NOTES_ENABLED"
+    private val PRODUCTIVITY_REMINDERS_ENABLED = "PRODUCTIVITY_REMINDERS_ENABLED"
+    private val DATA_RETENTION_DELETE_COMPLETED = "DATA_RETENTION_DELETE_COMPLETED"
+    private val TEXT_ONLY_UI_ENABLED = "TEXT_ONLY_UI_ENABLED"
 
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
@@ -133,6 +149,11 @@ class Prefs(context: Context) {
     var dailyWallpaperUrl: String
         get() = prefs.getString(DAILY_WALLPAPER_URL, "").toString()
         set(value) = prefs.edit { putString(DAILY_WALLPAPER_URL, value).apply() }
+        
+    var currentMode: String
+        get() = prefs.getString("CURRENT_MODE", "NORMAL").toString()
+        set(value) = prefs.edit { putString("CURRENT_MODE", value).apply() }
+
 
     var homeAppsNum: Int
         get() = prefs.getInt(HOME_APPS_NUM, 4)
@@ -473,4 +494,76 @@ class Prefs(context: Context) {
     fun getAppRenameLabel(appPackage: String): String = prefs.getString(appPackage, "").toString()
 
     fun setAppRenameLabel(appPackage: String, renameLabel: String) = prefs.edit().putString(appPackage, renameLabel).apply()
+
+    var shortcutPrimaryAction: String
+        get() = prefs.getString(SHORTCUT_PRIMARY_ACTION, "LOCK_DEVICE").toString()
+        set(value) = prefs.edit { putString(SHORTCUT_PRIMARY_ACTION, value).apply() }
+
+    var shortcutSecondaryAction1: String
+        get() = prefs.getString(SHORTCUT_SECONDARY_ACTION_1, "OPEN_NOTES").toString()
+        set(value) = prefs.edit { putString(SHORTCUT_SECONDARY_ACTION_1, value).apply() }
+
+    var shortcutSecondaryAction2: String
+        get() = prefs.getString(SHORTCUT_SECONDARY_ACTION_2, "TOGGLE_GRAYSCALE").toString()
+        set(value) = prefs.edit { putString(SHORTCUT_SECONDARY_ACTION_2, value).apply() }
+
+    var strictBlockingEnabled: Boolean
+        get() = prefs.getBoolean(STRICT_BLOCKING_ENABLED, true)
+        set(value) = prefs.edit { putBoolean(STRICT_BLOCKING_ENABLED, value).apply() }
+
+    var cognitiveAlarmEnabled: Boolean
+        get() = prefs.getBoolean(COGNITIVE_ALARM_ENABLED, false)
+        set(value) = prefs.edit { putBoolean(COGNITIVE_ALARM_ENABLED, value).apply() }
+    
+    var cognitiveAlarmTime: String
+        get() = prefs.getString("COGNITIVE_ALARM_TIME", "07:00").toString()
+        set(value) = prefs.edit { putString("COGNITIVE_ALARM_TIME", value).apply() }
+
+    var mathTasksCount: Int
+        get() = prefs.getInt(MATH_TASKS_COUNT, 3)
+        set(value) = prefs.edit { putInt(MATH_TASKS_COUNT, value).apply() }
+
+    var enforceVolumeLock: Boolean
+        get() = prefs.getBoolean(ENFORCE_VOLUME_LOCK, false)
+        set(value) = prefs.edit { putBoolean(ENFORCE_VOLUME_LOCK, value).apply() }
+
+    var escalationModeEnabled: Boolean
+        get() = prefs.getBoolean(ESCALATION_MODE_ENABLED, false)
+        set(value) = prefs.edit { putBoolean(ESCALATION_MODE_ENABLED, value).apply() }
+
+    var notificationFilteringEnabled: Boolean
+        get() = prefs.getBoolean(NOTIFICATION_FILTERING_ENABLED, false)
+        set(value) = prefs.edit { putBoolean(NOTIFICATION_FILTERING_ENABLED, value).apply() }
+
+    var productivityTodoEnabled: Boolean
+        get() = prefs.getBoolean(PRODUCTIVITY_TODO_ENABLED, true)
+        set(value) = prefs.edit { putBoolean(PRODUCTIVITY_TODO_ENABLED, value).apply() }
+
+    var productivityNotesEnabled: Boolean
+        get() = prefs.getBoolean(PRODUCTIVITY_NOTES_ENABLED, true)
+        set(value) = prefs.edit { putBoolean(PRODUCTIVITY_NOTES_ENABLED, value).apply() }
+
+    var productivityRemindersEnabled: Boolean
+        get() = prefs.getBoolean(PRODUCTIVITY_REMINDERS_ENABLED, true)
+        set(value) = prefs.edit { putBoolean(PRODUCTIVITY_REMINDERS_ENABLED, value).apply() }
+
+    var dataRetentionDeleteCompleted: Boolean
+        get() = prefs.getBoolean(DATA_RETENTION_DELETE_COMPLETED, false)
+        set(value) = prefs.edit { putBoolean(DATA_RETENTION_DELETE_COMPLETED, value).apply() }
+
+    var textOnlyUiEnabled: Boolean
+        get() = prefs.getBoolean(TEXT_ONLY_UI_ENABLED, false)
+        set(value) = prefs.edit { putBoolean(TEXT_ONLY_UI_ENABLED, value).apply() }
+
+    var hasShownGrayscaleWarning: Boolean
+        get() = prefs.getBoolean("HAS_SHOWN_GRAYSCALE_WARNING", false)
+        set(value) = prefs.edit { putBoolean("HAS_SHOWN_GRAYSCALE_WARNING", value).apply() }
+        
+    var gestureDoubleTap: String
+        get() = prefs.getString("GESTURE_DOUBLE_TAP", "LOCK_SCREEN").toString()
+        set(value) = prefs.edit { putString("GESTURE_DOUBLE_TAP", value).apply() }
+
+    var gestureTripleTap: String
+        get() = prefs.getString("GESTURE_TRIPLE_TAP", "OPEN_PRODUCTIVITY").toString()
+        set(value) = prefs.edit { putString("GESTURE_TRIPLE_TAP", value).apply() }
 }

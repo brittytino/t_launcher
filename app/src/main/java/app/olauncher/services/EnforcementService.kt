@@ -1,8 +1,13 @@
 package app.olauncher.services
 
 import android.accessibilityservice.AccessibilityService
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.view.accessibility.AccessibilityEvent
+import androidx.annotation.RequiresApi
+import android.os.Build
 import app.olauncher.TLauncherApplication
 import app.olauncher.data.Prefs
 import app.olauncher.domain.engine.BlockingChecker
@@ -13,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.isActive
 
 class EnforcementService : AccessibilityService() {
 
@@ -23,30 +30,153 @@ class EnforcementService : AccessibilityService() {
     private val container by lazy { (application as TLauncherApplication).container }
     private val categoryRepository by lazy { container.categoryRepository }
     private val usageStatsRepository by lazy { container.usageStatsRepository }
+    private val modeManager by lazy { container.modeManager }
     private val rulesRepository by lazy { container.rulesRepository }
 
-    // Cache to avoid db hits on every event (critical for performance)
-    private val blockedPackagesCache = mutableSetOf<String>()
+    private val lockReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == "app.olauncher.ACTION_LOCK_SCREEN") {
+                performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN)
+            }
+        }
+    }
     
+    private var sessionDurationLimit: Long = 5 * 60 * 1000L
+    private var isExtensionGranted: Boolean = false
+
+    private val extensionReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == "app.olauncher.ACTION_EXTEND_SESSION") {
+                if (!isExtensionGranted) {
+                    isExtensionGranted = true
+                    sessionDurationLimit += 2 * 60 * 1000L // Add 2 minutes
+                }
+            }
+        }
+    }
+
     override fun onServiceConnected() {
         super.onServiceConnected()
         Prefs(applicationContext).lockModeOn = true
-        // Here we should load initial rules/categories
-        // For now, let's just listen.
+        
+        val filter = IntentFilter("app.olauncher.ACTION_LOCK_SCREEN")
+        val extendFilter = IntentFilter("app.olauncher.ACTION_EXTEND_SESSION")
+        
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(lockReceiver, filter, RECEIVER_NOT_EXPORTED)
+            registerReceiver(extensionReceiver, extendFilter, RECEIVER_NOT_EXPORTED)
+        } else {
+            registerReceiver(lockReceiver, filter)
+            registerReceiver(extensionReceiver, extendFilter)
+        }
     }
 
-    override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        event ?: return
-        
-        if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
-            val packageName = event.packageName?.toString() ?: return
-            
-            // Optimization: Ignore self
-            if (packageName == applicationContext.packageName) return 
+    private var currentAppPackage: String? = null
+    private var currentSessionStart: Long = 0
+    private var sessionMonitorJob: Job? = null
 
-            serviceScope.launch {
-                checkAndBlock(packageName)
+    override fun onAccessibilityEvent(event: AccessibilityEvent?) {
+        try {
+            event ?: return
+            
+            if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+                val packageName = event.packageName?.toString() ?: return
+                if (packageName == applicationContext.packageName) return 
+                if (packageName == "com.android.systemui") return
+    
+                // Session Tracking
+                if (packageName != currentAppPackage) {
+                    currentAppPackage = packageName
+                    currentSessionStart = System.currentTimeMillis()
+                    // Reset State
+                    sessionDurationLimit = 5 * 60 * 1000L
+                    isExtensionGranted = false
+                    startSessionMonitor(packageName)
+                }
+    
+                if (modeManager.getMode() == app.olauncher.domain.model.AppMode.NORMAL) {
+                    checkForBoredom(packageName)
+                }
+    
+                serviceScope.launch {
+                    try {
+                        checkAndBlock(packageName)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
             }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun startSessionMonitor(packageName: String) {
+        sessionMonitorJob?.cancel()
+        sessionMonitorJob = serviceScope.launch(Dispatchers.IO) {
+            // STRICT EXCLUSION: Never block the launcher itself
+            if (packageName == app.olauncher.BuildConfig.APPLICATION_ID) return@launch
+            
+            val category = categoryRepository.getCategory(packageName)?.type ?: app.olauncher.domain.model.CategoryType.OTHER
+            
+            // 5-MINUTE HARD RULE: ONLY APPLIES TO DISTRACTING APPS
+            // (SOCIAL, GAME, NEWS)
+            // Everything else is FREE (Productivity, Utility, Maps, Music, Messaging, System, Other)
+            val isDistracting = when (category) {
+                app.olauncher.domain.model.CategoryType.SOCIAL,
+                app.olauncher.domain.model.CategoryType.GAME,
+                app.olauncher.domain.model.CategoryType.NEWS -> true
+                else -> false
+            }
+
+            if (!isDistracting) {
+                return@launch
+            }
+
+            while (isActive) {
+                kotlinx.coroutines.delay(10_000) // Check more frequently (10s)
+                val duration = System.currentTimeMillis() - currentSessionStart
+                if (duration > sessionDurationLimit) {
+                    withContext(Dispatchers.Main) {
+                        showBlockingOverlay("ContinuousUsageLimit", !isExtensionGranted)
+                    }
+                    break // Stop monitoring after blocking
+                }
+            }
+        }
+    }
+
+    private val switchHistory = java.util.ArrayDeque<Pair<String, Long>>()
+    private val BORED_THRESHOLD_COUNT = 6
+    private val BORED_WINDOW_MS = 60 * 1000L // 1 minute
+    
+    private fun checkForBoredom(packageName: String) {
+        val now = System.currentTimeMillis()
+        
+        // Remove old entries
+        while (switchHistory.isNotEmpty() && (now - switchHistory.peekFirst().second > BORED_WINDOW_MS)) {
+            switchHistory.pollFirst()
+        }
+
+        // Add current (if different from last)
+        if (switchHistory.isEmpty() || switchHistory.peekLast().first != packageName) {
+            switchHistory.addLast(packageName to now)
+        }
+
+        if (switchHistory.size >= BORED_THRESHOLD_COUNT) {
+            // Trigger Bored Mode
+            serviceScope.launch(Dispatchers.IO) {
+                container.systemLogRepository.logEvent(
+                    app.olauncher.data.local.SystemLogEntity(
+                        timestamp = System.currentTimeMillis(),
+                        type = app.olauncher.data.local.LogType.VIOLATION,
+                        message = "Bored Mode Triggered via Heuristic",
+                        payload = "Rapid switching: ${switchHistory.map { it.first }}"
+                    )
+                )
+            }
+            modeManager.setMode(app.olauncher.domain.model.AppMode.BORED)
+            switchHistory.clear() // Reset
         }
     }
 
@@ -54,31 +184,61 @@ class EnforcementService : AccessibilityService() {
         val category = categoryRepository.getCategory(packageName) ?: return
         val rules = rulesRepository.getRulesForPackage(packageName)
         val usage = usageStatsRepository.getTodayUsage(packageName)
+        val currentMode = modeManager.getMode()
 
         val result = blockingChecker.isAppBlocked(
             category = category,
             rules = rules,
-            usageDuration = usage
+            usageDuration = usage,
+            currentMode = currentMode
         )
 
         if (result is BlockingChecker.BlockingResult.Blocked) {
-            showBlockingOverlay()
+            val message = when (result.reason) {
+                BlockingChecker.Reason.StrictBlock -> "This app is strictly blocked."
+                BlockingChecker.Reason.Scheduled -> "Blocked by Schedule."
+                BlockingChecker.Reason.TimeLimitExceeded -> "Daily limit reached."
+                BlockingChecker.Reason.CategoryRestricted -> "Category Restricted."
+                BlockingChecker.Reason.BoredomIntervention -> "Bored Mode Active.\nGo for a walk."
+                BlockingChecker.Reason.ProductivityMode -> "Productivity Mode Active.\nFocus on essentials."
+                BlockingChecker.Reason.DrivingSafety -> "Driving Mode Active.\nEyes on the road."
+                BlockingChecker.Reason.EmergencyLockdown -> "Emergency Mode Limit."
+                BlockingChecker.Reason.ContinuousUsageLimit -> "Session Limit."
+            }
+            showBlockingOverlay(message)
+            
+            // Log Violation
+            serviceScope.launch(Dispatchers.IO) {
+                container.systemLogRepository.logEvent(
+                    app.olauncher.data.local.SystemLogEntity(
+                        timestamp = System.currentTimeMillis(),
+                        type = app.olauncher.data.local.LogType.APP_BLOCK_EVENT,
+                        message = "Blocked $packageName",
+                        payload = message
+                    )
+                )
+            }
         }
     }
 
-    private fun showBlockingOverlay() {
+    private fun showBlockingOverlay(reason: String, canExtend: Boolean = false) {
         val intent = Intent(this, BlockingOverlayActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK) // Make sure it's fresh
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.putExtra("BLOCKING_REASON", reason)
+        intent.putExtra("CAN_EXTEND", canExtend)
         startActivity(intent)
     }
 
     override fun onInterrupt() {
-        // Service interrupted
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        try {
+            unregisterReceiver(lockReceiver)
+            unregisterReceiver(extensionReceiver)
+        } catch (e: Exception) {}
         serviceScope.cancel()
     }
 }

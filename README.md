@@ -1,33 +1,26 @@
-![Olauncher](https://repository-images.githubusercontent.com/278638069/db0acb80-661b-11eb-803e-926cae5dccb4)
+# T Launcher
 
+> *Premium. Private. Productivity.*
 
-# Olauncher | Minimal AF Launcher
-AF stands for Ad-Free :D
+**T Launcher** is a minimalist, digital wellbeing launcher designed to help you reclaim your focus. Built with a "Privacy First" and "Hard Mode Compatibility" philosophy, it replaces your cluttered home screen with a clean, text-based interface and powerful enforcement tools.
 
+## Key Features
 
-## Install
+*   **System Surveillance**: Real-time audit log of your digital activity (App blocks, Focus sessions, etc.) in a terminal-style UI.
+*   **Hard Mode Enforcement**: Strict 5-minute usage limits on distracting apps (Social, Games, News), with zero loopholes for non-essential apps.
+*   **Productivity Tools**: Built-in Focus Timer, Breathing Exercises, and Daily Accountability Journal.
+*   **Privacy Focused**: No internet permission required. All data stays on your device.
+*   **Premium Aesthetics**: Dynamic procedural wallpapers, dark mode optimizations, and a sleek, distraction-free design.
 
-#### Install from [F-Droid](https://f-droid.org/packages/app.olauncher) or [Play Store](https://play.google.com/store/apps/details?id=app.olauncher) or download the APK from the [latest release](https://github.com/tanujnotes/Olauncher/releases/).
+## Installation
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-    alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/app.olauncher)
-[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-    alt="Get it on Play Store"
-    height="80">](https://play.google.com/store/apps/details?id=app.olauncher)
+1.  Download the latest APK from the [Releases](./app/release) section.
+2.  Install on your Android device.
+3.  Set as your **Default Launcher**.
 
-To maintain the simplicity of the launcher, a few niche features are available but hidden.
+## Credits
 
-Please check out the [About](https://tanujnotes.substack.com/p/olauncher-minimal-af-launcher?utm_source=github) page in the Olauncher settings for a complete list of features and FAQs.
+Based on the open-source **Olauncher** project.
+Re-imagined and hardened by **Tino Britty**.
 
-##
-
-License: [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html)
-
-@tanujnotes | [X/Twitter](https://twitter.com/tanujnotes) | [Bluesky](https://bsky.app/profile/tanujnotes.bsky.social)
-
-**[See my other apps](https://play.google.com/store/apps/dev?id=7198807840081074933)**
-
-##
-
-*New: We're working on an open source notes app called Note Safe (previously Note to Self). What's cool about it - it has a chat like interface and end-to-end encryption. [Take a look!](https://github.com/jeerovan/ntsapp)*
+[tinobritty.me](https://tinobritty.me)

@@ -14,7 +14,7 @@ class Converters {
         return try {
             CategoryType.valueOf(value)
         } catch (e: IllegalArgumentException) {
-            CategoryType.NEUTRAL // Default fallback
+            CategoryType.OTHER // Default fallback
         }
     }
 }

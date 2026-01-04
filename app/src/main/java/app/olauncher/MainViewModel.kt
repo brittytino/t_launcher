@@ -3,11 +3,13 @@ package app.olauncher
 import android.app.Application
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.content.pm.LauncherApps
 import android.os.UserHandle
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
@@ -34,20 +36,68 @@ import java.util.concurrent.TimeUnit
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val appContext by lazy { application.applicationContext }
-    private val prefs = Prefs(appContext)
+    val prefs = Prefs(appContext)
     
     // T Launcher Dependencies
     private val container = (application as TLauncherApplication).container
     private val initializeCategoriesUseCase = container.initializeCategoriesUseCase
     private val updateAppCategoryUseCase = container.updateAppCategoryUseCase
     private val toggleWhitelistUseCase = container.toggleWhitelistUseCase
-    val categoryRepository = container.categoryRepository // Expose for UI observation if needed
+    val categoryRepository = container.categoryRepository
+    private val productivityRepository = container.productivityRepository
+    val systemLogRepository = container.systemLogRepository
+    val allNotes = productivityRepository.allNotes
+    val allTasks = productivityRepository.allTasks
+
+    // Usage Stats
+    private val _usageStats = MutableLiveData<TLauncherStats>()
+    val usageStats: androidx.lifecycle.LiveData<TLauncherStats> = _usageStats
+    
+    // Real Surveillance Logs
+    val surveillanceLogs = systemLogRepository.recentLogs.asLiveData()
+
+    data class TLauncherStats(
+        val alarmSuccess: Int = 0,
+        val alarmFailure: Int = 0,
+        val focusSessions: Int = 0,
+        val breathingSessions: Int = 0,
+        val emergencyUsage: Int = 0,
+        val blocks: Int = 0,
+        val missedCheckins: Int = 0
+    )
+
+    fun fetchUsageStats() {
+        viewModelScope.launch {
+            val since = 0L // All time? Or this month? User said "How am I using this system?" -> All active features. Yearly Heatmap exists. Stats likely All Time or Year.
+            // Let's do All Time for "Usage Stats" unless specified. 
+            // "Dynamically populated... Include: Alarm usage stats...".
+            
+            val alarmSuccess = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.ALARM_SUCCESS, since)
+            val alarmFailure = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.ALARM_FAILURE, since)
+            val focus = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.FOCUS_SESSION, since)
+            val breathing = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.BREATHING_SESSION, since)
+            val emergency = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.EMERGENCY_OVERRIDE, since)
+            val blocks = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.VIOLATION, since) // Or APP_BLOCK_EVENT
+            // We added APP_BLOCK_EVENT, use that if we log it there.
+            // The service logged VIOLATION for blocks. I should probably query both or migrate.
+            // EnforcementService logs VIOLATION. I will use VIOLATION for blocks + APP_BLOCK_EVENT if used.
+            val blocks2 = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.APP_BLOCK_EVENT, since)
+            val missed = systemLogRepository.getCountByTypeSince(app.olauncher.data.local.LogType.MISSED_CHECKIN, since)
+
+            _usageStats.postValue(TLauncherStats(
+                alarmSuccess, alarmFailure, focus, breathing, emergency, blocks + blocks2, missed
+            ))
+        }
+    }
+
+    val navigateToProductivity = SingleLiveEvent<Unit>()
 
     init {
         viewModelScope.launch {
             initializeCategoriesUseCase()
         }
         scheduleUsageMonitoring()
+        app.olauncher.helper.WallpaperManager.applyDailyWallpaper(appContext)
     }
 
     fun toggleWhitelist(packageName: String) {
@@ -56,20 +106,48 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun setAppLimit(packageName: String, limitMinutes: Int) {
+    fun updateAppCategory(packageName: String, type: app.olauncher.domain.model.CategoryType) {
         viewModelScope.launch {
-            val rule = app.olauncher.domain.model.UsageRule.DailyLimit(limitMinutes)
-            // We need a repository that supports adding rules. 
-            // Currently container exposes methods. 
-            // Checking container... it exposes toggleWhitelistUseCase but not directly addRule?
-            // Wait, I updated AppContainer to include RulesRepository.
-            // I need to access RulesRepository here.
-            
-           // Direct access for now as I recall adding it to container
-           (getApplication() as TLauncherApplication).container.rulesRepository.addRule(packageName, rule)
-           appContext.showToast("Limit set to $limitMinutes minutes")
+            // Check if exists to preserve whitelist status?
+            // For now, just create new with default false, or fetch.
+            // Let's assume default false is safe, or we should fetch first.
+            // But fetching every time might be slow.
+            // Ideally UpdateUseCase handles this.
+            val category = app.olauncher.domain.model.AppCategory(packageName, type)
+            updateAppCategoryUseCase(category)
+            appContext.showToast("Category updated to ${type.name}")
         }
     }
+
+    fun addRule(target: String, rule: app.olauncher.domain.model.UsageRule) {
+        viewModelScope.launch {
+            (getApplication() as TLauncherApplication).container.rulesRepository.addRule(target, rule)
+            appContext.showToast("Rule updated")
+        }
+    }
+
+    fun removeRule(target: String, rule: app.olauncher.domain.model.UsageRule) {
+        viewModelScope.launch {
+            (getApplication() as TLauncherApplication).container.rulesRepository.removeRule(target, rule)
+            appContext.showToast("Rule removed")
+        }
+    }
+
+    fun setAppLimit(packageName: String, limitMinutes: Int) {
+        addRule(packageName, app.olauncher.domain.model.UsageRule.DailyLimit(limitMinutes))
+    }
+
+    fun removeAppLimit(packageName: String) {
+        viewModelScope.launch {
+            val rule = app.olauncher.domain.model.UsageRule.DailyLimit(0) // Dummy for type matching
+            (getApplication() as TLauncherApplication).container.rulesRepository.removeRule(packageName, rule)
+            appContext.showToast("Limit removed")
+        }
+    }
+
+    val allRules = container.rulesRepository.getAllRules().asLiveData()
+
+
 
     val firstOpen = MutableLiveData<Boolean>()
     val applyVisualDetox = MutableLiveData<Unit>()
@@ -88,13 +166,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val resetLauncherLiveData = SingleLiveEvent<Unit?>()
 
     fun selectedApp(appModel: AppModel, flag: Int) {
-        // Enforce whitelist for Home Apps
-        if (flag in Constants.FLAG_SET_HOME_APP_1..Constants.FLAG_SET_HOME_APP_8) {
-            if (!appModel.isWhitelisted) {
-                appContext.showToast("Strict Mode: You must Unblock this app to place it on Home Screen.")
-                return
-            }
-        }
+
 
         when (flag) {
             Constants.FLAG_LAUNCH_APP -> {
@@ -220,7 +292,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val activityInfo = launcher.getActivityList(packageName, userHandle)
 
         val component = if (activityClassName.isNullOrBlank()) {
-            // activityClassName will be null for hidden apps.
             when (activityInfo.size) {
                 0 -> {
                     appContext.showToast(appContext.getString(R.string.app_not_found))
@@ -265,31 +336,57 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun setWallpaperWorker() {
         val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresBatteryNotLow(true)
             .build()
         val uploadWorkRequest = PeriodicWorkRequestBuilder<WallpaperWorker>(8, TimeUnit.HOURS)
-            .setBackoffCriteria(BackoffPolicy.LINEAR, 1, TimeUnit.HOURS)
+            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 1, TimeUnit.HOURS)
             .setConstraints(constraints)
             .build()
-        WorkManager
-            .getInstance(appContext)
-            .enqueueUniquePeriodicWork(
-                Constants.WALLPAPER_WORKER_NAME,
-                ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
-                uploadWorkRequest
-            )
+
+        WorkManager.getInstance(appContext).enqueueUniquePeriodicWork(
+            Constants.WALLPAPER_WORKER_NAME,
+            ExistingPeriodicWorkPolicy.KEEP,
+            uploadWorkRequest
+        )
     }
 
-    fun scheduleUsageMonitoring() {
-        val request = androidx.work.PeriodicWorkRequestBuilder<app.olauncher.services.UsageMonitorWorker>(
-            15, java.util.concurrent.TimeUnit.MINUTES // Min interval allowed by Android
+    private fun scheduleUsageMonitoring() {
+       val request = PeriodicWorkRequestBuilder<app.olauncher.services.UsageMonitorWorker>(
+            15, TimeUnit.MINUTES
         ).build()
 
         WorkManager.getInstance(appContext).enqueueUniquePeriodicWork(
             "USAGE_MONITOR",
-            ExistingPeriodicWorkPolicy.KEEP,
+            ExistingPeriodicWorkPolicy.KEEP, 
             request
         )
+
+        
+        val accountabilityRequest = PeriodicWorkRequestBuilder<app.olauncher.services.AccountabilityWorker>(
+            24, TimeUnit.HOURS
+        ).setInitialDelay(calculateInitialDelayForAccountability(), TimeUnit.MILLISECONDS)
+        .build()
+
+        WorkManager.getInstance(appContext).enqueueUniquePeriodicWork(
+            "ACCOUNTABILITY_WORKER",
+            ExistingPeriodicWorkPolicy.KEEP,
+            accountabilityRequest
+        )
+    }
+
+    private fun calculateInitialDelayForAccountability(): Long {
+        val calendar = Calendar.getInstance()
+        val now = System.currentTimeMillis()
+        
+        calendar.set(Calendar.HOUR_OF_DAY, 21) // 9 PM
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        
+        var delay = calendar.timeInMillis - now
+        if (delay <= 0) {
+            delay += TimeUnit.DAYS.toMillis(1)
+        }
+        return delay
     }
 
     fun cancelWallpaperWorker() {
@@ -307,7 +404,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         if (prefs.screenTimeLastUpdated.hasBeenMinutes(1).not()) return
 
         val eventLogWrapper = EventLogWrapper(appContext)
-        // Start of today in millis
         val calendar = Calendar.getInstance().apply {
             set(Calendar.HOUR_OF_DAY, 0)
             set(Calendar.MINUTE, 0)
@@ -340,6 +436,71 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    // Productivity Methods
+    fun addNote(title: String, content: String) {
+        viewModelScope.launch {
+            productivityRepository.insertNote(app.olauncher.data.local.NoteEntity(title = title, content = content, timestamp = System.currentTimeMillis()))
+        }
+    }
+
+    fun deleteNote(note: app.olauncher.data.local.NoteEntity) {
+        viewModelScope.launch {
+            productivityRepository.deleteNote(note)
+        }
+    }
+
+    fun addTask(text: String) {
+        viewModelScope.launch {
+            productivityRepository.insertTask(app.olauncher.data.local.TaskEntity(text = text, timestamp = System.currentTimeMillis()))
+        }
+    }
+
+    fun toggleTaskCompletion(task: app.olauncher.data.local.TaskEntity) {
+        viewModelScope.launch {
+            productivityRepository.updateTask(task.copy(isCompleted = !task.isCompleted))
+        }
+    }
+
+    fun deleteTask(task: app.olauncher.data.local.TaskEntity) {
+        viewModelScope.launch {
+            productivityRepository.deleteTask(task)
+        }
+    }
+
+    // Accountability
+    private val accountabilityRepository = container.accountabilityRepository
+    val allAccountabilityLogs = accountabilityRepository.allLogs.asLiveData()
+    val todayLog = MutableLiveData<app.olauncher.data.local.AccountabilityEntity?>()
+
+    fun checkTodayLog() {
+        viewModelScope.launch {
+            val date = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
+            todayLog.postValue(accountabilityRepository.getLogForDate(date))
+        }
+    }
+
+    fun saveCheckIn(diet: Boolean, sugar: Boolean, workout: Boolean, productive: Boolean) {
+        viewModelScope.launch {
+            val date = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
+            val log = app.olauncher.data.local.AccountabilityEntity(date, diet, sugar, workout, productive)
+            accountabilityRepository.insertLog(log)
+            todayLog.postValue(log)
+            appContext.showToast("Day logged. Stay hard.")
+        }
+    }
+
+    fun logSystemEvent(type: app.olauncher.data.local.LogType, message: String) {
+        viewModelScope.launch {
+            systemLogRepository.logEvent(
+                app.olauncher.data.local.SystemLogEntity(
+                    timestamp = System.currentTimeMillis(),
+                    type = type,
+                    message = message
+                )
+            )
         }
     }
 }

@@ -19,9 +19,16 @@ class NotificationBlockerService : NotificationListenerService() {
         scope.launch {
             val container = (applicationContext as TLauncherApplication).container
             val category = container.categoryRepository.getCategory(packageName)
-            
-            // Block notifications from Procrastinating apps unless they are whitelisted
-            if (category != null && category.type == CategoryType.PROCRASTINATING && !category.isWhitelisted) {
+            val isWhitelisted = category?.isWhitelisted == true
+
+            // Check system defaults
+            val defaultDialer = getSystemService(android.telecom.TelecomManager::class.java)?.defaultDialerPackage
+            val defaultSms = android.provider.Telephony.Sms.getDefaultSmsPackage(applicationContext)
+
+            val isEssential = packageName == defaultDialer || packageName == defaultSms
+
+            // Strict Filter: Allow ONLY Whitelisted apps and Essential Communication
+            if (!isWhitelisted && !isEssential) {
                 cancelNotification(sbn.key)
             }
         }

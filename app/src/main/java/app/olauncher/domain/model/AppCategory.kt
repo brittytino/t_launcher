@@ -1,14 +1,21 @@
 package app.olauncher.domain.model
 
 enum class CategoryType {
-    ESSENTIAL,      // Phone, Maps, Banking, Urgent Tools
-    PRODUCTIVE,     // Work, Study, Reading, Notes
-    NEUTRAL,        // System apps, Calculators, benign tools
-    PROCRASTINATING // Social Media, Games, Video Streaming, News
+    PHONE,          // Dialer, Contacts
+    MAPS,           // Maps, Navigation
+    MUSIC,          // Spotify, Music Players
+    MESSAGING,      // SMS, WhatsApp, Signal (Text only)
+    SOCIAL,         // Instagram, Twitter, Facebook
+    GAME,           // Games
+    NEWS,           // News Apps, Reddit
+    PRODUCTIVITY,   // Notes, Docs, Calendar
+    UTILITY,        // Calculator, Clock, Camera, Settings
+    SYSTEM,         // System UI
+    OTHER           // Default for unknown
 }
 
 data class AppCategory(
     val packageName: String,
     val type: CategoryType,
-    val isWhitelisted: Boolean = false // User override for specific needs
+    val isWhitelisted: Boolean = false
 )

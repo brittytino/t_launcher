@@ -19,6 +19,7 @@ class UsageMonitorWorker(
     private val categoryRepository = container.categoryRepository
     private val rulesRepository = container.rulesRepository
     private val usageStatsRepository = container.usageStatsRepository
+    private val modeManager = container.modeManager
     private val blockingChecker = BlockingChecker()
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
@@ -43,11 +44,13 @@ class UsageMonitorWorker(
         val category = categoryRepository.getCategory(packageName) ?: return
         val rules = rulesRepository.getRulesForPackage(packageName)
         val usage = usageStatsRepository.getTodayUsage(packageName)
+        val currentMode = modeManager.getMode()
 
         val result = blockingChecker.isAppBlocked(
             category = category,
             rules = rules,
-            usageDuration = usage
+            usageDuration = usage,
+            currentMode = currentMode
         )
 
         if (result is BlockingChecker.BlockingResult.Blocked) {
@@ -55,6 +58,7 @@ class UsageMonitorWorker(
             val intent = Intent(applicationContext, BlockingOverlayActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.putExtra("BLOCKING_REASON", result.reason.name)
             applicationContext.startActivity(intent)
         }
     }

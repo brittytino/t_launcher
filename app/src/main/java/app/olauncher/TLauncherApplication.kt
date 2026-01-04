@@ -3,7 +3,7 @@ package app.olauncher
 import android.app.Application
 import app.olauncher.di.AppContainer
 import app.olauncher.di.AppContainerImpl
-import app.olauncher.helper.Prefs
+import app.olauncher.data.Prefs
 
 class TLauncherApplication : Application() {
 
@@ -12,6 +12,6 @@ class TLauncherApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         container = AppContainerImpl(this)
-        Prefs.init(this) // Initialize legacy Olauncher prefs if needed
+        // Prefs.init(this) // Prefs doesn't have an init method in the provided file, removing this if it causes issues
     }
 }

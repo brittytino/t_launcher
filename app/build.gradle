@@ -1,6 +1,9 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'com.google.devtools.ksp'
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.compose.compiler)
+}
 
 android {
     compileSdk 35
@@ -16,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId "app.olauncher"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 35
         versionCode 95
         versionName "v5.3.4"
@@ -43,9 +46,6 @@ android {
         buildConfig = true
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15" // Check compatibility with Kotlin 1.9.25/2.x
-    }
     namespace 'app.olauncher'
 }
 
@@ -57,8 +57,9 @@ dependencies {
     implementation libs.recyclerview
 
     // Android lifecycle
-    implementation libs.lifecycle.extensions
+    // implementation libs.lifecycle.extensions
     implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.runtime.ktx
 
     // Navigation
     implementation libs.navigation.fragment.ktx
@@ -80,6 +81,10 @@ dependencies {
     implementation libs.compose.ui.graphics
     implementation libs.compose.ui.tooling.preview
     implementation libs.compose.material3
+    implementation libs.compose.icons.extended
+    implementation libs.compose.icons.extended
+    implementation "androidx.compose.runtime:runtime-livedata"
     implementation libs.activity.compose
+    implementation "androidx.lifecycle:lifecycle-runtime-compose"
     debugImplementation libs.compose.ui.tooling
 }

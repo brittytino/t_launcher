@@ -24,6 +24,13 @@
             app:exitAnim="@anim/fade_exit"
             app:popEnterAnim="@anim/fade_enter"
             app:popExitAnim="@anim/fade_exit" />
+        <action
+            android:id="@+id/action_mainFragment_to_productivityFragment"
+            app:destination="@id/productivityFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -44,8 +51,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="app.olauncher.ui.SettingsFragment"
-        android:label="SettingsFragment"
-        android:layout="@layout/fragment_settings">
+        android:label="SettingsFragment">
         <action
             android:id="@+id/action_settingsFragment_to_appListFragment"
             app:destination="@id/appListFragment"
@@ -54,5 +60,11 @@
             app:popEnterAnim="@anim/fade_enter"
             app:popExitAnim="@anim/fade_exit" />
     </fragment>
+
+    <fragment
+        android:id="@+id/productivityFragment"
+        android:name="app.olauncher.ui.ProductivityFragment"
+        android:label="ProductivityFragment"
+        tools:layout="@layout/fragment_productivity" />
 
 </navigation>

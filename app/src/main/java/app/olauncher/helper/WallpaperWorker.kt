@@ -13,35 +13,21 @@ class WallpaperWorker(appContext: Context, workerParams: WorkerParameters) : Cor
     private val prefs = Prefs(applicationContext)
 
     override suspend fun doWork(): Result = coroutineScope {
-        val success =
-            if (isOlauncherDefault(applicationContext).not())
-                true
-            else if (prefs.dailyWallpaper) {
-                val wallType = checkWallpaperType()
-                val wallpaperUrl = getTodaysWallpaper(wallType, prefs.firstOpenTime)
-                if (prefs.dailyWallpaperUrl == wallpaperUrl)
-                    true
-                else {
-                    prefs.dailyWallpaperUrl = wallpaperUrl
-                    setWallpaper(applicationContext, wallpaperUrl)
-                }
-            } else
-                true
-
-        if (success)
-            Result.success()
-        else
-            Result.retry()
-    }
-
-    private fun checkWallpaperType(): String {
-        return when (prefs.appTheme) {
-            AppCompatDelegate.MODE_NIGHT_YES -> Constants.WALL_TYPE_DARK
-            AppCompatDelegate.MODE_NIGHT_NO -> Constants.WALL_TYPE_LIGHT
-            else -> if (applicationContext.isDarkThemeOn())
-                Constants.WALL_TYPE_DARK
-            else
-                Constants.WALL_TYPE_LIGHT
+        if (!prefs.dailyWallpaper || !isOlauncherDefault(applicationContext)) {
+             return@coroutineScope Result.success()
         }
+
+        val todayColor = getTodaysColor()
+        // If we want checking mechanism to avoid re-applying same color, we can add a check here.
+        // However, setting the same bitmap is relatively cheap once a day.
+        
+        val success = try {
+            setPlainWallpaper(applicationContext, todayColor)
+            true
+        } catch (e: Exception) {
+            false
+        }
+
+        if (success) Result.success() else Result.retry()
     }
 }

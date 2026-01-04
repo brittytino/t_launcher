@@ -6,15 +6,38 @@
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true">
 
-    <TextView
-        android:id="@+id/appTitle"
-        style="@style/TextLarge"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="@dimen/app_padding_vertical"
-        android:text="@string/app" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="24dp">
+
+        <TextView
+            android:id="@+id/appTitle"
+            style="@style/TextLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:paddingVertical="@dimen/app_padding_vertical"
+            android:text="@string/app"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/appLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="15m"
+            android:visibility="gone"
+            android:textSize="12sp"
+            android:textColor="?attr/primaryColorTrans50"
+            android:drawablePadding="4dp"
+            app:drawableStartCompat="@drawable/ic_timer"
+            tools:visibility="visible"/>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/otherProfileIndicator"
@@ -38,7 +61,7 @@
         android:focusable="true"
         android:gravity="end|center_vertical"
         android:visibility="gone"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/appDelete"
@@ -116,7 +139,7 @@
             app:drawableTopCompat="@drawable/ic_lock_open" />
 
         <TextView
-            android:id="@+id/appLimit"
+            android:id="@+id/appLimitAction"
             style="@style/TextSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

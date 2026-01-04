@@ -38,6 +38,7 @@ import app.olauncher.helper.setPlainWallpaper
 import app.olauncher.helper.shareApp
 import app.olauncher.helper.showLauncherSelector
 import app.olauncher.helper.showToast
+
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -50,11 +51,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
     private var timerJob: Job? = null
-
-//    override fun onBackPressed() {
-//        if (navController.currentDestination?.id != R.id.mainFragment)
-//            super.onBackPressed()
-//    }
 
     override fun attachBaseContext(context: Context) {
         val newConfig = Configuration(context.resources.configuration)
@@ -77,11 +73,8 @@ class MainActivity : AppCompatActivity() {
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (navController.currentDestination?.id != R.id.mainFragment) {
-                    // then we might want to finish the activity or disable this callback.
                     if (navController.popBackStack()) {
                         // Successfully popped back
-                    } else {
-                        // if you want other system/activity level handling
                     }
                 } else {
                     binding.messageLayout.visibility = View.GONE
@@ -91,11 +84,15 @@ class MainActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         if (prefs.firstOpen) {
-            viewModel.firstOpen(true)
-            prefs.firstOpen = false
-            prefs.firstOpenTime = System.currentTimeMillis()
-            viewModel.setDefaultClockApp()
-            viewModel.resetLauncherLiveData.call()
+            // New Onboarding Flow
+            startActivity(Intent(this, app.olauncher.ui.onboarding.OnboardingActivity::class.java))
+            finish()
+            return
+        }
+
+        // Legacy cleanup if needed (optional)
+        if (prefs.firstOpenTime == 0L) {
+             prefs.firstOpenTime = System.currentTimeMillis()
         }
 
         initClickListeners()
@@ -104,6 +101,8 @@ class MainActivity : AppCompatActivity() {
         setupOrientation()
 
         window.addFlags(FLAG_LAYOUT_NO_LIMITS)
+        
+        handleIntent(intent)
     }
 
     override fun onStart() {
@@ -122,9 +121,14 @@ class MainActivity : AppCompatActivity() {
         super.onUserLeaveHint()
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        backToHomeScreen()
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        handleIntent(intent)
+        backToHomeScreen()
+    }
+
+    private fun handleIntent(intent: Intent?) {
+        // Accessibility shortcut removed
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -162,7 +166,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.showDialog.observe(this) {
             when (it) {
                 Constants.Dialog.ABOUT -> {
-                    showMessageDialog(R.string.app_name, R.string.welcome_to_olauncher_settings, R.string.okay) {
+                    showMessageDialog(R.string.app_name, R.string.welcome_to_settings, R.string.okay) {
                         binding.messageLayout.visibility = View.GONE
                     }
                 }
@@ -220,8 +224,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 Constants.Dialog.PRO_MESSAGE -> {
-                    showMessageDialog(R.string.hey, R.string.pro_message, R.string.olauncher_pro) {
-                        openUrl(Constants.URL_OLAUNCHER_PRO)
+                    showMessageDialog(R.string.hey, R.string.pro_message, R.string.okay) {
+                        // Do nothing (Local Only)
                     }
                 }
             }
@@ -269,26 +273,35 @@ class MainActivity : AppCompatActivity() {
             }
 
             Constants.UserState.REVIEW -> {
+                // Disabled for local build
+                /*
                 if (prefs.rateClicked)
                     prefs.userState = Constants.UserState.SHARE
                 else if (isOlauncherDefault(this) && prefs.firstOpenTime.hasBeenHours(1))
                     viewModel.showDialog.postValue(Constants.Dialog.REVIEW)
+                */
             }
 
             Constants.UserState.RATE -> {
+                // Disabled for local build
+                /*
                 if (prefs.rateClicked)
                     prefs.userState = Constants.UserState.SHARE
                 else if (isOlauncherDefault(this)
                     && prefs.firstOpenTime.isDaySince() >= 7
                     && calendar.get(Calendar.HOUR_OF_DAY) >= 16
                 ) viewModel.showDialog.postValue(Constants.Dialog.RATE)
+                */
             }
 
             Constants.UserState.SHARE -> {
+                // Disabled for local build
+                /*
                 if (isOlauncherDefault(this) && prefs.firstOpenTime.hasBeenDays(14)
                     && prefs.shareShownTime.isDaySince() >= 70
                     && calendar.get(Calendar.HOUR_OF_DAY) >= 16
                 ) viewModel.showDialog.postValue(Constants.Dialog.SHARE)
+                */
             }
         }
     }
@@ -297,7 +310,6 @@ class MainActivity : AppCompatActivity() {
     private fun setupOrientation() {
         if (isTablet(this) || Build.VERSION.SDK_INT == Build.VERSION_CODES.O)
             return
-        // In Android 8.0, windowIsTranslucent cannot be used with screenOrientation=portrait
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
@@ -345,26 +357,101 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             Constants.REQUEST_CODE_ENABLE_ADMIN -> {
-                if (resultCode == Activity.RESULT_OK)
+                if (resultCode == RESULT_OK)
                     prefs.lockModeOn = true
             }
 
             Constants.REQUEST_CODE_LAUNCHER_SELECTOR -> {
-                if (resultCode == Activity.RESULT_OK)
+                if (resultCode == RESULT_OK)
                     resetLauncherViaFakeActivity()
             }
         }
     }
 
     private fun applyVisualDetox() {
-        if (prefs.isVisualDetox) {
-            val cm = android.graphics.ColorMatrix()
-            cm.setSaturation(0f)
-            val paint = android.graphics.Paint()
-            paint.colorFilter = android.graphics.ColorMatrixColorFilter(cm)
-            binding.root.setLayerType(View.LAYER_TYPE_HARDWARE, paint)
-        } else {
-            binding.root.setLayerType(View.LAYER_TYPE_NONE, null)
+        app.olauncher.helper.GrayscaleManager.applyGrayscale(
+            this,
+            binding.root,
+            prefs.isVisualDetox
+        )
+    }
+
+    // Gesture Handling
+    private var tapCount = 0
+    private var lastTapTime = 0L
+    private val gestureHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private val resetTapRunnable = Runnable { tapCount = 0 }
+    private val doubleTapAction = Runnable {
+        handleDoubleTap()
+        tapCount = 0
+    }
+
+    private val gestureListener = object : android.view.GestureDetector.SimpleOnGestureListener() {
+        override fun onDown(e: android.view.MotionEvent): Boolean {
+            return true
+        }
+
+        override fun onSingleTapUp(e: android.view.MotionEvent): Boolean {
+            processTap()
+            return false
         }
     }
+
+    private val gestureDetector by lazy {
+        androidx.core.view.GestureDetectorCompat(this, gestureListener)
+    }
+
+    override fun dispatchTouchEvent(ev: android.view.MotionEvent?): Boolean {
+        ev?.let { gestureDetector.onTouchEvent(it) }
+        return super.dispatchTouchEvent(ev)
+    }
+
+    private fun processTap() {
+        if (navController.currentDestination?.id != R.id.mainFragment) return
+        
+        val now = System.currentTimeMillis()
+        if (now - lastTapTime > 400) tapCount = 0
+        tapCount++
+        lastTapTime = now
+
+        if (tapCount == 1) {
+             gestureHandler.removeCallbacks(resetTapRunnable)
+             gestureHandler.postDelayed(resetTapRunnable, 400)
+        } else if (tapCount == 2) {
+             gestureHandler.removeCallbacks(resetTapRunnable)
+             gestureHandler.postDelayed(doubleTapAction, 300) // Wait for 3rd
+        } else if (tapCount == 3) {
+             gestureHandler.removeCallbacks(doubleTapAction)
+             handleTripleTap()
+             tapCount = 0
+        }
+    }
+
+    private fun handleDoubleTap() {
+         if (prefs.gestureDoubleTap == "LOCK_SCREEN") {
+             vibrate()
+             sendBroadcast(Intent("app.olauncher.ACTION_LOCK_SCREEN"))
+         }
+    }
+
+    private fun handleTripleTap() {
+         if (prefs.gestureTripleTap == "OPEN_PRODUCTIVITY") {
+             try {
+                vibrate()
+                navController.navigate(R.id.productivityFragment)
+             } catch (e: Exception) {
+                 e.printStackTrace()
+             }
+         }
+    }
+    
+    private fun vibrate() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as? android.os.Vibrator
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator?.vibrate(android.os.VibrationEffect.createOneShot(50, android.os.VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator?.vibrate(50)
+        }
+    }
+
 }

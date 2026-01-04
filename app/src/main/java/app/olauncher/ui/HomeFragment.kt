@@ -261,6 +261,7 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnLongClickListener 
         binding.setDefaultLauncher.setOnClickListener(this)
         binding.setDefaultLauncher.setOnLongClickListener(this)
         binding.tvScreenTime.setOnClickListener(this)
+        binding.tvScreenTime.setOnClickListener(this)
     }
 
     private fun setHomeAlignment(horizontalGravity: Int = prefs.homeAlignment) {
@@ -421,12 +422,13 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnLongClickListener 
     private fun launchApp(appName: String, packageName: String, activityClassName: String?, userString: String) {
         viewModel.selectedApp(
             AppModel(
-                appName,
-                null,
-                packageName,
-                activityClassName,
-                false,
-                getUserHandleFromString(requireContext(), userString)
+                appLabel = appName,
+                key = null,
+                appPackage = packageName,
+                activityClassName = activityClassName,
+                isNew = false,
+                isWhitelisted = false,
+                user = getUserHandleFromString(requireContext(), userString)
             ),
             Constants.FLAG_LAUNCH_APP
         )
@@ -474,15 +476,9 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnLongClickListener 
     }
 
     private fun openSwipeLeftApp() {
-        if (!prefs.swipeLeftEnabled) return
-        if (prefs.appPackageSwipeLeft.isNotEmpty())
-            launchApp(
-                prefs.appNameSwipeLeft,
-                prefs.appPackageSwipeLeft,
-                prefs.appActivityClassNameSwipeLeft,
-                prefs.appUserSwipeLeft
-            )
-        else openCameraApp(requireContext())
+        // T Launcher 2.0: Left Swipe opens Self Dashboard
+        val intent = Intent(requireContext(), app.olauncher.ui.dashboard.DashboardActivity::class.java)
+        startActivity(intent)
     }
 
     private fun lockPhone() {
@@ -593,10 +589,11 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnLongClickListener 
 
             override fun onDoubleClick() {
                 super.onDoubleClick()
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
-                    binding.lock.performClick()
-                else if (prefs.lockModeOn)
-                    lockPhone()
+                try {
+                    findNavController().navigate(R.id.action_mainFragment_to_productivityFragment)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
 
             override fun onClick() {

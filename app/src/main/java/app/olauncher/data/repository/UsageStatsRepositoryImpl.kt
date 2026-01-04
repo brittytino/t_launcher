@@ -67,4 +67,22 @@ class UsageStatsRepositoryImpl(
         stats.filter { it.packageName == packageName }
             .sumOf { it.totalTimeInForeground }
     }
+
+    override suspend fun getTodayTotalUsage(): Long = withContext(Dispatchers.IO) {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        val startTime = calendar.timeInMillis
+        val endTime = System.currentTimeMillis()
+
+        val stats = usageStatsManager?.queryUsageStats(
+            UsageStatsManager.INTERVAL_DAILY,
+            startTime,
+            endTime
+        ) ?: return@withContext 0L
+
+        stats.sumOf { it.totalTimeInForeground }
+    }
 }

@@ -191,4 +191,5 @@
         android:maxLines="1"
         android:text="@string/set_as_default_launcher_u"
         android:visibility="gone" />
+
 </FrameLayout>
