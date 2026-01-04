@@ -33,7 +33,7 @@ This project is open source and we welcome contributions from the community!
 
 ## Installation
 
-1.  Download the latest APK from the [Releases](./app/release) section.
+1.  Download the latest APK from the [Releases](https://github.com/brittytino/t_launcher/releases/tag/v5.3.4) section.
 2.  Install on your Android device.
 3.  Set as your **Default Launcher**.
 
