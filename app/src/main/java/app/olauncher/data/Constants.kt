@@ -108,11 +108,11 @@ object Constants {
     const val URL_PLAY_STORE = "https://www.tinobritty.me"
     const val URL_PRO = "https://www.tinobritty.me"
     const val URL_DEV = "https://www.tinobritty.me"
-    const val URL_WALLPAPERS = "https://gist.githubusercontent.com/tanujnotes/85e2d0343ace71e76615ac346fbff82b/raw"
+    const val URL_WALLPAPERS = "https://source.unsplash.com/random?nature"
     const val URL_DUCK_SEARCH = "https://duck.co/?q="
-    const val URL_OLAUNCHER_PRO = "https://play.google.com/store/apps/details?id=app.olauncher.pro"
-    const val URL_DEFAULT_LIGHT_WALLPAPER = "https://images.unsplash.com/photo-1554147090-e1221a04a025?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=bevis-chen-748958-unsplash.jpg"
-    const val URL_DEFAULT_DARK_WALLPAPER = "https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=felipe-pelaquim-605151-unsplash.jpg"
+    const val URL_OLAUNCHER_PRO = "https://www.tinobritty.me"
+    const val URL_DEFAULT_LIGHT_WALLPAPER = "https://source.unsplash.com/random?light"
+    const val URL_DEFAULT_DARK_WALLPAPER = "https://source.unsplash.com/random?dark"
 
 
     const val DIGITAL_WELLBEING_PACKAGE_NAME = "com.google.android.apps.wellbeing"

@@ -1,7 +1,7 @@
 <resources>
     <!-- Branding -->
     <string name="app_name" translatable="false">T Launcher</string>
-    <string name="developer_name">brittytino</string>
+    <string name="developer_name">Tino Britty J</string>
     <string name="developer_website">www.tinobritty.me</string>
     <string name="t_launcher_pro" translatable="false">T Launcher Pro</string>
     <string name="about_t_launcher">About</string>
