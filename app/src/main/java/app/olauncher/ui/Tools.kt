@@ -22,11 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.olauncher.MainViewModel
 import app.olauncher.data.local.LogType
-import app.olauncher.ui.theme.ColorWhite
+import app.olauncher.ui.theme.*
 import kotlinx.coroutines.delay
 
 @Composable
 fun FocusTimer(viewModel: MainViewModel? = null) {
+    // Deprecated in favor of FocusModeScreen, but kept for Productivity Panel embed
     var timeLeft by remember { mutableLongStateOf(25 * 60 * 1000L) }
     var initialTime by remember { mutableLongStateOf(25 * 60 * 1000L) }
     var isRunning by remember { mutableStateOf(false) }
@@ -48,14 +49,15 @@ fun FocusTimer(viewModel: MainViewModel? = null) {
     }
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-         Text("DEEP WORK", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary, letterSpacing = 3.sp)
+         Text("DEEP WORK", style = TLauncherTypography.labelSmall, color = MaterialTheme.colorScheme.primary, letterSpacing = 3.sp)
          Spacer(modifier = Modifier.height(16.dp))
         
-         Box(contentAlignment = Alignment.Center, modifier = Modifier.size(220.dp)) { // Reduced size
+         Box(contentAlignment = Alignment.Center, modifier = Modifier.size(200.dp)) {
              // Background Track
+             val trackColor = MaterialTheme.colorScheme.surfaceVariant
              Canvas(modifier = Modifier.fillMaxSize()) {
                  drawCircle(
-                     color = Color(0xFF1A1D24),
+                     color = trackColor,
                      radius = size.minDimension / 2,
                      style = Stroke(width = 16f)
                  )
@@ -75,15 +77,12 @@ fun FocusTimer(viewModel: MainViewModel? = null) {
              Column(horizontalAlignment = Alignment.CenterHorizontally) {
                  Text(
                      text = formatTime(timeLeft),
-                     style = MaterialTheme.typography.headlineLarge.copy( // Reduced font
-                         fontWeight = FontWeight.Bold,
-                         letterSpacing = (-1).sp
-                     ),
+                     style = TLauncherTypography.headlineLarge.copy(fontSize = 40.sp, fontWeight = FontWeight.Bold),
                      color = MaterialTheme.colorScheme.onSurface
                  )
                  Text(
                      text = if (isRunning) "FOCUSING" else "READY",
-                     style = MaterialTheme.typography.labelSmall,
+                     style = TLauncherTypography.labelSmall,
                      color = MaterialTheme.colorScheme.onSurfaceVariant
                  )
              }
@@ -91,30 +90,26 @@ fun FocusTimer(viewModel: MainViewModel? = null) {
         
         Spacer(modifier = Modifier.height(24.dp))
         
-        Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-            Button(
-                onClick = { isRunning = !isRunning },
-                modifier = Modifier.height(48.dp).weight(1f),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = if (isRunning) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.primary,
-                    contentColor = if (isRunning) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onPrimary
-                )
-            ) {
-                 Icon(if (isRunning) Icons.Default.PlayArrow else Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(20.dp))
-                 Spacer(Modifier.width(8.dp))
-                 Text(if (isRunning) "PAUSE" else "START", style = MaterialTheme.typography.labelMedium)
-            }
-            
-            OutlinedButton(
-                onClick = { 
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            // Replaced Buttons with TChips
+             TChip(
+                 text = if (isRunning) "PAUSE" else "START",
+                 onClick = { isRunning = !isRunning },
+                 modifier = Modifier.height(48.dp).weight(1f),
+                 selected = !isRunning, // Primary when not running to encourage start
+                 icon = Icons.Default.PlayArrow
+             )
+             
+             TChip(
+                 text = "RESET",
+                 onClick = { 
                     isRunning = false
                     timeLeft = 25 * 60 * 1000L 
-                }, 
-                modifier = Modifier.height(48.dp).weight(1f),
-                border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.surfaceVariant)
-            ) {
-                 Text("RESET", color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.labelMedium)
-            }
+                 },
+                 modifier = Modifier.height(48.dp).weight(1f),
+                 selected = false,
+                 icon = Icons.Default.Refresh
+             )
         }
     }
 }
@@ -127,7 +122,7 @@ fun BreathingExercise(viewModel: MainViewModel? = null) {
     
     val sizeScale by animateFloatAsState(
         targetValue = when (phase) {
-            "Inhale" -> 1.5f // Reduced scale
+            "Inhale" -> 1.5f
             "Hold" -> 1.5f
             "Exhale" -> 1.0f
             else -> 1.0f
@@ -157,17 +152,17 @@ fun BreathingExercise(viewModel: MainViewModel? = null) {
     }
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("BREATHE", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.secondary, letterSpacing = 3.sp)
+        Text("BREATHE", style = TLauncherTypography.labelSmall, color = MaterialTheme.colorScheme.secondary, letterSpacing = 3.sp)
         Spacer(modifier = Modifier.height(16.dp))
         
         Box(
             contentAlignment = Alignment.Center,
-            modifier = Modifier.size(220.dp) // Reduced size
+            modifier = Modifier.size(200.dp)
         ) {
             // Outer Glow
             Box(
                 modifier = Modifier
-                    .size(110.dp) // Reduced base size
+                    .size(100.dp)
                     .scale(sizeScale)
                     .background(
                         MaterialTheme.colorScheme.secondary.copy(alpha = 0.15f),
@@ -177,7 +172,7 @@ fun BreathingExercise(viewModel: MainViewModel? = null) {
             // Core
             Box(
                 modifier = Modifier
-                    .size(110.dp) // Reduced base size
+                    .size(100.dp)
                     .scale(sizeScale * 0.85f)
                     .background(
                         MaterialTheme.colorScheme.secondary,
@@ -187,20 +182,19 @@ fun BreathingExercise(viewModel: MainViewModel? = null) {
             
             Text(
                 text = phase.uppercase(),
-                style = MaterialTheme.typography.headlineSmall, // Reduced font
-                color = if (phase == "Ready") MaterialTheme.colorScheme.onSurface else ColorWhite
+                style = TLauncherTypography.titleMedium,
+                color = if (phase == "Ready") MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSecondary
             )
         }
         
         Spacer(modifier = Modifier.height(24.dp))
         
-        Button(
+        TChip(
+            text = if (isActive) "STOP" else "START",
             onClick = { isActive = !isActive },
             modifier = Modifier.height(48.dp).fillMaxWidth(0.5f),
-            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
-        ) {
-            Text(if (isActive) "STOP" else "START", style = MaterialTheme.typography.labelMedium)
-        }
+            selected = isActive // Active state
+        )
     }
 }
 

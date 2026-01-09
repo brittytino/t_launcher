@@ -21,6 +21,8 @@ import androidx.annotation.RequiresApi
 import app.olauncher.BuildConfig
 import app.olauncher.R
 import app.olauncher.data.Constants
+import androidx.compose.ui.input.pointer.PointerInputScope
+import androidx.compose.foundation.gestures.detectDragGestures
 import java.util.Calendar
 
 fun View.hideKeyboard() {
@@ -178,4 +180,25 @@ fun Long.hasBeenMinutes(minutes: Int): Boolean =
 
 fun Int.dpToPx(): Int {
     return (this * Resources.getSystem().displayMetrics.density).toInt()
+}
+
+suspend fun PointerInputScope.detectSwipe(
+    onSwipeLeft: () -> Unit = {},
+    onSwipeRight: () -> Unit = {},
+    onSwipeUp: () -> Unit = {},
+    onSwipeDown: () -> Unit = {}
+) {
+    detectDragGestures(
+        onDrag = { change, dragAmount ->
+            change.consume()
+            val (x, y) = dragAmount
+            if (kotlin.math.abs(x) > kotlin.math.abs(y)) {
+                if (x > 20) onSwipeRight()
+                else if (x < -20) onSwipeLeft()
+            } else {
+                if (y > 20) onSwipeDown()
+                else if (y < -20) onSwipeUp()
+            }
+        }
+    )
 }

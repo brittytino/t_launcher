@@ -15,7 +15,7 @@ import androidx.room.TypeConverters
         AccountabilityEntity::class,
         SystemLogEntity::class
     ],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

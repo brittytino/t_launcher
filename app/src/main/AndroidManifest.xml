@@ -12,7 +12,7 @@
     <!--Used only for downloading wallpapers-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--Used only for opening alarm app-->
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <!--Used only for opening alarm app-->
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
@@ -47,18 +47,9 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.AlarmActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
-            android:showOnLockScreen="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
-        <activity
-            android:name=".ui.dashboard.DashboardActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="false" />
+
+
 
         <activity
             android:name=".features.blocking.BlockingOverlayActivity"
@@ -67,10 +58,7 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:exported="false" />
 
-        <activity
-            android:name=".ui.onboarding.OnboardingActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="false" />
+
 
         <activity
             android:name=".helper.FakeHomeActivity"

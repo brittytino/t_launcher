@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
@@ -29,7 +30,8 @@ import java.time.DayOfWeek
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
-import app.olauncher.ui.theme.TLauncherTypography
+import app.olauncher.ui.theme.*
+import androidx.compose.ui.window.Dialog
 
 @Composable
 fun ScheduleScreen(
@@ -37,53 +39,62 @@ fun ScheduleScreen(
     onBack: () -> Unit
 ) {
     val rules by viewModel.allRules.observeAsState(initial = emptyList())
-    // We filter rules that start with CATEGORY_
-    
     val categoryRules = rules.filter { it.packageName.startsWith("CATEGORY_") }
     
     var showDialog by remember { mutableStateOf(false) }
     var selectedCategory by remember { mutableStateOf<CategoryType?>(null) }
     var currentSchedule by remember { mutableStateOf<UsageRule.ScheduledBlock?>(null) }
 
-    Scaffold(
-        topBar = {
-            SettingsTopBar(onBack)
-        }
-    ) { padding ->
-        LazyColumn(modifier = Modifier.padding(padding)) {
-             item {
-                 Text(
-                    "Set blocking schedules for app categories.",
-                    modifier = Modifier.padding(16.dp),
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
+    TScaffold {
+        Column(modifier = Modifier.fillMaxSize().padding(horizontal = TLauncherTheme.spacing.medium)) {
+            // Header
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(vertical = TLauncherTheme.spacing.medium),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                 IconButton(onClick = onBack) {
+                     Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.onBackground)
+                 }
+                 Text("BLOCKING SCHEDULES", style = TLauncherTypography.headlineMedium, color = MaterialTheme.colorScheme.primary)
             }
             
-            items(CategoryType.values()) { category ->
-                // Check if rule exists
-                val ruleEntity = categoryRules.find { it.packageName == "CATEGORY_${category.name}" && it.ruleType == "SCHEDULE" }
-                val rule = if (ruleEntity != null) {
-                    try {
-                        app.olauncher.data.local.RuleSerializer.deserialize("SCHEDULE", ruleEntity.ruleData) as? UsageRule.ScheduledBlock
-                    } catch (e: Exception) { null }
-                } else null
+            Text(
+                "Automate focus by scheduling blocks per category.",
+                style = TLauncherTypography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
 
-                CategoryScheduleItem(
-                    category = category,
-                    schedule = rule,
-                    onEdit = {
-                        selectedCategory = category
-                        currentSchedule = rule
-                        showDialog = true
-                    },
-                    onDelete = {
-                         if (rule != null) {
-                             viewModel.removeRule("CATEGORY_${category.name}", rule)
+            // Content
+            TCard(modifier = Modifier.fillMaxWidth()) {
+                LazyColumn(modifier = Modifier.padding(vertical = 8.dp)) {
+                    items(CategoryType.values()) { category ->
+                         val ruleEntity = categoryRules.find { it.packageName == "CATEGORY_${category.name}" && it.ruleType == "SCHEDULE" }
+                         val rule = if (ruleEntity != null) {
+                             try {
+                                 app.olauncher.data.local.RuleSerializer.deserialize("SCHEDULE", ruleEntity.ruleData) as? UsageRule.ScheduledBlock
+                             } catch (e: Exception) { null }
+                         } else null
+     
+                         CategoryScheduleItem(
+                             category = category,
+                             schedule = rule,
+                             onEdit = {
+                                 selectedCategory = category
+                                 currentSchedule = rule
+                                 showDialog = true
+                             },
+                             onDelete = {
+                                  if (rule != null) {
+                                      viewModel.removeRule("CATEGORY_${category.name}", rule)
+                                  }
+                             }
+                         )
+                         if (category != CategoryType.values().last()) {
+                            HorizontalDivider(color = MaterialTheme.colorScheme.surface, thickness = 1.dp)
                          }
                     }
-                )
-                HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
+                }
             }
         }
     }
@@ -100,7 +111,6 @@ fun ScheduleScreen(
         )
     }
 }
-
 
 
 @Composable
@@ -120,15 +130,15 @@ fun CategoryScheduleItem(
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = category.name, 
-                style = TLauncherTypography.bodyLarge,
+                style = TLauncherTypography.titleMedium,
                 color = getCategoryColor(category)
             )
             if (schedule != null) {
                 Text(
                     text = "${schedule.startTime} - ${schedule.endTime}", 
-                    style = TLauncherTypography.labelMedium,
+                    style = TLauncherTypography.labelSmall,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = schedule.daysOfWeek.joinToString(", ") { it.name.take(3) },
@@ -139,7 +149,7 @@ fun CategoryScheduleItem(
                 Text(
                     text = "No Schedule", 
                     style = TLauncherTypography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha=0.5f)
                 )
             }
         }
@@ -169,58 +179,72 @@ fun ScheduleDialog(
     
     val context = LocalContext.current
     
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Schedule for ${category.name}") },
-        text = {
-            Column {
+    androidx.compose.ui.window.Dialog(onDismissRequest = onDismiss) {
+        TCard(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                Text("SET SCHEDULE", style = TLauncherTypography.headlineSmall, color = MaterialTheme.colorScheme.primary)
+                Spacer(modifier = Modifier.height(24.dp))
+                
                 // Time Pickers
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Button(onClick = {
-                        TimePickerDialog(context, { _, h, m -> startTime = LocalTime.of(h, m) }, startTime.hour, startTime.minute, true).show()
-                    }) {
-                        Text("Start: $startTime")
-                    }
-                    Button(onClick = {
-                        TimePickerDialog(context, { _, h, m -> endTime = LocalTime.of(h, m) }, endTime.hour, endTime.minute, true).show()
-                    }) {
-                        Text("End: $endTime")
-                    }
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    TChip(
+                        text = "Start: $startTime", 
+                        onClick = { TimePickerDialog(context, { _, h, m -> startTime = LocalTime.of(h, m) }, startTime.hour, startTime.minute, true).show() },
+                        modifier = Modifier.weight(1f),
+                        selected = false
+                    )
+                    TChip(
+                        text = "End: $endTime", 
+                        onClick = { TimePickerDialog(context, { _, h, m -> endTime = LocalTime.of(h, m) }, endTime.hour, endTime.minute, true).show() },
+                        modifier = Modifier.weight(1f),
+                        selected = false
+                    )
                 }
                 
-                Spacer(modifier = Modifier.height(16.dp))
-                Text("Active Days:", fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(24.dp))
+                Text("Active Days", style = TLauncherTypography.labelSmall, color = MaterialTheme.colorScheme.secondary)
+                Spacer(modifier = Modifier.height(12.dp))
                 
                 // Day Toggles
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                    DayOfWeek.values().take(3).forEach { day ->
-                        DayToggle(day, selectedDays.contains(day)) {
-                            selectedDays = if (selectedDays.contains(day)) selectedDays - day else selectedDays + day
-                        }
-                    }
+                     DayOfWeek.values().take(4).forEach { day ->
+                         DayToggle(day, selectedDays.contains(day)) {
+                             selectedDays = if (selectedDays.contains(day)) selectedDays - day else selectedDays + day
+                         }
+                     }
                 }
+                Spacer(modifier = Modifier.height(8.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                    DayOfWeek.values().drop(3).take(4).forEach { day ->
-                        DayToggle(day, selectedDays.contains(day)) {
-                            selectedDays = if (selectedDays.contains(day)) selectedDays - day else selectedDays + day
-                        }
-                    }
+                     DayOfWeek.values().drop(4).forEach { day ->
+                         DayToggle(day, selectedDays.contains(day)) {
+                             selectedDays = if (selectedDays.contains(day)) selectedDays - day else selectedDays + day
+                         }
+                     }
+                }
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    TChip(
+                        text = "CANCEL", 
+                        onClick = onDismiss, 
+                        modifier = Modifier.weight(1f),
+                        selected = false
+                    )
+                    TChip(
+                        text = "SAVE",
+                        onClick = {
+                            if (selectedDays.isNotEmpty()) {
+                                onSave(UsageRule.ScheduledBlock(startTime, endTime, selectedDays.toList()))
+                            }
+                        },
+                        modifier = Modifier.weight(1f),
+                        selected = true
+                    )
                 }
             }
-        },
-        confirmButton = {
-            TextButton(
-                onClick = {
-                    if (selectedDays.isNotEmpty()) {
-                        onSave(UsageRule.ScheduledBlock(startTime, endTime, selectedDays.toList()))
-                    }
-                }
-            ) { Text("Save") }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
         }
-    )
+    }
 }
 
 @Composable
@@ -228,15 +252,15 @@ fun DayToggle(day: DayOfWeek, isSelected: Boolean, onToggle: () -> Unit) {
     Box(
         modifier = Modifier
             .padding(2.dp)
-            .size(36.dp)
-            .clip(RoundedCornerShape(18.dp))
-            .background(if (isSelected) MaterialTheme.colorScheme.primary else Color.LightGray)
+            .size(32.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface)
             .clickable(onClick = onToggle),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = day.name.take(1),
-            color = if (isSelected) Color.White else Color.Black,
+            color = if (isSelected) Color.Black else MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold
         )

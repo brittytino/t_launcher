@@ -59,6 +59,21 @@ import java.util.Scanner
 import kotlin.math.pow
 import kotlin.math.sqrt
 
+fun calculateInitialDelayForAccountability(): Long {
+    val calendar = Calendar.getInstance()
+    val now = System.currentTimeMillis()
+    
+    calendar.set(Calendar.HOUR_OF_DAY, 21) // 9 PM
+    calendar.set(Calendar.MINUTE, 0)
+    calendar.set(Calendar.SECOND, 0)
+    
+    var delay = calendar.timeInMillis - now
+    if (delay <= 0) {
+        delay += java.util.concurrent.TimeUnit.DAYS.toMillis(1)
+    }
+    return delay
+}
+
 fun Context.showToast(message: String?, duration: Int = Toast.LENGTH_SHORT) {
     if (message.isNullOrBlank()) return
     Toast.makeText(this, message, duration).show()
@@ -364,14 +379,7 @@ fun openCameraApp(context: Context) {
     }
 }
 
-fun openAlarmApp(context: Context) {
-    try {
-        val intent = Intent(AlarmClock.ACTION_SHOW_ALARMS)
-        context.startActivity(intent)
-    } catch (e: Exception) {
-        Log.d("TAG", e.toString())
-    }
-}
+// Alarm app removed per requirements
 
 fun openCalendar(context: Context) {
     try {

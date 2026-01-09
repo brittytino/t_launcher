@@ -36,48 +36,62 @@ class InitializeCategoriesUseCase(
     }
 
     private fun determineDefaultCategory(packageName: String): CategoryType {
+        val lower = packageName.lowercase()
         return when {
-            packageName.contains("dialer") -> CategoryType.PHONE
-            packageName.contains("contacts") -> CategoryType.PHONE
-            packageName.contains("telecom") -> CategoryType.PHONE
+            // Essential
+            lower.contains("dialer") -> CategoryType.ESSENTIAL
+            lower.contains("contacts") -> CategoryType.ESSENTIAL
+            lower.contains("telecom") -> CategoryType.ESSENTIAL
+            lower.contains("mms") -> CategoryType.ESSENTIAL
+            lower.contains("message") -> CategoryType.ESSENTIAL
+            lower.contains("clock") -> CategoryType.ESSENTIAL // Alarm/Timer needed
+            lower.contains("calendar") -> CategoryType.ESSENTIAL
+            lower.contains("settings") -> CategoryType.ESSENTIAL
+            lower.contains("maps") -> CategoryType.ESSENTIAL // Navigation is essential
+            lower.contains("waze") -> CategoryType.ESSENTIAL
             
-            packageName.contains("maps") -> CategoryType.MAPS
-            packageName.contains("waze") -> CategoryType.MAPS
-            packageName.contains("nav") -> CategoryType.MAPS
+            // Productive
+            lower.contains("note") -> CategoryType.PRODUCTIVE
+            lower.contains("task") -> CategoryType.PRODUCTIVE
+            lower.contains("doc") -> CategoryType.PRODUCTIVE
+            lower.contains("drive") -> CategoryType.PRODUCTIVE
+            lower.contains("sheet") -> CategoryType.PRODUCTIVE
+            lower.contains("slide") -> CategoryType.PRODUCTIVE
+            lower.contains("calculator") -> CategoryType.PRODUCTIVE
+            lower.contains("bank") -> CategoryType.PRODUCTIVE
+            lower.contains("wallet") -> CategoryType.PRODUCTIVE
+            lower.contains("pay") -> CategoryType.PRODUCTIVE
+            lower.contains("mail") -> CategoryType.PRODUCTIVE // Email can be distracting but usually work
+            lower.contains("files") -> CategoryType.PRODUCTIVE
+            lower.contains("camera") -> CategoryType.PRODUCTIVE // Creative tool
+
+            // System
+            lower.contains("android") -> CategoryType.SYSTEM
+            lower.contains("systemui") -> CategoryType.SYSTEM
+            lower.contains("launcher") -> CategoryType.SYSTEM
+            lower.contains("olauncher") -> CategoryType.SYSTEM
+            lower.contains("google.android.gms") -> CategoryType.SYSTEM
+            lower.contains("vending") -> CategoryType.SYSTEM // Play Store
+
+            // Distracting (Default for everything else to be safe/strict)
+            lower.contains("social") -> CategoryType.DISTRACTING
+            lower.contains("instagram") -> CategoryType.DISTRACTING
+            lower.contains("facebook") -> CategoryType.DISTRACTING
+            lower.contains("twitter") -> CategoryType.DISTRACTING
+            lower.contains("reddit") -> CategoryType.DISTRACTING
+            lower.contains("tiktok") -> CategoryType.DISTRACTING
+            lower.contains("youtube") -> CategoryType.DISTRACTING
+            lower.contains("netflix") -> CategoryType.DISTRACTING
+            lower.contains("prime") -> CategoryType.DISTRACTING
+            lower.contains("hulu") -> CategoryType.DISTRACTING
+            lower.contains("disney") -> CategoryType.DISTRACTING
+            lower.contains("game") -> CategoryType.DISTRACTING
+            lower.contains("news") -> CategoryType.DISTRACTING
+            lower.contains("shop") -> CategoryType.DISTRACTING
+            lower.contains("browser") -> CategoryType.DISTRACTING // Chrome etc often distracting. User can override.
+            lower.contains("chrome") -> CategoryType.DISTRACTING
             
-            packageName.contains("mms") -> CategoryType.MESSAGING
-            packageName.contains("message") -> CategoryType.MESSAGING
-            packageName.contains("whatsapp") -> CategoryType.MESSAGING
-            packageName.contains("signal") -> CategoryType.MESSAGING
-            packageName.contains("telegram") -> CategoryType.MESSAGING
-            
-            packageName.contains("music") -> CategoryType.MUSIC
-            packageName.contains("spotify") -> CategoryType.MUSIC
-            packageName.contains("audio") -> CategoryType.MUSIC
-            packageName.contains("podcast") -> CategoryType.MUSIC
-            
-            packageName.contains("settings") -> CategoryType.UTILITY
-            packageName.contains("camera") -> CategoryType.UTILITY
-            packageName.contains("calculator") -> CategoryType.UTILITY
-            packageName.contains("clock") -> CategoryType.UTILITY
-            
-            packageName.contains("calendar") -> CategoryType.PRODUCTIVITY
-            packageName.contains("note") -> CategoryType.PRODUCTIVITY
-            packageName.contains("task") -> CategoryType.PRODUCTIVITY
-            packageName.contains("doc") -> CategoryType.PRODUCTIVITY
-            packageName.contains("drive") -> CategoryType.PRODUCTIVITY
-            
-            // Social/Procrastination defaults
-            packageName.contains("facebook") -> CategoryType.SOCIAL
-            packageName.contains("instagram") -> CategoryType.SOCIAL
-            packageName.contains("tiktok") -> CategoryType.SOCIAL
-            packageName.contains("twitter") -> CategoryType.SOCIAL
-            packageName.contains("reddit") -> CategoryType.NEWS
-            packageName.contains("youtube") -> CategoryType.NEWS // Video = News/Ent
-            packageName.contains("netflix") -> CategoryType.NEWS // Video
-            packageName.contains("game") -> CategoryType.GAME
-            
-            else -> CategoryType.OTHER
+            else -> CategoryType.DISTRACTING // Default to Distracting to enforce potential white-listing
         }
     }
 }

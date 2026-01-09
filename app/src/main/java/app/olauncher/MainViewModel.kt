@@ -149,7 +149,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    val firstOpen = MutableLiveData<Boolean>()
+
     val applyVisualDetox = MutableLiveData<Unit>()
     val refreshHome = MutableLiveData<Boolean>()
     val toggleDateTime = MutableLiveData<Unit>()
@@ -271,9 +271,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun firstOpen(value: Boolean) {
-        firstOpen.postValue(value)
-    }
+
 
     fun refreshHome(appCountUpdated: Boolean) {
         refreshHome.value = appCountUpdated
@@ -364,7 +362,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         
         val accountabilityRequest = PeriodicWorkRequestBuilder<app.olauncher.services.AccountabilityWorker>(
             24, TimeUnit.HOURS
-        ).setInitialDelay(calculateInitialDelayForAccountability(), TimeUnit.MILLISECONDS)
+        ).setInitialDelay(app.olauncher.helper.calculateInitialDelayForAccountability(), TimeUnit.MILLISECONDS)
         .build()
 
         WorkManager.getInstance(appContext).enqueueUniquePeriodicWork(
@@ -374,20 +372,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         )
     }
 
-    private fun calculateInitialDelayForAccountability(): Long {
-        val calendar = Calendar.getInstance()
-        val now = System.currentTimeMillis()
-        
-        calendar.set(Calendar.HOUR_OF_DAY, 21) // 9 PM
-        calendar.set(Calendar.MINUTE, 0)
-        calendar.set(Calendar.SECOND, 0)
-        
-        var delay = calendar.timeInMillis - now
-        if (delay <= 0) {
-            delay += TimeUnit.DAYS.toMillis(1)
-        }
-        return delay
-    }
+    // Removed private calculateInitialDelayForAccountability as it is now in Utils
 
     fun cancelWallpaperWorker() {
         WorkManager.getInstance(appContext).cancelUniqueWork(Constants.WALLPAPER_WORKER_NAME)
@@ -485,10 +470,41 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun saveCheckIn(diet: Boolean, sugar: Boolean, workout: Boolean, productive: Boolean) {
         viewModelScope.launch {
             val date = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
-            val log = app.olauncher.data.local.AccountabilityEntity(date, diet, sugar, workout, productive)
+            val existing = accountabilityRepository.getLogForDate(date)
+            
+            val log = if (existing != null) {
+                existing.copy(dietFollowed = diet, sugarFree = sugar, didWorkout = workout, productiveToday = productive)
+            } else {
+                app.olauncher.data.local.AccountabilityEntity(date, diet, sugar, workout, productive)
+            }
+            
             accountabilityRepository.insertLog(log)
             todayLog.postValue(log)
             appContext.showToast("Day logged. Stay hard.")
+        }
+    }
+
+    fun saveDevMetrics(leetcode: Int, codeforces: Int) {
+        viewModelScope.launch {
+            val date = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
+            val existing = accountabilityRepository.getLogForDate(date)
+            
+            val log = if (existing != null) {
+                existing.copy(leetcodeCount = leetcode, codeforcesCount = codeforces)
+            } else {
+                app.olauncher.data.local.AccountabilityEntity(
+                    date = date, 
+                    dietFollowed = false, 
+                    sugarFree = false, 
+                    didWorkout = false, 
+                    productiveToday = false,
+                    leetcodeCount = leetcode,
+                    codeforcesCount = codeforces
+                )
+            }
+            
+            accountabilityRepository.insertLog(log)
+            todayLog.postValue(log)
         }
     }
 

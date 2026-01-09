@@ -57,7 +57,8 @@ class EnforcementService : AccessibilityService() {
 
     override fun onServiceConnected() {
         super.onServiceConnected()
-        Prefs(applicationContext).lockModeOn = true
+        val prefs = Prefs(applicationContext)
+        prefs.lockModeOn = true
         
         val filter = IntentFilter("app.olauncher.ACTION_LOCK_SCREEN")
         val extendFilter = IntentFilter("app.olauncher.ACTION_EXTEND_SESSION")
@@ -69,6 +70,17 @@ class EnforcementService : AccessibilityService() {
             registerReceiver(lockReceiver, filter)
             registerReceiver(extensionReceiver, extendFilter)
         }
+        
+        // Restore state or detection
+        serviceScope.launch(Dispatchers.IO) {
+            val foreground = ForegroundDetector.getForegroundPackage(applicationContext)
+            if (foreground != null) {
+                withContext(Dispatchers.Main) {
+                    currentAppPackage = foreground
+                    startSessionMonitor(foreground)
+                }
+            }
+        }
     }
 
     private var currentAppPackage: String? = null
@@ -76,38 +88,24 @@ class EnforcementService : AccessibilityService() {
     private var sessionMonitorJob: Job? = null
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        try {
-            event ?: return
+        if (event == null) return
+        
+        if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            val packageName = event.packageName?.toString() ?: return
             
-            if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
-                val packageName = event.packageName?.toString() ?: return
-                if (packageName == applicationContext.packageName) return 
-                if (packageName == "com.android.systemui") return
-    
-                // Session Tracking
-                if (packageName != currentAppPackage) {
-                    currentAppPackage = packageName
-                    currentSessionStart = System.currentTimeMillis()
-                    // Reset State
-                    sessionDurationLimit = 5 * 60 * 1000L
-                    isExtensionGranted = false
-                    startSessionMonitor(packageName)
-                }
-    
-                if (modeManager.getMode() == app.olauncher.domain.model.AppMode.NORMAL) {
-                    checkForBoredom(packageName)
-                }
-    
-                serviceScope.launch {
-                    try {
-                        checkAndBlock(packageName)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
+            // Update detection
+            currentAppPackage = packageName
+            
+            // Check for boredom (rapid switching)
+            checkForBoredom(packageName)
+            
+            // Run Blocking Checks
+            serviceScope.launch(Dispatchers.IO) {
+                checkAndBlock(packageName)
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+            
+            // Start/Switch Session Monitor
+            startSessionMonitor(packageName)
         }
     }
 
@@ -117,12 +115,11 @@ class EnforcementService : AccessibilityService() {
             // STRICT EXCLUSION: Never block the launcher itself
             if (packageName == app.olauncher.BuildConfig.APPLICATION_ID) return@launch
             
-            val category = categoryRepository.getCategory(packageName)?.type ?: app.olauncher.domain.model.CategoryType.OTHER
+            val category = categoryRepository.getCategory(packageName)?.type ?: app.olauncher.domain.model.CategoryType.DISTRACTING
             
             // 5-MINUTE HARD RULE: ONLY APPLIES TO DISTRACTING APPS
-            // (SOCIAL, GAME, NEWS)
-            // Everything else is FREE (Productivity, Utility, Maps, Music, Messaging, System, Other)
             val isDistracting = when (category) {
+                app.olauncher.domain.model.CategoryType.DISTRACTING,
                 app.olauncher.domain.model.CategoryType.SOCIAL,
                 app.olauncher.domain.model.CategoryType.GAME,
                 app.olauncher.domain.model.CategoryType.NEWS -> true
@@ -133,15 +130,45 @@ class EnforcementService : AccessibilityService() {
                 return@launch
             }
 
+            // Session Logic with Persistence
+            val prefs = Prefs(applicationContext)
+            val now = System.currentTimeMillis()
+            val lastActive = prefs.sessionLastActiveTime
+            val savedPackage = prefs.sessionPackage
+            
+            // Resume if same package and < 1 min gap (brief switch)
+            val isResume = (packageName == savedPackage) && (now - lastActive < 60_000L)
+            
+            if (isResume) {
+                currentSessionStart = prefs.sessionStartTime
+                sessionDurationLimit = if (prefs.isExtensionGranted) 7 * 60 * 1000L else 5 * 60 * 1000L
+                isExtensionGranted = prefs.isExtensionGranted
+            } else {
+                // New Session
+                currentSessionStart = now
+                sessionDurationLimit = 5 * 60 * 1000L
+                isExtensionGranted = false
+                
+                prefs.sessionPackage = packageName
+                prefs.sessionStartTime = now
+                prefs.isExtensionGranted = false
+            }
+
             while (isActive) {
-                kotlinx.coroutines.delay(10_000) // Check more frequently (10s)
-                val duration = System.currentTimeMillis() - currentSessionStart
-                if (duration > sessionDurationLimit) {
+                val currentNow = System.currentTimeMillis()
+                val elapsed = currentNow - currentSessionStart
+                
+                // Update heartbeat
+                prefs.sessionLastActiveTime = currentNow
+                
+                if (elapsed > sessionDurationLimit) {
                     withContext(Dispatchers.Main) {
-                        showBlockingOverlay("ContinuousUsageLimit", !isExtensionGranted)
+                        val strict = prefs.strictBlockingEnabled
+                        showBlockingOverlay("ContinuousUsageLimit", !isExtensionGranted && !strict)
                     }
-                    break // Stop monitoring after blocking
+                    break 
                 }
+                kotlinx.coroutines.delay(2_000) // Check every 2s
             }
         }
     }

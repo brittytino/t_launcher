@@ -8,6 +8,7 @@ import androidx.work.WorkManager
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import app.olauncher.services.UsageMonitorWorker
+import app.olauncher.helper.calculateInitialDelayForAccountability
 import java.util.concurrent.TimeUnit
 
 import kotlinx.coroutines.launch
@@ -28,8 +29,17 @@ class BootReceiver : BroadcastReceiver() {
                 request
             )
 
-            // Reschedule Daily Alarm
-            app.olauncher.helper.AlarmScheduler.scheduleNextAlarm(context)
+            // Schedule Accountability Worker
+            val accountabilityRequest = PeriodicWorkRequestBuilder<app.olauncher.services.AccountabilityWorker>(
+                24, TimeUnit.HOURS
+            ).setInitialDelay(calculateInitialDelayForAccountability(), TimeUnit.MILLISECONDS)
+            .build()
+            
+            WorkManager.getInstance(context).enqueueUniquePeriodicWork(
+                "ACCOUNTABILITY_WORKER",
+                ExistingPeriodicWorkPolicy.KEEP,
+                accountabilityRequest
+            )
 
             // Log Reboot
             val repo = (context.applicationContext as app.olauncher.TLauncherApplication).container.systemLogRepository

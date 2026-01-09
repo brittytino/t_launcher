@@ -8,5 +8,6 @@ import app.olauncher.domain.model.CategoryType
 data class CategoryEntity(
     @PrimaryKey val packageName: String,
     val type: CategoryType,
-    val isWhitelisted: Boolean
+    val isWhitelisted: Boolean,
+    val isManualOverride: Boolean = false
 )

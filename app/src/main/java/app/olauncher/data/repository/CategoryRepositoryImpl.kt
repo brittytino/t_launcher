@@ -37,7 +37,8 @@ class CategoryRepositoryImpl(
         return AppCategory(
             packageName = this.packageName,
             type = this.type,
-            isWhitelisted = this.isWhitelisted
+            isWhitelisted = this.isWhitelisted,
+            isManualOverride = this.isManualOverride
         )
     }
 
@@ -45,7 +46,8 @@ class CategoryRepositoryImpl(
         return CategoryEntity(
             packageName = this.packageName,
             type = this.type,
-            isWhitelisted = this.isWhitelisted
+            isWhitelisted = this.isWhitelisted,
+            isManualOverride = this.isManualOverride
         )
     }
 }

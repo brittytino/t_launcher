@@ -57,7 +57,7 @@ class UnmatchedCloseEventGuardian(private val usageStatsManager: UsageStatsManag
         }
 
         val result = if (open) "True" else "Faulty"
-        Log.d("Guardian", "Scanned for package ${event.packageName} and determined event to be $result")
+        // Log.d("Guardian", "Scanned for package ${event.packageName} and determined event to be $result")
 
         // Event is valid if it was previously opened (within SCAN_INTERVAL)
         return open

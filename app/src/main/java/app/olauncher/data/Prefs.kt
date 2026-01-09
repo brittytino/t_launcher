@@ -9,10 +9,7 @@ import androidx.core.content.edit
 class Prefs(context: Context) {
     private val PREFS_FILENAME = "app.olauncher"
 
-    private val FIRST_OPEN = "FIRST_OPEN"
-    private val FIRST_OPEN_TIME = "FIRST_OPEN_TIME"
-    private val FIRST_SETTINGS_OPEN = "FIRST_SETTINGS_OPEN"
-    private val FIRST_HIDE = "FIRST_HIDE"
+
     private val USER_STATE = "USER_STATE"
     private val LOCK_MODE = "LOCK_MODE"
     private val HOME_APPS_NUM = "HOME_APPS_NUM"
@@ -110,21 +107,7 @@ class Prefs(context: Context) {
 
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
-    var firstOpen: Boolean
-        get() = prefs.getBoolean(FIRST_OPEN, true)
-        set(value) = prefs.edit { putBoolean(FIRST_OPEN, value).apply() }
 
-    var firstOpenTime: Long
-        get() = prefs.getLong(FIRST_OPEN_TIME, 0L)
-        set(value) = prefs.edit { putLong(FIRST_OPEN_TIME, value).apply() }
-
-    var firstSettingsOpen: Boolean
-        get() = prefs.getBoolean(FIRST_SETTINGS_OPEN, true)
-        set(value) = prefs.edit { putBoolean(FIRST_SETTINGS_OPEN, value).apply() }
-
-    var firstHide: Boolean
-        get() = prefs.getBoolean(FIRST_HIDE, true)
-        set(value) = prefs.edit { putBoolean(FIRST_HIDE, value).apply() }
 
     var userState: String
         get() = prefs.getString(USER_STATE, Constants.UserState.START).toString()
@@ -566,4 +549,25 @@ class Prefs(context: Context) {
     var gestureTripleTap: String
         get() = prefs.getString("GESTURE_TRIPLE_TAP", "OPEN_PRODUCTIVITY").toString()
         set(value) = prefs.edit { putString("GESTURE_TRIPLE_TAP", value).apply() }
+
+    // Session Persistence
+    var sessionPackage: String
+        get() = prefs.getString("SESSION_PACKAGE", "").toString()
+        set(value) = prefs.edit { putString("SESSION_PACKAGE", value).apply() }
+
+    var sessionStartTime: Long
+        get() = prefs.getLong("SESSION_START_TIME", 0L)
+        set(value) = prefs.edit { putLong("SESSION_START_TIME", value).apply() }
+
+    var sessionLastActiveTime: Long
+        get() = prefs.getLong("SESSION_LAST_ACTIVE_TIME", 0L)
+        set(value) = prefs.edit { putLong("SESSION_LAST_ACTIVE_TIME", value).apply() }
+
+    var isExtensionGranted: Boolean
+        get() = prefs.getBoolean("IS_EXTENSION_GRANTED", false)
+        set(value) = prefs.edit { putBoolean("IS_EXTENSION_GRANTED", value).apply() }
+        
+    var quickNote: String
+        get() = prefs.getString("QUICK_NOTE", "").toString()
+        set(value) = prefs.edit { putString("QUICK_NOTE", value).apply() }
 }

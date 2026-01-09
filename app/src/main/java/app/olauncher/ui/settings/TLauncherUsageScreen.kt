@@ -19,92 +19,62 @@ import androidx.compose.ui.unit.sp
 import app.olauncher.MainViewModel
 import app.olauncher.data.local.SystemLogEntity
 import app.olauncher.data.local.LogType
+import app.olauncher.ui.theme.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TLauncherUsageScreen(viewModel: MainViewModel, onBack: () -> Unit) {
     val logs by viewModel.surveillanceLogs.observeAsState(emptyList())
 
-    // ROBUST FIX:
-    // 1. Box fills ENTIRE screen (including behind notch) -> Draws Background.
-    // 2. Scaffold has statusBarsPadding -> Pushes ALL content (TopBar + Body) down.
-    // 3. Status Bar area shows Box's background (matches app theme).
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-    ) {
-        Scaffold(
-            modifier = Modifier.statusBarsPadding(),
-            topBar = {
-                TopAppBar(
-                    title = { 
-                        Text(
-                            "SYSTEM SURVEILLANCE", 
-                            style = MaterialTheme.typography.titleMedium.copy(
-                                fontWeight = FontWeight.Bold,
-                                letterSpacing = 1.sp
-                            ),
-                            color = MaterialTheme.colorScheme.onSurface 
-                        ) 
-                    },
-                    navigationIcon = {
-                        IconButton(onClick = onBack) {
-                            Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.onSurface)
-                        }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.Transparent, // Transparent to blend with Box
-                        scrolledContainerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
-                    )
-                )
-            },
-            containerColor = Color.Transparent // Transparent so Box background shows
-        ) { padding ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .padding(horizontal = 16.dp)
+    TScaffold {
+        Column(modifier = Modifier.fillMaxSize().padding(horizontal = TLauncherTheme.spacing.medium)) {
+            // Header
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(vertical = TLauncherTheme.spacing.medium),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                // Stats Summary Row
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "AUDIT TRAIL",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.Bold
-                    )
-                    
-                    Text(
-                        text = "LIVE FEED",
-                        style = MaterialTheme.typography.labelSmall.copy(fontFamily = FontFamily.Monospace),
-                        color = Color.Green.copy(alpha = 0.8f) // "Live" indicator
-                    )
-                }
+                 IconButton(onClick = onBack) {
+                     Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.onBackground)
+                 }
+                 Text("SYSTEM SURVEILLANCE", style = TLauncherTypography.headlineMedium, color = MaterialTheme.colorScheme.primary)
+            }
+            
+            // Status Row
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "AUDIT TRAIL",
+                    style = TLauncherTypography.labelSmall,
+                    color = MaterialTheme.colorScheme.secondary,
+                    letterSpacing = 2.sp
+                )
                 
-                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                TChip(
+                    text = "LIVE",
+                    onClick = {},
+                    selected = true,
+                    modifier = Modifier.height(24.dp)
+                )
+            }
 
-                if (logs.isEmpty()) {
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
-                        Text("NO EVENTS DETECTED", fontFamily = FontFamily.Monospace, color = MaterialTheme.colorScheme.outline)
-                    }
-                } else {
+            if (logs.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Text("NO EVENTS DETECTED", style = TLauncherTypography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            } else {
+                TCard(modifier = Modifier.fillMaxSize().padding(bottom = TLauncherTheme.spacing.medium)) {
                     LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(vertical = 16.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                        modifier = Modifier.fillMaxSize().padding(8.dp),
+                        contentPadding = PaddingValues(bottom = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        items(logs) { log ->
+                        items(logs.reversed()) { log ->
                             LogItem(log)
+                            HorizontalDivider(color = MaterialTheme.colorScheme.surface, thickness = 1.dp)
                         }
                     }
                 }
@@ -118,14 +88,14 @@ fun LogItem(log: SystemLogEntity) {
     val dateFormat = remember { SimpleDateFormat("MM-dd HH:mm:ss", Locale.US) }
     val color = when (log.type) {
         LogType.VIOLATION, LogType.ALARM_FAILURE, LogType.MISSED_CHECKIN, LogType.EMERGENCY_OVERRIDE, LogType.APP_BLOCK_EVENT -> MaterialTheme.colorScheme.error
-        LogType.FOCUS_SESSION, LogType.BREATHING_SESSION, LogType.ALARM_SUCCESS -> Color(0xFF4CAF50) // Green
+        LogType.FOCUS_SESSION, LogType.BREATHING_SESSION, LogType.ALARM_SUCCESS -> MaterialTheme.colorScheme.secondary
         else -> MaterialTheme.colorScheme.onSurface
     }
 
-    Row(modifier = Modifier.fillMaxWidth()) {
+    Row(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
         Text(
             text = "[${dateFormat.format(Date(log.timestamp))}]",
-            style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+            style = TLauncherTypography.labelSmall.copy(fontFamily = FontFamily.Monospace),
             color = MaterialTheme.colorScheme.outline,
             modifier = Modifier.width(110.dp)
         )
@@ -133,13 +103,13 @@ fun LogItem(log: SystemLogEntity) {
         Column {
              Text(
                 text = log.type.name,
-                style = MaterialTheme.typography.labelSmall.copy(fontFamily = FontFamily.Monospace, fontWeight = FontWeight.Bold),
+                style = TLauncherTypography.labelSmall.copy(fontFamily = FontFamily.Monospace, fontWeight = FontWeight.Bold),
                 color = color
             )
             if (log.message.isNotEmpty()) {
                 Text(
                     text = "> ${log.message}",
-                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+                    style = TLauncherTypography.bodySmall.copy(fontFamily = FontFamily.Monospace),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }

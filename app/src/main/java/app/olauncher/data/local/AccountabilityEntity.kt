@@ -10,5 +10,7 @@ data class AccountabilityEntity(
     val dietFollowed: Boolean,
     val sugarFree: Boolean,
     val didWorkout: Boolean,
-    val productiveToday: Boolean
+    val productiveToday: Boolean,
+    val leetcodeCount: Int = 0,
+    val codeforcesCount: Int = 0
 )

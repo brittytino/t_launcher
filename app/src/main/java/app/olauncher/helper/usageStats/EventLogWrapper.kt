@@ -207,7 +207,7 @@ class EventLogWrapper(private val context: Context) {
                             foregroundProcess
                         )
                     )
-                    Log.d("EventLogWrapper", "Assuming that application $foregroundProcess has been used the whole query time")
+                    // Log.d("EventLogWrapper", "Assuming that application $foregroundProcess has been used the whole query time")
                 }
             }
         }

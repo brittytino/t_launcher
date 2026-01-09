@@ -21,8 +21,8 @@ android {
         applicationId "app.olauncher"
         minSdkVersion 26
         targetSdkVersion 35
-        versionCode 95
-        versionName "v5.3.4"
+        versionCode 100
+        versionName "1.0.0-release"
 
         resourceConfigurations += ["en", "ar", "de", "es-rES", "es-rUS", "fr", "he", "hr", "hu", "in", "it", "ja", "pl", "pt-rBR", "ru-rRU", "sv", "tr", "uk", "zh"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -86,5 +86,6 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata"
     implementation libs.activity.compose
     implementation "androidx.lifecycle:lifecycle-runtime-compose"
+    implementation libs.navigation.compose
     debugImplementation libs.compose.ui.tooling
 }

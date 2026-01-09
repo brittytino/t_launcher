@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -13,15 +14,12 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.olauncher.MainViewModel
-import app.olauncher.domain.model.AppCategory
-import app.olauncher.domain.model.CategoryType
 import app.olauncher.data.AppModel
-import app.olauncher.ui.theme.TLauncherTypography
-import kotlinx.coroutines.launch
+import app.olauncher.domain.model.CategoryType
+import app.olauncher.ui.theme.*
 
 @Composable
 fun AppCategoryScreen(
@@ -29,71 +27,69 @@ fun AppCategoryScreen(
     onBack: () -> Unit
 ) {
     val appList by viewModel.appList.observeAsState(initial = emptyList())
-    // Map of PackageName -> CategoryType
     var categoryMap by remember { mutableStateOf<Map<String, CategoryType>>(emptyMap()) }
     
     LaunchedEffect(Unit) {
         if (appList.isNullOrEmpty()) {
             viewModel.getAppList()
         }
-        val map = mutableMapOf<String, CategoryType>()
-        // We need to fetch categories. Since we don't have a direct method to get all,
-        // we'll fetch individually or use a bulk loader if available.
-        // For now, let's assume MainViewModel can expose this or we iterate.
-        // NOTE: This iteration is slow for many apps if done sequentially.
-        // Ideally we need getAllCategories() in Repository.
-        // Repository has getAllCategories() returning Flow.
-        // Let's use getAllCategoriesSync() if available or collect the flow.
         try {
             val allCats = viewModel.categoryRepository.getAllCategoriesSync()
-            allCats.forEach { 
-                map[it.packageName] = it.type 
-            }
+            val map = mutableMapOf<String, CategoryType>()
+            allCats.forEach { map[it.packageName] = it.type }
             categoryMap = map
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
-    Scaffold(
-        topBar = {
-            SettingsTopBar(onBack)
-        }
-    ) { padding ->
-        if (appList.isNullOrEmpty()) {
-             Box(modifier = Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
+    TScaffold {
+        Column(modifier = Modifier.fillMaxSize().padding(horizontal = TLauncherTheme.spacing.medium)) {
+            // Header
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(vertical = TLauncherTheme.spacing.medium),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                 IconButton(onClick = onBack) {
+                     Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.onBackground)
+                 }
+                 Text("APP CATEGORIES", style = TLauncherTypography.headlineMedium, color = MaterialTheme.colorScheme.primary)
             }
-        } else {
-            LazyColumn(modifier = Modifier.padding(padding)) {
-                 item {
-                     Text(
-                        "Categorize your apps to control blocking strictness.",
-                        modifier = Modifier.padding(16.dp),
-                        fontSize = 14.sp,
-                        color = Color.Gray
-                    )
+            
+            Text(
+                "Categorize to enforce strict blocking rules.",
+                style = TLauncherTypography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
+            if (appList.isNullOrEmpty()) {
+                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                 }
-                
-                val sortedApps = appList!!.sortedBy { it.appLabel }
-                items(sortedApps) { app ->
-                    val currentType = categoryMap[app.appPackage] ?: CategoryType.OTHER
-                    
-                    CategoryAppItem(
-                        app = app,
-                        currentType = currentType,
-                        onTypeSelected = { newType ->
-                            viewModel.updateAppCategory(app.appPackage, newType)
-                            categoryMap = categoryMap.toMutableMap().apply { put(app.appPackage, newType) }
+            } else {
+                TCard(modifier = Modifier.fillMaxWidth()) {
+                    LazyColumn {
+                        val sortedApps = appList!!.sortedBy { it.appLabel }
+                        items(sortedApps) { app ->
+                            val currentType = categoryMap[app.appPackage] ?: CategoryType.OTHER
+                            
+                            CategoryAppItem(
+                                app = app,
+                                currentType = currentType,
+                                onTypeSelected = { newType ->
+                                    viewModel.updateAppCategory(app.appPackage, newType)
+                                    categoryMap = categoryMap.toMutableMap().apply { put(app.appPackage, newType) }
+                                }
+                            )
+                            HorizontalDivider(color = MaterialTheme.colorScheme.surface, thickness = 1.dp)
                         }
-                    )
-                    HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
+                    }
                 }
             }
         }
     }
 }
-
 
 @Composable
 fun CategoryAppItem(app: AppModel, currentType: CategoryType, onTypeSelected: (CategoryType) -> Unit) {
@@ -110,11 +106,11 @@ fun CategoryAppItem(app: AppModel, currentType: CategoryType, onTypeSelected: (C
             Text(
                 text = app.appLabel, 
                 style = TLauncherTypography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground
+                color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = app.appPackage, 
-                style = TLauncherTypography.bodyMedium,
+                style = TLauncherTypography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
@@ -123,21 +119,26 @@ fun CategoryAppItem(app: AppModel, currentType: CategoryType, onTypeSelected: (C
              Row(
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.surfaceVariant, androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
-                    .padding(8.dp),
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = currentType.name, 
-                    style = TLauncherTypography.labelMedium,
+                    style = TLauncherTypography.labelSmall,
                     color = getCategoryColor(currentType)
                 )
+                Spacer(modifier = Modifier.width(4.dp))
                 Icon(Icons.Default.ArrowDropDown, contentDescription = null, modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             
-            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            DropdownMenu(
+                expanded = expanded, 
+                onDismissRequest = { expanded = false },
+                containerColor = MaterialTheme.colorScheme.surfaceVariant
+            ) {
                 CategoryType.values().forEach { type ->
                     DropdownMenuItem(
-                        text = { Text(type.name, color = getCategoryColor(type)) },
+                        text = { Text(type.name, color = getCategoryColor(type), style = TLauncherTypography.labelMedium) },
                         onClick = {
                             onTypeSelected(type)
                             expanded = false
@@ -151,18 +152,8 @@ fun CategoryAppItem(app: AppModel, currentType: CategoryType, onTypeSelected: (C
 
 fun getCategoryColor(type: CategoryType): Color {
     return when(type) {
-        CategoryType.PHONE,
-        CategoryType.MAPS,
-        CategoryType.UTILITY,
-        CategoryType.SYSTEM,
-        CategoryType.MESSAGING,
-        CategoryType.PRODUCTIVITY -> Color(0xFF4CAF50) // Green (Essential/Productive)
-        
-        CategoryType.SOCIAL,
-        CategoryType.GAME,
-        CategoryType.NEWS -> Color(0xFFF44336) // Red (Distracting)
-        
-        CategoryType.MUSIC,
-        CategoryType.OTHER -> Color.Gray // Neutral
+        CategoryType.PRODUCTIVE, CategoryType.UTILITY, CategoryType.SYSTEM -> Color(0xFF81C784) // Soft Green
+        CategoryType.SOCIAL, CategoryType.GAME, CategoryType.NEWS -> Color(0xFFE57373) // Soft Red
+        else -> Color.Gray
     }
 }

@@ -13,9 +13,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import app.olauncher.ui.theme.TLauncherTypography
+import app.olauncher.ui.theme.*
 
 @Composable
 fun AccountabilityDialog(
@@ -28,34 +27,32 @@ fun AccountabilityDialog(
     var productive by remember { mutableStateOf(false) }
 
     Dialog(onDismissRequest = onDismiss) {
-        Surface(
-            shape = RoundedCornerShape(16.dp),
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        TCard(
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
         ) {
             Column(
                 modifier = Modifier.padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("REPORT CARD", style = TLauncherTypography.headlineMedium, color = MaterialTheme.colorScheme.error)
+                Text("REPORT CARD", style = TLauncherTypography.headlineMedium, color = MaterialTheme.colorScheme.primary)
                 Spacer(modifier = Modifier.height(24.dp))
 
-                YesNoRow("Did you eat clean or garbage?", diet) { diet = it }
-                Divider(color = MaterialTheme.colorScheme.surfaceVariant)
+                YesNoRow("Did you eat clean?", diet) { diet = it }
+                HorizontalDivider(color = MaterialTheme.colorScheme.surface, thickness = 1.dp)
                 
                 YesNoRow("Did you resist sugar?", sugar) { sugar = it }
-                Divider(color = MaterialTheme.colorScheme.surfaceVariant)
+                HorizontalDivider(color = MaterialTheme.colorScheme.surface, thickness = 1.dp)
 
                 YesNoRow("Did you train today?", workout) { workout = it }
-                Divider(color = MaterialTheme.colorScheme.surfaceVariant)
+                HorizontalDivider(color = MaterialTheme.colorScheme.surface, thickness = 1.dp)
 
-                YesNoRow("Were you useful today?", productive) { productive = it }
+                YesNoRow("Were you productive?", productive) { productive = it }
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                Button(
+                TChip(
+                    text = "SUBMIT LOG",
                     onClick = { 
-                        // Map Boolean to Int (5=Yes, 1=No) for legacy schema compatibility
                         onSave(
                             if (diet) 5 else 1,
                             sugar,
@@ -64,11 +61,8 @@ fun AccountabilityDialog(
                         )
                     },
                     modifier = Modifier.fillMaxWidth().height(56.dp),
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
-                ) {
-                    Text("SUBMIT LOG", style = TLauncherTypography.labelLarge)
-                }
+                    selected = true
+                )
             }
         }
     }
@@ -84,40 +78,7 @@ fun YesNoRow(question: String, checked: Boolean, onCheckedChange: (Boolean) -> U
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(question, style = TLauncherTypography.bodyLarge, modifier = Modifier.weight(1f))
-        Switch(
-            checked = checked, 
-            onCheckedChange = onCheckedChange,
-             colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.primary,
-                checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
-                uncheckedThumbColor = MaterialTheme.colorScheme.outline
-            )
-        )
-    }
-}
-
-@Composable
-fun RatingBar(rating: Int, onRatingChanged: (Int) -> Unit) {
-    Row(
-        modifier = Modifier.padding(vertical = 8.dp),
-        horizontalArrangement = Arrangement.Center
-    ) {
-        (1..5).forEach { index ->
-            Box(
-                modifier = Modifier
-                    .padding(4.dp)
-                    .size(40.dp)
-                    .clip(CircleShape)
-                    .background(if (index <= rating) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant)
-                    .clickable { onRatingChanged(index) },
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = index.toString(),
-                    color = if (index <= rating) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        }
+        Text(question, style = TLauncherTypography.bodyLarge, modifier = Modifier.weight(1f), color = MaterialTheme.colorScheme.onSurface)
+        TSwitch(checked = checked, onCheckedChange = onCheckedChange)
     }
 }
