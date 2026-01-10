@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        // Handle "Home" press to reset navigation state if needed
+        // Handle "Home" press to reset navigation state if needed -- still under dev
         // Typically done by popping back stack in Compose or observing an effect
     }
 
