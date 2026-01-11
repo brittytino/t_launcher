@@ -8,10 +8,10 @@
 
 
 
-# μLauncher
+# T_Launcher
 
 
-µLauncher is an Android home screen that lets you launch apps using swipe gestures and button presses.
+T_Launcher is an Android home screen that lets you launch apps using swipe gestures and button presses.
 It is *minimal, efficient and free of distraction*.
 
 
@@ -45,12 +45,12 @@ You can also [get it on Google Play](https://play.google.com/store/apps/details?
      height="400">
 
 
-µLauncher is a fork of [finnmglas's app Launcher][original-repo].
+T_Launcher is a fork of [finnmglas's app Launcher][original-repo].
 An incomplete list of changes can be found [here](docs/launcher.md).
 
 ## Features
 
-µLauncher only displays the date, time and a wallpaper.
+T_Launcher only displays the date, time and a wallpaper.
 Pressing back or swiping up (this can be configured) opens a list
 of all installed apps, which can be searched efficiently.
 
@@ -69,7 +69,7 @@ The following gestures are available:
 To every gesture you can bind one of the following actions:
  - launch an app,
  - open a list of all / favorite / private apps,
- - open µLauncher settings,
+ - open T_Launcher settings,
  - toggle private space lock,
  - lock the screen,
  - toggle the torch,
@@ -78,7 +78,7 @@ To every gesture you can bind one of the following actions:
 
 
 
-µLauncher is compatible with [work profile](https://www.android.com/enterprise/work-profile/),
+T_Launcher is compatible with [work profile](https://www.android.com/enterprise/work-profile/),
 so apps like [Shelter](https://gitea.angry.im/PeterCxy/Shelter) can be used.
 
 By default the font is set to [Hack][hack-font], but other fonts can be selected.
