@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.jrpie.android.launcher.ui.util.HtmlTextView
+        android:id="@+id/dialog_select_lock_method_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_lock_method_dialog_text"
+        android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/dialog_select_lock_method_button_device_admin"
+            android:text="@string/screen_lock_method_use_device_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/dialog_select_lock_method_button_accessibility"
+            android:text="@string/screen_lock_method_use_accessibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+</ScrollView>

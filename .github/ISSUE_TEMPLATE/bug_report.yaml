@@ -1,0 +1,50 @@
+name: Bug report
+description: Create a report to help improve this app
+title: '[bug] '
+labels: bug
+body:
+ - type: markdown
+   attributes:
+      value: |
+        Thank you for helping to improve µLauncher!
+
+        Before reporting a bug, please make sure it has not been reported previously.
+        (In the case that the bug has already been reported, it is still helpful to know which devices are affected. Please leave a comment with your device info on the relevant issue, instead of opening a new report.)
+        Also make sure to check the [documentation](https://launcher.jrpie.de/), in particular the documentation of the erroneous feature and list of [known bugs](https://launcher.jrpie.de/docs/known-issues/).
+ - type: textarea
+   id: bug
+   attributes:
+     label: Describe the Bug
+     description: What happened?
+     placeholder: A clear and concise description of what the bug is.
+   validations:
+     required: true
+ - type: textarea
+   id: expected
+   attributes:
+     label: Expected Behavior
+     description: What did you expect to happen instead?
+   validations:
+     required: false
+ - type: textarea
+   id: reproduce
+   attributes:
+     label: To Reproduce
+     description: What steps are required to reproduce the bug?
+     placeholder: |
+        Steps to reproduce the behavior:
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+   validations:
+     required: false
+ - type: textarea
+   id: device
+   attributes:
+     label: Your Device
+     description: |
+       What device are you using? Adding this information helps to reproduce the bug.
+       You can copy this from µLauncher > Settings > Meta > Report Bug.
+   validations:
+     required: false

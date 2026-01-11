@@ -1,0 +1,8 @@
+* Added options for color theme, font, background, monochrome icons
+* Added options for date and time
+* Added option to allow rotation
+* Improved search algorithm
+* Translation to Brazilian Portuguese - thank you, Jonatas de Almeida Barros!
+* Fixed a bug selected apps disappeared from settings
+* Improved code quality
+* Updated translations

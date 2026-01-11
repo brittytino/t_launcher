@@ -1,0 +1,11 @@
+* Option to rename apps
+* Option to automatically hide apps that are bound to gestures from app list
+* Hide µLauncher from app list be default
+* Improved selection of default apps
+* Light theme (experimental)
+
+* Fixed bug in search
+* Fixed bug in lock screen dialog (thank you, yzqzss and jeroen!)
+
+* Updated Portuguese translation (thank you, "Vossa Excelencia"!)
+* Updated German translation

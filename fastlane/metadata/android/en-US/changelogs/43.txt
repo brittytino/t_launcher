@@ -1,0 +1,1 @@
+* Fixed gesture detection in landscape orientation

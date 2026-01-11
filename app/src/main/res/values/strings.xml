@@ -1,233 +1,472 @@
 <resources>
-    <!-- Branding -->
-    <string name="app_name" translatable="false">T Launcher</string>
-    <string name="developer_name">Tino Britty J</string>
-    <string name="developer_website">www.tinobritty.me</string>
-    <string name="t_launcher_pro" translatable="false">T Launcher Pro</string>
-    <string name="about_t_launcher">About</string>
-    <string name="review_message">T Launcher is designed for Digital Minimalism and focus.</string>
-    <string name="welcome_to_settings">Welcome to T Launcher Settings</string>
+    <!--
+      -
+      - Home
+      -
+      -->
+    <string name="alert_cant_open_title">Can\'t open app</string>
+    <string name="alert_cant_open_message">Want to change its settings?</string>
 
-    <!-- Navigation & UI -->
-    <string name="app">App</string>
-    <string name="okay">Okay</string>
-    <string name="cool">Cool!</string>
-    <string name="close">Close</string>
-    <string name="accept">Accept</string>
-    <string name="info">Info</string>
-    <string name="delete">Delete</string>
-    <string name="rename">Rename</string>
-    <string name="hide">Hide</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
-    <string name="on">On</string>
-    <string name="off">Off</string>
-    <string name="left">Left</string>
-    <string name="right">Right</string>
-    <string name="center">Center</string>
-    <string name="black">Black</string>
-    <string name="white">White</string>
-    <string name="system_default">System</string>
-    <string name="dark">Dark</string>
-    <string name="light">Light</string>
+    <string name="toast_cant_open_message">Open settings to choose an action for this gesture</string>
+    <string name="snackbar_cant_open_message">The gesture %1$s has no assigned action</string>
+    <string name="snackbar_cant_open_message_button">Choose</string>
 
-    <!-- Main Screen Features -->
-    <string name="swipe_up_for_apps">1. Swipe up for all apps\n2. Long press anywhere for settings</string>
-    <string name="set_as_default_launcher">Set as default launcher</string>
-    <string name="set_as_default_launcher_u"><u>Set as default launcher</u></string>
-    <string name="change_default_launcher">Change default launcher</string>
-    <string name="please_set_as_default_first">Please set T Launcher as default first</string>
-    <string name="t_launcher_is_not_default_launcher">T Launcher is not default. Wallpaper update will fail.</string>
-    <string name="time_spent_min" translatable="false"><b>%1$sm</b></string>
-    <string name="time_spent_hour" translatable="false">%1$sh %2$sm</string>
-    <string name="screen_time">Screen time</string>
-    <string name="day_battery" formatted="false" translatable="false">%s, %d%%</string>
+    <!--
+      -
+      - Settings
+      -
+      -->
+    <string name="settings_title">Settings</string>
 
-    <!-- Settings Sections -->
-    <string name="app_control">App Control</string>
-    <string name="app_categories">App Categories</string>
-    <string name="app_categories_subtitle">Manage Essential, Productive, Distracting apps</string>
-    <string name="strict_app_blocking">Strict App Blocking</string>
-    <string name="strict_app_blocking_subtitle">Block procrastinating apps immediately</string>
-    <string name="time_limits">Time Limits</string>
-    <string name="time_limits_subtitle">Set daily limits for apps</string>
-    
-    <string name="discipline_section">Alarm &amp; Discipline</string>
-    <string name="cognitive_lock_alarm">Cognitive Lock Alarm</string>
-    <string name="cognitive_lock_subtitle">Require math to dismiss alarm</string>
-    <string name="math_tasks_count">Number of brain tasks</string>
-    <string name="enforce_volume_lock">Enforce volume lock</string>
-    <string name="escalation_mode">Escalation mode</string>
-    <string name="blocking_schedules">Focus Schedules</string>
-    <string name="blocking_schedules_subtitle">Configure focus hours</string>
+    <string name="settings_tab_actions">Actions</string>
+    <string name="settings_tab_launcher">Launcher</string>
+    <string name="settings_tab_meta">Meta</string>
 
-    <string name="notification_control">Notification Control</string>
-    <string name="notification_filtering">Notification Filtering</string>
-    <string name="notification_filtering_subtitle">Hide distracting notifications in focus mode</string>
-    <string name="notification_log">Notification Log</string>
-    <string name="notification_log_subtitle">View locally stored blocked notifications</string>
+    <!--
+      -
+      - Settings : Apps
+      -
+      -->
+    <string name="settings_gesture_back">Back</string>
+    <string name="settings_gesture_description_back">Back button / back gesture</string>
+    <string name="settings_gesture_up">Up</string>
+    <string name="settings_gesture_description_up">Swipe up</string>
+    <string name="settings_gesture_tap_up">Tap + Up</string>
+    <string name="settings_gesture_description_tap_up">Tap and swipe up</string>
+    <string name="settings_gesture_double_up">Double Up</string>
+    <string name="settings_gesture_description_double_up">Swipe up with two fingers</string>
+    <string name="settings_gesture_down">Down</string>
+    <string name="settings_gesture_description_down">Swipe down</string>
+    <string name="settings_gesture_tap_down">Tap + Down</string>
+    <string name="settings_gesture_description_tap_down">Tap and swipe down</string>
+    <string name="settings_gesture_double_down">Double Down</string>
+    <string name="settings_gesture_description_double_down">Swipe down with two fingers</string>
+    <string name="settings_gesture_left">Left</string>
+    <string name="settings_gesture_description_left">Swipe left</string>
+    <string name="settings_gesture_tap_left">Tap + Left</string>
+    <string name="settings_gesture_description_tap_left">Tap and swipe left</string>
+    <string name="settings_gesture_double_left">Double Left</string>
+    <string name="settings_gesture_description_double_left">Swipe left with two fingers</string>
+    <string name="settings_gesture_right">Right</string>
+    <string name="settings_gesture_description_right">Swipe right</string>
+    <string name="settings_gesture_tap_right">Tap + Right</string>
+    <string name="settings_gesture_description_tap_right">Tap and swipe right</string>
+    <string name="settings_gesture_double_right">Double Right</string>
+    <string name="settings_gesture_description_double_right">Swipe right with two fingers</string>
+    <string name="settings_gesture_right_top_edge">Right (Top)</string>
+    <string name="settings_gesture_description_right_top_edge">Swipe right at the top of the screen</string>
+    <string name="settings_gesture_right_bottom_edge">Right (Bottom)</string>
+    <string name="settings_gesture_description_right_bottom_edge">Swipe right at the bottom of the screen</string>
+    <string name="settings_gesture_left_bottom_edge">Left (Bottom)</string>
+    <string name="settings_gesture_description_left_bottom_edge">Swipe left at the bottom of the screen</string>
+    <string name="settings_gesture_left_top_edge">Left (Top)</string>
+    <string name="settings_gesture_description_left_top_edge">Swipe left at the top of the screen</string>
+    <string name="settings_gesture_up_left_edge">Up (Left Edge)</string>
+    <string name="settings_gesture_description_up_left_edge">Swipe up at the left edge of the screen</string>
+    <string name="settings_gesture_up_right_edge">Up (Right Edge)</string>
+    <string name="settings_gesture_description_up_right_edge">Swipe up at the right edge of the screen</string>
+    <string name="settings_gesture_down_left_edge">Down (Left Edge)</string>
+    <string name="settings_gesture_description_down_left_edge">Swipe down at the left edge of the screen</string>
+    <string name="settings_gesture_down_right_edge">Down (Right Edge)</string>
+    <string name="settings_gesture_description_down_right_edge">Swipe down at the right edge of the screen</string>
 
-    <string name="visual_detox">Visual Detox</string>
-    <string name="grayscale_mode">Grayscale Mode</string>
-    <string name="grayscale_mode_subtitle">Turn screen black &amp; white</string>
-    <string name="text_only_ui">Text-only UI for blocked apps</string>
-    <string name="text_only_ui_subtitle">Hide icons for distracting apps</string>
-    <string name="text_size">Text size</string>
+    <string name="settings_gesture_swipe_larger"><![CDATA[>]]></string>
+    <string name="settings_gesture_description_swipe_larger">Top left -> mid right -> bottom left</string>
+    <string name="settings_gesture_swipe_larger_reverse"><![CDATA[> (Reverse)]]></string>
+    <string name="settings_gesture_description_swipe_larger_reverse">Bottom left -> mid right -> top left</string>
+    <string name="settings_gesture_swipe_smaller"><![CDATA[<]]></string>
+    <string name="settings_gesture_description_swipe_smaller">Top right -> mid left -> bottom right</string>
+    <string name="settings_gesture_swipe_smaller_reverse"><![CDATA[< (Reverse)]]></string>
+    <string name="settings_gesture_description_swipe_smaller_reverse">Bottom right -> mid left -> top right</string>
+    <string name="settings_gesture_swipe_v">V</string>
+    <string name="settings_gesture_description_swipe_v">Top left -> bottom mid -> top right</string>
+    <string name="settings_gesture_swipe_v_reverse">V (Reverse)</string>
+    <string name="settings_gesture_description_swipe_v_reverse">Top right -> bottom mid -> top left</string>
+    <string name="settings_gesture_swipe_lambda">Λ</string>
+    <string name="settings_gesture_description_swipe_lambda">Bottom left -> top mid -> bottom right</string>
+    <string name="settings_gesture_swipe_lambda_reverse">Λ (Reverse)</string>
+    <string name="settings_gesture_description_swipe_lambda_reverse">Bottom right -> top mid -> bottom left</string>
 
-    <string name="productivity_tools">Productivity Tools</string>
-    <string name="todo_list">To-do List</string>
-    <string name="notes">Notes</string>
-    <string name="reminders">Reminders</string>
-    <string name="data_retention">Data Retention</string>
-    <string name="delete_after_completion">Delete tasks after completion</string>
+    <string name="settings_gesture_vol_up">Volume Up Key</string>
+    <string name="settings_gesture_description_vol_up">Press the volume up button</string>
+    <string name="settings_gesture_vol_down">Volume Down Key</string>
+    <string name="settings_gesture_description_vol_down">Press the volume down button</string>
+    <string name="settings_gesture_double_click">Double Click</string>
+    <string name="settings_gesture_description_double_click">Double click an empty area</string>
+    <string name="settings_gesture_long_click">Long Click</string>
+    <string name="settings_gesture_description_long_click">Long click an empty area</string>
+    <string name="settings_gesture_date">Date</string>
+    <string name="settings_gesture_description_date">Click on date</string>
+    <string name="settings_gesture_time">Time</string>
+    <string name="settings_gesture_description_time">Click on time</string>
 
-    <string name="system_permissions">System Permissions</string>
-    <string name="accessibility_service">Accessibility Service</string>
-    <string name="accessibility_service_subtitle">Required for blocking &amp; lock</string>
-    <string name="usage_access">Usage Access</string>
-    <string name="usage_access_subtitle">Required for monitoring</string>
-    <string name="notification_filter">Notification Filter</string>
-    <string name="notification_filter_subtitle">Required for focus</string>
+    <string name="settings_widgets_widgets">Manage widgets</string>
+    <string name="settings_widgets_custom_panels">Manage widget panels</string>
 
-    <!-- Accessibility Shortcut -->
-    <string name="accessibility_shortcut">Accessibility Shortcut</string>
-    <string name="productivity_shortcuts">Productivity Shortcuts</string>
-    <string name="primary_action">Primary Action</string>
-    <string name="secondary_action_1">Secondary Action 1</string>
-    <string name="secondary_action_2">Secondary Action 2</string>
-    <string name="action_none">None</string>
-    <string name="action_start_focus">Start Focus Mode</string>
-    <string name="action_unblock_temp">Unblock for 5m</string>
-    <string name="action_lock_screen">Lock Screen</string>
-    <string name="action_open_notes">Notes</string>
-    <string name="action_toggle_grayscale">Toggle Grayscale</string>
 
-    <!-- Gestures & Behavior -->
-    <string name="gestures">Gestures</string>
-    <string name="swipe_down_for">Swipe down for</string>
-    <string name="search">Search</string>
-    <string name="notifications">Notifications</string>
-    <string name="swipe_left_app">Swipe left app</string>
-    <string name="swipe_right_app">Swipe right app</string>
-    <string name="auto_show_keyboard">Auto show keyboard</string>
-    <string name="show_status_bar">Status bar on top</string>
-    <string name="show_status_bar_subtitle">Display the system status bar at the top of the screen</string>
-    <string name="double_tap_lock">Double tap to lock</string>
+    <string name="settings_apps_choose">Choose App</string>
 
-    <!-- Messages & Dialogs -->
-    <string name="accessibility_disclosure">T Launcher uses Accessibility Services to enforce your focus rules (Blocking Apps) and to lock the screen. No data is collected or shared.</string>
-    <string name="admin_permission_message">T Launcher promises to use lock screen permission responsibly. No data is collected or shared.</string>
-    <string name="accessibility_service_description">Required for App Blocking, Cognitive Lock, and Double Tap to Lock. Data never leaves your device.</string>
-    <string name="rate_us_message">If you\'re finding T Launcher useful, please leave a review. It means the world to us.</string>
-    <string name="share_message">Help us spread the word about Digital Minimalism. Share T Launcher with your friends!</string>
-    <string name="keyboard_message">Keyboard search is the fastest way to find apps. Give it a try?</string>
-    <string name="wallpaper_message">Daily wallpapers give your phone a fresh look.</string>
-    <string name="no_hidden_apps">No hidden apps</string>
-    <string name="hidden_apps">Hidden apps</string>
-    <string name="hidden_apps_message">Hidden apps are stored securely.</string>
-    <string name="alignment_changed">Alignment changed ✅</string>
-    <string name="launcher_failed_to_lock_device">Failed to lock device. Check permissions.</string>
-    <string name="please_turn_on_double_tap_to_unlock">Please turn on double tap to lock</string>
-    <string name="unable_to_open_app">Unable to open app</string>
-    <string name="app_not_found">App not found</string>
+    <string name="settings_apps_install">Install apps</string>
+    <string name="settings_apps_toast_store_not_found">Store not found</string>
 
-    <!-- Legacy / Layout Requirements -->
-    <string name="app_drawer_tips">Tip: Start typing an app name to auto-launch it</string>
-    <string name="about_olauncher">About T Launcher</string>
-    <string name="more_features">Settings</string>
-    <string name="home_screen">Home Screen</string>
-    <string name="apps_on_home_screen">Apps on Home Screen</string>
-    <string name="_0">0</string>
-    <string name="_1">1</string>
-    <string name="_2">2</string>
-    <string name="_3">3</string>
-    <string name="_4">4</string>
-    <string name="_5">5</string>
-    <string name="_6">6</string>
-    <string name="_7">7</string>
-    <string name="_8">8</string>
-    <string name="show_date_time">Show Date &amp; Time</string>
-    <string name="date_only">Date Only</string>
-    <string name="home_layout_alignment">App Alignment</string>
-    <string name="bottom_off">Bottom: Off</string>
-    <string name="appearance">Appearance</string>
-    <string name="daily_wallpaper_update">Daily Wallpaper</string>
-    
-    <string name="olauncher_pro">T Launcher Pro</string>
-    <string name="welcome_to_olauncher_settings">Welcome to T Launcher Settings</string>
-    <string name="support_olauncher_for_free">Support T Launcher</string>
-    <string name="please_set_olauncher_as_default_first">Please set T Launcher as default first</string>
+    <!--
+      -
+      - Settings : Launcher
+      -
+      -->
+    <string name="settings_launcher_section_appearance">Appearance</string>
 
-    <!-- Tags -->
-    <string name="tag_0" translatable="false">0</string>
-    <string name="tag_1" translatable="false">1</string>
-    <string name="tag_2" translatable="false">2</string>
-    <string name="tag_3" translatable="false">3</string>
-    <string name="tag_4" translatable="false">4</string>
-    <string name="tag_5" translatable="false">5</string>
-    <string name="tag_6" translatable="false">6</string>
-    <string name="tag_7" translatable="false">7</string>
-    <string name="tag_8" translatable="false">8</string>
-    <string name="github" translatable="false">Github</string>
-    <string name="lock_layout_description" translatable="false">unique id to lock screen</string>
 
-    <!-- Legacy / Missing Defaults (Restored for Build Compatibility) -->
-    <string name="about">About</string>
-    <string name="adapter_hide">Hide</string>
-    <string name="adapter_show">Show</string>
-    <string name="affiliate">Affiliate</string>
-    <string name="app_text_color">Text color</string>
-    <string name="app_usage_message">Calculated locally on your device. No data is collected.</string>
-    <string name="are_you_using_your_phone_or_is_your_phone_using_you">Are you using your phone, or is your phone using you?</string>
-    <string name="bottom_on">Bottom: On</string>
-    <string name="cheers">Cheers!</string>
-    <string name="copied">Copied</string>
-    <string name="digital_minimalism" translatable="false"><u>Digital Minimalism</u></string>
-    <string name="new_app_note_to_self" translatable="false"><u>New app: Note to Self</u></string>
-    <string name="digital_wellbeing_message">To set time limits, please use the Android Digital Wellbeing settings.</string>
-    <string name="pro_message">T Launcher Pro offers extra features and supports development.</string>
-    <string name="support_olauncher_message">Support the development of T Launcher.</string>
-    <string name="open">Open link</string>
-    <string name="copy">Copy</string>
-    <string name="not_now">Not now</string>
-    <string name="public_roadmap">Public roadmap</string>
-    <string name="instagram">Instagram</string>
-    <string name="twitter">Developer</string>
-    <string name="roadmap">Roadmap</string>
-    <string name="date">Date</string>
-    <string name="tip_start_typing_for_rename">Tip: Start typing for app RENAME option</string>
-    <string name="swipe_left_app_enabled">Swipe left app enabled</string>
-    <string name="swipe_right_app_enabled">Swipe right app enabled</string>
-    <string name="swipe_left_app_disabled">Swipe left app disabled</string>
-    <string name="swipe_right_app_disabled">Swipe right app disabled</string>
-    <string name="your_wallpaper_will_update_shortly">Your wallpaper will update shortly</string>
-    <string name="olauncher_is_not_default_launcher">T Launcher is not default. Wallpaper update will fail.</string>
-    <string name="long_press_to_enable">Long press to enable</string>
-    <string name="learn_more">Learn more</string>
-    <string name="did_you_know">Did you know?</string>
-    <string name="leave_a_review">Leave a review</string>
-    <string name="hey">Hey</string>
-    <string name="new_year_wish">Happy New Year!</string>
-    <string name="new_year_wish_1">Make this year count.</string>
-    <string name="notification_bar">Notification bar</string>
-    <string name="unable_to_launch_app">Unable to launch app</string>
-    <string name="search_for_Launcher_or_home_app">Search for Launcher or Home app</string>
-    <string name="long_press_to_select_app">Long press to select app</string>
-    <string name="system_app_cannot_delete">System app, cannot delete</string>
-    <string name="type_a_new_app_name_first">Type a new app name first</string>
-    <string name="theme_mode">Theme Mode</string>
-    <string name="disable">Disable</string>
-    <string name="donate">Donate</string>
-    <string name="double_tap_to_lock_screen">Double tap to lock</string>
-    <string name="email">Email</string>
-    <string name="enable">Enable</string>
-    <string name="follow">Follow</string>
-    <string name="not_working">Not working</string>
-    <string name="permission">Permission</string>
-    <string name="privacy">Privacy</string>
-    <string name="rate">Rate</string>
-    <string name="share">Share</string>
-    <string name="rate_now">Rate now</string>
-    <string name="share_now">Share now</string>
-    <string name="set_as_default_launcher_first">Please set as default launcher first</string>
+    <string name="settings_theme_color_theme">Color theme</string>
+    <string name="settings_theme_color_theme_item_default">Default</string>
+    <string name="settings_theme_color_theme_item_dark">Dark</string>
+    <string name="settings_theme_color_theme_item_light">Light</string>
+    <string name="settings_theme_color_theme_item_dynamic">Dynamic</string>
+
+    <string name="settings_theme_text_shadow">Text shadow</string>
+    <string name="settings_theme_background">Background (app list and setting)</string>
+    <string name="settings_theme_background_item_transparent">Transparent</string>
+    <string name="settings_theme_background_item_dim">Dim</string>
+    <string name="settings_theme_background_item_blur">Blur</string>
+    <string name="settings_theme_background_item_solid">Solid</string>
+
+
+    <string name="settings_theme_font">Font</string>
+
+    <!-- names for @array/settings_theme_font_values -->
+    <string name="settings_theme_font_item_hack" translatable="false">Hack</string>
+    <string name="settings_theme_font_item_system_default">System default</string>
+    <string name="settings_theme_font_item_sans_serif">Sans serif</string>
+    <string name="settings_theme_font_item_serif">Serif</string>
+    <string name="settings_theme_font_item_monospace">Monospace</string>
+    <string name="settings_theme_font_item_serif_monospace">Serif monospace</string>
+    <string name="settings_theme_monochrome_icons">Monochrome app icons</string>
+
+    <string name="settings_launcher_section_date_time"><![CDATA[Date & time]]></string>
+    <string name="settings_clock_color">Color</string>
+    <string name="settings_clock_time_visible">Show time</string>
+    <string name="settings_clock_date_visible">Show date</string>
+    <string name="settings_clock_localized">Use localized date format</string>
+    <string name="settings_clock_show_seconds">Show seconds</string>
+    <string name="settings_clock_flip_date_time">Flip date and time</string>
+
+    <string name="settings_theme_wallpaper">Choose a wallpaper</string>
+
+    <string name="settings_launcher_section_display">Display</string>
+
+    <string name="settings_display_screen_timeout_disabled">Keep screen on</string>
+    <string name="settings_display_hide_status_bar">Hide status bar</string>
+    <string name="settings_display_hide_navigation_bar">Hide navigation bar</string>
+    <string name="settings_display_rotate_screen">Rotate screen</string>
+
+    <string name="settings_launcher_section_functionality">Functionality</string>
+
+    <string name="settings_enabled_gestures_double_swipe">Double swipe gestures</string>
+    <string name="settings_enabled_gestures_double_swipe_summary">Swipe with two fingers</string>
+    <string name="settings_enabled_gestures_edge_swipe">Edge swipe gestures</string>
+    <string name="settings_enabled_gestures_edge_swipe_summary">Swipe at the edge of the screen</string>
+    <string name="settings_enabled_gestures_edge_swipe_edge_width">Edge width</string>
+    <string name="settings_functionality_auto_launch">Launch search results</string>
+    <string name="settings_functionality_auto_launch_summary">Press space to disable this feature temporarily.</string>
+
+    <string name="settings_functionality_search_web">Search the web</string>
+    <string name="settings_functionality_search_web_summary">Press return while searching the app list to launch a web search.</string>
+    <string name="settings_functionality_auto_keyboard">Start keyboard for search</string>
+    <string name="settings_functionality_auto_close_keyboard">Close keyboard when scrolling</string>
+
+    <string name="settings_launcher_sensitivity">Sensitivity</string>
+
+    <string name="settings_launcher_section_apps">Apps</string>
+    <string name="settings_apps_hidden">Hidden apps</string>
+    <string name="settings_apps_hide_bound_apps">Don\'t show apps that are bound to a gesture in the app list</string>
+    <string name="settings_apps_hide_paused_apps">Hide paused apps</string>
+    <string name="settings_apps_hide_private_space_apps">Hide private space from app list</string>
+    <string name="settings_list_layout">Layout of app list</string>
+    <string name="settings_list_reverse_layout">Reverse the app list</string>
+    <string name="settings_list_app_name_format">Names of Apps</string>
+
+    <string name="settings_list_layout_item_default">Default</string>
+    <string name="settings_list_layout_item_text">Text</string>
+    <string name="settings_list_layout_item_grid">Grid</string>
+    <string name="settings_list_layout_item_grid_only_icons">Grid (only icons)</string>
+
+    <string name="settings_list_app_name_format_item_default">Default</string>
+    <string name="settings_list_app_name_format_item_uppercase">Uppercase</string>
+    <string name="settings_list_app_name_format_item_lowercase">Lowercase</string>
+
+    <!--
+      -
+      - Settings : Meta
+      -
+      -->
+    <string name="settings_general_choose_home_screen">Set μLauncher as home screen</string>
+    <string name="settings_meta_cant_select_launcher">App Info</string>
+
+    <string name="settings_meta_show_tutorial">View µLauncher Tutorial</string>
+
+    <string name="settings_meta_reset">Reset Settings</string>
+    <string name="settings_meta_reset_confirm">You are going to discard all your preferences. Continue?</string>
+
+    <string name="settings_meta_view_code">View source code</string>
+    <string name="settings_meta_report_bug">Report a bug</string>
+
+    <string name="dialog_report_bug_title">Report a bug</string>
+    <string name="dialog_report_bug_info">Thank you for helping to improve μLauncher!\nPlease consider adding the following information to your bug report:</string>
+    <string name="dialog_report_bug_button_clipboard">Copy to clipboard</string>
+    <string name="dialog_report_bug_security_info">Please do not report security vulnerabilities publicly on GitHub, but use the following instead:</string>
+    <string name="dialog_report_bug_button_security">Report a security vulnerability</string>
+    <string name="dialog_report_bug_create_report">Create report</string>
+
+    <string name="settings_meta_fork_contact">Contact the developer of the fork</string>
+    <string name="settings_meta_join_chat">Join μLauncher chat</string>
+    <string name="settings_meta_donate">Donate</string>
+
+    <string name="settings_meta_privacy">Privacy Policy</string>
+
+    <string name="settings_meta_contact">Contact the original developer</string>
+
+    <string name="settings_meta_discord">Join us on discord!</string>
+
+    <!--
+      -
+      - List (Launchers app drawer)
+      -
+      -->
+    <string name="list_title_view">All Apps</string>
+    <string name="list_title_favorite">Favorite Apps</string>
+    <string name="list_title_hidden">Hidden Apps</string>
+    <string name="list_title_private_space">Private Space</string>
+
+    <string name="activity_select_action_title">Choose Action</string>
+
+    <string name="list_tab_app">Apps</string>
+    <string name="list_tab_other">Other</string>
+
+    <string name="list_app_delete">Uninstall</string>
+    <string name="list_app_info">App Info</string>
+    <string name="list_app_favorite_add">Add to favorites</string>
+    <string name="list_app_favorite_remove">Remove from favorites</string>
+    <string name="list_app_hidden_add">Hide</string>
+    <string name="list_app_hidden_remove">Show</string>
+    <string name="list_app_rename">Rename</string>
+
+    <string name="list_apps_search_hint">Search</string>
+    <string name="list_apps_search_hint_no_auto_launch">Search (no auto launch)</string>
+
+    <string name="list_other_settings">μLauncher Settings</string>
+    <string name="list_other_list">All Applications</string>
+    <string name="list_other_list_favorites">Favorite Applications</string>
+    <string name="list_other_list_private_space">Private Space</string>
+    <string name="list_other_toggle_private_space_lock">Toggle Private Space Lock</string>
+    <string name="list_other_volume_up">Raise Volume</string>
+    <string name="list_other_volume_down">Lower Volume</string>
+    <string name="list_other_volume_adjust">Adjust Volume</string>
+    <string name="list_other_track_next">Music: Next</string>
+    <string name="list_other_track_previous">Music: Previous</string>
+    <string name="list_other_track_play_pause">Music: Play / Pause</string>
+    <string name="list_other_expand_notifications_panel">Expand Notifications Panel</string>
+    <string name="list_other_recent_apps">Recent Apps</string>
+    <string name="list_other_nop">Do Nothing</string>
+    <string name="list_other_lock_screen">Lock Screen</string>
+    <string name="list_other_torch">Toggle Torch</string>
+    <string name="list_other_launch_other_launcher">Launch Other Home Screen</string>
+
+    <!-- Pin shortcuts -->
+    <string name="pin_shortcut_title">Add Shortcut</string>
+    <string name="pin_shortcut_button_bind">Bind to gesture</string>
+    <string name="pin_shortcut_switch_visible">Show in app list</string>
+
+    <!--
+      -
+      - Tutorial
+      -
+      -->
+    <string name="tutorial_title">Tutorial</string>
+    <string name="tutorial_start_text">👋\n\nTake a few seconds to learn how to use this Launcher!</string>
+
+    <string name="tutorial_concept_title">Concept</string>
+    <string name="tutorial_concept_text">μLauncher is designed to be minimal, efficient and free of distraction.
+        \n\nIt contains no ads and collects no data.</string>
+    <string name="tutorial_concept_text_2">It is free software (MIT license)!\nMake sure to check out the repository!</string>
+    <string name="tutorial_concept_label_version">Version</string>
+
+    <string name="tutorial_usage_title">Usage</string>
+    <string name="tutorial_usage_text">Your home screen contains the local date and time. No distraction.</string>
+    <string name="tutorial_usage_text_2">You can launch your most important apps with touch gestures or button presses.</string>
+
+    <string name="tutorial_app_list_title">All Apps</string>
+    <string name="tutorial_app_list_text">You can quickly search through all apps in the app list.\n\nSwipe up to open it, or bind it to a different gesture.</string>
+    <string name="tutorial_app_list_text_2">Once only one app matches, it launches automatically.\nThis can be disabled by prefixing the query with a space.</string>
+
+
+    <string name="tutorial_setup_title">Setup</string>
+    <string name="tutorial_setup_text">We chose some default apps for you. You can change them now if you want to:</string>
+    <string name="tutorial_setup_text_2">You can also change your selection later.</string>
+
+    <string name="tutorial_finish_title">Let\'s go!</string>
+    <string name="tutorial_finish_text">You are ready to get started!\n\nI hope this is of great value to you!\n\n- Finn (who made Launcher) and Josia (who made some improvements and maintains the fork μLauncher)</string>
+    <string name="tutorial_finish_button">Start</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="ic_menu_alt">More options</string>
+    <string name="alert_cant_expand_status_bar_panel">Error: Can\'t expand status bar. This action is using functionality that is not part of the published Android API. Unfortunately, it does not seem to work on your device.</string>
+    <string name="alert_requires_android_m">This functionality requires Android 6 or later.</string>
+    <string name="alert_requires_android_v">This functionality requires Android 15 or later.</string>
+    <string name="snackbar_app_hidden">App hidden. You can make it visible again in settings.</string>
+    <string name="undo">Undo</string>
+    <string name="list_other_expand_settings_panel">Quick Settings</string>
+    <string name="toast_device_admin_not_enabled">μLauncher needs to be a device admin in order to lock the screen.</string>
+    <string name="device_admin_explanation">This is required for the lock screen action.</string>
+    <string name="device_admin_description">Enable the lock screen action</string>
+    <string name="alert_no_torch_found">No camera with torch detected.</string>
+    <string name="alert_torch_access_exception">Error: Can\'t access torch.</string>
+    <string name="alert_lock_screen_failed">Error: Failed to lock screen. (If you just upgraded the app, try to disable and re-enable the accessibility service in phone settings)</string>
+    <string name="alert_recent_apps_failed">Error: Failed to show recent apps. (If you just upgraded the app, try to disable and re-enable the accessibility service in phone settings)</string>
+    <string name="alert_enable_accessibility_failed">Error: Failed to enable the accessibility service.</string>
+    <string name="toast_accessibility_service_not_enabled">μLauncher\'s accessibility service is not enabled. Please enable it in settings</string>
+    <string name="toast_private_space_locked">Private space locked</string>
+    <string name="toast_private_space_unlocked">Private space unlocked</string>
+    <string name="toast_private_space_not_available">Private space is not available</string>
+    <string name="toast_private_space_default_home_screen">μLauncher needs to be the default home screen to access private space.</string>
+    <string name="tooltip_lock_private_space">Lock private space</string>
+    <string name="tooltip_unlock_private_space">Unlock private space</string>
+    <string name="toast_lock_screen_not_supported">Error: Locking the screen using accessibility is not supported on this device. Please use device admin instead.</string>
+    <string name="accessibility_service_name">μLauncher</string>
+    <string name="accessibility_service_description">
+        Setting μLauncher as an accessibility service allows it to lock the screen and open the recent apps menu.
+        Note that excessive permissions are required. You should never grant such permissions lightly to any app.
+
+        μLauncher will use the accessibility service only for performing the following actions when requested by the user:
+
+        * lock screen
+        * open recent apps
+
+        μLauncher will never use the accessibility service to collect data. You can check the source code to make sure.
+
+        Note that locking the screen can also be accomplished by granting μLauncher device administrator permissions. However that method doesn\'t work with fingerprint and face unlock.
+    </string>
+
+
+    <string name="screen_lock_method_dialog_title">Choose Method for Locking</string>
+    <string name="screen_lock_method_dialog_text"><![CDATA[
+        <h1>Choose locking method</h1>
+        There are two methods to lock the screen.
+        Unfortunately both have downsides:<br/><br/>
+
+        <h3>Device Admin</h3>
+        Doesn\'t work with unlocking by fingerprint or face recognition.
+
+        <br/>
+        <br/>
+
+        <h3>Accessibility Service</h3>
+        Requires excessive privileges.
+        μLauncher will use those privileges only for locking the screen.
+        <br/>
+        (You really should not trust a random app you just downloaded with such a claim, but you can check the <a href=\"https://github.com/jrpie/Launcher\">source code</a>.)
+        <br/>
+        On some devices, the start-up PIN will no longer be used for encrypting data after activating an accessibility service.
+        This can be <a href="https://issuetracker.google.com/issues/37010136#comment36">reactivated</a> afterwards.
+
+        <br/><br/><br/><br/>
+        You can change your selection later in settings.
+        ]]>
+    </string>
+    <string name="screen_lock_method_use_accessibility">Use Accessibility Service</string>
+    <string name="screen_lock_method_use_device_admin">Use Device Admin</string>
+    <string name="settings_actions_lock_method">Choose method for locking the screen</string>
+    <string name="dialog_rename_title">Rename %1$s</string>
+    <string name="dialog_select_color_red">Red</string>
+    <string name="dialog_select_color_alpha">Alpha</string>
+    <string name="dialog_select_color_blue">Blue</string>
+    <string name="dialog_select_color_green">Green</string>
+    <string name="dialog_select_color_color_hex">Color</string>
+    <string name="dialog_choose_color_title">Choose color</string>
+    <string name="dialog_consent_accessibility_privileges">I am aware that this will grant far-reaching privileges to μLauncher.</string>
+    <string name="dialog_consent_accessibility_other_options">I am aware that other options exist (using device administrator privileges or the power button).</string>
+    <string name="dialog_consent_accessibility_consent">I consent to μLauncher using the accessibility service to provide functionality unrelated to accessibility.</string>
+    <string name="dialog_consent_accessibility_data_collection">I consent to μLauncher not collecting any data.</string>
+    <string name="dialog_consent_accessibility_text"><![CDATA[You are about to activate the accessibility service. This will grant <strong>far-reaching privileges</strong> to μLauncher.<br/>μLauncher will use these privileges <strong>only</strong> to perform the following actions:
+    <ul>
+        <li>Lock Screen</li>
+        <li>Recent Apps</li>
+    </ul>
+     μLauncher <strong>will never collect any data</strong>. In particular, μLauncher does not use the accessibility service to collect any data.]]></string>
+    <string name="dialog_consent_accessibility_title">Activating the Accessibility Service</string>
+    <string name="dialog_consent_accessibility_ok">Activate Accessibility Service</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="settings_meta_licenses">Open Source Licenses</string>
+    <string name="legal_info_title">Open Source Licenses</string>
+    <string name="toast_activity_not_found_search_web">No app found to handle search.</string>
+    <string name="toast_activity_not_found_browser">Can\'t open URL: no browser found.</string>
+    <string name="select_widget_title">Choose Widget</string>
+
+    <string name="widget_menu_remove">Remove</string>
+    <string name="widget_menu_configure">Configure</string>
+    <string name="widget_menu_enable_interaction">Enable Interaction</string>
+    <string name="widget_menu_disable_interaction">Disable Interaction</string>
+
+
+    <string name="widget_clock_label">Clock</string>
+    <string name="widget_clock_description">The default clock of μLauncher</string>
+    <string name="manage_widget_panels_delete">Delete</string>
+    <string name="manage_widget_panels_rename">Rename</string>
+
+    <string name="widget_panel_default_name">Widget Panel #%1$d</string>
+    <plurals name="widget_panel_number_of_widgets">
+        <item quantity="one">Contains %1$d widget.</item>
+        <item quantity="other">Contains %1$d widgets.</item>
+    </plurals>
+
+
+    <string name="dialog_ok">Ok</string>
+    <string name="widget_panels_title">Widget Panels</string>
+    <string name="dialog_select_widget_panel_title">Select a Widget Panel</string>
+    <string name="dialog_create_widget_panel_title">Create new widget panel</string>
+    <string name="dialog_select_widget_panel_info_no_panels"><![CDATA[No widget panels found. You can create widget panels in Settings > Launcher > Manage Widget Panels.]]></string>
+    <string name="list_other_open_widget_panel">Open Widget Panel</string>
+    <string name="alert_widget_panel_not_found">This widget panel no longer exists.</string>
+    <string name="settings_launcher_section_widgets">Widgets</string>
+    <string name="notification_crash_title">μLauncher crashed</string>
+    <string name="notification_crash_explanation">Sorry! Click for more information.</string>
+    <string name="crash_info"><![CDATA[
+        Looks like something went wrong, sorry about that!<br><br>
+        For privacy reasons, crash logs are not collected automatically.<br>
+        However logs are very useful for debugging, so I would be very grateful if you could send me the attached log by mail
+        or create a bug report on github.<br><br>
+        Note that crash logs might contain <strong>sensitive information</strong>, e.g. the name of an app you tried to launch.
+        Please <strong>redact</strong> such information before sending the report.
+        <h2>What can I do now?</h2>
+        If this bug appears again and again, you can try several things:
+        <ul>
+        <li>Force stop μLauncher</li>
+        <li>Clear μLauncher\'s storage (<strong>Your settings will be lost!</strong>)</li>
+        <li>Install an older version (<a href=\"https://github.com/jrpie/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.jrpie.android.launcher\">F-Droid</a>)</li>
+        </ul>
+        ]]>
+    </string>
+    <string name="report_crash_button_copy">Copy crash report to clipboard</string>
+    <string name="report_crash_button_mail">Send report by mail</string>
+    <string name="report_crash_button_report">Create bug report on GitHub</string>
+    <string name="report_crash_title">μLauncher crashed</string>
+    <string name="send_email">Send Email</string>
+    <string name="notification_channel_crash">Crashes and Debug Information</string>
+    <string name="settings_meta_view_docs">Documentation</string>
+    <!--
+      -
+      - Content Descriptions
+      -
+      -->
+    <string name="content_description_add_widget">Add widget</string>
+    <string name="content_description_add_widget_panel">Add widget panel</string>
+    <string name="content_description_close">Close</string>
+    <string name="content_description_navigate_back">Navigate back</string>
+    <string name="content_description_navigate_next">Navigate next</string>
+    <string name="content_description_lock">Lock</string>
+    <string name="content_description_settings_actions_row_button_remove">Remove binding</string>
+    <string name="toast_cant_launch_app">Error: Can\'t launch app</string>
+    <string name="action_unknown">Invalid action (probably an uninstalled app)</string>
+    <string name="invalid_shortcut">Invalid shortcut</string>
+    <string name="content_description_toggle_favorites">Filter favorite apps</string>
 </resources>

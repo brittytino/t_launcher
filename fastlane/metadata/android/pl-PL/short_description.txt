@@ -1,0 +1,1 @@
+Minimalny ekran główny bez rozpraszania uwagi dla Androida.

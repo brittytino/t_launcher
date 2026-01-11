@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- Default Apps for different actions (button-press, swipes ...) -->
+    <string-array name="no_default">
+    </string-array>
+
+    <!-- Back - Apps list -->
+    <string-array name="default_back">
+        <item>{\"type\": \"action:launcher\", \"value\": \"choose\"}</item> <!-- All Apps -->
+    </string-array>
+
+
+    <!-- Swipe up - Apps list -->
+    <string-array name="default_up">
+        <item>{\"type\": \"action:launcher\", \"value\": \"choose\"}</item> <!-- All Apps -->
+    </string-array>
+
+    <!-- Swipe up (left edge) - Favorite Apps -->
+    <string-array name="default_up_left">
+        <item>{\"type\": \"action:launcher\", \"value\": \"choose_from_favorites\"}</item>
+    </string-array>
+
+    <!-- Swipe up (right edge) - Maps -->
+    <string-array name="default_up_right">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"app.organicmaps\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.graphhopper.maps\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"net.osmand.plus\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.apps.maps\", \"activityName\": null}}</item>
+    </string-array>
+
+    <!-- Swipe double up - Transportation -->
+    <string-array name="default_double_up">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"de.schildbach.oeffi\", \"activityName\": null}}</item> <!-- Öffi -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"de.hafas.android.db\", \"activityName\": null}}</item> <!-- DB Navigator -->
+    </string-array>
+
+    <!-- Swipe down - Browser -->
+    <string-array name="default_down">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.mozilla.firefox\", \"activityName\": null}}</item> <!-- Firefox -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.mozilla.fennec\", \"activityName\": null}}</item> <!-- Fennec -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.mozilla.fennec_fdroid\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.brave.browser\", \"activityName\": null}}</item> <!-- Brave Browser -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.duckduckgo.mobile.android\", \"activityName\": null}}</item> <!-- DuckDuckGo Browser -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.sec.android.app.sbrowser\", \"activityName\": null}}</item> <!-- Samsung Internet -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.chrome\", \"activityName\": null}}</item> <!-- Chrome -->
+    </string-array>
+
+    <!-- Swipe down (left edge) - Translation -->
+    <string-array name="default_down_left">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.bnyro.translate\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.deepl.mobiletranslator\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.apps.translate\", \"activityName\": null}}</item> <!-- Google Translate -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.microsoft.translator\", \"activityName\": null}}</item> <!-- Microsoft Translate -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"translate.speech.text.translation.voicetranslator\", \"activityName\": null}}</item> <!-- MindMover Translate -->
+    </string-array>
+
+    <string-array name="default_down_right">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.fdroid.fdroid\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.fdroid.basic\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"dev.imranr.obtainium\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"dev.imranr.obtainium.fdroid\", \"activityName\": null}}</item>
+    </string-array>
+
+    <!-- Swipe double down - Secure Browser -->
+    <string-array name="default_double_down">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.torproject.torbrowser\", \"activityName\": null}}</item> <!-- Tor Browser -->
+    </string-array>
+
+    <!-- Swipe right - Mail -->
+    <string-array name="default_right">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"net.thunderbird.android\", \"activityName\": null}}</item> <!-- Thunderbird -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.fsck.k9\", \"activityName\": null}}</item> <!-- k9-mail -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"de.web.mobile.android.mail\", \"activityName\": null}}</item> <!-- WebMail -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.samsung.android.email.provider\", \"activityName\": null}}</item> <!-- Samsung Mail -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.gm\", \"activityName\": null}}</item> <!-- Google Mail -->
+    </string-array>
+
+    <!-- Swipe right (top) -->
+    <string-array name="default_right_top">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.calculator2\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.sec.android.app.popupcalculator\", \"activityName\": null}}</item> <!-- Samsung Calculator -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.mian.gitnex\", \"activityName\": null}}</item> <!-- GitNex -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.github.android\", \"activityName\": null}}</item> <!-- GitHub Android -->
+    </string-array>
+
+    <!-- Swipe right (bottom) -->
+    <string-array name="default_right_bottom">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.documentsui\", \"activityName\": null}}</item> <!-- File Manager -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.google.documentsui\", \"activityName\": null}}</item> <!-- File Manager -->
+    </string-array>
+
+    <!-- Swipe double right -->
+    <string-array name="default_double_right">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"be.chvp.nanoledger\", \"activityName\": null}}</item> <!-- NanoLedger -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"info.tangential.cone\", \"activityName\": null}}</item>
+    </string-array>
+
+    <string-array name="default_messengers">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"de.spiritcroc.riotx\", \"activityName\": null}}</item> <!-- SchildiChat -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"io.element.android.x\", \"activityName\": null}}</item> <!-- Element X -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"im.vector.app\", \"activityName\": null}}</item> <!-- Element -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.thoughtcrime.securesms\", \"activityName\": null}}</item> <!-- Signal -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.briarproject.briar.android\", \"activityName\": null}}</item> <!-- Briar -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"eu.siacs.conversations\", \"activityName\": null}}</item> <!-- Conversations -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"ch.threema.app.libre\", \"activityName\": null}}</item> <!-- Threema -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.messaging\", \"activityName\": null}}</item> <!-- SMS -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.apps.messaging\", \"activityName\": null}}</item> <!-- SMS -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.samsung.android.messaging\", \"activityName\": null}}</item> <!-- Samsung SMS -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.whatsapp\", \"activityName\": null}}</item> <!-- WhatsApp -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.telegram.messenger\", \"activityName\": null}}</item> <!-- Telegram -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.discord\", \"activityName\": null}}</item>
+    </string-array>
+
+    <!-- Volume up -->
+    <string-array name="default_volume_up">
+        <item>{\"type\": \"action:launcher\", \"value\": \"volume_up\"}</item>
+    </string-array>
+
+    <!-- Volume down -->
+    <string-array name="default_volume_down">
+        <item>{\"type\": \"action:launcher\", \"value\": \"volume_down\"}</item>
+    </string-array>
+
+    <!-- Double click - Notes -->
+    <string-array name="default_double_click">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"it.niedermann.owncloud.notes\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.samsung.android.app.notes\", \"activityName\": null}}</item> <!-- Samsung Notes -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.sec.android.widgetapp.diotek.smemo\", \"activityName\": null}}</item> <!-- S Memo (older devices) -->
+        <item>{\"type\": \"action:launcher\", \"value\": \"lock_screen\"}</item>
+    </string-array>
+
+    <!-- Long click - Security -->
+    <string-array name="default_long_click">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.beemdevelopment.aegis\", \"activityName\": null}}</item> <!-- Aegis 2FA -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.fedorahosted.freeotp\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"proton.android.pass.fdroid\", \"activityName\": null}}</item> <!-- Proton Pass -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.kunzisoft.keepass.libre\", \"activityName\": null}}</item> <!-- KeePassDX -->
+        <item>{\"type\": \"action:launcher\", \"value\": \"settings\"}</item> <!-- Launcher Settings -->
+    </string-array>
+
+    <!-- Time / Clock -->
+    <string-array name="default_time">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.deskclock\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.deskclock\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.sec.android.app.clockpackage\", \"activityName\": null}}</item> <!-- Android Clock -->
+    </string-array>
+
+    <!-- Date / Calendar -->
+    <string-array name="default_date">
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.lineageos.etar\", \"activityName\": null}}</item> <!-- LineageOS Calendar -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"ws.xsoh.etar\", \"activityName\": null}}</item> <!-- Etar -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.calendar\", \"activityName\": null}}</item> <!-- Google Calendar -->
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.samsung.android.calendar\", \"activityName\": null}}</item> <!-- Samsung Calendar -->
+    </string-array>
+
+</resources>

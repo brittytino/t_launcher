@@ -1,0 +1,4 @@
+* Favori uygulamalar
+* Uygulamaları gizleme seçeneği
+* Birden fazla ana aktiviteye sahip uygulamalar için destek
+* Küçük ekranlarda ayarların düzeni düzeltildi

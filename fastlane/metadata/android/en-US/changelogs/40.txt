@@ -1,0 +1,13 @@
+* Pinned shortcuts can now be added to app list
+* New action: adjust volume (thank you, zabrinu!)
+* Added option to hide navigation bar (thank you, acanoe!)
+* Added option to reverse the app list (thank you, spacefrogg!)
+* Show question mark icon when an unknown app is bound to a gesture
+
+* Improved German translation
+* Improved Portuguese translation (thank you, "Vossa Excelencia"!)
+
+* Fixed detection of long click gesture
+* Fixed blurred text in dialogs
+* Fixed a crash when private space is locked after app restarts (thank you, alexytomi!)
+* Fixed some additional bugs

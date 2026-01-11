@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AlertDialogDanger"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <de.jrpie.android.launcher.ui.util.HtmlTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_consent_accessibility_text" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <CheckBox
+            android:id="@+id/dialog_consent_accessibility_checkbox_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@string/dialog_consent_accessibility_privileges" />
+
+        <CheckBox
+            android:id="@+id/dialog_consent_accessibility_checkbox_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@string/dialog_consent_accessibility_other_options" />
+
+        <CheckBox
+            android:id="@+id/dialog_consent_accessibility_checkbox_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@string/dialog_consent_accessibility_data_collection" />
+
+        <CheckBox
+            android:id="@+id/dialog_consent_accessibility_checkbox_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@string/dialog_consent_accessibility_consent" />
+    </LinearLayout>
+</ScrollView>

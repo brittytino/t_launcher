@@ -1,0 +1,6 @@
+* yeni özellik: otomatik başlatmayı geçici olarak devre dışı bırakmak için boşluk içeren önek sorgusu
+* iyileştirilmiş arama: sorguda görünmedikleri sürece diakritik işaretler artık yok sayılıyor. (Android 7+)
+* açık kaynak lisanslarının listesi eklendi
+* erişilebilirlik hizmeti uyarısı güncellendi
+* iyileştirilmiş Fransızca çeviri (teşekkürler, Alexandre Ancel ve Nin Dan!)
+* iyileştirilmiş Portekizce çeviri (teşekkürler, "Vossa Excelencia"!)

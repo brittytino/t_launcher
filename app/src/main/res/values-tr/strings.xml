@@ -1,146 +1,203 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Turkish -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app">Uygulama</string>
-    <string name="set_as_default_launcher">Varsayılan başlatıcı olarak ayarla</string>
-    <string name="set_as_default_launcher_u"><u>Varsayılan başlatıcı olarak ayarla</u></string>
-    <string name="set_as_default_launcher_first">Varsayılan başlatıcı olarak ayarla</string>
-    <string name="_0">0</string>
-    <string name="_1">1</string>
-    <string name="_2">2</string>
-    <string name="_3">3</string>
-    <string name="_4">4</string>
-    <string name="_5">5</string>
-    <string name="_6">6</string>
-    <string name="_7">7</string>
-    <string name="_8">8</string>
-    <string name="app_drawer_tips">İpucu: Otomatik başlatmak için bir uygulama adı yazın</string>
-    <string name="okay">Tamam</string>
-    <string name="cool">Harika!</string>
-    <string name="tip_start_typing_for_rename">İpucu: Uygulama ismi değiştirmek için yazmaya başlayın</string>
-    <string name="your_wallpaper_will_update_shortly">Duvar kağıdınız birazdan güncellenecek</string>
-    <string name="olauncher_is_not_default_launcher">Olauncher varsayılan başlatıcınız değil. Günlük duvar kağıtları hatalı çalışabilir.</string>
-    <string name="long_press_to_enable">Etkinleştirmek için uzun basın</string>
-    <string name="no_hidden_apps">Gizli uygulama yok</string>
-    <string name="hidden_apps">Gizli uygulamalar</string>
-    <string name="hidden_apps_message">Not: Gizli uygulamalarınızı bulmak için bu ayarlar sayfasının üst kısmındaki \"Olauncher\" yazısına dokunun.
-        \n\nDaha fazla ayrıntı "Hakkında" sayfasında mevcuttur.</string>
-    <string name="swipe_down_for">Aşağı kaydır:</string>
-    <string name="search">Ara</string>
-    <string name="notifications">Bildirimler</string>
-    <string name="accessibility_disclosure">Bu özelliği etkinleştirmek veya devre dışı bırakmak için lütfen cihazınızın ayarlarında Olauncher\'ın erişilebilirlik hizmetini açın veya kapatın.
-        \n\nLütfen bu hizmetin yalnızca ekranı çift dokunma hareketini kullanarak kapatmanıza izin vermek için kullanıldığını unutmayın. Erişilebilirlik hizmetimiz herhangi bir veri toplamaz veya paylaşmaz.</string>
-    <string name="accept">Kabul et</string>
-    <string name="permission">İzin</string>
-    <string name="double_tap_lock">Kilitlemek için iki kez dokunun</string>
-    <string name="enable">Etkinleştir</string>
-    <string name="disable">Devre dışı bırak</string>
-    <string name="not_working"><u>Çalışmıyor mu?</u></string>
-    <string name="info">Bilgi</string>
-    <string name="delete">Sil</string>
-    <string name="text_size">Yazı Boyutu</string>
-    <string name="enabled">Etkin</string>
-    <string name="disabled">Devre Dışı</string>
-    <string name="please_turn_on_double_tap_to_unlock">Lütfen kilitlemek için çift dokunmayı açın</string>
-    <string name="launcher_failed_to_lock_device">Olauncher cihazı kilitleyemedi. Lütfen uygulama ayarlarınızı kontrol edin.</string>
-    <string name="long_press_to_select_app">Uygulamayı seçmek için uzun basın</string>
-    <string name="unable_to_open_app">Uygulama bilgisi açılamıyor</string>
-    <string name="copied">Kopyalandı</string>
-    <string name="system_app_cannot_delete">Sistem uygulaması, silinemez</string>
-    <string name="type_a_new_app_name_first">Önce yeni bir uygulama adı yazın</string>
-    <string name="adapter_show">Göster</string>
-    <string name="adapter_hide">Gizle</string>
-    <string name="app_text_color">Metin rengi</string>
-    <string name="double_tap_to_lock_screen">Kilitlemek için çift dokunun</string>
-    <string name="admin_permission_message">Olauncher, kilit ekranı iznini sorumlu bir şekilde kullanacaktır. Olauncher herhangi bir veri toplamaz veya paylaşmaz.</string>
-    <string name="about">Hakkında</string>
-    <string name="off">Kapalı</string>
-    <string name="on">Açık</string>
-    <string name="black">Siyah</string>
-    <string name="white">Beyaz</string>
-    <string name="change_default_launcher">Varsayılan başlatıcıyı değiştir</string>
-    <string name="privacy">Gizlilik</string>
-    <string name="share">Paylaş</string>
-    <string name="share_now">Şimdi paylaş</string>
-    <string name="rate">Değerlendir</string>
-    <string name="rate_now">Şimdi değerlendir</string>
-    <string name="follow">Takip et</string>
-    <string name="email">E-posta</string>
+    <string name="list_other_settings">µLauncher Ayarları</string>
+    <string name="list_other_torch">Feneri Aç</string>
+    <string name="tutorial_title">Öğretici Video</string>
+    <string name="tutorial_start_text">Bu başlatıcıyı öğrenmek birkaç saniyenizi alır!</string>
+    <string name="tutorial_usage_text_2">Uygulamalarınızı tek bir kaydırma veya düğmeye basarak başlatabilirsiniz. Bir sonraki slaytta bazılarını seçin.</string>
+    <string name="tutorial_setup_title">Hazırlık</string>
+    <string name="tutorial_concept_title">Konsept</string>
+    <string name="tutorial_setup_text">Sizin için bazı varsayılan uygulamaları seçtik. İsterseniz şimdi değiştirebilirsiniz:</string>
+    <string name="tutorial_setup_text_2">Seçiminizi daha sonra da değiştirebilirsiniz.</string>
+    <string name="tutorial_finish_title">Hadi başlayalım!</string>
+    <string name="tutorial_finish_text">Artık başlamaya hazırsın!\n\nUmarım bu sizin için çok değerlidir!\n\n- Finn (Başlatıcı\'yı yapan kişi)\n\tand Josia (birkaç geliştirme yapmış ve μLauncher projesini devam ettiren kişi)</string>
+    <string name="settings">Ayarlar</string>
+    <string name="tutorial_finish_button">Başla</string>
+    <string name="ic_menu_alt">Daha fazla seçenek</string>
+    <string name="screen_lock_method_dialog_text"><![CDATA[
+        <h1>Kilitleme metodu seçin</h1>
+        Ekranı kitlemenin iki tane metodu vardır.
+        Ne yazık ki ikisinin de eksikleri vardır:<br/><br/>
 
-    <string name="donate">Bağış yap</string>
-    <string name="swipe_up_for_apps">1. Tüm uygulamalar için yukarı kaydırın\n2. Ayarlar için herhangi bir yere uzun basın</string>
-    <string name="apps_on_home_screen">Ana ekran uygulamaları</string>
-    <string name="daily_wallpaper_update">Günlük duvar kağıtları</string>
-    <string name="left">Sol</string>
-    <string name="right">Sağ</string>
-    <string name="center">Merkez</string>
-    <string name="home_layout_alignment">Uygulama hizalaması</string>
-    <string name="swipe_left_app">Sola kaydırma uygulaması</string>
-    <string name="swipe_right_app">Sağa kaydırma uygulaması</string>
-    <string name="auto_show_keyboard">Klavyeyi otomatik göster</string>
-    <string name="hide">Sakla</string>
-    <string name="status_bar">Durum çubuğunu göster</string>
-    <string name="rename">Yeniden isimlendir</string>
-    <string name="show_date_time">Tarih ve saati göster</string>
-    <string name="appearance">Görünüm</string>
-    <string name="gestures">Hareket</string>
-    <string name="theme_mode">Tema modu</string>
-    <string name="system_default">Sistem</string>
-    <string name="dark">Koyu</string>
-    <string name="light">Açık</string>
-    <string name="welcome_to_olauncher_settings">Ayarlar sayfasına hoş geldiniz!
-        \n\nUnutmayın, herhangi bir sorunuz olursa "Hakkında" sayfamıza danışabilirsiniz.</string>
-    <string name="rate_us_message">Merhaba, bu mesajı bir daha görmeyeceksiniz.
-        \n\nOlauncher\'ı beğendiyseniz bize tam puan verir misiniz? Sıralamamızı yükseltmemize yardımcı oluyor ve bizi neşelendiriyor. Teşekkür ederiz!</string>
-    <string name="share_message">Merhaba, yardımınıza ihtiyacımız var! Geçen yıl bir milyon indirmeyi geçtik. Bu yıl bir milyona daha ulaşmak istiyoruz ama bunu tek başımıza yapamayız.
-        \n\nOlauncher\'ı arkadaşlarınızla paylaşma nezaketini gösterir misiniz lütfen? Teşekkür eder, harika bir gün geçirmenizi dileriz!</string>
-    <string name="keyboard_message">Merhaba, klavye, Olauncher\'da uygulamaları bulmanın ve başlatmanın en hızlı yoludur. Birkaç gün daha kullanıp karar vermenizi rica ederiz.
-        \n\nSeçim her zaman sizindir.</string>
-    <string name="digital_wellbeing_message">Belirli uygulamalar için zaman sınırları belirlemek istiyorsanız Android\'in Dijital Denge özelliği bunu yapmanıza yardımcı olacaktır.
-        \n\nLütfen telefon ayarlarınızda Dijital Denge\'yi arayın ve etkinleştirin.</string>
-    <string name="app_usage_message">Ana ekranınızda ekran sürenizi göstermek/gizlemek için lütfen uygulama kullanım iznini onaylayın veya reddedin.
-        \n\nNot: Uygulama kullanım verileri toplanmaz. Her şey cihazınızda işlenir.</string>
-    <string name="pro_message">Olauncher\'ın Pro Launcher adında bir pro versiyonu da var. Hava durumu, widget\'lar, yazı tipleri, klasörler, AMOLED duvar kağıtları gibi ekstra özelliklere sahip.
-        \n\nAyrıca Olauncher geliştiricilerini desteklemenin en iyi yoludur. Mutlaka inceleyin!</string>
-    <string name="wallpaper_message">Olauncher, ana ekranınıza taze bir görünüm kazandırmak için her gün yeni duvar kağıtları sunuyor. Hem de ücretsiz!
-        \n\nDenemek ister misiniz?</string>
-    <string name="accessibility_service_description">Kilitlemek için çift dokunmayı etkinleştirmek için erişilebilirlik izni gereklidir. Olauncher tarafından bu hizmet aracılığıyla elde edilen hiçbir veri cihazınızdan ayrılmayacaktır.</string>
-    <string name="support_olauncher_for_free">Amazon ortaklık bağlantımızı kullanarak Olauncher\'ı ücretsiz olarak destekleyin.</string>
-    <string name="support_olauncher_message">Bağlantımızı kullanarak her bir şey satın aldığınızda, küçük bir komisyon alırız. Lütfen bağlantıyı kaydedin ve çevrimiçi alışveriş yaptığınızda kullanın. Teşekkür ederiz!</string>
-    <string name="open">Linki aç</string>
-    <string name="copy">Kopyala</string>
-    <string name="close">Kapat</string>
-    <string name="not_now">Şimdi değil</string>
-    <string name="public_roadmap">Olauncher Yol Çizelgesi</string>
-    <string name="instagram">Instagram</string>
-    <string name="twitter">Twitter</string>
-    <string name="roadmap">Yol Çizelgesi</string>
-    <string name="date">Tarih</string>
-    <string name="date_only">Sadece tarih</string>
-    <string name="bottom_on">Alt: Açık</string>
-    <string name="bottom_off">Alt: Kapalı</string>
-    <string name="please_set_olauncher_as_default_first">Lütfen önce Olauncher\'ı varsayılan başlatıcınız olarak ayarlayın</string>
-    <string name="affiliate">Ortak</string>
-    <string name="app_not_found">Uygulama bulunamadı</string>
-    <string name="unable_to_launch_app">Uygulama başlatılamadı</string>
-    <string name="search_for_Launcher_or_home_app">Başlatıcı veya Ana Menü uygulamasını arayın</string>
-    <string name="swipe_left_app_enabled">Sola kaydırma uygulaması etkin</string>
-    <string name="swipe_right_app_enabled">Sağa kaydırma uygulaması etkin</string>
-    <string name="swipe_left_app_disabled">Sola kaydırma uygulaması devre dışı</string>
-    <string name="swipe_right_app_disabled">Sağa kaydırma uygulaması devre dışı</string>
-    <string name="are_you_using_your_phone_or_is_your_phone_using_you">Sen mi telefonunu, kullanıyorsun yoksa telefon mu seni kullanıyor?</string>
-    <string name="about_olauncher">Olauncher Hakkında</string>
-    <string name="learn_more">Daha fazla bilgi</string>
-    <string name="screen_time">Ekran süresi</string>
-    <string name="did_you_know">Biliyor muydunuz?</string>
-    <string name="leave_a_review">Değerlendirme bırakın</string>
-    <string name="review_message">Olauncher tamamen ücretsizdir ve her zaman ücretsiz olacaktır. Reklam yok, veri toplamaz ve en önemlisi ekran sürenizi azaltmanıza ve daha sağlıklı bir dijital yaşam sürmenize yardımcı olur.
-        \n\nUmarım hoşunuza gider. Düşüncelerinizi mutlaka bizimle paylaşın!</string>
-    <string name="alignment_changed">Hizalama değiştirildi ✅</string>
-    <string name="home_screen">Ana ekran</string>
-    <string name="hey">Merhaba</string>
-    <string name="more_features">Daha fazla özellik…</string>
-    <string name="new_year_wish">Öncekilerin hepsinden daha iyi bir yıl olsun. Mutlu yıllar!</string>
-    <string name="new_year_wish_1">Ocak ayının nasıl geçtiği önemli değil. Her zamankinden daha iyisini yapmak için hala yılın geri kalanı var.</string>
-    <string name="cheers">Şerefe!</string>
-    <string name="notification_bar">Bildirim çubuğu</string>
-</resources><!-- Turkish -->
+        <h3>Cihaz Yöneticisi</h3>
+        Yüz ve parmak taramasıyla açılan ekran kilidiyle çalışmaz.
+
+        <br/>
+        <br/>
+
+        <h3>Erişilebilirlik Servisi</h3>
+        Aşırı yetkiler ister.
+        µLauncher bu yetkileri sadece ekranı kilitlemek için kullanacaktır.
+        <br/>
+        (Böyle bir iddiayla indirdiğiniz rastgele bir uygulamaya gerçekten güvenmemelisiniz ama <a href=\"https://github.com/jrpie/Launcher\">kaynak kodunu</a>.) istediğiniz zaman göz atabilirsiniz.
+
+
+        <br/><br/><br/><br/>
+        Seçimlerinizi sonra da değiştirebilirsiniz.
+        ]]></string>
+    <string name="alert_lock_screen_failed">Hata: Ekran kilitlenemedi. (Uygulamayı yeni güncellediyseniz, telefon ayarlarında erişilebilirlik hizmetini devre dışı bırakmayı ve yeniden etkinleştirmeyi deneyin)</string>
+    <string name="toast_accessibility_service_not_enabled">µLauncher\'ın erişilebilirlik hizmeti etkin değil. Lütfen ayarlardan etkinleştirin</string>
+    <string name="toast_lock_screen_not_supported">Hata: Erişilebilirliği kullanarak ekranı kilitlemek bu cihazda desteklenmez. Lütfen bunun yerine cihaz yöneticisini kullanın.</string>
+    <string name="accessibility_service_name">µLauncher - ekranı kilitle</string>
+    <string name="screen_lock_method_dialog_title">Kilitleme Yöntemini Seçin</string>
+    <string name="screen_lock_method_use_device_admin">Cihaz Yöneticisini Kullan</string>
+    <string name="settings_apps_hide_bound_apps">Bir harekete bağlı olan uygulamaları, uygulama listesinde gösterme</string>
+    <string name="settings_general_choose_home_screen">μLauncher\'ı ana ekran olarak ayarla</string>
+    <string name="settings_meta_show_tutorial">Başlatıcıyı Öğrenin</string>
+    <string name="accessibility_service_description">µLauncher\'ı erişilebilirlik hizmeti olarak ayarlamak, ekranı kilitlemesine izin verir. Aşırı izinlerin gerekli olduğunu unutmayın. Bu tür izinleri hiçbir uygulamaya umursamadan vermemelisiniz. µLauncher erişilebilirlik hizmetini yalnızca ekranı kilitlemek için kullanacaktır. Emin olmak için kaynak kodunu kontrol edebilirsiniz. Ekranı kilitlemenin µLauncher aygıt yöneticisi izinleri verilerek de gerçekleştirilebileceğini unutmayın. Ancak bu yöntem parmak izi ve yüz kilidi açma ile çalışmaz.</string>
+    <string name="screen_lock_method_use_accessibility">Erişilebilirlik Hizmetini Kullan</string>
+    <string name="alert_cant_expand_status_bar_panel">Hata: Durum çubuğu genişletilemiyor.\nBu eylem, yayınlanan Android API\'ının bir parçası olmayan işlevselliği kullanıyor. Ne yazık ki cihazınızda çalışmıyor gibi görünüyor.</string>
+    <string name="list_other_expand_settings_panel">Hızlı Ayarlar</string>
+    <string name="alert_cant_open_title">Uygulama açılamıyor</string>
+    <string name="alert_cant_open_message">Ayarlarını değiştirmek ister misiniz?</string>
+    <string name="toast_cant_open_message">Bu harekete bir eylem atamak için ayarları açın</string>
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_tab_launcher">Başlatıcı</string>
+    <string name="settings_tab_meta">Daha Fazlası</string>
+    <string name="settings_gesture_up">Yukarı</string>
+    <string name="settings_gesture_double_up">Çift Yukarı</string>
+    <string name="settings_gesture_down">Aşağı</string>
+    <string name="settings_gesture_double_down">Çift Aşağı</string>
+    <string name="settings_gesture_left">Sol</string>
+    <string name="settings_gesture_double_left">Çift Sol</string>
+    <string name="settings_gesture_right">Sağ</string>
+    <string name="settings_gesture_double_right">Çift Sağ</string>
+    <string name="settings_gesture_right_top_edge">Sağ (Üst)</string>
+    <string name="settings_gesture_right_bottom_edge">Sağ (Alt)</string>
+    <string name="settings_gesture_left_bottom_edge">Sol (Alt)</string>
+    <string name="settings_gesture_left_top_edge">Sol (Üst)</string>
+    <string name="settings_gesture_up_left_edge">Yukarı (Sol Köşe)</string>
+    <string name="settings_gesture_up_right_edge">Yukarı (Sağ Köşe)</string>
+    <string name="settings_theme_font">Font</string>
+    <string name="tutorial_concept_text">Bu başlatıcı; minimal, verimli ve dikkat dağıtıcılardan yoksun olmak amacıyla yaratıldı.\n\nHerhangi bir ödeme, reklam ve takip servisi içermez.</string>
+    <string name="tutorial_concept_text_2">Bu uygulama açık kaynak kodludur (MIT lisansı) ve GitHub\'dan indirilebilir!\n\nDepomuzu ziyaret etmeyi unutmayın!</string>
+    <string name="tutorial_usage_title">Kullanım</string>
+    <string name="tutorial_usage_text">Ana ekranınız yerel tarih ve saati içerir. Dikkat dağıtıcı hiçbir şey yok.</string>
+    <string name="settings_gesture_description_up">Yukarı kaydır</string>
+    <string name="settings_gesture_description_down">Aşağı kaydır</string>
+    <string name="settings_gesture_description_left">Sola kaydır</string>
+    <string name="settings_gesture_description_double_up">İki parmak ile yukarı kaydır</string>
+    <string name="settings_gesture_description_double_down">İki parmak ile aşağı kaydır</string>
+    <string name="settings_gesture_description_double_left">İki parmak ile sola kaydırın</string>
+    <string name="settings_gesture_description_right">Sağa kaydırın</string>
+    <string name="settings_gesture_description_double_right">İki parmak ile sağa kaydırın</string>
+    <string name="settings_gesture_description_right_top_edge">Ekranın üstünden sağa kaydırın</string>
+    <string name="settings_gesture_description_right_bottom_edge">Ekranın altından sağa doğru kaydırın</string>
+    <string name="settings_gesture_description_left_bottom_edge">Ekranın altından sola kaydırın</string>
+    <string name="settings_gesture_description_left_top_edge">Ekranın üstünden sola kaydırın</string>
+    <string name="settings_gesture_description_up_left_edge">Ekranın sol köşesinden yukarı kaydırın</string>
+    <string name="settings_gesture_description_up_right_edge">Ekranın sağ köşesinden yukarı kaydırın</string>
+    <string name="settings_gesture_down_left_edge">Aşağı (Sol Köşe)</string>
+    <string name="settings_gesture_description_down_left_edge">Ekranın sol köşesinden aşağı kaydırın</string>
+    <string name="settings_gesture_down_right_edge">Aşağı (Sağ Köşe)</string>
+    <string name="settings_gesture_description_down_right_edge">Ekranın sağ köşesinden aşağı kaydırın</string>
+    <string name="settings_gesture_vol_up">Ses Açma</string>
+    <string name="settings_gesture_description_vol_up">Ses açma tuşuna basın</string>
+    <string name="settings_gesture_vol_down">Ses Kısma</string>
+    <string name="settings_gesture_description_vol_down">Ses kısma tuşuna basın</string>
+    <string name="settings_gesture_double_click">Çift Tıklama</string>
+    <string name="settings_gesture_description_double_click">Boş bir alana çift tıklayın</string>
+    <string name="settings_gesture_long_click">Basılı Tut</string>
+    <string name="settings_gesture_description_long_click">Boş bir alana basılı tut</string>
+    <string name="settings_gesture_date">Tarih</string>
+    <string name="settings_gesture_description_date">Tarihe tıklayın</string>
+    <string name="settings_gesture_time">Saat</string>
+    <string name="settings_gesture_description_time">Saate tıklayın</string>
+    <string name="settings_apps_choose">Uygulama Seçin</string>
+    <string name="settings_apps_install">Uygulamaları yükle</string>
+    <string name="settings_apps_toast_store_not_found">Mağaza bulunamadı</string>
+    <string name="settings_launcher_section_appearance">Görünüş</string>
+    <string name="settings_theme_color_theme">Renk teması</string>
+    <string name="settings_theme_background">Arka Plan (uygulama listesi ve ayarlar)</string>
+    <string name="settings_theme_monochrome_icons">Monokrom uygulama ikonları</string>
+    <string name="settings_clock_time_visible">Saati göster</string>
+    <string name="settings_clock_date_visible">Tarihi göster</string>
+    <string name="settings_launcher_section_date_time"><![CDATA[Tarih & zaman]]></string>
+    <string name="list_other_track_previous">Müzik: Önceki</string>
+    <string name="list_other_expand_notifications_panel">Bildirim panelini aç</string>
+    <string name="list_other_nop">Hiçbir şey yapma</string>
+    <string name="settings_meta_view_code">Kaynak kodunu göster</string>
+    <string name="settings_meta_report_bug">Hatayı bildirin</string>
+    <string name="list_apps_search_hint">Uygulamaları Ara</string>
+    <string name="list_other_list">Tüm Uygulamalar</string>
+    <string name="list_other_list_favorites">Favori Uygulamalar</string>
+    <string name="list_other_volume_up">Müzik: Daha Yüksek</string>
+    <string name="list_other_volume_down">Müzik: Daha Kısık</string>
+    <string name="list_other_track_next">Müzik: Sonraki</string>
+    <string name="list_other_lock_screen">Ekranı Kilitle</string>
+    <string name="settings_theme_text_shadow">Metin gölgesi</string>
+    <string name="settings_clock_localized">Lokalize tarih formatını kullan</string>
+    <string name="settings_clock_show_seconds">Saniyeleri gösteri</string>
+    <string name="settings_clock_flip_date_time">Tarih ile zamanı yer değiştir</string>
+    <string name="settings_theme_wallpaper">Duvar kağıdı seç</string>
+    <string name="settings_launcher_section_display">Ekran</string>
+    <string name="settings_display_screen_timeout_disabled">Ekranı açık tut</string>
+    <string name="settings_display_rotate_screen">Ekranı döndür</string>
+    <string name="settings_launcher_section_functionality">İşlevsellik</string>
+    <string name="settings_enabled_gestures_edge_swipe_summary">Ekranın köşesinden kaydırın</string>
+    <string name="settings_enabled_gestures_edge_swipe_edge_width">Köşe genişliği</string>
+    <string name="settings_functionality_auto_launch">Arama sonuçlarını başlatın</string>
+    <string name="settings_functionality_auto_keyboard">Aramak için klavyeyi açın</string>
+    <string name="settings_enabled_gestures_double_swipe">Çift kaydırma hareketleri</string>
+    <string name="settings_enabled_gestures_double_swipe_summary">İki parmakla kaydır</string>
+    <string name="settings_enabled_gestures_edge_swipe">Köşeden kaydırma hareketleri</string>
+    <string name="settings_apps_hidden">Gizli uygulamalar</string>
+    <string name="settings_theme_color_theme_item_default">Varsayılan</string>
+    <string name="settings_theme_color_theme_item_dark">Karanlık</string>
+    <string name="settings_theme_color_theme_item_light">Aydınlık</string>
+    <string name="settings_theme_background_item_transparent">Şeffaf</string>
+    <string name="settings_theme_background_item_dim">Loş</string>
+    <string name="settings_theme_background_item_blur">Bulanık</string>
+    <string name="settings_theme_background_item_solid">Tek renk</string>
+    <string name="settings_theme_font_item_system_default">Sistem varsayılanı</string>
+    <string name="settings_theme_font_item_sans_serif">Sans Serif</string>
+    <string name="settings_theme_font_item_serif">Çıkıntılı</string>
+    <string name="settings_launcher_sensitivity">Hassasiyet</string>
+    <string name="settings_launcher_section_apps">Uygulamalar</string>
+    <string name="settings_list_layout">Uygulama listesinin düzeni</string>
+    <string name="settings_list_layout_item_default">Varsayılan</string>
+    <string name="settings_list_layout_item_text">Metin</string>
+    <string name="settings_list_layout_item_grid">Izgara</string>
+    <string name="settings_meta_cant_select_launcher">Uygulama Detayı</string>
+    <string name="settings_meta_reset">Ayarları Sıfırlayın</string>
+    <string name="settings_meta_reset_confirm">Tüm tercihlerinizi bir kenara bırakacaksınız. Devam mı?</string>
+    <string name="settings_theme_font_item_monospace">Tek uzay</string>
+    <string name="settings_theme_font_item_serif_monospace">Serif tek uzay</string>
+    <string name="settings_meta_fork_contact">Fork\'un geliştiricisiyle iletişime geçin</string>
+    <string name="settings_meta_join_chat">µLauncher sohbetine katılın</string>
+    <string name="settings_meta_privacy">Gizlilik Politikası</string>
+    <string name="settings_meta_contact">Asıl geliştirici ile iletişime geçin</string>
+    <string name="settings_meta_discord">Discord\'umuza katılın!</string>
+    <string name="list_title_view">Tüm Uygulamalar</string>
+    <string name="list_title_favorite">Favori Uygulamalar</string>
+    <string name="list_title_hidden">Gizli Uygulamalar</string>
+    <string name="activity_select_action_title">Uygulama Seç</string>
+    <string name="list_tab_app">Uygulamalar</string>
+    <string name="list_tab_other">Diğer</string>
+    <string name="list_app_delete">Sil</string>
+    <string name="list_app_info">Uygulama Detayı</string>
+    <string name="list_app_favorite_add">Favorilere ekle</string>
+    <string name="list_app_favorite_remove">Favorilerden çıkar</string>
+    <string name="list_app_hidden_add">Gizle</string>
+    <string name="list_app_hidden_remove">Göster</string>
+    <string name="list_app_rename">Adlandır</string>
+    <string name="alert_requires_android_m">Bu işlevsellik Android 6.0 veya üstünü gerektirir.</string>
+    <string name="snackbar_app_hidden">Uygulama gizlendi. Ayarlar\'da tekrar görünür hale getirebilirsiniz.</string>
+    <string name="undo">Geri Al</string>
+    <string name="toast_device_admin_not_enabled">Ekranı kilitlemek için µlauncher\'ın cihaz yöneticisi olması gerekir.</string>
+    <string name="device_admin_explanation">Bu, kilit ekranı eylemi için gereklidir.</string>
+    <string name="device_admin_description">Kilit ekranı eylemini etkinleştir</string>
+    <string name="alert_no_torch_found">Fenerli kamera algılanmadı.</string>
+    <string name="alert_torch_access_exception">Hata: Fenere erişilemiyor.</string>
+    <string name="settings_actions_lock_method">Ekranı kilitleme yöntemini seçin</string>
+    <string name="dialog_cancel">İptal</string>
+    <string name="dialog_rename_title">Yeniden Adlandır %1$s</string>
+    <string name="settings_theme_color_theme_item_dynamic">Dinamik</string>
+    <string name="settings_clock_color">Renk</string>
+    <string name="dialog_select_color_red">Kırmızı</string>
+    <string name="dialog_select_color_alpha">Alfa</string>
+    <string name="dialog_select_color_blue">Mavi</string>
+    <string name="dialog_select_color_green">Yeşil</string>
+    <string name="dialog_select_color_color_hex">Renk</string>
+    <string name="dialog_choose_color_title">Renk seçin</string>
+</resources>

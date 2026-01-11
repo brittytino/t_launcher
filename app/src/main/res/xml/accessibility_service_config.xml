@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    The accessibility service is only used for locking the screen.
+
+    * android:accessibilityEventTypes is unspecified intentionally, as we don't want to listen to any
+    events.
+    * android:packageNames is set to an empty list, as we don't want to interact or read data from
+    any app.
+-->
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accessibilityEventTypes="typeWindowStateChanged"
-    android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagDefault"
-    android:canRetrieveWindowContent="true"
+    android:canRequestEnhancedWebAccessibility="false"
+    android:canRequestFilterKeyEvents="false"
+    android:canRequestTouchExplorationMode="false"
+    android:canRetrieveWindowContent="false"
     android:description="@string/accessibility_service_description"
-    android:notificationTimeout="100" />
+    android:packageNames=""
+    android:settingsActivity="de.jrpie.android.launcher.ui.settings.SettingsActivity" />

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_select_gesture_row_container"
+    style="@style/AlertDialogCustom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/dialog_select_gesture_row_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/dialog_select_gesture_row_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="start"
+            android:textSize="15sp"
+            tools:text="Action label" />
+
+
+        <TextView
+            android:id="@+id/dialog_select_gesture_row_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textSize="11sp"
+            android:visibility="visible"
+            tools:text="A verbose description of how to perform the action" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dialog_select_gesture_row_icon"
+        android:layout_width="@dimen/app_icon_side"
+        android:layout_height="@dimen/app_icon_side"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no"
+        tools:srcCompat="@drawable/baseline_flashlight_on_24" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

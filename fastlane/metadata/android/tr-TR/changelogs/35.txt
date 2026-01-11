@@ -1,0 +1,6 @@
+* Ayarlar için depolama biçimi yeniden düzenlendi. Eski biçim otomatik olarak dönüştürülecek.
+* Uygulama listesinden web'de arama yapma seçeneği eklendi.
+* Ekranı kilitlemek için tercih edilen yöntem olarak cihaz yöneticisini ayarlayın.
+* Bir erişilebilirlik hizmetini etkinleştirmenin şifrelemeyle çakışabileceğine dair bir uyarı eklendi.
+* Yeniden adlandırma iletişim kutusundaki bir hata düzeltildi.
+* Kilit ekranı iletişim kutusu kaydırılabilir hale getirildi.

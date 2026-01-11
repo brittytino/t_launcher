@@ -1,0 +1,4 @@
+* Applications favorites
+* Option de cacher des applications
+* Prise en charge des applications avec plusieurs activités principales
+* Correction de la mise en page des paramètres sur les petits écrans

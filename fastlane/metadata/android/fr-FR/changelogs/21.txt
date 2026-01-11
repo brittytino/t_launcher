@@ -1,0 +1,15 @@
+- Traduction en chinois (merci, yzqzss !)
+- Traduction améliorée en français (merci, toby-bro !)
+- Traduction améliorée en allemand
+
+Toutes les applications :
+- Suppression des trois points dans la liste des applications (utilisez un long clic à la place)
+- Appuyer sur entrer ouvre la première application correspondant à la requête
+- Correction du contournement pour le bug lors de l'ouverture du clavier en mode plein écran
+- Suppression de l'option de désinstallation pour les applications système
+- Le bouton d'accueil fonctionne correctement maintenant
+
+Paramètres :
+- Correction des paramètres pour les petits écrans
+- Suppression du réglage de sensibilité (tout le monde le mettait de toute façon à maximum)
+- Refonte des paramètres de date et d'heure

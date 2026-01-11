@@ -1,0 +1,1 @@
+Une application d'écran d'accueil minimaliste pour Android.

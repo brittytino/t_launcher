@@ -1,0 +1,9 @@
+* Chat on Matrix and Discord
+* Improved gesture detection
+* Improved descriptions of gestures
+* New action: Lock screen - thank you, yzqzss!
+* New action: Toggle torch
+* New action: Open quick settings
+* Improved French translation - thank you, toby-bro!
+* Improved Portugese translation - thank you, "Vossa Excelencia"!
+* Fixed some bugs

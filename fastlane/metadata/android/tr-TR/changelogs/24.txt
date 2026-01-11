@@ -1,0 +1,8 @@
+* Renk teması, yazı tipi, arka plan, monokrom simgeler için seçenekler eklendi
+* Tarih ve saat için seçenekler eklendi
+* Döndürmeye izin verme seçeneği eklendi
+* İyileştirilmiş arama algoritması
+* Brezilya Portekizcesine çeviri - teşekkürler, Jonatas de Almeida Barros!
+* Ayarlardan seçilen uygulamaların kaybolmasına neden olan bir hata düzeltildi
+* İyileştirilmiş kod kalitesi
+* Güncellenmiş çeviriler

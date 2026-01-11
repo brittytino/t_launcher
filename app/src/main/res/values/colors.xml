@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@android:color/white</color>
-    <color name="colorPrimaryDark">@android:color/darker_gray</color>
-    <color name="colorAccent">#CFD8DC</color>
+    <color name="finnmglasTheme_background_color">#252827</color>
+    <color name="finnmglasTheme_accent_color">#5555ff</color>
+    <color name="finnmglasTheme_text_color">#fff</color>
 
-    <!--White-->
-    <color name="white">#FFFFFF</color>
-    <color name="whiteTrans90">#E6FFFFFF</color>
-    <color name="whiteTrans80">#CCFFFFFF</color>
-    <color name="whiteTrans50">#80FFFFFF</color>
-    <color name="whiteInverse">#000000</color>
-    <color name="whiteInverseTrans10">#1A000000</color>
-    <color name="whiteInverseTrans25">#40000000</color>
-    <color name="whiteInverseTrans50">#80000000</color>
-    <color name="whiteInverseTrans80">#CC000000</color>
-    <color name="whiteInverseTrans90">#E6000000</color>
+    <color name="darkTheme_background_color">#000</color>
+    <color name="darkTheme_accent_color">#444</color>
+    <color name="darkTheme_text_color">#fff</color>
 
-    <!--Black-->
-    <color name="black">#000000</color>
-    <color name="blackTrans90">#E6000000</color>
-    <color name="blackTrans80">#CC000000</color>
-    <color name="blackTrans50">#80000000</color>
-    <color name="blackInverse">#FFFFFF</color>
-    <color name="blackInverseTrans10">#1AFFFFFF</color>
-    <color name="blackInverseTrans25">#40FFFFFF</color>
-    <color name="blackInverseTrans50">#80FFFFFF</color>
-    <color name="blackInverseTrans80">#CCFFFFFF</color>
-    <color name="blackInverseTrans90">#E6FFFFFF</color>
-
+    <color name="lightTheme_background_color">#fff</color>
+    <color name="lightTheme_accent_color">#9999ff</color>
+    <color name="lightTheme_text_color">#000</color>
 </resources>
+

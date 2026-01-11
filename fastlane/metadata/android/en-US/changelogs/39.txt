@@ -1,0 +1,5 @@
+* Basic support for pinned shortcuts
+* New action: Play / pause media playback
+* New gestures: Tap and swipe up / down / left / right
+
+* Improved Chinese translation (Thank you, Symphonic9861!)

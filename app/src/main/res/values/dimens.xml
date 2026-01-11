@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="alphabet_recycler_margin_bottom">16dp</dimen>
-    <dimen name="alphabet_recycler_margin_end">10dp</dimen>
-    <dimen name="alphabet_recycler_margin_start">320dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="app_icon_side">40dip</dimen>
 </resources>

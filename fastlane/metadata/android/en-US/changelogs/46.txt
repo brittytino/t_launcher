@@ -1,0 +1,2 @@
+* Fixed several bugs related to widgets
+* Copy device info when clicking the version number (thank you, wassupluke!)

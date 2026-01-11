@@ -1,0 +1,15 @@
+- Çince çeviri (teşekkürler, yzqzss!)
+- Fransızca çeviri iyileştirildi (teşekkürler, toby-bro!)
+- Almanca çeviri iyileştirildi
+
+Tüm Uygulamalar:
+- Uygulama listesindeki üç nokta kaldırıldı (bunun yerine uzun tıklama kullanın)
+- Enter'a basıldığında sorguyla eşleşen ilk uygulama açılıyor
+- Klavyeyi tam ekran modunda açarken oluşan hata için geçici çözüm düzeltildi
+- Sistem uygulamaları için kaldırma seçeneği kaldırıldı
+- Ana Sayfa Düğmesi artık düzgün çalışıyor
+
+Ayarlar:
+- Küçük ekranlar için ayarlar düzeltildi
+- Hassasiyet ayarı kaldırıldı (herkes zaten maksimuma ayarlıyordu)
+- Tarih ve saat ayarları yeniden düzenlendi

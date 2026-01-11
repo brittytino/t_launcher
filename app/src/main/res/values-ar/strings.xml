@@ -1,141 +1,341 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Arabic -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app">تطبيق</string>
-    <string name="set_as_default_launcher">تعيين كمشغل افتراضي</string>
-    <string name="set_as_default_launcher_u"><u>تعيين كمشغل افتراضي</u></string>
-    <string name="set_as_default_launcher_first">تعيين كمشغل افتراضي</string>
-    <string name="_0">صفر</string>
-    <string name="_1">واحد</string>
-    <string name="_2">إثنان</string>
-    <string name="_3">ثلاثة</string>
-    <string name="_4">أربعة</string>
-    <string name="_5">خمسة</string>
-    <string name="_6">ستة</string>
-    <string name="_7">سبعة</string>
-    <string name="_8">ثمانية</string>
-    <string name="app_drawer_tips">نصيحة: ابدأ في كتابة اسم التطبيق لتشغيله تلقائيًا</string>
-    <string name="okay">حسنًا</string>
-    <string name="cool">رائع!</string>
-    <string name="tip_start_typing_for_rename">نصيحة: ابدأ الكتابة بتغيير اسم التطبيق</string>
-    <string name="your_wallpaper_will_update_shortly">سيتم تحديث الخلفية الخاصة بك قريبًا</string>
-    <string name="olauncher_is_not_default_launcher">Olauncher ليس المشغل الافتراضي. قد يفشل التحديث اليومي للخلفية.</string>
-    <string name="long_press_to_enable">اضغط مطولًا للتمكين</string>
-    <string name="no_hidden_apps">لا توجد تطبيقات مخفية</string>
-    <string name="hidden_apps">تطبيقات مخفية</string>
-    <string name="swipe_left_app_disabled">التمرير لليسار معطّل</string>
-    <string name="swipe_right_app_disabled">التمرير لليمين معطّل</string>
-    <string name="hidden_apps_message">ملاحظة: اضغط على \"Olauncher\" أعلى الصفحة للعثور على تطبيقاتك المخفية.  المزيد من التفاصيل متوفرة في صفحة \"حول\" أدناه.</string>
-    <string name="swipe_down_for">اسحب لأسفل من أجل</string>
-    <string name="search">يبحث</string>
-    <string name="notifications">إشعارات</string>
-    <string name="accessibility_disclosure">يرجى تشغيل أو إيقاف تشغيل خدمة الوصول في Olauncher في إعدادات جهازك لتمكين هذه الميزة أو تعطيلها.       يرجى ملاحظة أن هذه الخدمة تُستخدم فقط للسماح لك بإيقاف تشغيل شاشة جهازك باستخدام إيماءة النقر المزدوج. خدمة الوصول لدينا لا تجمع أو تشارك أي بيانات.</string>
-    <string name="accept">يقبل</string>
-    <string name="permission">إذن</string>
-    <string name="double_tap_lock">النقر المزدوج للقفل</string>
-    <string name="enable">تشغيل</string>
-    <string name="disable">إيقاف</string>
-    <string name="not_working">لا يعمل؟</string>
-    <string name="info">معلومات</string>
-    <string name="delete">يمسح</string>
-    <string name="text_size">حجم الخط</string>
-    <string name="enabled">ممكّن</string>
-    <string name="disabled">مُطفأ</string>
-    <string name="please_turn_on_double_tap_to_unlock">يرجى تشغيل النقر المزدوج لفتح القفل</string>
-    <string name="launcher_failed_to_lock_device">فشل Olauncher في قفل الجهاز. يرجى التحقق من إعدادات التطبيق الخاص بك.</string>
-    <string name="long_press_to_select_app">اضغط مطوّلًا لاختيار التطبيق</string>
-    <string name="unable_to_open_app">تعذر فتح التطبيق</string>
-    <string name="copied">نُسخ</string>
-    <string name="system_app_cannot_delete">ﻻ يمكن حذف تطبيقات النظام</string>
-    <string name="type_a_new_app_name_first">اكتب اسمًا جديدًا للتطبيق أولاً</string>
-    <string name="adapter_show">يعرض</string>
-    <string name="adapter_hide">يخفي</string>
-    <string name="app_text_color">لون الخط</string>
-    <string name="double_tap_to_lock_screen">انقر مرتين لقفل الشاشة</string>
-    <string name="admin_permission_message">يعد Olauncher باستخدام إذن قفل الشاشة بشكل مسؤول. لا يقوم Olauncher بجمع أو مشاركة أي بيانات.</string>
-    <string name="about">حول</string>
-    <string name="off">ﻻ</string>
-    <string name="on">نعم</string>
-    <string name="black">أسود</string>
-    <string name="white">أبيض</string>
-    <string name="change_default_launcher">تغيير المشغل الافتراضي</string>
-    <string name="privacy">خصوصية</string>
-    <string name="share">شارك</string>
-    <string name="share_now">يشارك اﻵن</string>
-    <string name="rate">قيّم</string>
-    <string name="rate_now">قيّم اﻵن</string>
-    <string name="follow">تابع</string>
-    <string name="email">بريد</string>
-    <string name="donate">تبرّع</string>
-    <string name="swipe_up_for_apps">1. مرر لأعلى لجميع التطبيقات\n2. اضغط مطوّلًا في أي مكان للإعدادات</string>
-    <string name="apps_on_home_screen">التطبيقات على الشاشة الرئيسية</string>
-    <string name="daily_wallpaper_update">تحديث الخلفية يوميّا</string>
-    <string name="left">يسار</string>
-    <string name="right">يمين</string>
-    <string name="center">مركز</string>
-    <string name="home_layout_alignment">محاذاة التطبيق</string>
-    <string name="swipe_left_app">افتح عند التمرير لليسار</string>
-    <string name="swipe_right_app">افتح عند التمرير لليمين</string>
-    <string name="auto_show_keyboard">العرض التلقائي للوحة المفاتيح</string>
-    <string name="hide">يخفي</string>
-    <string name="status_bar">أظهر شريط الحالة</string>
-    <string name="rename">إعادة تسمية</string>
-    <string name="show_date_time">إظهار التاريخ والوقت</string>
-    <string name="appearance">المظهر</string>
-    <string name="gestures">إيماءات</string>
-    <string name="theme_mode">النمط</string>
-    <string name="system_default">نظام</string>
-    <string name="dark">مظلم</string>
-    <string name="light">مضيء</string>
-    <string name="welcome_to_olauncher_settings">مرحبًا بك في الإعدادات!\n\nتذكر، إذا كان لديك أي سؤال، فإن صفحة "حول" لدينا تحتوي على الإجابة.</string>
-    <string name="rate_us_message">مرحبًا ، لن ترى هذه الرسالة مرة أخرى.
-        \n\nإذا كنت تحب Olauncher ، فهل يمكنك أن تعطينا تصنيف 5 نجوم؟ يساعدنا ذلك على تحسين تصنيفنا ويجعلنا سعداء. شكرًا لك!</string>
-    <string name="share_message">مرحبا، نحن بحاجة لمساعدتكم! في العام الماضي تجاوزنا مليون عملية تنزيل. نريد هذا العام أن نصل إلى مليون آخرين ولكن لا يمكننا القيام بذلك بمفردنا.
-        \n\nهل تتفضل بمشاركة Olauncher مع أصدقائك، من فضلك؟ شكرا لك، ويوم رائع!</string>
-    <string name="keyboard_message">مرحبًا ، لوحة المفاتيح هي أسرع طريقة للعثور على التطبيقات وتشغيلها في Olauncher. هل يمكننا أن نطلب منك الاحتفاظ بهذا الأمر لبضعة أيام أخرى ثم اتخاذ القرار؟ الاختيار دائما لك.</string>
-    <string name="digital_wellbeing_message">إذا كنت تريد تعيين حدود زمنية لتطبيقات معينة، فيمكن أن تساعدك ميزة الرفاهية الرقمية في Android على القيام بذلك.
-        \n\nيرجى البحث عن الرفاهية الرقمية في إعدادات هاتفك وتمكينها.</string>
-    <string name="app_usage_message">لعرض/إخفاء وقت استخدام الشاشة على الشاشة الرئيسية، يرجى السماح أو منع إذن استخدام التطبيق.
-        \n\nملاحظة: لا يتم جمع أي بيانات حول استخدام التطبيقات. يتم معالجة كل شيء على جهازك.</string>
-    <string name="pro_message">يحتوي Olauncher أيضًا على إصدار احترافي يسمى Pro Launcher. يحتوي على ميزات إضافية مثل الطقس، والأدوات، والخطوط، والمجلدات، وخلفيات AMOLED، وما إلى ذلك.
-        \n\nإنه أيضًا أفضل طريقة لدعم مطوري Olauncher. تحقق من ذلك!</string>
-    <string name="wallpaper_message">يقدم Olauncher خلفيات جميلة جديدة يوميًا. امنح شاشتك الرئيسية مظهرًا جديدًا كل يوم، مجانًا!
-        \n\nهل ترغب في تجربته؟</string>
-    <string name="accessibility_service_description">إذن الوصول مطلوب لتمكين النقر المزدوج للقفل. أي بيانات حصل عليها Olauncher عبر هذه الخدمة لن تترك جهازك.</string>
-    <string name="support_olauncher_for_free">ادعم Olauncher مجانًا باستخدام رابط الشراكة التابع لشركة Amazon.</string>
-    <string name="support_olauncher_message">في كل مرة تشتري شيئًا باستخدام الرابط الخاص بنا ، نحصل على عمولة صغيرة. يرجى حفظ الرابط واستخدامه في أي وقت تتسوق فيه عبر الإنترنت. شكرًا لك!</string>
-    <string name="open">افتح الرابط</string>
-    <string name="copy">ينسخ</string>
-    <string name="close">يغلق</string>
-    <string name="not_now">ليس الآن</string>
-    <string name="public_roadmap">خارطة طريق Olauncher العامة</string>
-    <string name="instagram">انستغرام</string>
-    <string name="twitter">تويتر</string>
-    <string name="roadmap">خريطة الطريق</string>
-    <string name="date">تاريخ</string>
-    <string name="date_only">التاريخ فقط</string>
-    <string name="bottom_on">المحاذاة ﻷسفل</string>
-    <string name="bottom_off">المحاذاة ﻷعلى</string>
-    <string name="please_set_olauncher_as_default_first">يرجى تعيين Olauncher كمشغل افتراضي أولاً</string>
-    <string name="affiliate">شركة تابعة</string>
-    <string name="app_not_found">التطبيق غير موجود</string>
-    <string name="unable_to_launch_app">تعذر تشغيل التطبيق</string>
-    <string name="search_for_Launcher_or_home_app">ابحث عن Launcher أو Home app</string>
-    <string name="swipe_left_app_enabled">التمرير لليسار مفعّل</string>
-    <string name="swipe_right_app_enabled">التمرير لليمين مفعّل</string>
-    <string name="are_you_using_your_phone_or_is_your_phone_using_you">هل تستخدم هاتفك أم أن هاتفك يستخدمك؟</string>
-    <string name="about_olauncher">عن Olauncher</string>
-    <string name="learn_more">تعلم أكثر</string>
-    <string name="did_you_know">هل كنت تعلم؟</string>
-    <string name="leave_a_review">أخبرنا رأيك</string>
-    <string name="review_message">Olauncher هو وسيظل دائمًا مجانيًا تمامًا. ليس لديها إعلانات. لا يجمع أي بيانات. والأهم من ذلك أنه يساعدك على تقليل وقت الشاشة والعيش حياة رقمية أكثر صحة.
-        \n\nنحن نعتقد أن التحول إلى الحد الأدنى من المشغل هو قرار ممتاز. على الرغم من أننا متحيزون بشكل واضح، إلا أننا نأمل أن تستمتع بالتجربة. لا تتردد في مشاركة أفكارك معنا!</string>
-    <string name="screen_time">وقت الشاشة</string>
-    <string name="alignment_changed">تم تغيير المحاذاة ✅</string>
-    <string name="home_screen">الشاشة الرئيسية</string>
-    <string name="hey">مرحبا</string>
-    <string name="more_features">مزايا إضافية…</string>
-    <string name="new_year_wish">إليك عامًا أفضل من كل ما سبقه. سنة جديدة سعيدة!</string>
-    <string name="new_year_wish_1">لا يهم كيف مضى شهر يناير. لا يزال لديك بقية العام لتقدم أداءً أفضل من أي وقت مضى.</string>
-    <string name="cheers">هتافات!</string>
-    <string name="notification_bar">شريط الإشعارات</string>
+    <string name="alert_cant_open_title">لا يمكن فتح التطبيق</string>
+    <string name="alert_cant_open_message">هل تريد تعديل اعداداته؟</string>
+    <string name="toast_cant_open_message">افتح الاعدادات لاختيار أمر لهذه الإيماءة</string>
+    <string name="settings_title">الاعدادات</string>
+    <string name="settings_tab_actions">الأوامر</string>
+    <string name="settings_tab_launcher">المشغل</string>
+    <string name="settings_tab_meta">بيانات</string>
+    <string name="settings_gesture_back">رجوع</string>
+    <string name="settings_gesture_up">أعلى</string>
+    <string name="settings_gesture_double_up">لأعلى بأصبعين</string>
+    <string name="settings_gesture_description_double_up">اسحب لأعلى بأصبعين</string>
+    <string name="settings_gesture_description_tap_up">أنقر ثم اسحب لأعلى</string>
+    <string name="settings_gesture_description_back">اضغط على زر الرجوع</string>
+    <string name="settings_gesture_description_up">اسحب لأعلى</string>
+    <string name="settings_gesture_tap_up">نقرة + أعلى</string>
+    <string name="settings_gesture_down">أسفل</string>
+    <string name="settings_gesture_description_down">اسحب لأسفل</string>
+    <string name="settings_gesture_tap_down">نقرة + لأسفل</string>
+    <string name="settings_gesture_double_down">لأسفل بأصبعين</string>
+    <string name="settings_gesture_left">يسار</string>
+    <string name="settings_gesture_description_left">اسحب من اليسار</string>
+    <string name="settings_gesture_tap_left">نقرة + يسار</string>
+    <string name="settings_gesture_description_tap_left">أنقر ثم اسحب إلى اليسار</string>
+    <string name="settings_gesture_double_left">يسار بأصبعين</string>
+    <string name="settings_gesture_right">يمين</string>
+    <string name="settings_gesture_description_right">اسحب إلى اليمين</string>
+    <string name="settings_gesture_tap_right">نقرة + يمين</string>
+    <string name="settings_gesture_description_tap_right">أنقر ثم اسحب إلى اليمين</string>
+    <string name="settings_gesture_double_right">يمين بأصبعين</string>
+    <string name="settings_gesture_description_double_right">اسحب إلى اليمين بأصبعين</string>
+    <string name="settings_gesture_right_top_edge">يمين (في الأعلى)</string>
+    <string name="settings_gesture_right_bottom_edge">يمين (في الأسفل)</string>
+    <string name="settings_gesture_description_right_bottom_edge">اسحب إلى اليمين من أسفل الشاشة</string>
+    <string name="settings_gesture_left_top_edge">يسار (في الأعلى)</string>
+    <string name="settings_gesture_description_left_top_edge">اسحب إلى اليسار من أعلى الشاشة</string>
+    <string name="settings_gesture_up_left_edge">أعلى (الحافة اليسرى)</string>
+    <string name="settings_gesture_description_up_left_edge">اسحب إلى الأعلى من حافة الشاشة اليسرى</string>
+    <string name="settings_gesture_up_right_edge">أعلى (الحافة اليمنى)</string>
+    <string name="settings_gesture_down_left_edge">أسفل (الحافة اليسرى)</string>
+    <string name="settings_gesture_description_down_left_edge">اسحب إلى الأسفل من حافة الشاشة اليسرى</string>
+    <string name="settings_gesture_down_right_edge">أسفل (الحافة اليمنى)</string>
+    <string name="settings_gesture_description_swipe_larger">أعلى اليسار -&gt; وسط اليمين -&gt; أسفل اليسار</string>
+    <string name="settings_gesture_description_swipe_larger_reverse">أسفل اليسار -&gt; وسط اليمين -&gt; أعلى اليسار</string>
+    <string name="settings_gesture_description_swipe_smaller">أعلى اليمين -&gt; وسط اليسار -&gt; أسفل اليمين</string>
+    <string name="settings_gesture_description_swipe_v">أعلى اليسار -&gt; الأسفل الوسط -&gt; أعلى اليمين</string>
+    <string name="settings_gesture_swipe_v_reverse">V (معكوس)</string>
+    <string name="settings_gesture_description_swipe_v_reverse">أعلى اليمين -&gt; الأسفل الوسط -&gt; أعلى اليسار</string>
+    <string name="settings_gesture_description_swipe_lambda">أسفل اليسار -&gt; أعلى الوسط -&gt; أسفل اليمين</string>
+    <string name="settings_gesture_swipe_lambda_reverse">Λ (معكوس)</string>
+    <string name="settings_gesture_vol_up">زر رفع الصوت</string>
+    <string name="settings_gesture_description_vol_up">اضغط على زر رفع الصوت</string>
+    <string name="settings_gesture_vol_down">زر خفض الصوت</string>
+    <string name="settings_gesture_description_vol_down">اضغط على زر خفض الصوت</string>
+    <string name="settings_gesture_double_click">نقرة مزدوجة</string>
+    <string name="settings_gesture_long_click">نقرة مطولة</string>
+    <string name="settings_gesture_description_long_click">أنقر مطولًا في مكان فارغ على الشاشة</string>
+    <string name="settings_gesture_date">التاريخ</string>
+    <string name="settings_gesture_description_date">أنقر على التاريخ</string>
+    <string name="settings_gesture_time">الوقت</string>
+    <string name="settings_gesture_description_time">أنقر على الوقت</string>
+    <string name="settings_apps_choose">اختر تطبيق</string>
+    <string name="settings_apps_install">ثبت تطبيقات</string>
+    <string name="settings_launcher_section_appearance">المظهر</string>
+    <string name="settings_theme_color_theme">السمة</string>
+    <string name="settings_gesture_swipe_larger"><![CDATA[>]]></string>
+    <string name="settings_gesture_swipe_larger_reverse"><![CDATA[> (معكوس)]]></string>
+    <string name="settings_gesture_swipe_smaller"><![CDATA[<]]></string>
+    <string name="settings_gesture_swipe_smaller_reverse"><![CDATA[< (Reverse)]]></string>
+    <string name="settings_gesture_swipe_v">V</string>
+    <string name="settings_gesture_swipe_lambda">Λ</string>
+    <string name="settings_theme_color_theme_item_dark">داكن</string>
+    <string name="settings_theme_color_theme_item_light">فاتح</string>
+    <string name="settings_theme_color_theme_item_dynamic">متغير</string>
+    <string name="settings_theme_text_shadow">ظل النص</string>
+    <string name="settings_theme_background_item_transparent">شفاف</string>
+    <string name="settings_theme_background_item_dim">مظلل</string>
+    <string name="settings_theme_background_item_blur">مُموه</string>
+    <string name="settings_theme_background_item_solid">لون ثابت</string>
+    <string name="settings_theme_font">الخط</string>
+    <string name="settings_theme_font_item_system_default">خط النظام</string>
+    <string name="settings_theme_font_item_sans_serif">بدون تذييل</string>
+    <string name="settings_theme_font_item_serif">مذيل</string>
+    <string name="settings_theme_font_item_monospace">أحادي المسافة</string>
+    <string name="settings_theme_monochrome_icons">أيقونات تطبيقات أحادية اللون</string>
+    <string name="settings_clock_color">اللون</string>
+    <string name="settings_clock_time_visible">أظهر الوقت</string>
+    <string name="settings_clock_date_visible">أظهر التاريخ</string>
+    <string name="settings_clock_localized">استخدم تنسيق التاريخ المحلي</string>
+    <string name="settings_clock_flip_date_time">إقلب مكان التاريخ مع الوقت</string>
+    <string name="settings_theme_wallpaper">اختر خلفية</string>
+    <string name="settings_launcher_section_display">العرض</string>
+    <string name="settings_display_screen_timeout_disabled">حافظ على بقاء الشاشة قيد التشغيل</string>
+    <string name="settings_display_hide_status_bar">إخفِ شريط الحالة</string>
+    <string name="settings_display_rotate_screen">تدوير الشاشة</string>
+    <string name="settings_launcher_section_functionality">الوظائف</string>
+    <string name="settings_enabled_gestures_double_swipe">إيماءات التمرير المزدوج</string>
+    <string name="settings_enabled_gestures_double_swipe_summary">اسحب باستخدام أصبعين</string>
+    <string name="settings_enabled_gestures_edge_swipe">إيماءات تمرير الحافة</string>
+    <string name="settings_enabled_gestures_edge_swipe_edge_width">عرض الحواف</string>
+    <string name="settings_functionality_auto_launch">إظهار نتائج البحث</string>
+    <string name="settings_functionality_auto_launch_summary">اضغط مسافة لتعطيل هذه الميزة مؤقتًا</string>
+    <string name="settings_functionality_search_web">ابحث في الويب</string>
+    <string name="settings_functionality_auto_keyboard">أظهر لوحة المفاتيح عند البحث</string>
+    <string name="settings_launcher_sensitivity">الحساسية</string>
+    <string name="settings_launcher_section_apps">التطبيقات</string>
+    <string name="settings_apps_hidden">التطبيقات المخفية</string>
+    <string name="settings_launcher_section_date_time"><![CDATA[Date & time]]></string>
+    <string name="settings_apps_hide_private_space_apps">إخفِ المساحة الخاصة من قائمة التطبيقات</string>
+    <string name="settings_list_layout">تخطيط قائمة التطبيقات</string>
+    <string name="settings_list_layout_item_default">الافتراضي</string>
+    <string name="settings_list_layout_item_text">نص</string>
+    <string name="settings_list_layout_item_grid">شبكة</string>
+    <string name="settings_general_choose_home_screen">تعيين μauncher كشاشة المنزل</string>
+    <string name="settings_meta_cant_select_launcher">معلومات التطبيق</string>
+    <string name="settings_meta_reset">إعادة تعيين الإعدادات</string>
+    <string name="settings_meta_reset_confirm">أنت على وشك تجاهل كل تفضيلاتك، هل تريد الإكمال؟</string>
+    <string name="settings_meta_view_code">عرض شيفرة المصدر</string>
+    <string name="settings_meta_report_bug">الإبلاغ عن خطأ</string>
+    <string name="dialog_report_bug_button_clipboard">النسخ إلى الحافظة</string>
+    <string name="dialog_report_bug_security_info">يرجى عدم الإبلاغ عن الثغرات الأمنية علنًا على Github ، استخدم ما يلي بدلاً من ذلك:</string>
+    <string name="dialog_report_bug_button_security">الإبلاغ عن ثغرة أمنية</string>
+    <string name="dialog_report_bug_create_report">إنشاء تقرير</string>
+    <string name="settings_meta_fork_contact">اتصل بمطور النسخة</string>
+    <string name="settings_meta_join_chat">انضم إلى دردشة μauncher</string>
+    <string name="settings_meta_donate">تبرع</string>
+    <string name="settings_meta_privacy">سياسة الخصوصية</string>
+    <string name="list_title_view">كل التطبيقات</string>
+    <string name="list_title_favorite">التطبيقات المفضلة</string>
+    <string name="list_title_hidden">التطبيقات المخفية</string>
+    <string name="list_title_private_space">المساحة الخاصة</string>
+    <string name="activity_select_action_title">اختر تطبيق</string>
+    <string name="list_tab_app">التطبيقات</string>
+    <string name="list_tab_other">أخرى</string>
+    <string name="list_app_delete">إلغاء التثبيت</string>
+    <string name="list_app_favorite_remove">إزالة من المفضلة</string>
+    <string name="list_app_hidden_add">إخفِ</string>
+    <string name="list_app_hidden_remove">أظهر</string>
+    <string name="list_app_rename">إعادة التسمية</string>
+    <string name="list_apps_search_hint">بحث</string>
+    <string name="list_apps_search_hint_no_auto_launch">بحث (بدون تشغيل تلقائي)</string>
+    <string name="list_other_settings">اعدادات التطبيق</string>
+    <string name="list_other_list">درج التطبيقات</string>
+    <string name="list_other_list_private_space">المساحة الخاصة</string>
+    <string name="list_other_toggle_private_space_lock">تبديل قفل المساحة الخاصة</string>
+    <string name="list_other_volume_up">ارفع الصوت</string>
+    <string name="settings_meta_discord">إنضم إلى مجموعة discord!</string>
+    <string name="list_other_volume_adjust">ضبط مستوى الصوت</string>
+    <string name="list_other_track_previous">الموسيقى: السابق</string>
+    <string name="list_other_track_play_pause">الموسيقى: تشغيل / ايقاف مؤقت</string>
+    <string name="list_other_recent_apps">التطبيقات الحديثة</string>
+    <string name="list_other_nop">لا تفعل شيئًا</string>
+    <string name="list_other_lock_screen">قفل الشاشة</string>
+    <string name="list_other_torch">تبديل الفلاش</string>
+    <string name="list_other_launch_other_launcher">تشغيل شاشة رئيسية أخرى</string>
+    <string name="pin_shortcut_title">أضف اختصارًا</string>
+    <string name="pin_shortcut_button_bind">اربط بإيماءة</string>
+    <string name="tutorial_title">درس تعليمي</string>
+    <string name="tutorial_start_text">👋\n\nخذ بضع ثوان لمعرفة كيفية استخدام هذا المشغل!</string>
+    <string name="tutorial_concept_title">المفهوم</string>
+    <string name="tutorial_concept_text_2">إنه برنامج مجاني (ترخيص MIT)!\nتأكد من مراجعة المستودع!</string>
+    <string name="tutorial_concept_label_version">النسخة</string>
+    <string name="tutorial_usage_title">الاستخدام</string>
+    <string name="tutorial_usage_text">تحتوي شاشة المنزل الخاصة بك على التاريخ والوقت المحليين. بدون أي مشتتات.</string>
+    <string name="tutorial_app_list_title">كل التطبيقات</string>
+    <string name="tutorial_app_list_text_2">بمجرد تطابق تطبيق واحد فقط، يتم تشغيله تلقائيًا.\nيمكن تعطيل ذلك عن طريق اضافة مساحة في بداية استعلام.</string>
+    <string name="tutorial_setup_title">الإعداد</string>
+    <string name="tutorial_setup_text">اخترنا لك بعض التطبيقات الافتراضية. يمكنك تغييرها الآن إذا كنت ترغب في ذلك:</string>
+    <string name="tutorial_setup_text_2">يمكنك أيضًا تغيير اختيارك لاحقًا.</string>
+    <string name="tutorial_finish_title">لنبدأ!</string>
+    <string name="tutorial_finish_button">ابدأ</string>
+    <string name="settings">الإعدادات</string>
+    <string name="ic_menu_alt">المزيد من الخيارات</string>
+    <string name="alert_requires_android_m">هذه الوظيفة تتطلب أندرويد 6 أو أحدث.</string>
+    <string name="alert_requires_android_v">هذه الوظيفة تتطلب أندرويد 15 أو أحدث.</string>
+    <string name="undo">تراجع</string>
+    <string name="snackbar_app_hidden">تم إخفاء التطبيق. يمكنك جعله مرئيًا مرة أخرى في الإعدادات.</string>
+    <string name="list_other_expand_settings_panel">الاعدادات السريعة</string>
+    <string name="toast_device_admin_not_enabled">يجب أن يكون μlauncher مسؤولًا من أجل قفل الشاشة.</string>
+    <string name="device_admin_explanation">هذا مطلوب لإجراء شاشة القفل.</string>
+    <string name="device_admin_description">تمكين إجراء شاشة القفل</string>
+    <string name="alert_no_torch_found">لم يتم اكتشاف كاميرا مع فلاش.</string>
+    <string name="alert_torch_access_exception">خطأ: لا يمكن الوصول إلى الفلاش.</string>
+    <string name="alert_recent_apps_failed">خطأ: فشل في إظهار التطبيقات الحديثة. (إذا قمت للتو بترقية التطبيق ، فحاول تعطيل خدمة الوصول وإعادة تمكينها في إعدادات الهاتف)</string>
+    <string name="alert_enable_accessibility_failed">خطأ: فشل في تمكين خدمة الوصول.</string>
+    <string name="toast_accessibility_service_not_enabled">لم يتم تمكين خدمة الوصول إلى μlauncher. يرجى تمكينه في الإعدادات</string>
+    <string name="toast_private_space_locked">المساحة الخاصة مقفلة</string>
+    <string name="toast_private_space_unlocked">المساحة الخاصة مفتوحة</string>
+    <string name="toast_private_space_not_available">المساحة الخاصة غير متوافرة</string>
+    <string name="tooltip_lock_private_space">قفل المساحة الخاصة</string>
+    <string name="tooltip_unlock_private_space">فتح المساحة الخاصة</string>
+    <string name="accessibility_service_name">μLauncher</string>
+    <string name="screen_lock_method_dialog_title">اختر طريقة القفل</string>
+    <string name="screen_lock_method_use_accessibility">استخدام خدمة إمكانية الوصول</string>
+    <string name="screen_lock_method_use_device_admin">استخدم مسؤول الجهاز</string>
+    <string name="settings_actions_lock_method">اختر طريقة لقفل الشاشة</string>
+    <string name="dialog_rename_title">اعادة تسمية %1$s</string>
+    <string name="dialog_select_color_red">أحمر</string>
+    <string name="dialog_select_color_alpha">شفافية</string>
+    <string name="dialog_select_color_blue">أزرق</string>
+    <string name="dialog_select_color_green">أخضر</string>
+    <string name="dialog_select_color_color_hex">اللون</string>
+    <string name="dialog_choose_color_title">اختر لونًا</string>
+    <string name="dialog_consent_accessibility_privileges">أدرك أن هذا سيمنح أذونات كثيرة لـμauncher.</string>
+    <string name="dialog_consent_accessibility_other_options">أدرك وجود خيارات أخرى (باستخدام أذونات مسؤول الجهاز أو زر الطاقة).</string>
+    <string name="dialog_consent_accessibility_consent">أوافق لـμlauncher باستخدام خدمة إمكانية الوصول لتوفير الوظائف ليس لها صلة بإمكانية الوصول.</string>
+    <string name="dialog_consent_accessibility_data_collection">أوافق على أن μlauncher لا يجمع أي بيانات.</string>
+    <string name="dialog_consent_accessibility_title">يتم تفعيل خدمة إمكانية الوصول</string>
+    <string name="dialog_consent_accessibility_ok">تفعيل خدمة إمكانية الوصول</string>
+    <string name="dialog_cancel">إلغاء</string>
+    <string name="settings_meta_licenses">تراخيص المصادر المفتوحة</string>
+    <string name="legal_info_title">تراخيص المصادر المفتوحة</string>
+    <string name="toast_activity_not_found_search_web">لم يتم العثور على تطبيق للتعامل مع البحث.</string>
+    <string name="toast_activity_not_found_browser">لا يمكن فتح عنوان URL: لم يتم العثور على متصفح.</string>
+    <string name="dialog_consent_accessibility_text"><![CDATA[أنت على وشك تنشيط خدمة إمكانية الوصول. سيمنح هذا <strong> أذونات كثيرة </strong> إلى التطبيق:
+    <ul>
+        <li>قفل الشاشة</li>
+        <li>التطبيقات الحديثة</li>
+    </ul>
+      <strong> لن يقومμlauncher أبدًا بجمع أي بيانات </strong>. على وجه الخصوص ، لا يستخدم μlauncher خدمة إمكانية الوصول لجمع أي بيانات.]]></string>
+    <string name="settings_gesture_description_tap_down">أنقر ثم اسحب لأسفل</string>
+    <string name="settings_theme_color_theme_item_default">الافتراضي</string>
+    <string name="pin_shortcut_switch_visible">أظهر في قائمة التطبيقات</string>
+    <string name="settings_gesture_description_double_down">اسحب لأسفل بأصبعين</string>
+    <string name="settings_clock_show_seconds">أظهر الثواني</string>
+    <string name="dialog_report_bug_title">الإبلاغ عن خطأ</string>
+    <string name="settings_gesture_description_double_left">اسحب إلى اليسار بأصبعين</string>
+    <string name="settings_gesture_description_double_click">أنقر مرتين في مكان فارغ على الشاشة</string>
+    <string name="settings_functionality_search_web_summary">اضغط على زر الرجوع أثناء البحث في قائمة التطبيقات لإظهار البحث على الويب</string>
+    <string name="settings_gesture_description_right_top_edge">اسحب إلى اليمين من أعلى الشاشة</string>
+    <string name="settings_gesture_left_bottom_edge">يسار (في الأسفل)</string>
+    <string name="settings_gesture_description_up_right_edge">اسحب إلى الأعلى من حافة الشاشة اليمنى</string>
+    <string name="settings_gesture_description_swipe_lambda_reverse">أسفل اليمين -&gt; أعلى الوسط -&gt; أسفل اليسار</string>
+    <string name="settings_apps_hide_bound_apps">لا تظهر التطبيقات المرتبطة بإيماءة في قائمة التطبيقات</string>
+    <string name="list_other_list_favorites">درج التطبيقات المفضلة</string>
+    <string name="list_other_track_next">الموسيقى: التالي</string>
+    <string name="tutorial_concept_text">تم تصميم μLauncher ليكون فعالًا وخاليًا من مشتتات الانتباه.\n\nلا يحتوي على أي إعلانات ولا يجمع أي بيانات.</string>
+    <string name="tutorial_finish_text">أنت مستعد للبدء!\n\nآمل أن يكون هذا ذا قيمة كبيرة بالنسبة لك!\n\n- المطورين</string>
+    <string name="toast_private_space_default_home_screen">يجب أن يكون μlauncher الشاشة الرئيسية الافتراضية للوصول إلى مساحة خاصة.</string>
+    <string name="settings_gesture_description_left_bottom_edge">اسحب إلى اليسار من أسفل الشاشة</string>
+    <string name="settings_gesture_description_swipe_smaller_reverse">أسفل اليمين -&gt; وسط اليسار -&gt; أعلى اليمين</string>
+    <string name="settings_apps_toast_store_not_found">لم يتم العثور على تطبيق المتجر</string>
+    <string name="settings_display_hide_navigation_bar">إخفِ شريط التنقل</string>
+    <string name="list_app_info">معلومات التطبيق</string>
+    <string name="list_app_favorite_add">أضف إلى المفضلة</string>
+    <string name="list_other_expand_notifications_panel">توسيع لوحة الاشعارات</string>
+    <string name="tutorial_app_list_text">يمكنك البحث بسرعة في جميع التطبيقات في قائمة التطبيقات.\n\nاسحب لأعلى لفتحها، أو اربطها بإيماءة مختلفة.</string>
+    <string name="alert_lock_screen_failed">خطأ: فشل في قفل الشاشة. (إذا قمت للتو بترقية التطبيق ، فحاول تعطيل خدمة الوصول وإعادة تمكينها في إعدادات الهاتف)</string>
+    <string name="settings_gesture_description_down_right_edge">اسحب إلى الأسفل من حافة الشاشة اليمنى</string>
+    <string name="settings_theme_font_item_serif_monospace">أحادي المسافة مذيل</string>
+    <string name="settings_list_reverse_layout">عكس قائمة التطبيقات</string>
+    <string name="alert_cant_expand_status_bar_panel">خطأ: لا يمكن توسيع شريط الحالة. يستخدم هذا الإجراء وظيفة ليست جزءًا من نظام أندرويد. لسوء الحظ ، لا يبدو أنه يعمل على جهازك.</string>
+    <string name="settings_theme_background">خلفية القوائم</string>
+    <string name="settings_apps_hide_paused_apps">إخفِ التطبيقات المتوقفة</string>
+    <string name="settings_meta_show_tutorial">أظهر العرض التعليمي للتطبيق</string>
+    <string name="dialog_report_bug_info">شكرا لك على المساعدة في تحسين μLauncher!\nيرجى إضافة المعلومات التالية إلى تقرير الأخطاء الخاص بك:</string>
+    <string name="settings_meta_contact">اتصل بالمطور الأصلي</string>
+    <string name="list_other_volume_down">اخفض الصوت</string>
+    <string name="tutorial_usage_text_2">يمكنك تشغيل أهم تطبيقاتك بإيماءات اللمس أو الضغط على الأزرار.</string>
+    <string name="settings_enabled_gestures_edge_swipe_summary">اسحب من حواف الشاشة</string>
+    <string name="toast_lock_screen_not_supported">خطأ: قفل الشاشة باستخدام إمكانية الوصول غير مدعوم على هذا الجهاز. الرجاء استخدام طريقة مسؤول الجهاز بدلاً من ذلك.</string>
+    <string name="accessibility_service_description">يتيح تعيين μlauncher كخدمة إمكانية الوصول قفل الشاشة وفتح قائمة التطبيقات الحديثة. يرجى ملاحظة أنه يتطلب كمية كبيرة من الأذونات. يجب ألا تمنح مثل هذه الأذونات باستخفاف لأي تطبيق. سوف يستخدم μlauncher خدمة إمكانية الوصول فقط لأداء الإجراءات التالية عند طلب المستخدم: * قفل شاشة * فتح التطبيقات الحديثة μlauncher لن يستخدم أبدًا خدمة إمكانية الوصول لجمع البيانات. يمكنك التحقق من شيفرة المصدر للتأكد. يرجى ملاحظة أنه يمكنك قفل الشاشة من خلال منح أذونات مسؤول الجهاز، لكنها لا تعمل مع بصمات الأصابع وفتح الوجه.</string>
+    <string name="dialog_create_widget_panel_title">إنشاء لوحة أداة جديدة</string>
+    <string name="settings_widgets_widgets">إدارة الأدوات المصغّرة</string>
+    <string name="settings_widgets_custom_panels">إدارة لوحات الأدوات المصغّرة</string>
+    <string name="screen_lock_method_dialog_text"><![CDATA[
+        <h1>اختر طريقة القفل</h1>
+        هناك طريقتان لقفل الشاشة.
+        للأسف، كلا الطريقتين لهما عيوب:<br/><br/>
+
+        <h3>إدارة الجهاز</h3>
+        لا تعمل مع فتح القفل باستخدام بصمة الإصبع أو التعرف على الوجه.
+
+        <br/>
+        <br/>
+
+        <h3>خدمة الوصول</h3>
+        تتطلب صلاحيات واسعة.
+        سيستخدم تطبيق μLauncher هذه الصلاحيات فقط لقفل الشاشة.
+        <br/>
+        (يجب ألا تثق بتطبيق عشوائي قمت بتحميله للتو بهذا الادعاء، ولكن يمكنك التحقق من <a href=\"https://github.com/jrpie/Launcher\">الكود المصدري</a>.)
+        <br/>
+        في بعض الأجهزة، لن يُستخدم رمز PIN الخاص بالتشغيل لتشفير البيانات بعد تفعيل خدمة الوصول.
+        يمكن <a href="https://issuetracker.google.com/issues/37010136#comment36">إعادة تفعيل</a> هذا لاحقًا.
+
+        <br/><br/><br/><br/>
+        يمكنك تغيير اختيارك لاحقًا في الإعدادات.
+]]></string>
+    <string name="widget_clock_description">الساعة الافتراضية لـ μLauncher</string>
+    <string name="dialog_select_widget_panel_info_no_panels"><![CDATA[
+    لم يتم العثور على أي لوحات أدوات. يمكنك إنشاء لوحات أدوات في الإعدادات > المشغل > إدارة لوحات الأدوات.
+]]></string>
+    <string name="select_widget_title">اختر الأداة</string>
+    <string name="widget_menu_remove">إزالة</string>
+    <string name="widget_menu_configure">تهيئة</string>
+    <string name="widget_menu_enable_interaction">تمكين التفاعل</string>
+    <string name="widget_menu_disable_interaction">تعطيل التفاعل</string>
+    <string name="widget_clock_label">ساعة</string>
+    <string name="manage_widget_panels_delete">حذف</string>
+    <string name="manage_widget_panels_rename">إعادة التسمية</string>
+    <string name="widget_panel_default_name">لوحة الأداة المصغّرة #%1$d</string>
+    <string name="dialog_ok">حسنا</string>
+    <string name="widget_panels_title">لوحات الأداة</string>
+    <string name="dialog_select_widget_panel_title">تحديد لوحة الأداة</string>
+    <string name="list_other_open_widget_panel">افتح لوحة الأدوات</string>
+    <string name="alert_widget_panel_not_found">لم تعد لوحة الأدوات هذه موجودة.</string>
+    <string name="settings_launcher_section_widgets">الأدوات</string>
+    <plurals name="widget_panel_number_of_widgets">
+        <item quantity="zero">يحتوي على %1$dأداة.</item>
+        <item quantity="one">يحتوي على %1$d أداة.</item>
+        <item quantity="two">يحتوي على %1$d أدوات.</item>
+        <item quantity="few">يحتوي على%1$d أدوات.</item>
+        <item quantity="many">يحتوي على %1$d أداة.</item>
+        <item quantity="other">يحتوي على%1$d أداة.</item>
+    </plurals>
+    <string name="settings_functionality_auto_close_keyboard">إغلاق لوحة المفاتيح عند التمرير</string>
+    <string name="crash_info"><![CDATA[
+    يبدو أن هناك خطأ ما، نعتذر عن ذلك!<br><br>
+    لأسباب تتعلق بالخصوصية، لا يتم جمع سجلات الأعطال تلقائيًا.<br>
+    ومع ذلك، فإن السجلات مفيدة جدًا لتصحيح الأخطاء، لذا سأكون ممتنًا جدًا إذا كان بإمكانك إرسال السجل المرفق عبر البريد
+    أو إنشاء تقرير عن الخطأ على GitHub.<br><br>
+    يرجى ملاحظة أن سجلات الأعطال قد تحتوي على <strong>معلومات حساسة</strong>، مثل اسم التطبيق الذي حاولت تشغيله.
+    يرجى <strong>حذف</strong> مثل هذه المعلومات قبل إرسال التقرير.
+    <h2>ماذا يمكنني أن أفعل الآن؟</h2>
+    إذا ظهر هذا الخطأ مرة أخرى، يمكنك تجربة عدة أشياء:
+    <ul>
+        <li>إيقاف μLauncher بالقوة</li>
+        <li>مسح بيانات μLauncher&#39;s (<strong>ستفقد إعداداتك!</strong>)</li>
+        <li>تثبيت إصدار أقدم (<a href="https://github.com/jrpie/Launcher/releases">GitHub</a>, <a href="https://f-droid.org/en/packages/de.jrpie.android.launcher">F-Droid</a>)</li>
+    </ul>
+]]></string>
+    <string name="notification_crash_title">تعطل μLauncher</string>
+    <string name="notification_crash_explanation">آسف! انقر للحصول على مزيد من المعلومات.</string>
+    <string name="report_crash_button_copy">نسخ تقرير التعطل إلى الحافظة</string>
+    <string name="report_crash_button_mail">إرسال التقرير بالبريد</string>
+    <string name="report_crash_button_report">إنشاء تقرير خطأ على GitHub</string>
+    <string name="report_crash_title">تعطل μLauncher</string>
+    <string name="send_email">إرسال بريد إلكتروني</string>
+    <string name="notification_channel_crash">الأعطال ومعلومات التصحيح</string>
 </resources>

@@ -1,146 +1,347 @@
-<?xml version="1.0" encoding="utf-8"?><!-- German -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app">App</string>
-    <string name="set_as_default_launcher">Als Standard-Launcher festlegen</string>
-    <string name="set_as_default_launcher_u"><u>Als Standard-Launcher festlegen</u></string>
-    <string name="set_as_default_launcher_first">Als Standard-Launcher festlegen</string>
-    <string name="_0">0</string>
-    <string name="_1">1</string>
-    <string name="_2">2</string>
-    <string name="_3">3</string>
-    <string name="_4">4</string>
-    <string name="_5">5</string>
-    <string name="_6">6</string>
-    <string name="_7">7</string>
-    <string name="_8">8</string>
-    <string name="app_drawer_tips">Tipp: Beginnen Sie mit der Eingabe eines App-Namens, um sie automatisch zu starten</string>
-    <string name="okay">Okay</string>
-    <string name="cool">Cool!</string>
-    <string name="tip_start_typing_for_rename">Tipp: Beginnen Sie mit der Eingabe der Option „App RENAME“.</string>
-    <string name="your_wallpaper_will_update_shortly">Ihr Hintergrundbild wird in Kürze aktualisiert</string>
-    <string name="olauncher_is_not_default_launcher">Olauncher ist kein Standard-Launcher. Die tägliche Aktualisierung des Hintergrundbilds schlägt möglicherweise fehl.</string>
-    <string name="long_press_to_enable">Zum Aktivieren lange drücken</string>
-    <string name="no_hidden_apps">Keine versteckten Apps</string>
-    <string name="hidden_apps">Versteckte Apps</string>
-    <string name="hidden_apps_message">Hinweis: Tippen Sie oben auf dieser Einstellungsseite auf „Olauncher“, um Ihre versteckten Apps zu finden.
-        \n\nWeitere Einzelheiten finden Sie auf der „Über“ Seite unten.</string>
-    <string name="swipe_down_for">Wischen Sie nach unten für</string>
-    <string name="search">Suchen</string>
-    <string name="notifications">Benachrichtigungen</string>
-    <string name="accessibility_disclosure">Bitte schalten Sie den Barrierefreiheitsdienst von Olauncher in den Einstellungen Ihres Geräts ein oder aus, um diese Funktion zu aktivieren oder zu deaktivieren.
-        \n\nBitte beachten Sie, dass dieser Dienst nur dazu dient, den Bildschirm Ihres Geräts mit der Doppeltipp-Geste auszuschalten. Unser Barrierefreiheitsdienst erfasst oder gibt keine Daten weiter.</string>
-    <string name="accept">Akzeptieren</string>
-    <string name="permission">Erlaubnis</string>
-    <string name="double_tap_lock">Zum Sperren zweimal tippen</string>
-    <string name="enable">Aktivieren</string>
-    <string name="disable">Deaktivieren</string>
-    <string name="not_working"><u>Funktioniert nicht?</u></string>
-    <string name="info">Die Info</string>
-    <string name="delete">Löschen</string>
-    <string name="text_size">Textgröße</string>
-    <string name="enabled">Aktiviert</string>
-    <string name="disabled">Deaktiviert</string>
-    <string name="please_turn_on_double_tap_to_unlock">Zum Sperren bitte Doppeltippen aktivieren</string>
-    <string name="launcher_failed_to_lock_device">Olauncher konnte das Gerät nicht sperren. Bitte überprüfen Sie Ihre App-Einstellungen.</string>
-    <string name="long_press_to_select_app">Lange drücken, um die App auszuwählen</string>
-    <string name="unable_to_open_app">App-Informationen können nicht geöffnet werden</string>
-    <string name="copied">Kopiert</string>
-    <string name="system_app_cannot_delete">System-App, kann nicht gelöscht werden</string>
-    <string name="type_a_new_app_name_first">Geben Sie zuerst einen neuen App-Namen ein</string>
-    <string name="adapter_show">Zeigen</string>
-    <string name="adapter_hide">Verstecken</string>
-    <string name="app_text_color">Textfarbe</string>
-    <string name="double_tap_to_lock_screen">Zum Sperren zweimal tippen</string>
-    <string name="admin_permission_message">Olauncher verspricht, verantwortungsvoll mit der Sperrbildschirmberechtigung umzugehen. Olauncher sammelt oder gibt keine Daten weiter.</string>
-    <string name="about">Über</string>
-    <string name="off">Aus</string>
-    <string name="on">Ein</string>
-    <string name="black">Schwarz</string>
-    <string name="white">Weiß</string>
-    <string name="change_default_launcher">Standard-Launcher ändern</string>
-    <string name="privacy">Privatsphäre</string>
-    <string name="share">Teilen</string>
-    <string name="share_now">Teilen</string>
-    <string name="rate">Bewerten</string>
-    <string name="rate_now">Bewerten</string>
-    <string name="follow">Folgen</string>
-    <string name="email">Email</string>
+    <!--
+      -
+      - Home
+      -
+      -->
+    <string name="alert_cant_open_title">App kann nicht geöffnet werden</string>
+    <string name="alert_cant_open_message">App-Einstellungen anpassen?</string>
+    <string name="toast_cant_open_message">Einstellungen öffnen um für diese Geste eine Aktion zu wählen</string>
+    <!--
+      -
+      - Settings
+      -
+      -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_tab_actions">Aktionen</string>
+    <string name="settings_tab_launcher">Launcher</string>
+    <string name="settings_tab_meta">Meta</string>
+    <!--
+      -
+      - Settings : Apps
+      -
+      -->
+    <string name="settings_gesture_up">Nach oben</string>
+    <string name="settings_gesture_description_up">Nach oben wischen</string>
+    <string name="settings_gesture_double_up">Doppelt aufwärts</string>
+    <string name="settings_gesture_description_double_up">Mit zwei Fingern nach oben wischen</string>
+    <string name="settings_gesture_down">Nach unten</string>
+    <string name="settings_gesture_description_down">Nach unten wischen</string>
+    <string name="settings_gesture_double_down">Doppelt abwärts</string>
+    <string name="settings_gesture_description_double_down">Mit zwei Fingern nach unten wischen</string>
+    <string name="settings_gesture_left">Nach links</string>
+    <string name="settings_gesture_description_left">Nach links wischen</string>
+    <string name="settings_gesture_double_left">Doppelt links</string>
+    <string name="settings_gesture_description_double_left">Mit zwei Fingern nach links wischen</string>
+    <string name="settings_gesture_right">Nach rechts</string>
+    <string name="settings_gesture_description_right">Nach rechts wischen</string>
+    <string name="settings_gesture_double_right">Doppelt rechts</string>
+    <string name="settings_gesture_description_double_right">Mit zwei Fingern nach rechts wischen</string>
+    <string name="settings_gesture_right_top_edge">Rechts (oben)</string>
+    <string name="settings_gesture_description_right_top_edge">An der oberen Kante nach rechts wischen</string>
+    <string name="settings_gesture_right_bottom_edge">Rechts (unten)</string>
+    <string name="settings_gesture_description_right_bottom_edge">An der unteren Kante nach rechts wischen</string>
+    <string name="settings_gesture_left_bottom_edge">Links (unten)</string>
+    <string name="settings_gesture_description_left_bottom_edge">An der unteren Kante nach links wischen</string>
+    <string name="settings_gesture_left_top_edge">Links (oben)</string>
+    <string name="settings_gesture_description_left_top_edge">An der oberen Kante nach links wischen</string>
+    <string name="settings_gesture_up_left_edge">Aufwärts (links)</string>
+    <string name="settings_gesture_description_up_left_edge">An der linken Kante nach oben wischen</string>
+    <string name="settings_gesture_up_right_edge">Aufwärts (rechts)</string>
+    <string name="settings_gesture_description_up_right_edge">An der rechten Kante nach oben wischen</string>
+    <string name="settings_gesture_down_left_edge">Abwärts (links)</string>
+    <string name="settings_gesture_description_down_left_edge">An der linken Kante nach unten wischen</string>
+    <string name="settings_gesture_down_right_edge">Abwärts (rechts)</string>
+    <string name="settings_gesture_description_down_right_edge">An der rechten Kanten nach unten wischen</string>
+    <string name="settings_gesture_vol_up">Lauter-Taste</string>
+    <string name="settings_gesture_description_vol_up">Die Taste \"Lauter\" drücken</string>
+    <string name="settings_gesture_vol_down">Leiser-Taste</string>
+    <string name="settings_gesture_description_vol_down">Die Taste \"Leiser\" drücken</string>
+    <string name="settings_gesture_double_click">Doppelklick</string>
+    <string name="settings_gesture_description_double_click">In einem leeren Bereich doppelt klicken</string>
+    <string name="settings_gesture_long_click">Langer Klick</string>
+    <string name="settings_gesture_description_long_click">In einem leeren Bereich lange klicken</string>
+    <string name="settings_gesture_date">Datum</string>
+    <string name="settings_gesture_description_date">Auf das Datum klicken</string>
+    <string name="settings_gesture_time">Uhr</string>
+    <string name="settings_gesture_description_time">Auf die Uhrzeit klicken</string>
+    <string name="settings_apps_choose">App wählen</string>
+    <string name="settings_apps_install">Apps installieren</string>
+    <string name="settings_apps_toast_store_not_found">Store nicht gefunden</string>
+    <!--
+      -
+      - Settings : Launcher
+      -
+      -->
+    <string name="settings_launcher_section_appearance">Aussehen</string>
+    <string name="settings_clock_color">Farbe</string>
+    <string name="settings_clock_time_visible">Zeit anzeigen</string>
+    <string name="settings_clock_date_visible">Datum anzeigen</string>
+    <string name="settings_clock_localized">Lokalisiertes Datumsformat verwenden</string>
+    <string name="settings_clock_flip_date_time">Datum und Uhrzeit tauschen</string>
+    <string name="settings_theme_color_theme_item_dynamic">Dynamisch</string>
+    <string name="settings_theme_text_shadow">Textschatten</string>
+    <string name="settings_theme_background">Hintergrund (Alle Apps und Einstellungen)</string>
+    <string name="settings_theme_background_item_solid">Einfarbig</string>
+    <string name="settings_theme_font">Schriftart</string>
+    <string name="settings_theme_font_item_serif_monospace">Serif-Monospace</string>
+    <string name="settings_theme_monochrome_icons">Einfarbige Icons</string>
+    <string name="settings_launcher_section_date_time"><![CDATA[Datum & Uhrzeit]]></string>
+    <string name="settings_theme_color_theme">Farbschema</string>
+    <string name="settings_theme_color_theme_item_default">Standard</string>
+    <string name="settings_theme_color_theme_item_dark">Dunkel</string>
+    <string name="settings_theme_color_theme_item_light">Hell</string>
+    <string name="settings_theme_wallpaper">Hintergrund auswählen</string>
+    <string name="settings_launcher_section_display">Bildschirm</string>
+    <string name="settings_display_screen_timeout_disabled">Bildschirm nicht ausschalten</string>
+    <string name="settings_display_rotate_screen">Bildschirm drehen</string>
+    <string name="settings_launcher_section_functionality">Funktionalität</string>
+    <string name="settings_enabled_gestures_double_swipe">Doppelte Wischgesten</string>
+    <string name="settings_enabled_gestures_double_swipe_summary">Mit zwei Fingern wischen</string>
+    <string name="settings_enabled_gestures_edge_swipe">Kantengesten</string>
+    <string name="settings_enabled_gestures_edge_swipe_edge_width">Kantenbreite</string>
+    <string name="settings_functionality_auto_launch">Suchergebnis starten</string>
+    <string name="settings_functionality_search_web_summary">Beim Durchsuchen der Apps Enter drücken, um stattdessen im Internet zu suchen.</string>
+    <string name="settings_functionality_auto_keyboard">Tastatur automatisch öffnen</string>
+    <string name="settings_launcher_sensitivity">Empfindlichkeit</string>
+    <string name="settings_list_app_name_format_item_default">Normal</string>
+    <string name="settings_list_app_name_format_item_uppercase">Grossbuchstaben</string>
+    <string name="settings_list_app_name_format_item_lowercase">Kleinbuchstaben</string>
+    <!--
+      -
+      - Settings : Meta
+      -
+      -->
+    <string name="settings_apps_hidden">Versteckte Apps</string>
+    <string name="settings_apps_hide_bound_apps">Apps, die an eine Geste gebunden sind, nicht in der Liste anzeigen</string>
+    <string name="settings_list_layout_item_grid">Raster</string>
+    <string name="settings_general_choose_home_screen">Launcher wählen</string>
+    <string name="settings_meta_cant_select_launcher">App Info</string>
+    <string name="settings_meta_show_tutorial">Zum Tutorial</string>
+    <string name="settings_meta_reset">Einstellungen zurücksetzen</string>
+    <string name="settings_meta_reset_confirm">Alle Einstellungen gehen verloren. Weitermachen?</string>
+    <string name="settings_meta_view_code">Source Code ansehen</string>
+    <string name="settings_meta_report_bug">Einen Fehler melden</string>
+    <string name="settings_meta_discord">Unserem Discord beitreten</string>
+    <string name="settings_meta_contact">Entwickler kontaktieren</string>
+    <string name="dialog_report_bug_create_report">Report erstellen</string>
+    <string name="settings_meta_fork_contact">Entwickler des Fork kontaktieren</string>
+    <string name="settings_meta_join_chat">Dem μLauncher-Chat beitreten</string>
+    <string name="settings_meta_donate">Spenden</string>
+    <string name="settings_meta_privacy">Datenschutzerklärung</string>
+    <!--
+      -
+      - List (Launchers app drawer)
+      -
+      -->
+    <string name="list_title_view">Alle Apps</string>
+    <string name="list_title_hidden">Versteckte Apps</string>
+    <string name="activity_select_action_title">Aktion wählen</string>
+    <string name="list_tab_app">Apps</string>
+    <string name="list_tab_other">Andere</string>
+    <string name="list_app_delete">Deinstallieren</string>
+    <string name="list_app_info">App Info</string>
+    <string name="list_app_hidden_remove">Sichtbar machen</string>
+    <string name="list_app_rename">Umbenennen</string>
+    <string name="list_apps_search_hint">Suchen</string>
+    <string name="list_apps_search_hint_no_auto_launch">Suchen (kein Schnellstart)</string>
+    <string name="list_other_settings">μLauncher Einstellungen</string>
+    <string name="list_other_list">Alle Anwendungen</string>
+    <string name="list_other_list_favorites">Favoriten</string>
+    <string name="list_other_toggle_private_space_lock">Privaten Bereich (ent)sperren</string>
+    <string name="list_other_volume_up">Lauter</string>
+    <string name="list_other_volume_down">Leiser</string>
+    <string name="list_other_volume_adjust">Lautstärke ändern</string>
+    <string name="list_other_track_next">Musik: Weiter</string>
+    <string name="list_other_track_previous">Musik: Zurück</string>
+    <string name="list_other_nop">Nichts tun</string>
+    <!--
+      -
+      - Tutorial
+      -
+      -->
+    <string name="list_other_torch">Taschenlampe umschalten</string>
+    <string name="tutorial_title">Tutorial</string>
+    <string name="tutorial_start_text">👋\n\nHier eine kurze Erklärung, wie dieser Launcher funktioniert.</string>
+    <string name="tutorial_concept_title">Konzept</string>
+    <string name="tutorial_concept_text">µLauncher bietet eine minimalistische, effiziente und ablenkungsfreie Umgebung.\n\nDie App ist freie Software, enthält keine Werbung und sammelt keinerlei Daten.</string>
+    <string name="tutorial_concept_text_2">Der Quellcode ist bei GitHub zu finden.</string>
+    <string name="tutorial_usage_title">Benutzung</string>
+    <string name="tutorial_usage_text">Der Homescreen zeigt nur das Datum und die Uhrzeit. Keine Ablenkung.</string>
+    <string name="tutorial_usage_text_2">Häufig verwendete Apps können mittels Gesten, z.B. Wischen oder den Lautstärketasten geöffnet werden.</string>
+    <string name="tutorial_setup_title">Einrichtung</string>
+    <string name="tutorial_setup_text">Es wurden Standardapps ausgewählt, die Zuordnung kann hier angepasst werden:</string>
+    <string name="tutorial_setup_text_2">Die Auswahl kann in den Einstellungen später jederzeit geändert werden.</string>
+    <string name="tutorial_finish_title">Los gehts!</string>
+    <string name="tutorial_finish_text">Es kann losgehen!\n\nWir hoffen, dass diese App hilfreich ist!\n\n- Finn (der Entwickler)\nund Josia (der einige Änderungen vorgenommen hat und den Fork μLauncher entwickelt)</string>
+    <string name="tutorial_finish_button">Starten</string>
+    <string name="settings">Einstellungen</string>
+    <string name="ic_menu_alt">Mehr Optionen</string>
+    <string name="list_other_expand_notifications_panel">Benachrichtigungsleiste aufklappen</string>
+    <string name="alert_cant_expand_status_bar_panel">Fehler: Die Funktion wird von diesem Gerät leider nicht unterstützt.</string>
+    <string name="settings_clock_show_seconds">Sekunden anzeigen</string>
+    <string name="undo">Rückgängig</string>
+    <string name="list_other_expand_settings_panel">Schnelleinstellungen</string>
+    <string name="settings_enabled_gestures_edge_swipe_summary">An den Kanten wischen</string>
+    <string name="settings_launcher_section_apps">Apps</string>
+    <string name="list_title_favorite">Favoriten</string>
+    <string name="list_app_favorite_add">Zu Favoriten hinzufügen</string>
+    <string name="list_app_favorite_remove">Aus Favoriten entfernen</string>
+    <string name="list_app_hidden_add">Verstecken</string>
+    <string name="list_other_lock_screen">Bildschirm sperren</string>
+    <string name="alert_requires_android_m">Diese Funktionalität benötigt Android 6 oder neuer.</string>
+    <string name="alert_requires_android_v">Diese Funktionalität benötigt Android 15 oder neuer.</string>
+    <string name="snackbar_app_hidden">Die App wurde versteckt. Sie kann in den Einstellungen wieder sichtbar gemacht werden.</string>
+    <string name="toast_device_admin_not_enabled">µLauncher muss Geräteadministrator sein, um den Bildschirm sperren zu dürfen.</string>
+    <string name="device_admin_explanation">Dies ist erforderlich, damit µLauncher den Bildschirm sperren kann.</string>
+    <string name="device_admin_description">Die Aktion \"Bildschirm sperren\" aktivieren</string>
+    <string name="alert_no_torch_found">Es wurde keine geeignete Kamera gefunden.</string>
+    <string name="alert_torch_access_exception">Fehler: Kein Zugriff auf die Kamera möglich.</string>
+    <string name="settings_actions_lock_method">Methode zum Sperren des Bildschirms wählen</string>
+    <string name="dialog_rename_title">%1$s umbenennen</string>
+    <string name="toast_private_space_default_home_screen">μLauncher muss als Standardlauncher eingerichtet sein um auf den privaten Bereich zugreifen zu können.</string>
+    <string name="toast_lock_screen_not_supported">Fehler: Auf diesem Gerät kann der Bildschirm nicht mittels Bedienungshilfe gesperrt werden. Bitte stattdessen Geräteadministrator verwenden.</string>
+    <string name="accessibility_service_name">μLauncher</string>
+    <string name="alert_lock_screen_failed">Fehler: Bildschirm konnte nicht gesperrt werden.</string>
+    <string name="toast_accessibility_service_not_enabled">Die Bedienungshilfe ist nicht aktiviert. Bitte in den Einstellungen aktivieren</string>
+    <string name="screen_lock_method_dialog_title">Methode zum Sperren wählen</string>
+    <string name="screen_lock_method_use_accessibility">Bedienungshilfe verwenden</string>
+    <string name="screen_lock_method_use_device_admin">Geräteadministrator verwenden</string>
+    <string name="accessibility_service_description">μLauncher als Bedienungshilfe zu aktivieren ermöglicht es μLauncher, den Bildschirm zu sperren. Achtung: Hierfür sind weitgehende Berechtigungen erforderlich. Solche Berechtigungen sollten niemals leichtfertig vergeben werden. μLauncher wird diese Berechtigungen ausschließlich zum Sperren des Bildschirms verwenden. Alternativ kann der Bildschirm auch mithilfe von Geräteadministratorberechtigungen gesperrt werden. Dann ist jedoch ein Entsperren mit Fingerabdruck oder Gesichtserkennung nicht möglich.</string>
+    <string name="screen_lock_method_dialog_text"><![CDATA[
+        <h1>Methode zum Sperren auswählen</h1>
+        Es gibt zwei Möglichkeiten, wie μLauncher den Bildschirm sperren kann.
+        Leider haben beide Nachteile:<br/><br/>
 
-    <string name="donate">Spenden</string>
-    <string name="swipe_up_for_apps">1. Für alle Apps nach oben wischen\n2. Drücken Sie lange auf eine beliebige Stelle, um Einstellungen vorzunehmen</string>
-    <string name="apps_on_home_screen">Apps auf dem Startbildschirm</string>
-    <string name="daily_wallpaper_update">Täglich neue Hintergrundbilder</string>
-    <string name="left">Links</string>
-    <string name="right">Rechts</string>
-    <string name="center">Mitte</string>
-    <string name="home_layout_alignment">App-Ausrichtung</string>
-    <string name="swipe_left_app">Wischen Sie nach links über die App</string>
-    <string name="swipe_right_app">Wischen Sie nach rechts über die App</string>
-    <string name="auto_show_keyboard">Tastatur automatisch anzeigen</string>
-    <string name="hide">Verstecken</string>
-    <string name="status_bar">Zeige Statusleiste</string>
-    <string name="rename">Umbenennen</string>
-    <string name="show_date_time">Datum und Uhrzeit anzeigen</string>
-    <string name="appearance">Aussehen</string>
-    <string name="gestures">Gesten</string>
-    <string name="theme_mode">Stil</string>
-    <string name="system_default">System</string>
-    <string name="dark">Dunkel</string>
-    <string name="light">Hell</string>
-    <string name="welcome_to_olauncher_settings">Willkommen in den Einstellungen!
-        \n\nDenken Sie daran, wenn Sie Fragen haben, unsere Seite „Über“ hat die Antwort.</string>
-    <string name="rate_us_message">Hallo, diese Nachricht wird Ihnen nicht mehr angezeigt.
-        \n\nWenn Ihnen Olauncher gefällt, können Sie uns bitte eine 5-Sterne-Bewertung geben? Es hilft uns, unser Ranking zu verbessern und macht uns glücklich. Dan­ke­schön!</string>
-    <string name="share_message">Hallo, wir brauchen deine Hilfe! Letztes Jahr haben wir die Marke von einer Million Downloads überschritten. Dieses Jahr wollen wir eine Million mehr erreichen, aber alleine schaffen wir das nicht.
-        \n\nWären Sie bitte so freundlich, Olauncher mit Ihren Freunden zu teilen? Vielen Dank und einen wunderschönen Tag!</string>
-    <string name="keyboard_message">Hallo, die Tastatur ist der schnellste Weg, Apps in Olauncher zu finden und zu starten. Können wir Sie bitten, die Funktion noch ein paar Tage eingeschaltet zu lassen und dann zu entscheiden?
-        \n\nDie Wahl liegt immer bei Ihnen.</string>
-    <string name="digital_wellbeing_message">Wenn Sie Zeitlimits für bestimmte Apps festlegen möchten, kann Ihnen die Digital Wellbeing-Funktion von Android dabei helfen.
-        \n\nBitte suchen Sie in Ihren Telefoneinstellungen nach Digital Wellbeing und aktivieren Sie es.</string>
-    <string name="app_usage_message">Um die Bildschirmzeit auf dem Startbildschirm anzuzeigen oder zu verbergen, erteilen Sie bitte die Erlaubnis für die App-Nutzung oder verweigern Sie sie.
-        \n\nHinweis: Es werden keine Daten zur App-Nutzung gesammelt. Alles wird auf Ihrem Gerät verarbeitet.</string>
-    <string name="pro_message">Olauncher hat auch eine Pro-Version namens Pro Launcher. Sie bietet zusätzliche Funktionen wie Wetter, Widgets, Schriftarten, Ordner, AMOLED-Hintergründe usw.
-        \n\nEs ist auch der beste Weg, die Entwickler von Olauncher zu unterstützen. Schau es dir an!</string>
-    <string name="wallpaper_message">Olauncher bietet täglich wunderschöne neue Wallpapers. Verleihe deinem Homescreen jeden Tag ein frisches Aussehen – kostenlos!
-        \n\nMöchtest du es ausprobieren?</string>
-    <string name="accessibility_service_description">Die Zugriffsberechtigung ist erforderlich, um das Sperren durch Doppeltippen zu ermöglichen. Die von Olauncher über diesen Dienst erfassten Daten verlassen Ihr Gerät nicht.</string>
-    <string name="support_olauncher_for_free">Unterstützen Sie Olauncher kostenlos, indem Sie unseren Amazon-Partnerlink verwenden.</string>
-    <string name="support_olauncher_message">Jedes Mal, wenn Sie über unseren Link etwas kaufen, erhalten wir eine kleine Provision. Bitte speichern Sie den Link und verwenden Sie ihn bei jedem Online-Einkauf. Dan­ke­schön!</string>
-    <string name="open">Verbindung öffnen</string>
-    <string name="copy">Kopieren</string>
-    <string name="close">Schließen</string>
-    <string name="not_now">Nicht jetzt</string>
-    <string name="public_roadmap">Öffentliche Olauncher-Roadmap</string>
-    <string name="instagram">Instagram</string>
-    <string name="twitter">Twitter</string>
-    <string name="roadmap">Roadmap</string>
-    <string name="date">Datum</string>
-    <string name="date_only">Nur Datum</string>
-    <string name="bottom_on">Unten: Ein</string>
-    <string name="bottom_off">Unten: Aus</string>
-    <string name="please_set_olauncher_as_default_first">Bitte legen Sie zunächst Olauncher als Ihren Standard-Launcher fest</string>
-    <string name="affiliate">Affiliate</string>
-    <string name="app_not_found">App nicht gefunden</string>
-    <string name="unable_to_launch_app">App kann nicht gestartet werden</string>
-    <string name="search_for_Launcher_or_home_app">Suchen Sie nach Launcher oder Home-App</string>
-    <string name="swipe_left_app_enabled">App nach links wischen aktiviert</string>
-    <string name="swipe_right_app_enabled">App nach rechts wischen aktiviert</string>
-    <string name="swipe_left_app_disabled">App nach links wischen deaktiviert</string>
-    <string name="swipe_right_app_disabled">App nach rechts wischen deaktiviert</string>
-    <string name="are_you_using_your_phone_or_is_your_phone_using_you">Benutzen Sie Ihr Telefon, oder nutzt Ihr Telefon Sie?</string>
-    <string name="screen_time">Bildschirmzeit</string>
-    <string name="about_olauncher">Über Olauncher</string>
-    <string name="learn_more">Erfahren Sie mehr</string>
-    <string name="did_you_know">Wussten Sie?</string>
-    <string name="leave_a_review">Rezension</string>
-    <string name="review_message">Olauncher ist und bleibt völlig kostenlos. Es gibt keine Werbung. Es werden keine Daten erfasst. Am wichtigsten ist, dass es Ihnen dabei hilft, Ihre Bildschirmzeit zu verkürzen und ein gesünderes digitales Leben zu führen.
-        \n\nWir glauben, dass der Wechsel zu einem Minimal Launcher eine ausgezeichnete Entscheidung ist. Obwohl wir offensichtlich voreingenommen sind, hoffen wir, dass Ihnen die Erfahrung gefällt. Teilen Sie uns gerne Ihre Gedanken mit!</string>
-    <string name="alignment_changed">Ausrichtung geändert ✅</string>
-    <string name="home_screen">Startbildschirm</string>
-    <string name="hey">Hey</string>
-    <string name="more_features">Weitere Funktionen…</string>
-    <string name="new_year_wish">Auf ein Jahr, das besser ist als alle zuvor. Frohes neues Jahr!</string>
-    <string name="new_year_wish_1">Egal, wie der Januar gelaufen ist. Du hast noch den Rest des Jahres Zeit, um besser zu sein als je zuvor.</string>
-    <string name="cheers">Prost!</string>
-    <string name="notification_bar">Benachrichtigungsleiste</string>
+
+        <h3>Geräteadministrator</h3>
+        Ein Entsperren mittels Fingerabdruck oder Gesichtserkennung ist nicht möglich.
+        <br/>
+        <br/>
+
+        <h3>Bedienungshilfe</h3>
+        Dies erfordert sehr weitgehende Berechtigungen.
+        µLauncher wird diese ausschließlich zum Sperren des Bildschirms verwenden.
+        <br/>
+        (Irgendeiner gerade heruntergeladenen App sollte man eine solche Behauptung natürlich nicht einfach glauben.
+        Der <a href=\"https://github.com/jrpie/Launcher\">Quelltext</a> dieser App ist jedoch frei verfügbar und kann überprüft werden.)
+
+
+        <br/><br/><br/><br/>
+        Die Auswahl kann später in den Einstellungen geändert werden.
+        ]]></string>
+    <string name="settings_theme_background_item_transparent">Transparent</string>
+    <string name="settings_theme_background_item_dim">Dimmen</string>
+    <string name="settings_theme_background_item_blur">Weichzeichnen</string>
+    <string name="settings_apps_hide_paused_apps">Pausierte Apps verstecken</string>
+    <string name="settings_list_layout">Layout der Appliste</string>
+    <string name="settings_list_layout_item_default">Standard</string>
+    <string name="settings_list_layout_item_text">Text</string>
+    <string name="settings_theme_font_item_system_default">Systemstandard</string>
+    <string name="settings_theme_font_item_sans_serif">Serifenlos</string>
+    <string name="settings_theme_font_item_serif">Serif</string>
+    <string name="settings_theme_font_item_monospace">Monospace</string>
+    <string name="dialog_consent_accessibility_ok">Bedienungshilfe aktivieren</string>
+    <string name="dialog_cancel">Abbrechen</string>
+    <string name="settings_functionality_auto_launch_summary">Leertaste drücken um diese Funktion zu unterdrücken.</string>
+    <string name="settings_functionality_search_web">Im Internet suchen</string>
+    <string name="dialog_report_bug_title">Bug melden</string>
+    <string name="dialog_report_bug_button_clipboard">In Zwischenablage kopieren</string>
+    <string name="toast_private_space_locked">Privater Bereich gesperrt</string>
+    <string name="toast_private_space_unlocked">Privater Bereich entsperrt</string>
+    <string name="toast_private_space_not_available">Der private Bereich ist nicht verfügbar</string>
+    <string name="dialog_select_color_red">Rot</string>
+    <string name="dialog_select_color_alpha">Transparenz</string>
+    <string name="dialog_select_color_blue">Blau</string>
+    <string name="dialog_select_color_green">Grün</string>
+    <string name="dialog_select_color_color_hex">Farbe</string>
+    <string name="dialog_choose_color_title">Farbe wählen</string>
+    <string name="settings_meta_licenses">Open Source Lizenzen</string>
+    <string name="legal_info_title">Open Source Lizenzen</string>
+    <string name="toast_activity_not_found_search_web">Keine App gefunden um die Suche durchzuführen.</string>
+    <string name="toast_activity_not_found_browser">URL kann nicht geöffnet werden: kein Browser gefunden.</string>
+    <string name="dialog_consent_accessibility_privileges">Mir ist bewusst, dass μLauncher hierdurch weitreichende Berechtigungen erhält.</string>
+    <string name="dialog_consent_accessibility_other_options">Mir ist bewusst, dass Alternativen existieren (Geräteadministrator oder der Power-Button).</string>
+    <string name="dialog_consent_accessibility_consent">Ich willige ein, dass μLauncher eine Bedienungshilfe für Zwecke verwendet, die nicht unter Barrierefreiheit fallen.</string>
+    <string name="dialog_consent_accessibility_data_collection">Ich willige ein, dass µLauncher keine Daten sammelt.</string>
+    <string name="dialog_consent_accessibility_title">Bedienungshilfe aktivieren</string>
+    <string name="dialog_report_bug_info">Danke für die Mithilfe, μLauncher zu verbessern!\nEs wird darum gebeten, Bug Reports die folgenden Informationen anzufügen, um diese besser nachvollziehen zu können:</string>
+    <string name="settings_gesture_back">Zurück</string>
+    <string name="settings_gesture_description_back">Zurück-Taste oder -Geste</string>
+    <string name="settings_gesture_swipe_larger_reverse"><![CDATA[> (Rückwärts)]]></string>
+    <string name="settings_gesture_description_swipe_larger_reverse">Unten links -&gt; mitte rechts -&gt; oben links</string>
+    <string name="settings_gesture_swipe_smaller"><![CDATA[<]]></string>
+    <string name="settings_gesture_swipe_smaller_reverse"><![CDATA[< (Rückwärts)]]></string>
+    <string name="settings_gesture_swipe_v">V</string>
+    <string name="settings_gesture_description_swipe_v">Oben links -&gt; unten mitte -&gt; oben rechts</string>
+    <string name="settings_gesture_swipe_v_reverse">V (Rückwärts)</string>
+    <string name="settings_gesture_description_swipe_smaller_reverse">Unten rechts -&gt; mitte links -&gt; oben rechts</string>
+    <string name="settings_gesture_swipe_lambda">Λ</string>
+    <string name="settings_gesture_description_swipe_lambda">Unten links -&gt; oben mitte -&gt; unten rechts</string>
+    <string name="settings_gesture_description_swipe_v_reverse">Oben rechts -&gt; unten mitte -&gt; oben links</string>
+    <string name="settings_gesture_swipe_lambda_reverse">Λ (Rückwärts)</string>
+    <string name="settings_gesture_description_swipe_lambda_reverse">Unten rechts -&gt; oben mitte -&gt; unten links</string>
+    <string name="dialog_report_bug_button_security">Sicherheitslücke melden</string>
+    <string name="settings_apps_hide_private_space_apps">Privaten Bereich nicht in der App Liste anzeigen</string>
+    <string name="list_title_private_space">Privater Bereich</string>
+    <string name="pin_shortcut_title">Shortcut hinzufügen</string>
+    <string name="pin_shortcut_button_bind">An Geste binden</string>
+    <string name="pin_shortcut_switch_visible">In Appliste anzeigen</string>
+    <string name="tooltip_unlock_private_space">Privaten Bereich entsperren</string>
+    <string name="settings_display_hide_status_bar">Statusleiste verstecken</string>
+    <string name="settings_display_hide_navigation_bar">Navigationsleiste verstecken</string>
+    <string name="tooltip_lock_private_space">Privaten Bereich sperren</string>
+    <string name="tutorial_concept_label_version">Version</string>
+    <string name="tutorial_app_list_title">Alle Apps</string>
+    <string name="tutorial_app_list_text_2">Sobald nur noch eine App passt, wird diese automatisch gestartet.\nDas lässt sich unterdrücken, indem der Suche ein Leerzeichen vorangestellt wird.</string>
+    <string name="settings_gesture_swipe_larger"><![CDATA[>]]></string>
+    <string name="settings_gesture_description_swipe_smaller">Oben rechts -&gt; mitte links -&gt; unten rechts</string>
+    <string name="settings_gesture_description_swipe_larger">Oben links -&gt; mitte rechts -&gt; unten links</string>
+    <string name="tutorial_app_list_text">In der Appliste kann effizient nach Apps gesucht werden.\n\nDie Liste wird standardmäßig durch Wischen nach oben geöffnet (auch das lässt sich einstellen).</string>
+    <string name="dialog_consent_accessibility_text"><![CDATA[Das Aktivieren der Bedienungshilfe erteilt μLauncher <strong>weitreichende Zugriffsrechte</strong> .<br/>μLauncher wird diese <strong>ausschließlich zum Sperren des Bildschirms</strong> verwenden. μLauncher wird <strong>niemals irgendwelche Daten sammeln</strong>. Insbesondere werden mittels der Bedienungshilfe keine Daten gesammelt.]]></string>
+    <string name="settings_gesture_tap_up">Tippen und hoch</string>
+    <string name="settings_gesture_description_tap_up">Tippen, dann nach oben wischen</string>
+    <string name="settings_gesture_tap_down">Tippen und nach unten</string>
+    <string name="settings_gesture_description_tap_down">Tippen, dann nach unten wischen</string>
+    <string name="settings_gesture_tap_left">Tippen und links</string>
+    <string name="settings_gesture_description_tap_left">Tippen, dann nach links wischen</string>
+    <string name="settings_gesture_tap_right">Tippen und rechts</string>
+    <string name="settings_gesture_description_tap_right">Tippen, dann nach rechts wischen</string>
+    <string name="dialog_report_bug_security_info">Sicherheitslücken bitte nicht öffentlich bei GitHub melden, sondern auf dem folgenden Weg:</string>
+    <string name="list_other_list_private_space">Privater Bereich</string>
+    <string name="list_other_track_play_pause">Musik: Wiedergabe / Pause</string>
+    <string name="settings_list_reverse_layout">Appliste umkehren</string>
+    <string name="settings_widgets_widgets">Widgets verwalten</string>
+    <string name="widget_menu_configure">Konfigurieren</string>
+    <string name="widget_clock_label">Uhr</string>
+    <string name="notification_crash_explanation">Entschuldigung! Für weitere Informationen klicken.</string>
+    <string name="report_crash_button_copy">Absturzbericht in die Zwischenablage kopieren</string>
+    <string name="settings_meta_view_docs">Dokumentation</string>
+    <string name="select_widget_title">Widget auswählen</string>
+    <string name="widget_menu_remove">Entfernen</string>
+    <string name="widget_clock_description">Die Standarduhr des μLaunchers</string>
+    <string name="manage_widget_panels_delete">Löschen</string>
+    <string name="manage_widget_panels_rename">Umbenennen</string>
+    <string name="list_other_open_widget_panel">Widget-Panel öffnen</string>
+    <string name="alert_widget_panel_not_found">Dieses Widget-Panel existiert nicht mehr.</string>
+    <string name="settings_launcher_section_widgets">Widgets</string>
+    <string name="send_email">E-Mail senden</string>
+    <string name="settings_functionality_auto_close_keyboard">Tastatur beim Scrollen schließen</string>
+    <string name="report_crash_title">μLauncher ist abgestürzt</string>
+    <string name="content_description_add_widget_panel">Widget-Panel hinzufügen</string>
+    <string name="content_description_close">Schließen</string>
+    <plurals name="widget_panel_number_of_widgets">
+        <item quantity="one">Enthält %1$d Widget.</item>
+        <item quantity="other">Enthält %1$d Widgets.</item>
+    </plurals>
+    <string name="settings_widgets_custom_panels">Widget-Panels verwalten</string>
+    <string name="widget_panel_default_name">Widget-Panel #%1$d</string>
+    <string name="dialog_ok">Ok</string>
+    <string name="widget_panels_title">Widget-Panels</string>
+    <string name="dialog_select_widget_panel_title">Wähle ein Widget-Panel aus</string>
+    <string name="dialog_create_widget_panel_title">Erstelle ein neues Widget-Panel</string>
+    <string name="notification_crash_title">μLauncher ist abgestürzt</string>
+    <string name="notification_channel_crash">Abstürze und Debug-Informationen</string>
+    <string name="content_description_add_widget">Widget hinzufügen</string>
 </resources>
