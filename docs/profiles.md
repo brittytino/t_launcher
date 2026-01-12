@@ -6,13 +6,13 @@
 
 # Work Profile
 
-µLauncher is compatible with [work profile](https://www.android.com/enterprise/work-profile/), so apps like [Shelter](https://gitea.angry.im/PeterCxy/Shelter) can be used.
+T Launcher is compatible with [work profile](https://www.android.com/enterprise/work-profile/), so apps like [Shelter](https://gitea.angry.im/PeterCxy/Shelter) can be used.
 Apps from the work profile are shown in the usual app list.
 
 
 # Private Space
 
-µLauncher is compatible with [private space](https://source.android.com/docs/security/features/private-space).
+T Launcher is compatible with [private space](https://source.android.com/docs/security/features/private-space).
 
 
 The private space can be (un)locked by a dedicated action.

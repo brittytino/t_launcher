@@ -1,4 +1,4 @@
-µLauncher is a home screen that lets you start other apps using swipe gestures and button presses.
+T Launcher is a home screen that lets you start other apps using swipe gestures and button presses.
 It is minimal, efficient and free of distraction.
 
 Your home screen only displays the date, time and a wallpaper.

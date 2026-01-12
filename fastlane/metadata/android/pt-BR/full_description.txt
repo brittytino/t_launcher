@@ -1,4 +1,4 @@
-O µLauncher é uma tela inicial que permite abrir apps através de gestos e botões físicos.
+O T Launcher é uma tela inicial que permite abrir apps através de gestos e botões físicos.
 O launcher é minimalista, eficiente e livre de distrações.
 
 A tela inicial mostra apenas a data, hora e papel de parede.

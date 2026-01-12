@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string name="app_name" translatable="false">μLauncher</string>
+        <string name="app_name" translatable="false">T Launcher</string>
         <!--
           -
           - Settings
@@ -198,7 +198,7 @@
 
         <!-- Legal -->
         <string name="legal_info_text"><![CDATA[
-        <h2>μLauncher</h2>
+        <h2>T Launcher</h2>
         Modifications to Launcher.
         <p><a href=\"https://github.com/jrpie/launcher\">github.com/jrpie/launcher</a></p>
 

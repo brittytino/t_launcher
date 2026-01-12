@@ -9,9 +9,9 @@
     <string name="settings_theme_color_theme_item_default">Standaard</string>
     <string name="settings_theme_color_theme_item_dark">Donker</string>
     <string name="settings_apps_choose">Kies app</string>
-    <string name="settings_general_choose_home_screen">µLauncher als standaard instellen</string>
+    <string name="settings_general_choose_home_screen">T Launcher als standaard instellen</string>
     <string name="settings_meta_cant_select_launcher">App info</string>
-    <string name="settings_meta_show_tutorial">Bekijk de µLauncher handleiding</string>
+    <string name="settings_meta_show_tutorial">Bekijk de T Launcher handleiding</string>
     <string name="settings_meta_view_code">Broncode bekijken</string>
     <string name="settings_meta_report_bug">Een probleem melden</string>
     <string name="dialog_report_bug_title">Een probleem melden</string>
@@ -19,11 +19,11 @@
     <string name="dialog_report_bug_security_info">Meld veiligheidsproblemen niet publiek op GitHub, gebruik daarvoor het volgende:</string>
     <string name="dialog_report_bug_create_report">Rapport maken</string>
     <string name="settings_meta_fork_contact">Neem contact met de ontwikkelaar van de fork op</string>
-    <string name="settings_meta_join_chat">Word lid van de µLauncher chat</string>
+    <string name="settings_meta_join_chat">Word lid van de T Launcher chat</string>
     <string name="settings_meta_reset">Instellingen terugzetten</string>
     <string name="pin_shortcut_button_bind">Aan gebaar binden</string>
     <string name="pin_shortcut_switch_visible">In aaps-lijst tonen</string>
-    <string name="tutorial_start_text">👋\n\nEen korte uitleg over hoe µLauncher functioneert.</string>
+    <string name="tutorial_start_text">👋\n\nEen korte uitleg over hoe T Launcher functioneert.</string>
     <string name="alert_enable_accessibility_failed">Foutmelding: De toegankelijkheidsdienst kon niet ingeschakeld worden.</string>
     <string name="settings_gesture_description_tap_right">Tikken en dan naar rechts vegen</string>
     <string name="settings_functionality_search_web_summary">Druk tijdens het zoeken naar apps enter, om op het internet te zoeken.</string>
@@ -39,11 +39,11 @@
     <string name="settings_apps_install">Apps installeren</string>
     <string name="settings_list_layout_item_grid">Rooster</string>
     <string name="settings_meta_reset_confirm">Hierdoor verwijdert u alle instellingen. Doorgaan?</string>
-    <string name="dialog_report_bug_info">Bedankt voor het helpen verbeteren van μLauncher!\nHet zou behulpzaam zijn om volgende informatie aan het rapport toe te voegen:</string>
+    <string name="dialog_report_bug_info">Bedankt voor het helpen verbeteren van T Launcher!\nHet zou behulpzaam zijn om volgende informatie aan het rapport toe te voegen:</string>
     <string name="pin_shortcut_title">Shortcut toevoegen</string>
     <string name="alert_no_torch_found">Foutmelding: Er werd geen zaklamp gevonden.</string>
     <string name="alert_torch_access_exception">Foutmelding: Geen toegang tot de zaklamp.</string>
-    <string name="accessibility_service_description">Door μLauncher in te stellen als toegankelijkheidsdienst kan het scherm worden vergrendeld en het menu met recente apps worden geopend. Merk op dat veel toestemingen vereist zijn. Wees hierdoor erg vorzichtig bij het geven van zulke machten aan een app. μLauncher zal de toegankelijkheidsdienst alleen gebruiken om de volgende acties uit te voeren wanneer de gebruiker daarom vraagt: * vergrendelscherm * recente apps openen μLauncher zal de toegankelijkheidsdienst nooit gebruiken om gegevens te verzamelen. U kunt de broncode controleren om er zeker van te zijn. Merk op dat het vergrendelen van het scherm ook kan worden bereikt door μLauncher apparaatbeheerdersrechten te geven, maar dat werkt echter niet met vingerafdruk- en gezichtsontgrendeling.</string>
+    <string name="accessibility_service_description">Door T Launcher in te stellen als toegankelijkheidsdienst kan het scherm worden vergrendeld en het menu met recente apps worden geopend. Merk op dat veel toestemingen vereist zijn. Wees hierdoor erg vorzichtig bij het geven van zulke machten aan een app. T Launcher zal de toegankelijkheidsdienst alleen gebruiken om de volgende acties uit te voeren wanneer de gebruiker daarom vraagt: * vergrendelscherm * recente apps openen T Launcher zal de toegankelijkheidsdienst nooit gebruiken om gegevens te verzamelen. U kunt de broncode controleren om er zeker van te zijn. Merk op dat het vergrendelen van het scherm ook kan worden bereikt door T Launcher apparaatbeheerdersrechten te geven, maar dat werkt echter niet met vingerafdruk- en gezichtsontgrendeling.</string>
     <string name="screen_lock_method_dialog_text"><![CDATA[
         <h1>Methode voor vergrendeling kiezen</h1>
         Er zijn twee methodes om het scherm te vergrendelen.
@@ -57,7 +57,7 @@
 
         <h3>Toegankelijkheidsdienst</h3>
         Vereist veel rechten.
-        μLauncher gebruikt deze rechten alleen om het scherm te vergrendelen.
+        T Launcher gebruikt deze rechten alleen om het scherm te vergrendelen.
         <br/>
         (Echter moet u niet zomaar een willekeurige app zulke rechten geven, maar u kunt de <a href=\"https://github.com/jrpie/Launcher\">Broncode</a>bekijken.)
         <br/>
@@ -67,12 +67,12 @@
         <br/><br/><br/><br/>
         U kunt uw keuze altijd in de instellingen veranderen.
         ]]></string>
-    <string name="dialog_consent_accessibility_text"><![CDATA[U gaat hiermee de toegankelijkheidsdienst activeren. Dit geeft <strong>uitgebreide privileges</strong> aan μLauncher.<br/>μLauncher gebruikt deze privileges <strong>alleenmaar</strong> voor volgende doeleinde:
+    <string name="dialog_consent_accessibility_text"><![CDATA[U gaat hiermee de toegankelijkheidsdienst activeren. Dit geeft <strong>uitgebreide privileges</strong> aan T Launcher.<br/>T Launcher gebruikt deze privileges <strong>alleenmaar</strong> voor volgende doeleinde:
     <ul>
         <li>Vergrendelscherm</li>
         <li>Recente apps</li>
     </ul>
-     μLauncher <strong>verzamelt nooit gegevens</strong>. Onder anderen, μLauncher gebruikt de toegankelijkheidsdienst om gegevens verzamelen.]]></string>
+     T Launcher <strong>verzamelt nooit gegevens</strong>. Onder anderen, T Launcher gebruikt de toegankelijkheidsdienst om gegevens verzamelen.]]></string>
     <string name="settings_widgets_custom_panels">Bewerk widget paneel</string>
     <string name="settings_theme_color_theme_item_light">Licht</string>
     <string name="settings_theme_color_theme_item_dynamic">Dynamisch</string>
@@ -113,7 +113,7 @@
     <string name="list_app_rename">Hernoemen</string>
     <string name="list_apps_search_hint">Zoeken</string>
     <string name="list_apps_search_hint_no_auto_launch">Zoeken (geen snelstart)</string>
-    <string name="list_other_settings">µLauncher instellingen</string>
+    <string name="list_other_settings">T Launcher instellingen</string>
     <string name="list_other_list">Alle apps</string>
     <string name="list_other_list_favorites">Favoriete apps</string>
     <string name="list_other_list_private_space">Privéruimte</string>
@@ -130,7 +130,7 @@
     <string name="list_other_torch">Zaklamp aan / uit</string>
     <string name="list_other_launch_other_launcher">Andere launcher gebruiken</string>
     <string name="tutorial_concept_title">Concept</string>
-    <string name="tutorial_concept_text">µLauncher biedt een minimalistische, efficiënte en afleidingsvrije omgeving.\n\nDe app is vrije software, het heeft geen advertenties en verzamelt geen data.</string>
+    <string name="tutorial_concept_text">T Launcher biedt een minimalistische, efficiënte en afleidingsvrije omgeving.\n\nDe app is vrije software, het heeft geen advertenties en verzamelt geen data.</string>
     <string name="tutorial_concept_label_version">Versie</string>
     <string name="tutorial_usage_title">Gebruik</string>
     <string name="tutorial_usage_text">Het startscherm toont allen de datum en tijd. Geen afleiding.</string>
@@ -142,7 +142,7 @@
     <string name="tutorial_setup_text">Wij hebben een paar standaard-apps voor u gekozen, u mag deze gerust veranderen:</string>
     <string name="tutorial_setup_text_2">De selectie kan op elk moment in de instellingen aangepast worden.</string>
     <string name="tutorial_finish_title">Starten!</string>
-    <string name="tutorial_finish_text">Het kan beginnen!\n\nWij hopen dat deze app u helpt!\n\n- Finn (de ontwikelaar) en Josia (de ontwikkelaar van de fork µLauncher)</string>
+    <string name="tutorial_finish_text">Het kan beginnen!\n\nWij hopen dat deze app u helpt!\n\n- Finn (de ontwikelaar) en Josia (de ontwikkelaar van de fork T Launcher)</string>
     <string name="tutorial_finish_button">Starten</string>
     <string name="settings">Instellingen</string>
     <string name="ic_menu_alt">Meer opties</string>
@@ -153,19 +153,19 @@
     <string name="undo">Ongedaan maken</string>
     <string name="list_other_expand_settings_panel">Snelle instellingen</string>
     <string name="alert_recent_apps_failed">Foutmelding: Kon geen recente apps tonen (probeer de toegankelijkheidsdienst in de apparaatinstellingen uit en weer aan te zetten)</string>
-    <string name="toast_device_admin_not_enabled">µLauncher moet apparaatbeheerder zijn om het scherm te mogen vergrendelen.</string>
+    <string name="toast_device_admin_not_enabled">T Launcher moet apparaatbeheerder zijn om het scherm te mogen vergrendelen.</string>
     <string name="device_admin_explanation">Dit is nodig om het scherm te kunnen vergrendelen.</string>
     <string name="device_admin_description">De actie \"scherm vergrendelen\" activeren</string>
-    <string name="toast_accessibility_service_not_enabled">De toegankelijkheidsdienst voor µLauncher staat niet aan. Schakel het aan in de instellingen</string>
+    <string name="toast_accessibility_service_not_enabled">De toegankelijkheidsdienst voor T Launcher staat niet aan. Schakel het aan in de instellingen</string>
     <string name="alert_lock_screen_failed">Foutmelding: Kon het scherm niet vergrendelen (probeer de toegankelijkheidsdienst in de apparaatinstellingen uit en weer aan te zetten)</string>
     <string name="toast_private_space_locked">Privégedeelte vergrendelt</string>
     <string name="toast_private_space_unlocked">Privégedeelte ontgrendelt</string>
     <string name="toast_private_space_not_available">Privégedeelte is niet bereikbaar</string>
-    <string name="toast_private_space_default_home_screen">µLauncher moet als standaard-launcher ingesteld zijn om tot de privégegedeelte toegeang te krijgen.</string>
+    <string name="toast_private_space_default_home_screen">T Launcher moet als standaard-launcher ingesteld zijn om tot de privégegedeelte toegeang te krijgen.</string>
     <string name="tooltip_lock_private_space">Privégedeelte vergrendelen</string>
     <string name="tooltip_unlock_private_space">Privégedeelte ontgrendelen</string>
-    <string name="toast_lock_screen_not_supported">Foutmelding: Op dit apparaat kan het scherm via de toegankelijkheidsdienst niet vergrendelt worden. Maak µLauncher apparaatbeheerder hiervoor.</string>
-    <string name="accessibility_service_name">µLauncher</string>
+    <string name="toast_lock_screen_not_supported">Foutmelding: Op dit apparaat kan het scherm via de toegankelijkheidsdienst niet vergrendelt worden. Maak T Launcher apparaatbeheerder hiervoor.</string>
+    <string name="accessibility_service_name">T Launcher</string>
     <string name="screen_lock_method_dialog_title">Methode voor vergrendeling kiezen</string>
     <string name="screen_lock_method_use_accessibility">Gebruik toegankelijkheidsdienst</string>
     <string name="screen_lock_method_use_device_admin">Gebruik apparaatadministratie</string>
@@ -178,9 +178,9 @@
     <string name="dialog_select_color_color_hex">Kleur</string>
     <string name="dialog_choose_color_title">Kleur kiezen</string>
     <string name="dialog_consent_accessibility_other_options">Ik ben me ervan bewust dat er andere opties bestaan (met beheerdersrechten of de aan/uit-knop).</string>
-    <string name="dialog_consent_accessibility_consent">Ik geef μLauncher toestemming om de toegankelijkheidservice te gebruiken om functionaliteit te bieden die niet gerelateerd is aan toegankelijkheid.</string>
-    <string name="dialog_consent_accessibility_privileges">Ik ben me ervan bewust ik hierdoor uitgebreide privileges verleen aan μLauncher.</string>
-    <string name="dialog_consent_accessibility_data_collection">Ik geef μLauncher toestemming om geen gegevens te verzamelen.</string>
+    <string name="dialog_consent_accessibility_consent">Ik geef T Launcher toestemming om de toegankelijkheidservice te gebruiken om functionaliteit te bieden die niet gerelateerd is aan toegankelijkheid.</string>
+    <string name="dialog_consent_accessibility_privileges">Ik ben me ervan bewust ik hierdoor uitgebreide privileges verleen aan T Launcher.</string>
+    <string name="dialog_consent_accessibility_data_collection">Ik geef T Launcher toestemming om geen gegevens te verzamelen.</string>
     <string name="dialog_consent_accessibility_title">Toegankelijkheidsservice activeren</string>
     <string name="dialog_consent_accessibility_ok">Toegankelijkheidsservice activeren</string>
     <string name="settings_meta_licenses">Open Source licenties</string>
@@ -192,7 +192,7 @@
     <string name="widget_menu_enable_interaction">Interactie inschakelen</string>
     <string name="widget_menu_disable_interaction">Interactie uitschakelen</string>
     <string name="widget_clock_label">Klok</string>
-    <string name="widget_clock_description">De standaard klok van µLauncher</string>
+    <string name="widget_clock_description">De standaard klok van T Launcher</string>
     <string name="manage_widget_panels_delete">Verwijder</string>
     <string name="manage_widget_panels_rename">Hernoem</string>
     <string name="widget_panel_default_name">Widget Paneel #%1$d</string>

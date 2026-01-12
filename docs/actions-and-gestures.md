@@ -4,9 +4,9 @@
 
 # Actions and Gestures
 
-µLauncher's central mechanism for accessing important functionality quickly
+T Launcher's central mechanism for accessing important functionality quickly
 is to bind actions (e.g., launching an app) to gestures (e.g., swiping up).
-These bindings can be configured in µLauncher Settings > ACTIONS.
+These bindings can be configured in T Launcher Settings > ACTIONS.
 
 
 ## Available Gestures
@@ -55,12 +55,12 @@ To any of the available gestures, one of the following actions can be bound:
 - Launch an app (or a pinned shortcut)
 - Open a widget panel.
     Widget panels can hold widgets that are not needed on the home screen itself.
-    They can be created and managed in µLauncher Settings > Manage Widget Panels
+    They can be created and managed in T Launcher Settings > Manage Widget Panels
 - Open a list of all, favorite, or private apps (hidden apps are excluded).
     Actions related to private space are only shown if private space is set up on the device.
-    µLauncher's settings can be accessed from those lists.
+    T Launcher's settings can be accessed from those lists.
     If private space is set up, an icon to (un)lock it is shown on the top right.
-- Open µLauncher's settings
+- Open T Launcher's settings
 - Toggle private space lock
 - Lock the screen: This allows you to lock the screen.
     There are two mechanisms by which the screen can be locked,

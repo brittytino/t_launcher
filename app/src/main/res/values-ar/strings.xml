@@ -177,20 +177,20 @@
     <string name="undo">تراجع</string>
     <string name="snackbar_app_hidden">تم إخفاء التطبيق. يمكنك جعله مرئيًا مرة أخرى في الإعدادات.</string>
     <string name="list_other_expand_settings_panel">الاعدادات السريعة</string>
-    <string name="toast_device_admin_not_enabled">يجب أن يكون μlauncher مسؤولًا من أجل قفل الشاشة.</string>
+    <string name="toast_device_admin_not_enabled">يجب أن يكون T Launcher مسؤولًا من أجل قفل الشاشة.</string>
     <string name="device_admin_explanation">هذا مطلوب لإجراء شاشة القفل.</string>
     <string name="device_admin_description">تمكين إجراء شاشة القفل</string>
     <string name="alert_no_torch_found">لم يتم اكتشاف كاميرا مع فلاش.</string>
     <string name="alert_torch_access_exception">خطأ: لا يمكن الوصول إلى الفلاش.</string>
     <string name="alert_recent_apps_failed">خطأ: فشل في إظهار التطبيقات الحديثة. (إذا قمت للتو بترقية التطبيق ، فحاول تعطيل خدمة الوصول وإعادة تمكينها في إعدادات الهاتف)</string>
     <string name="alert_enable_accessibility_failed">خطأ: فشل في تمكين خدمة الوصول.</string>
-    <string name="toast_accessibility_service_not_enabled">لم يتم تمكين خدمة الوصول إلى μlauncher. يرجى تمكينه في الإعدادات</string>
+    <string name="toast_accessibility_service_not_enabled">لم يتم تمكين خدمة الوصول إلى T Launcher. يرجى تمكينه في الإعدادات</string>
     <string name="toast_private_space_locked">المساحة الخاصة مقفلة</string>
     <string name="toast_private_space_unlocked">المساحة الخاصة مفتوحة</string>
     <string name="toast_private_space_not_available">المساحة الخاصة غير متوافرة</string>
     <string name="tooltip_lock_private_space">قفل المساحة الخاصة</string>
     <string name="tooltip_unlock_private_space">فتح المساحة الخاصة</string>
-    <string name="accessibility_service_name">μLauncher</string>
+    <string name="accessibility_service_name">T Launcher</string>
     <string name="screen_lock_method_dialog_title">اختر طريقة القفل</string>
     <string name="screen_lock_method_use_accessibility">استخدام خدمة إمكانية الوصول</string>
     <string name="screen_lock_method_use_device_admin">استخدم مسؤول الجهاز</string>
@@ -204,8 +204,8 @@
     <string name="dialog_choose_color_title">اختر لونًا</string>
     <string name="dialog_consent_accessibility_privileges">أدرك أن هذا سيمنح أذونات كثيرة لـμauncher.</string>
     <string name="dialog_consent_accessibility_other_options">أدرك وجود خيارات أخرى (باستخدام أذونات مسؤول الجهاز أو زر الطاقة).</string>
-    <string name="dialog_consent_accessibility_consent">أوافق لـμlauncher باستخدام خدمة إمكانية الوصول لتوفير الوظائف ليس لها صلة بإمكانية الوصول.</string>
-    <string name="dialog_consent_accessibility_data_collection">أوافق على أن μlauncher لا يجمع أي بيانات.</string>
+    <string name="dialog_consent_accessibility_consent">أوافق لـT Launcher باستخدام خدمة إمكانية الوصول لتوفير الوظائف ليس لها صلة بإمكانية الوصول.</string>
+    <string name="dialog_consent_accessibility_data_collection">أوافق على أن T Launcher لا يجمع أي بيانات.</string>
     <string name="dialog_consent_accessibility_title">يتم تفعيل خدمة إمكانية الوصول</string>
     <string name="dialog_consent_accessibility_ok">تفعيل خدمة إمكانية الوصول</string>
     <string name="dialog_cancel">إلغاء</string>
@@ -218,7 +218,7 @@
         <li>قفل الشاشة</li>
         <li>التطبيقات الحديثة</li>
     </ul>
-      <strong> لن يقومμlauncher أبدًا بجمع أي بيانات </strong>. على وجه الخصوص ، لا يستخدم μlauncher خدمة إمكانية الوصول لجمع أي بيانات.]]></string>
+      <strong> لن يقومT Launcher أبدًا بجمع أي بيانات </strong>. على وجه الخصوص ، لا يستخدم T Launcher خدمة إمكانية الوصول لجمع أي بيانات.]]></string>
     <string name="settings_gesture_description_tap_down">أنقر ثم اسحب لأسفل</string>
     <string name="settings_theme_color_theme_item_default">الافتراضي</string>
     <string name="pin_shortcut_switch_visible">أظهر في قائمة التطبيقات</string>
@@ -235,9 +235,9 @@
     <string name="settings_apps_hide_bound_apps">لا تظهر التطبيقات المرتبطة بإيماءة في قائمة التطبيقات</string>
     <string name="list_other_list_favorites">درج التطبيقات المفضلة</string>
     <string name="list_other_track_next">الموسيقى: التالي</string>
-    <string name="tutorial_concept_text">تم تصميم μLauncher ليكون فعالًا وخاليًا من مشتتات الانتباه.\n\nلا يحتوي على أي إعلانات ولا يجمع أي بيانات.</string>
+    <string name="tutorial_concept_text">تم تصميم T Launcher ليكون فعالًا وخاليًا من مشتتات الانتباه.\n\nلا يحتوي على أي إعلانات ولا يجمع أي بيانات.</string>
     <string name="tutorial_finish_text">أنت مستعد للبدء!\n\nآمل أن يكون هذا ذا قيمة كبيرة بالنسبة لك!\n\n- المطورين</string>
-    <string name="toast_private_space_default_home_screen">يجب أن يكون μlauncher الشاشة الرئيسية الافتراضية للوصول إلى مساحة خاصة.</string>
+    <string name="toast_private_space_default_home_screen">يجب أن يكون T Launcher الشاشة الرئيسية الافتراضية للوصول إلى مساحة خاصة.</string>
     <string name="settings_gesture_description_left_bottom_edge">اسحب إلى اليسار من أسفل الشاشة</string>
     <string name="settings_gesture_description_swipe_smaller_reverse">أسفل اليمين -&gt; وسط اليسار -&gt; أعلى اليمين</string>
     <string name="settings_apps_toast_store_not_found">لم يتم العثور على تطبيق المتجر</string>
@@ -254,13 +254,13 @@
     <string name="settings_theme_background">خلفية القوائم</string>
     <string name="settings_apps_hide_paused_apps">إخفِ التطبيقات المتوقفة</string>
     <string name="settings_meta_show_tutorial">أظهر العرض التعليمي للتطبيق</string>
-    <string name="dialog_report_bug_info">شكرا لك على المساعدة في تحسين μLauncher!\nيرجى إضافة المعلومات التالية إلى تقرير الأخطاء الخاص بك:</string>
+    <string name="dialog_report_bug_info">شكرا لك على المساعدة في تحسين T Launcher!\nيرجى إضافة المعلومات التالية إلى تقرير الأخطاء الخاص بك:</string>
     <string name="settings_meta_contact">اتصل بالمطور الأصلي</string>
     <string name="list_other_volume_down">اخفض الصوت</string>
     <string name="tutorial_usage_text_2">يمكنك تشغيل أهم تطبيقاتك بإيماءات اللمس أو الضغط على الأزرار.</string>
     <string name="settings_enabled_gestures_edge_swipe_summary">اسحب من حواف الشاشة</string>
     <string name="toast_lock_screen_not_supported">خطأ: قفل الشاشة باستخدام إمكانية الوصول غير مدعوم على هذا الجهاز. الرجاء استخدام طريقة مسؤول الجهاز بدلاً من ذلك.</string>
-    <string name="accessibility_service_description">يتيح تعيين μlauncher كخدمة إمكانية الوصول قفل الشاشة وفتح قائمة التطبيقات الحديثة. يرجى ملاحظة أنه يتطلب كمية كبيرة من الأذونات. يجب ألا تمنح مثل هذه الأذونات باستخفاف لأي تطبيق. سوف يستخدم μlauncher خدمة إمكانية الوصول فقط لأداء الإجراءات التالية عند طلب المستخدم: * قفل شاشة * فتح التطبيقات الحديثة μlauncher لن يستخدم أبدًا خدمة إمكانية الوصول لجمع البيانات. يمكنك التحقق من شيفرة المصدر للتأكد. يرجى ملاحظة أنه يمكنك قفل الشاشة من خلال منح أذونات مسؤول الجهاز، لكنها لا تعمل مع بصمات الأصابع وفتح الوجه.</string>
+    <string name="accessibility_service_description">يتيح تعيين T Launcher كخدمة إمكانية الوصول قفل الشاشة وفتح قائمة التطبيقات الحديثة. يرجى ملاحظة أنه يتطلب كمية كبيرة من الأذونات. يجب ألا تمنح مثل هذه الأذونات باستخفاف لأي تطبيق. سوف يستخدم T Launcher خدمة إمكانية الوصول فقط لأداء الإجراءات التالية عند طلب المستخدم: * قفل شاشة * فتح التطبيقات الحديثة T Launcher لن يستخدم أبدًا خدمة إمكانية الوصول لجمع البيانات. يمكنك التحقق من شيفرة المصدر للتأكد. يرجى ملاحظة أنه يمكنك قفل الشاشة من خلال منح أذونات مسؤول الجهاز، لكنها لا تعمل مع بصمات الأصابع وفتح الوجه.</string>
     <string name="dialog_create_widget_panel_title">إنشاء لوحة أداة جديدة</string>
     <string name="settings_widgets_widgets">إدارة الأدوات المصغّرة</string>
     <string name="settings_widgets_custom_panels">إدارة لوحات الأدوات المصغّرة</string>
@@ -277,7 +277,7 @@
 
         <h3>خدمة الوصول</h3>
         تتطلب صلاحيات واسعة.
-        سيستخدم تطبيق μLauncher هذه الصلاحيات فقط لقفل الشاشة.
+        سيستخدم تطبيق T Launcher هذه الصلاحيات فقط لقفل الشاشة.
         <br/>
         (يجب ألا تثق بتطبيق عشوائي قمت بتحميله للتو بهذا الادعاء، ولكن يمكنك التحقق من <a href=\"https://github.com/jrpie/Launcher\">الكود المصدري</a>.)
         <br/>
@@ -287,7 +287,7 @@
         <br/><br/><br/><br/>
         يمكنك تغيير اختيارك لاحقًا في الإعدادات.
 ]]></string>
-    <string name="widget_clock_description">الساعة الافتراضية لـ μLauncher</string>
+    <string name="widget_clock_description">الساعة الافتراضية لـ T Launcher</string>
     <string name="dialog_select_widget_panel_info_no_panels"><![CDATA[
     لم يتم العثور على أي لوحات أدوات. يمكنك إنشاء لوحات أدوات في الإعدادات > المشغل > إدارة لوحات الأدوات.
 ]]></string>
@@ -325,17 +325,17 @@
     <h2>ماذا يمكنني أن أفعل الآن؟</h2>
     إذا ظهر هذا الخطأ مرة أخرى، يمكنك تجربة عدة أشياء:
     <ul>
-        <li>إيقاف μLauncher بالقوة</li>
-        <li>مسح بيانات μLauncher&#39;s (<strong>ستفقد إعداداتك!</strong>)</li>
+        <li>إيقاف T Launcher بالقوة</li>
+        <li>مسح بيانات T Launcher&#39;s (<strong>ستفقد إعداداتك!</strong>)</li>
         <li>تثبيت إصدار أقدم (<a href="https://github.com/jrpie/Launcher/releases">GitHub</a>, <a href="https://f-droid.org/en/packages/de.jrpie.android.launcher">F-Droid</a>)</li>
     </ul>
 ]]></string>
-    <string name="notification_crash_title">تعطل μLauncher</string>
+    <string name="notification_crash_title">تعطل T Launcher</string>
     <string name="notification_crash_explanation">آسف! انقر للحصول على مزيد من المعلومات.</string>
     <string name="report_crash_button_copy">نسخ تقرير التعطل إلى الحافظة</string>
     <string name="report_crash_button_mail">إرسال التقرير بالبريد</string>
     <string name="report_crash_button_report">إنشاء تقرير خطأ على GitHub</string>
-    <string name="report_crash_title">تعطل μLauncher</string>
+    <string name="report_crash_title">تعطل T Launcher</string>
     <string name="send_email">إرسال بريد إلكتروني</string>
     <string name="notification_channel_crash">الأعطال ومعلومات التصحيح</string>
 </resources>

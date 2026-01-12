@@ -1,6 +1,6 @@
 * Uygulamaları yeniden adlandırma seçeneği
 * Uygulama listesinden hareketlere bağlı uygulamaları otomatik olarak gizleme seçeneği
-* Uygulama listesinden µLauncher'ı varsayılan olarak gizle
+* Uygulama listesinden T Launcher'ı varsayılan olarak gizle
 * Varsayılan uygulamaların seçimi iyileştirildi
 * Açık tema (deneysel)
 

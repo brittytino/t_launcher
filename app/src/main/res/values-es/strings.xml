@@ -72,7 +72,7 @@
       -->
     <string name="settings_general_choose_home_screen">Seleccionar Launcher</string>
     <string name="settings_meta_cant_select_launcher">Información de la aplicación</string>
-    <string name="settings_meta_show_tutorial">Ver el tutorial de µLauncher</string>
+    <string name="settings_meta_show_tutorial">Ver el tutorial de T Launcher</string>
     <string name="settings_meta_reset">Configuración por defecto</string>
     <string name="settings_meta_reset_confirm">Todas sus preferencias se eliminarán. Desea continuar?</string>
     <string name="settings_meta_report_bug">Reportar un error</string>
@@ -92,7 +92,7 @@
     <string name="list_app_delete">Desinstalar</string>
     <string name="list_app_info">Información</string>
     <string name="list_apps_search_hint">Buscar</string>
-    <string name="list_other_settings">Configuración de μLauncher</string>
+    <string name="list_other_settings">Configuración de T Launcher</string>
     <string name="list_other_list">Aplicaciones</string>
     <string name="list_other_volume_up">Subir el volumen</string>
     <string name="list_other_volume_down">Bajar volumen</string>
@@ -107,7 +107,7 @@
     <string name="tutorial_title">Tutorial</string>
     <string name="tutorial_start_text">👋\n\n¡Tómate unos segundos para aprender a utilizar este Launcher!</string>
     <string name="tutorial_concept_title">Concepto</string>
-    <string name="tutorial_concept_text">μLauncher está diseñado para ser mínimo, eficiente y libre de distracciones.\n\nNo contiene anuncios ni recopila datos.</string>
+    <string name="tutorial_concept_text">T Launcher está diseñado para ser mínimo, eficiente y libre de distracciones.\n\nNo contiene anuncios ni recopila datos.</string>
     <string name="tutorial_concept_text_2">¡Es software libre (licencia MIT)!\n¡No olvides visitar el repositorio!</string>
     <string name="tutorial_usage_title">Uso</string>
     <string name="tutorial_usage_text">Tu pantalla de inicio contiene la fecha y hora local. Sin distracciones.</string>
@@ -116,7 +116,7 @@
     <string name="tutorial_setup_text">Elegimos algunas aplicaciones predeterminadas para ti. Puedes cambiarlos ahora si lo deseas:</string>
     <string name="tutorial_setup_text_2">También puedes cambiar tu selección más tarde.</string>
     <string name="tutorial_finish_title">Vamos!</string>
-    <string name="tutorial_finish_text">¡Estás listo para comenzar!\n\n¡Espero que esto sea de gran valor para ti!\n\n- Finn (quien creó Launcher) y Josia (quien hizo algunas mejoras y mantiene la bifurcación μLauncher)</string>
+    <string name="tutorial_finish_text">¡Estás listo para comenzar!\n\n¡Espero que esto sea de gran valor para ti!\n\n- Finn (quien creó Launcher) y Josia (quien hizo algunas mejoras y mantiene la bifurcación T Launcher)</string>
     <string name="tutorial_finish_button">Iniciar</string>
     <string name="settings">Configuración</string>
     <string name="ic_menu_alt">Más opciones</string>
@@ -148,8 +148,8 @@
     <string name="settings_gesture_right_top_edge">Derecha (arriba)</string>
     <string name="settings_gesture_right_bottom_edge">Derecha (Abajo)</string>
     <string name="settings_gesture_left_top_edge">Izquierda (arriba)</string>
-    <string name="dialog_consent_accessibility_text"><![CDATA[Está a punto de activar el servicio de accesibilidad. Esto otorgará privilegios de amplio alcance a μLauncher. μLauncher utilizará estos privilegios solo para bloquear la pantalla. μLauncher <strong>nunca recopilará ningún dato</strong>. En particular, μLauncher no utiliza el servicio de accesibilidad para recopilar ningún dato.]]></string>
-    <string name="accessibility_service_description">Configurar μLauncher como un servicio de accesibilidad le permite bloquear la pantalla. Tenga en cuenta que se requieren permisos excesivos. Nunca debe otorgar dichos permisos a la ligera a ninguna aplicación. μLauncher utilizará el servicio de accesibilidad solo para bloquear la pantalla. Puedes consultar el código fuente para asegurarte. Tenga en cuenta que también se puede bloquear la pantalla otorgando permisos de administrador del dispositivo μLauncher. Sin embargo, ese método no funciona con el desbloqueo mediante huellas dactilares y rostro.</string>
+    <string name="dialog_consent_accessibility_text"><![CDATA[Está a punto de activar el servicio de accesibilidad. Esto otorgará privilegios de amplio alcance a T Launcher. T Launcher utilizará estos privilegios solo para bloquear la pantalla. T Launcher <strong>nunca recopilará ningún dato</strong>. En particular, T Launcher no utiliza el servicio de accesibilidad para recopilar ningún dato.]]></string>
+    <string name="accessibility_service_description">Configurar T Launcher como un servicio de accesibilidad le permite bloquear la pantalla. Tenga en cuenta que se requieren permisos excesivos. Nunca debe otorgar dichos permisos a la ligera a ninguna aplicación. T Launcher utilizará el servicio de accesibilidad solo para bloquear la pantalla. Puedes consultar el código fuente para asegurarte. Tenga en cuenta que también se puede bloquear la pantalla otorgando permisos de administrador del dispositivo T Launcher. Sin embargo, ese método no funciona con el desbloqueo mediante huellas dactilares y rostro.</string>
     <string name="settings_apps_hide_private_space_apps">Ocultar el espacio privado de la lista de aplicaciones</string>
     <string name="settings_list_layout">Diseño de la lista de aplicaciones</string>
     <string name="list_title_private_space">Espacio privado</string>
@@ -163,11 +163,11 @@
     <string name="settings_gesture_swipe_v">V</string>
     <string name="dialog_report_bug_title">Informar un error</string>
     <string name="list_app_hidden_remove">mostrar</string>
-    <string name="toast_private_space_default_home_screen">μLauncher debe ser la pantalla de inicio predeterminada para acceder al espacio privado.</string>
+    <string name="toast_private_space_default_home_screen">T Launcher debe ser la pantalla de inicio predeterminada para acceder al espacio privado.</string>
     <string name="dialog_report_bug_security_info">No informe vulnerabilidades de seguridad públicamente en GitHub, sino utilice lo siguiente:</string>
     <string name="dialog_report_bug_button_security">Informar sobre una vulnerabilidad de seguridad</string>
     <string name="dialog_report_bug_create_report">Crear informe</string>
-    <string name="settings_meta_join_chat">Únete al chat de μLauncher</string>
+    <string name="settings_meta_join_chat">Únete al chat de T Launcher</string>
     <string name="settings_meta_donate">Donar</string>
     <string name="list_other_volume_adjust">Ajustar el volumen</string>
     <string name="list_other_expand_notifications_panel">Expandir el panel de notificaciones</string>
@@ -187,9 +187,9 @@
     <string name="list_title_favorite">Aplicaciones favoritas</string>
     <string name="list_title_hidden">Aplicaciones ocultas</string>
     <string name="undo">Deshacer</string>
-    <string name="dialog_consent_accessibility_consent">Doy mi consentimiento para que μLauncher utilice el servicio de accesibilidad para proporcionar una funcionalidad no relacionada con la accesibilidad.</string>
+    <string name="dialog_consent_accessibility_consent">Doy mi consentimiento para que T Launcher utilice el servicio de accesibilidad para proporcionar una funcionalidad no relacionada con la accesibilidad.</string>
     <string name="list_apps_search_hint_no_auto_launch">Buscar (sin inicio automático)</string>
-    <string name="dialog_consent_accessibility_privileges">Soy consciente de que esto otorgará privilegios de gran alcance a μLauncher.</string>
+    <string name="dialog_consent_accessibility_privileges">Soy consciente de que esto otorgará privilegios de gran alcance a T Launcher.</string>
     <string name="dialog_consent_accessibility_other_options">Soy consciente de que existen otras opciones (utilizando privilegios de administrador del dispositivo o el botón de encendido).</string>
     <string name="settings_meta_licenses">Licencias de código abierto</string>
     <string name="legal_info_title">Licencias de código abierto</string>
@@ -209,7 +209,7 @@
 
  Servicio de Accesibilidad
  Requiere privilegios excesivos.
- μLauncher utilizará esos privilegios solo para bloquear la pantalla.
+ T Launcher utilizará esos privilegios solo para bloquear la pantalla.
  <br/>
  (Realmente no deberías confiar en una aplicación aleatoria que acabas de descargar con tal afirmación, pero puedes consultar el <a href=\"https://github.com/jrpie/Launcher\">código fuente</a>).
  <br/>
@@ -240,7 +240,7 @@
     <string name="settings_enabled_gestures_edge_swipe_edge_width">Ancho del borde</string>
     <string name="settings_apps_hide_bound_apps">No mostrar aplicaciones que estén vinculadas a un gesto en la lista de aplicaciones</string>
     <string name="settings_meta_view_code">Ver el código fuente</string>
-    <string name="dialog_report_bug_info">¡Gracias por ayudarnos a mejorar μLauncher!\nConsidere agregar la siguiente información a su informe de error:</string>
+    <string name="dialog_report_bug_info">¡Gracias por ayudarnos a mejorar T Launcher!\nConsidere agregar la siguiente información a su informe de error:</string>
     <string name="dialog_report_bug_button_clipboard">Copiar al portapapeles</string>
     <string name="list_app_favorite_add">Añadir a favoritos</string>
     <string name="list_app_favorite_remove">Eliminar de favoritos</string>
@@ -255,20 +255,20 @@
     <string name="alert_requires_android_v">Esta funcionalidad requiere Android 15 o posterior.</string>
     <string name="snackbar_app_hidden">Aplicación oculta. Puedes hacerlo visible nuevamente en la configuración.</string>
     <string name="list_other_expand_settings_panel">Configuración rápida</string>
-    <string name="toast_device_admin_not_enabled">μLauncher debe ser administrador del dispositivo para poder bloquear la pantalla.</string>
+    <string name="toast_device_admin_not_enabled">T Launcher debe ser administrador del dispositivo para poder bloquear la pantalla.</string>
     <string name="device_admin_explanation">Esto es necesario para la acción de la pantalla de bloqueo.</string>
     <string name="device_admin_description">Habilitar la acción de bloqueo de pantalla</string>
     <string name="alert_lock_screen_failed">Error: Error al bloquear la pantalla. (Si acaba de actualizar la aplicación, intente deshabilitar y volver a habilitar el servicio de accesibilidad en la configuración del teléfono)</string>
-    <string name="toast_accessibility_service_not_enabled">El servicio de accesibilidad de μLauncher no está habilitado. Por favor, habilítelo en la configuración</string>
+    <string name="toast_accessibility_service_not_enabled">El servicio de accesibilidad de T Launcher no está habilitado. Por favor, habilítelo en la configuración</string>
     <string name="toast_private_space_locked">Espacio privado bloqueado</string>
     <string name="toast_private_space_unlocked">Espacio privado desbloqueado</string>
     <string name="tooltip_lock_private_space">Bloquear el espacio privado</string>
     <string name="tooltip_unlock_private_space">Desbloquear espacio privado</string>
     <string name="toast_lock_screen_not_supported">Error: El bloqueo de la pantalla mediante accesibilidad no es compatible con este dispositivo. En su lugar, utilice el administrador del dispositivo.</string>
-    <string name="accessibility_service_name">μLauncher - pantalla de bloqueo</string>
+    <string name="accessibility_service_name">T Launcher - pantalla de bloqueo</string>
     <string name="dialog_select_color_color_hex">Color</string>
     <string name="dialog_choose_color_title">Elige el color</string>
-    <string name="dialog_consent_accessibility_data_collection">Doy mi consentimiento para que μLauncher no recopile ningún dato.</string>
+    <string name="dialog_consent_accessibility_data_collection">Doy mi consentimiento para que T Launcher no recopile ningún dato.</string>
     <string name="dialog_consent_accessibility_title">Activación del servicio de accesibilidad</string>
     <string name="dialog_consent_accessibility_ok">Activar el servicio de accesibilidad</string>
     <string name="toast_activity_not_found_search_web">No se encontró ninguna aplicación para gestionar la búsqueda.</string>
@@ -321,7 +321,7 @@
         <item quantity="other">Contiene %1$d widgets.</item>
     </plurals>
     <string name="report_crash_button_report">Crear reporte de bug en GitHub</string>
-    <string name="report_crash_title">μLauncher dejó de funcionar</string>
+    <string name="report_crash_title">T Launcher dejó de funcionar</string>
     <string name="send_email">Enviar correo</string>
     <string name="settings_meta_view_docs">Documentación</string>
     <string name="select_widget_title">Elegir widget</string>
@@ -329,7 +329,7 @@
     <string name="widget_menu_configure">Configurar</string>
     <string name="widget_menu_enable_interaction">Habilitar interacción</string>
     <string name="widget_clock_label">Reloj</string>
-    <string name="widget_clock_description">El reloj predeterminado de μLauncher</string>
+    <string name="widget_clock_description">El reloj predeterminado de T Launcher</string>
     <string name="manage_widget_panels_delete">Eliminar</string>
     <string name="manage_widget_panels_rename">Cambiar nombre</string>
     <string name="widget_panel_default_name">Panel de widgets #%1$d</string>

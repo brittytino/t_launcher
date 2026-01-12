@@ -377,7 +377,7 @@ Similar to OLauncher?
 
 ---
 
-### µLauncher
+### T Launcher
 
 **License:** `MIT`  
 [Repository](https://github.com/jrpie/launcher) | [F-Droid](https://f-droid.org/en/packages/de.jrpie.android.launcher/)
@@ -411,7 +411,7 @@ Similar to OLauncher?
 
 | Launcher                                             | Search             | Search history     | Customizable gestures | Folders            | Tags               | Rename apps        | Widgets            | Private space      | Work profile       | Pinned shortcuts   | Icon packs         | Material You       |
 |------------------------------------------------------|--------------------|--------------------|-----------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
-| [µLauncher](#µLauncher)                              | :white_check_mark: | :x:                | :white_check_mark:    | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: |
+| [T Launcher](#T Launcher)                              | :white_check_mark: | :x:                | :white_check_mark:    | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: |
 | [Fossify](#Fossify)                                  | :white_check_mark: | :x:                | :x:                   | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :grey_question:    | :x:                | :white_check_mark: | :x:                | :white_check_mark: |
 | [Lawnchair](#Lawnchair)                              | :white_check_mark: | :white_check_mark: | :white_check_mark:    | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :grey_question:    | :grey_question:    | :x:                | :white_check_mark: | :white_check_mark: |
 | [Rootless Pixel Launcher](#Rootless-Pixel-Launcher)  | :white_check_mark: | :x:                | :x:                   | :x:                | :x:                | :x:                | :warning:          | :grey_question:    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |

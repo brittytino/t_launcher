@@ -62,7 +62,7 @@
       - Settings : Meta
       -
       -->
-    <string name="settings_general_choose_home_screen">Choisir μLauncher comme application d\'écran d\'accueil par défaut</string>
+    <string name="settings_general_choose_home_screen">Choisir T Launcher comme application d\'écran d\'accueil par défaut</string>
     <string name="settings_meta_cant_select_launcher">Informations sur l\'application</string>
     <string name="settings_meta_show_tutorial">Regarder le tutoriel</string>
     <string name="settings_meta_reset">Réinitialiser</string>
@@ -84,7 +84,7 @@
     <string name="list_app_delete">Désinstaller</string>
     <string name="list_app_info">Informations</string>
     <string name="list_apps_search_hint">Chercher des applications</string>
-    <string name="list_other_settings">Réglages d\'µLauncher</string>
+    <string name="list_other_settings">Réglages d\'T Launcher</string>
     <string name="list_other_list">Toutes les Applications</string>
     <string name="list_other_volume_up">Augmenter le volume</string>
     <string name="list_other_volume_down">Diminuer le volume</string>
@@ -108,7 +108,7 @@
     <string name="tutorial_setup_text">Voici quelques paramètres par défaut. Vous pouvez les changer dès à présent :</string>
     <string name="tutorial_setup_text_2">Vous pourrez bien sûr tout reconfigurer plus tard.</string>
     <string name="tutorial_finish_title">C\'est parti !</string>
-    <string name="tutorial_finish_text">Vous êtes prêt à démarrer ! \n \nJ\'espère que cette application vous sera précieuse ! \n \n- Finn M Glas \n(le développeur originel) et Josia (le développeur de la branche μLauncher)</string>
+    <string name="tutorial_finish_text">Vous êtes prêt à démarrer ! \n \nJ\'espère que cette application vous sera précieuse ! \n \n- Finn M Glas \n(le développeur originel) et Josia (le développeur de la branche T Launcher)</string>
     <string name="tutorial_finish_button">Démarrer</string>
     <string name="settings">Réglages</string>
     <string name="ic_menu_alt">Plus d\'options</string>
@@ -148,9 +148,9 @@
     <string name="settings_theme_color_theme_item_dynamic">Dynamique</string>
     <string name="alert_requires_android_m">Cette fonctionnalité requiert Android 6.0 ou plus récent.</string>
     <string name="alert_lock_screen_failed">Erreur : le verrouillage de l\'écran a échoué. (Si vous venez de mettre l\'application à jour, essayez de désactiver/re-activer le service d\'accessibilité dans les paramètres du téléphone)</string>
-    <string name="toast_accessibility_service_not_enabled">Le service d\'accessibilité d\'μLauncher n\'est pas activé. Activez le dans le paramètres, s\'il vous plaît</string>
-    <string name="accessibility_service_name">µLauncher - écran de verrouillage</string>
-    <string name="accessibility_service_description">Configurer µLauncher comme un service d’accessibilité lui permet de verrouiller l’écran. Notez que cette permission excessive est requise. Vous ne devriez jamais donner de permissions à la légère à n\'importe quelle application. µLauncher n\'utilisera le service d’accessibilité que pour verrouiller l’écran. Vous pouvez vérifier le code source pour vous en assurer. Notez aussi que le verrouillage d’écran peut être effectué en donnant à µLauncher les droits d\'administrations de l\'appareil. Néanmoins cette méthode ne fonctionne pas avec le déverrouillage par empreinte ou reconnaissance faciale.</string>
+    <string name="toast_accessibility_service_not_enabled">Le service d\'accessibilité d\'T Launcher n\'est pas activé. Activez le dans le paramètres, s\'il vous plaît</string>
+    <string name="accessibility_service_name">T Launcher - écran de verrouillage</string>
+    <string name="accessibility_service_description">Configurer T Launcher comme un service d’accessibilité lui permet de verrouiller l’écran. Notez que cette permission excessive est requise. Vous ne devriez jamais donner de permissions à la légère à n\'importe quelle application. T Launcher n\'utilisera le service d’accessibilité que pour verrouiller l’écran. Vous pouvez vérifier le code source pour vous en assurer. Notez aussi que le verrouillage d’écran peut être effectué en donnant à T Launcher les droits d\'administrations de l\'appareil. Néanmoins cette méthode ne fonctionne pas avec le déverrouillage par empreinte ou reconnaissance faciale.</string>
     <string name="dialog_select_color_red">Rouge</string>
     <string name="dialog_select_color_alpha">Alpha</string>
     <string name="dialog_select_color_blue">Bleu</string>
@@ -159,18 +159,18 @@
     <string name="settings_apps_hide_bound_apps">Ne pas montrer les applications associées à un geste dans la liste des applications</string>
     <string name="device_admin_explanation">Ceci est requis pour l\'action de verrouillage d\'écran.</string>
     <string name="device_admin_description">Activer l\'action de verrouillage d\'écran</string>
-    <string name="toast_device_admin_not_enabled">µLauncher requiert les droits administrateur afin de pouvoir verrouiller l\'écran.</string>
+    <string name="toast_device_admin_not_enabled">T Launcher requiert les droits administrateur afin de pouvoir verrouiller l\'écran.</string>
     <string name="alert_no_torch_found">Aucun flash détecté sur l\'appareil photo.</string>
     <string name="alert_torch_access_exception">Erreur : Acces impossible au flash.</string>
     <string name="settings_actions_lock_method">Choisissez une méthode pour le verrouillage de l’écran</string>
     <string name="screen_lock_method_use_device_admin">Utiliser l\'administration de l\'appareil</string>
     <string name="dialog_consent_accessibility_other_options">Je suis conscient que d\'autres options existent (notamment en utilisant les droits d\'administration de l\'appareil ou le bouton d\'allumage).</string>
-    <string name="dialog_consent_accessibility_privileges">Je suis conscient que cela accordera des privilèges importants à µLauncher.</string>
+    <string name="dialog_consent_accessibility_privileges">Je suis conscient que cela accordera des privilèges importants à T Launcher.</string>
     <string name="dialog_choose_color_title">Choisir une couleur</string>
     <string name="dialog_consent_accessibility_title">Activation du service d\'accessibilité</string>
     <string name="dialog_select_color_color_hex">Couleur</string>
-    <string name="dialog_consent_accessibility_consent">Je consent à µLauncher utilisation du service d’accessibilité pour fournir une fonction non liée à l’accessibilité.</string>
-    <string name="dialog_consent_accessibility_data_collection">Je consent à la non-collecte de données par µLauncher.</string>
+    <string name="dialog_consent_accessibility_consent">Je consent à T Launcher utilisation du service d’accessibilité pour fournir une fonction non liée à l’accessibilité.</string>
+    <string name="dialog_consent_accessibility_data_collection">Je consent à la non-collecte de données par T Launcher.</string>
     <string name="settings_enabled_gestures_edge_swipe_edge_width">Largeur du bord</string>
     <string name="settings_gesture_description_time">Clic sur l\'horloge</string>
     <string name="settings_gesture_description_up">Balayer vers le haut</string>
@@ -196,7 +196,7 @@
     <string name="settings_enabled_gestures_double_swipe_summary">Balayer avec deux doigts</string>
     <string name="settings_theme_text_shadow">Ombre du texte</string>
     <string name="settings_meta_view_code">Voir le code source</string>
-    <string name="settings_meta_join_chat">Rejoindre le chat d\'µLauncher</string>
+    <string name="settings_meta_join_chat">Rejoindre le chat d\'T Launcher</string>
     <string name="list_other_lock_screen">Verrouiller l\'écran</string>
     <string name="settings_theme_font_item_system_default">Défaut du systeme</string>
     <string name="settings_theme_font_item_sans_serif">Sans serif</string>

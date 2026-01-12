@@ -1,4 +1,4 @@
-µLauncher kaydırma hareketleri ve tuşları kullanarak diğer uygulamaları başlatabilen bir ana ekrandır.
+T Launcher kaydırma hareketleri ve tuşları kullanarak diğer uygulamaları başlatabilen bir ana ekrandır.
 Minimal, verimlidir ve dikkat dağıtıcı ögeler içermez.
 
 Ana ekran sadece tarihi, zamanı ve bir arkaplanı gösterir.

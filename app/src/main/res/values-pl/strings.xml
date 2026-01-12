@@ -60,7 +60,7 @@
     <string name="toast_private_space_not_available">Przestrzeń prywatna jest niedostępna</string>
     <string name="settings_clock_flip_date_time">Zamień date i zegar</string>
     <string name="settings_apps_hide_bound_apps">Nie pokazuje aplikacji przypisanych do gestów w liście aplikacji</string>
-    <string name="dialog_report_bug_info">Dziękujemy za pomoc w udoskonaleniu μLauncher!\nProszę przemyśl dodanie podanych informacji do twojego zgłoszenia błędu:</string>
+    <string name="dialog_report_bug_info">Dziękujemy za pomoc w udoskonaleniu T Launcher!\nProszę przemyśl dodanie podanych informacji do twojego zgłoszenia błędu:</string>
     <string name="settings_meta_discord">Dołącz do nas na Discordzie!</string>
     <string name="list_other_track_previous">Muzyka: Poprzednie</string>
     <string name="settings_launcher_section_appearance">Wygląd</string>
@@ -139,7 +139,7 @@
     <string name="settings_list_layout_item_text">Tekst</string>
     <string name="settings_list_layout_item_grid">Siatka</string>
     <string name="settings_meta_cant_select_launcher">Informacje aplikacji</string>
-    <string name="settings_meta_show_tutorial">Zobacz samouczek µLauncher</string>
+    <string name="settings_meta_show_tutorial">Zobacz samouczek T Launcher</string>
     <string name="settings_meta_reset">Zresetuj ustawienia</string>
     <string name="settings_meta_reset_confirm">Odrzucisz wszystkie swoje preferencje. Czy chcesz kontynuować?</string>
     <string name="settings_meta_view_code">Zobacz kod źródłowy</string>
@@ -149,7 +149,7 @@
     <string name="dialog_report_bug_security_info">Proszę nie zgłaszaj luk w zabezpieczeniach publicznie na GitHubie, użyj natomiast podanego linku:</string>
     <string name="dialog_report_bug_create_report">Utwórz zgłoszenie</string>
     <string name="settings_meta_fork_contact">Skontaktuj się z deweloperem forku</string>
-    <string name="settings_meta_join_chat">Dołącz do czatu μLauncher</string>
+    <string name="settings_meta_join_chat">Dołącz do czatu T Launcher</string>
     <string name="settings_meta_donate">Wesprzyj</string>
     <string name="settings_meta_privacy">Polityka prywatność</string>
     <string name="settings_meta_contact">Skontaktuj się z deweloperem orginału</string>
@@ -168,7 +168,7 @@
     <string name="list_app_rename">Zmień nazwę</string>
     <string name="list_apps_search_hint">Wyszukaj</string>
     <string name="list_apps_search_hint_no_auto_launch">Wyszukaj (brak automatycznego uruchomienia)</string>
-    <string name="list_other_settings">Ustawienia μLauncher</string>
+    <string name="list_other_settings">Ustawienia T Launcher</string>
     <string name="list_other_list_favorites">Ulubione aplikacje</string>
     <string name="list_other_list_private_space">Przestrzeń prywatna</string>
     <string name="list_other_toggle_private_space_lock">Przełącz zamek prywatnej przestrzeni</string>
@@ -200,7 +200,7 @@
     <string name="toast_private_space_unlocked">Przestrzeń prywatna odblokowana</string>
     <string name="tooltip_lock_private_space">Zablokuj przestrzeń prywatną</string>
     <string name="tooltip_unlock_private_space">Odblokuj przestrzeń prywatną</string>
-    <string name="accessibility_service_name">μLauncher</string>
+    <string name="accessibility_service_name">T Launcher</string>
     <string name="screen_lock_method_dialog_title">Wybierz metodę zablokowania</string>
     <string name="settings_actions_lock_method">Wybierz metodę blokowania ekranu</string>
     <string name="dialog_rename_title">Zmień nazwę %1$s</string>
@@ -219,11 +219,11 @@
     <string name="settings_functionality_auto_launch_summary">Kliknij spacje, by tymczasowo wyłączyć tą funkcje.</string>
     <string name="list_other_expand_settings_panel">Szybkie ustawienia</string>
     <string name="toast_private_space_locked">Przestrzeń prywatna zablokowana</string>
-    <string name="settings_general_choose_home_screen">Ustaw μLauncher jako ekran główny</string>
+    <string name="settings_general_choose_home_screen">Ustaw T Launcher jako ekran główny</string>
     <string name="dialog_select_color_color_hex">Kolor</string>
     <string name="list_app_favorite_add">Dodaj do ulubionych</string>
     <string name="tutorial_concept_text_2">Jest to darmowe oprogramowanie (na licencji MIT)!\nZachęcamy do odwiedzenia naszego repozytorium!</string>
-    <string name="tutorial_concept_text">μLauncher jest projektowany z uwagą na minimalizm, efektywności i brak rozproszeń. \n\nNie zawiera reklam i nie zbiera twoich danych.</string>
+    <string name="tutorial_concept_text">T Launcher jest projektowany z uwagą na minimalizm, efektywności i brak rozproszeń. \n\nNie zawiera reklam i nie zbiera twoich danych.</string>
     <string name="tutorial_usage_text">Twój ekran główny zawiera lokalną datę i czas. Żadnych rozproszeń.</string>
     <string name="tutorial_usage_text_2">Możesz uruchomić swoje najważniejsze aplikacje za pomocą gestów i użyciem przycisków.</string>
     <string name="tutorial_app_list_text">Możesz szybko wyszukiwać aplikacje poprzez listę aplikacji.\n\nPrzeciągnij do góry aby ją otworzyć, lub przypisz ją do innego gestu.</string>
@@ -235,7 +235,7 @@
     <string name="snackbar_app_hidden">Aplikacja schowana. Możesz przywrócić jej widoczność z powrotem w ustawieniach.</string>
     <string name="alert_torch_access_exception">Error: Brak dostępu do latarki.</string>
     <string name="device_admin_description">Aktywuj akcje zablokowania ekranu</string>
-    <string name="dialog_consent_accessibility_data_collection">Wyrażam zgodę by, μLauncher nie zbierał żadnych moich danych.</string>
+    <string name="dialog_consent_accessibility_data_collection">Wyrażam zgodę by, T Launcher nie zbierał żadnych moich danych.</string>
     <string name="toast_activity_not_found_browser">Nie można otworzyć adresu URL: nie znaleziono przeglądarki.</string>
     <string name="select_widget_title">Wybierz widżet</string>
     <string name="widget_menu_remove">Usuń</string>
@@ -244,7 +244,7 @@
     <string name="widget_menu_enable_interaction">Aktywuje interakcje</string>
     <string name="widget_menu_disable_interaction">Dezaktywuj interakcje</string>
     <string name="manage_widget_panels_delete">Usuń</string>
-    <string name="widget_clock_description">Domyślny zegar μLauncher</string>
+    <string name="widget_clock_description">Domyślny zegar T Launcher</string>
     <string name="manage_widget_panels_rename">Zmień nazwę</string>
     <string name="widget_panel_default_name">Panel widżetów #%1$d</string>
     <plurals name="widget_panel_number_of_widgets">
@@ -263,19 +263,19 @@
     <string name="settings_launcher_section_widgets">Widżety</string>
     <string name="alert_widget_panel_not_found">Ten panel widżetów już nie istnieje.</string>
     <string name="alert_no_torch_found">Nie wykryto aparatu z latarką.</string>
-    <string name="toast_device_admin_not_enabled">μLauncher musi być administratorem urządzenia, aby zablokować ekran.</string>
+    <string name="toast_device_admin_not_enabled">T Launcher musi być administratorem urządzenia, aby zablokować ekran.</string>
     <string name="alert_cant_expand_status_bar_panel">Błąd: Nie można rozszerzyć paska stanu. Ta akcja wykorzystuje funkcjonalność, która nie jest częścią opublikowanego interfejsu API Androida. Niestety, wydaje się, że nie działa na Twoim urządzeniu.</string>
     <string name="device_admin_explanation">Jest to wymagane do działania blokady ekranu.</string>
     <string name="alert_recent_apps_failed">Błąd: Nie udało się wyświetlić ostatnich aplikacji. (Jeśli właśnie zaktualizowałeś aplikację, spróbuj wyłączyć i ponownie włączyć usługę dostępności w ustawieniach telefonu)</string>
     <string name="alert_enable_accessibility_failed">Błąd: Nie udało się włączyć usługi ułatwień dostępu.</string>
-    <string name="toast_private_space_default_home_screen">μLauncher musi być domyślnym ekranem głównym, aby uzyskać dostęp do przestrzeni prywatnej.</string>
+    <string name="toast_private_space_default_home_screen">T Launcher musi być domyślnym ekranem głównym, aby uzyskać dostęp do przestrzeni prywatnej.</string>
     <string name="toast_lock_screen_not_supported">Błąd: Blokowanie ekranu za pomocą funkcji ułatwień dostępu nie jest obsługiwane na tym urządzeniu. Zamiast tego użyj opcji administratora urządzenia.</string>
     <string name="screen_lock_method_use_accessibility">Skorzystaj z usługi dostępności</string>
     <string name="screen_lock_method_use_device_admin">Użyj opcji administratora urządzenia</string>
-    <string name="dialog_consent_accessibility_privileges">Zdaję sobie sprawę, że nada to μLauncherowi rozległe uprawnienia.</string>
+    <string name="dialog_consent_accessibility_privileges">Zdaję sobie sprawę, że nada to T Launcherowi rozległe uprawnienia.</string>
     <string name="dialog_consent_accessibility_other_options">Wiem, że istnieją inne opcje (użycie uprawnień administratora urządzenia lub przycisku zasilania).</string>
     <string name="alert_lock_screen_failed">Błąd: Nie udało się zablokować ekranu. (Jeśli właśnie zaktualizowałeś aplikację, spróbuj wyłączyć i ponownie włączyć usługę dostępności w ustawieniach telefonu)</string>
-    <string name="toast_accessibility_service_not_enabled">Usługa dostępności μLauncher nie jest włączona. Proszę włączyć ją w ustawieniach</string>
-    <string name="tutorial_finish_text">Wszystko gotowe!\n\nMam nadzieję, że będzie to dla ciebie bardzo wartościowe!\n\n- Finn (twórca Launchera) i Josia (wprowadziła pewne ulepszenia i utrzymuje fork μLauncher)</string>
-    <string name="accessibility_service_description">Ustawienie μLauncher jako usługi ułatwień dostępu umożliwia zablokowanie ekranu i otwarcie menu ostatnich aplikacji. Należy pamiętać, że wymagane są nadmierne uprawnienia. Nigdy nie należy udzielać takich uprawnień bez powodu żadnej aplikacji. μLauncher będzie korzystał z usługi ułatwień dostępu wyłącznie w celu wykonania następujących czynności na żądanie użytkownika: * zablokuj ekran * otwórz ostatnio używane aplikacje μLauncher nigdy nie będzie korzystał z usługi ułatwień dostępu w celu zbierania danych. Możesz sprawdzić kod źródłowy, aby się upewnić. Należy pamiętać, że zablokowanie ekranu można również osiągnąć poprzez przyznanie aplikacji uprawnień administratora urządzenia. Jednak ta metoda nie działa w przypadku odblokowywania przy użyciu odcisku palca i skanu twarzy.</string>
+    <string name="toast_accessibility_service_not_enabled">Usługa dostępności T Launcher nie jest włączona. Proszę włączyć ją w ustawieniach</string>
+    <string name="tutorial_finish_text">Wszystko gotowe!\n\nMam nadzieję, że będzie to dla ciebie bardzo wartościowe!\n\n- Finn (twórca Launchera) i Josia (wprowadziła pewne ulepszenia i utrzymuje fork T Launcher)</string>
+    <string name="accessibility_service_description">Ustawienie T Launcher jako usługi ułatwień dostępu umożliwia zablokowanie ekranu i otwarcie menu ostatnich aplikacji. Należy pamiętać, że wymagane są nadmierne uprawnienia. Nigdy nie należy udzielać takich uprawnień bez powodu żadnej aplikacji. T Launcher będzie korzystał z usługi ułatwień dostępu wyłącznie w celu wykonania następujących czynności na żądanie użytkownika: * zablokuj ekran * otwórz ostatnio używane aplikacje T Launcher nigdy nie będzie korzystał z usługi ułatwień dostępu w celu zbierania danych. Możesz sprawdzić kod źródłowy, aby się upewnić. Należy pamiętać, że zablokowanie ekranu można również osiągnąć poprzez przyznanie aplikacji uprawnień administratora urządzenia. Jednak ta metoda nie działa w przypadku odblokowywania przy użyciu odcisku palca i skanu twarzy.</string>
 </resources>

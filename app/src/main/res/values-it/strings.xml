@@ -4,11 +4,11 @@
     <string name="settings_launcher_section_appearance">Aspetto</string>
     <string name="settings_apps_choose">Associa app</string>
     <string name="settings_theme_color_theme">Tema</string>
-    <string name="tutorial_concept_text">μLauncher è progettato per essere minimale, efficiente e privo di distrazione.\n\nNon contiene annunci e non raccoglie dati.</string>
+    <string name="tutorial_concept_text">T Launcher è progettato per essere minimale, efficiente e privo di distrazione.\n\nNon contiene annunci e non raccoglie dati.</string>
     <string name="settings_theme_color_theme_item_default">Predefinito</string>
     <string name="settings_apps_hide_bound_apps">Non mostrare nella lista le applicazioni associate a gesti</string>
     <string name="settings_list_layout_item_text">Testo</string>
-    <string name="accessibility_service_description">Impostare µLauncher come servizio accessibilità permette l\'azione di blocco dello schermo. Nota che sono richiesti permessi eccessivi. Non si dovrebbero mai concedere con leggerezza permessi ad alcuna app. µLauncher utilizza i servizi di accessibilità esclusivamente per il blocco dello schermo. Puoi verificare il codice sorgente. Nota che il blocco schermo si può attivare anche concedendo a µLauncher i permessi di amministratore, tuttavia tale metodo non funziona con lo sblocco tramite impronta o riconoscimento facciale.</string>
+    <string name="accessibility_service_description">Impostare T Launcher come servizio accessibilità permette l\'azione di blocco dello schermo. Nota che sono richiesti permessi eccessivi. Non si dovrebbero mai concedere con leggerezza permessi ad alcuna app. T Launcher utilizza i servizi di accessibilità esclusivamente per il blocco dello schermo. Puoi verificare il codice sorgente. Nota che il blocco schermo si può attivare anche concedendo a T Launcher i permessi di amministratore, tuttavia tale metodo non funziona con lo sblocco tramite impronta o riconoscimento facciale.</string>
     <string name="settings_theme_font_item_sans_serif">Sans serif</string>
     <string name="settings_gesture_description_double_up">Scorri verso l\'alto con due dita</string>
     <string name="settings_apps_toast_store_not_found">Store non trovato</string>
@@ -26,7 +26,7 @@
 
         <h3>Servizio Accessibilità</h3>
         Richiede privilegi eccessivi.
-        µLauncher userà quei privilegi esclusivamente per bloccare lo schermo.
+        T Launcher userà quei privilegi esclusivamente per bloccare lo schermo.
         <br/>
         (Non ci si dovrebbe mai fidare di un\'applicazione qualsiasi appena scaricata su queste cose, ma puoi verificare il <a href=\"https://github.com/jrpie/Launcher\">codice sorgente</a>.)
 
@@ -124,21 +124,21 @@
     <string name="tutorial_setup_text">Abbiamo impostato alcune app predefinite. Puoi modificarle ora se vuoi:</string>
     <string name="tutorial_setup_text_2">Puoi anche modificare la selezione in seguito.</string>
     <string name="tutorial_finish_title">Iniziamo!</string>
-    <string name="tutorial_finish_text">Sei pronto per iniziare!\n\nSpero che lo apprezzi!\n\n- Finn (che ha fatto Launcher) e Josia (che ha apportato alcuni miglioramenti e mantiene il fork μLauncher)</string>
+    <string name="tutorial_finish_text">Sei pronto per iniziare!\n\nSpero che lo apprezzi!\n\n- Finn (che ha fatto Launcher) e Josia (che ha apportato alcuni miglioramenti e mantiene il fork T Launcher)</string>
     <string name="tutorial_finish_button">Inizia</string>
     <string name="settings">Impostazioni</string>
     <string name="ic_menu_alt">Altre opzioni</string>
     <string name="tutorial_usage_text_2">Puoi avviare le tue app principali scorrendo il dito sullo schermo o premendo un pulsante.</string>
     <string name="alert_cant_expand_status_bar_panel">Errore: impossibile espandere la barra di stato. Questa azione utilizza funzionalità non incluse nelle API Android. Sfortunatamente, non sembra funzionare sul tuo dispositivo.</string>
     <string name="snackbar_app_hidden">Applicazione nascosta. Puoi renderla nuovamente visibile dalle impostazioni.</string>
-    <string name="toast_device_admin_not_enabled">µLauncher deve amministrare il dispositivo per poter bloccare lo schermo.</string>
+    <string name="toast_device_admin_not_enabled">T Launcher deve amministrare il dispositivo per poter bloccare lo schermo.</string>
     <string name="device_admin_description">Abilita il blocco schermo</string>
     <string name="alert_no_torch_found">Nessuna camera con torcia rilevata.</string>
     <string name="alert_torch_access_exception">Errore: impossibile accedere alla torcia.</string>
-    <string name="toast_accessibility_service_not_enabled">Il servizio accessibilità per µLauncher non è attivo. Attivalo nelle impostazioni</string>
+    <string name="toast_accessibility_service_not_enabled">Il servizio accessibilità per T Launcher non è attivo. Attivalo nelle impostazioni</string>
     <string name="alert_lock_screen_failed">Errore: impossibile bloccare lo schermo. (Se hai appena aggiornato l\'app, prova a disabilitare e riattivare il servizio accessibilità nelle impostazioni del telefono)</string>
     <string name="toast_lock_screen_not_supported">Errore: Il blocco schermo tramite accessibilità non è supportato su questo dispositivo. In alternativa usa il servizio amministratore dispositivo.</string>
-    <string name="accessibility_service_name">μLauncher</string>
+    <string name="accessibility_service_name">T Launcher</string>
     <string name="screen_lock_method_dialog_title">Scegli come bloccare lo schermo</string>
     <string name="screen_lock_method_use_accessibility">Usa il servizio accessibilità</string>
     <string name="screen_lock_method_use_device_admin">Usa Amministratore dispositivo</string>
@@ -157,14 +157,14 @@
     <string name="settings_list_layout">Configura la lista applicazioni</string>
     <string name="settings_list_layout_item_default">Predefinito</string>
     <string name="settings_theme_background_item_dim">Soffuso</string>
-    <string name="settings_general_choose_home_screen">Imposta μLauncher come predefinito</string>
+    <string name="settings_general_choose_home_screen">Imposta T Launcher come predefinito</string>
     <string name="settings_meta_cant_select_launcher">Informazioni app</string>
-    <string name="settings_meta_show_tutorial">Tutorial di µLauncher</string>
+    <string name="settings_meta_show_tutorial">Tutorial di T Launcher</string>
     <string name="settings_meta_reset">Ripristina le impostazioni</string>
     <string name="settings_meta_reset_confirm">Stai per ripristinare tutte le impostazioni. Continuare?</string>
     <string name="settings_meta_report_bug">Segnala un bug</string>
     <string name="settings_meta_fork_contact">Contatta lo sviluppatore del fork</string>
-    <string name="settings_meta_join_chat">Unisciti alla chat di μLauncher</string>
+    <string name="settings_meta_join_chat">Unisciti alla chat di T Launcher</string>
     <string name="settings_meta_privacy">Informativa sulla privacy</string>
     <string name="settings_meta_contact">Contatta lo sviluppatore originale</string>
     <string name="settings_meta_discord">Unisciti a noi su Discord!</string>
@@ -181,7 +181,7 @@
     <string name="list_app_hidden_remove">Mostra</string>
     <string name="list_app_rename">Rinomina</string>
     <string name="list_apps_search_hint">Cerca</string>
-    <string name="list_other_settings">Impostazioni μLauncher</string>
+    <string name="list_other_settings">Impostazioni T Launcher</string>
     <string name="list_other_expand_notifications_panel">Espandi pannello notifiche</string>
     <string name="list_other_nop">Non fare niente</string>
     <string name="list_other_lock_screen">Blocca schermo</string>
@@ -197,9 +197,9 @@
     <string name="settings_theme_color_theme_item_dynamic">Dinamico</string>
     <string name="settings_clock_color">Colore</string>
     <string name="settings_gesture_double_up">Scorri su con due dita</string>
-    <string name="dialog_consent_accessibility_privileges">Sono consapevole che questo concederà privilegi estesi a µLauncher.</string>
-    <string name="dialog_consent_accessibility_consent">Accetto che µLauncher utilizzi il servizio di accessibilità per fornire funzionalità non correlate all\'accessibilità.</string>
-    <string name="dialog_consent_accessibility_data_collection">Accetto che µLauncher non raccolga alcun dato.</string>
+    <string name="dialog_consent_accessibility_privileges">Sono consapevole che questo concederà privilegi estesi a T Launcher.</string>
+    <string name="dialog_consent_accessibility_consent">Accetto che T Launcher utilizzi il servizio di accessibilità per fornire funzionalità non correlate all\'accessibilità.</string>
+    <string name="dialog_consent_accessibility_data_collection">Accetto che T Launcher non raccolga alcun dato.</string>
     <string name="settings_apps_hide_paused_apps">Nascondi le app in pausa</string>
     <string name="list_other_toggle_private_space_lock">Blocca/Sblocca Spazio Privato</string>
     <string name="alert_requires_android_v">Questa funzione richiede Android 15 o successivi.</string>
@@ -218,7 +218,7 @@
     <string name="settings_meta_licenses">Licenze Open Source</string>
     <string name="legal_info_title">Licenze Open Source</string>
     <string name="dialog_report_bug_title">Segnala un bug</string>
-    <string name="dialog_report_bug_info">Grazie per il tuo contributo al miglioramento di µLauncher!\nAggiungi le seguenti informazioni alla segnalazione del bug:</string>
+    <string name="dialog_report_bug_info">Grazie per il tuo contributo al miglioramento di T Launcher!\nAggiungi le seguenti informazioni alla segnalazione del bug:</string>
     <string name="dialog_report_bug_button_clipboard">Copia negli appunti</string>
     <string name="dialog_report_bug_security_info">Non segnalare le vulnerabilità di sicurezza pubblicamente su GitHub, ma usa invece:</string>
     <string name="dialog_cancel">Annulla</string>
@@ -228,15 +228,15 @@
     <string name="toast_private_space_locked">Spazio privato bloccato</string>
     <string name="toast_private_space_unlocked">Spazio privato sbloccato</string>
     <string name="toast_private_space_not_available">Spazio privato non disponibile</string>
-    <string name="toast_private_space_default_home_screen">µLauncher deve essere il launcher predefinito per poter accedere allo spazio privato.</string>
+    <string name="toast_private_space_default_home_screen">T Launcher deve essere il launcher predefinito per poter accedere allo spazio privato.</string>
     <string name="toast_activity_not_found_browser">Impossibile aprire l\'URL: nessun browser trovato.</string>
     <string name="toast_activity_not_found_search_web">Nessuna applicazione trovata per gestire la ricerca.</string>
-    <string name="dialog_consent_accessibility_text"><![CDATA[Stai per attivare il servizio di accessibilità. Questo concederà <strong>privilegi estesi</strong> a μLauncher.<br/>μLauncher userà questi privilegi <strong>solo</strong> per eseguire le seguenti azioni:
+    <string name="dialog_consent_accessibility_text"><![CDATA[Stai per attivare il servizio di accessibilità. Questo concederà <strong>privilegi estesi</strong> a T Launcher.<br/>T Launcher userà questi privilegi <strong>solo</strong> per eseguire le seguenti azioni:
     <ul>
         <li>Blocco shermo</li>
         <li>App recenti</li>
     </ul>
-     μLauncher <strong>non raccoglierà mai alcun dato</strong>. In particolare, μLauncher non utilizza il servizio di accessibilità per raccogliere dati.]]></string>
+     T Launcher <strong>non raccoglierà mai alcun dato</strong>. In particolare, T Launcher non utilizza il servizio di accessibilità per raccogliere dati.]]></string>
     <string name="list_title_private_space">Spazio privato</string>
     <string name="list_other_list_private_space">Spazio privato</string>
     <string name="list_other_volume_adjust">Regola volume</string>
@@ -295,7 +295,7 @@
     <string name="widget_menu_enable_interaction">Abilita interazione</string>
     <string name="widget_menu_disable_interaction">Disabilita interazione</string>
     <string name="widget_clock_label">Orologio</string>
-    <string name="widget_clock_description">Orologio predefinito di μLauncher</string>
+    <string name="widget_clock_description">Orologio predefinito di T Launcher</string>
     <string name="manage_widget_panels_delete">Elimina</string>
     <string name="manage_widget_panels_rename">Rinomina</string>
     <string name="widget_panel_default_name">Pannello widget #%1$d</string>
@@ -314,11 +314,11 @@
     <string name="dialog_select_widget_panel_info_no_panels"><![CDATA[Nessun pannello widget trovato. Puoi creare pannelli widget da Impostazioni > Launcher > Gestione Pannelli Widget.]]></string>
     <string name="settings_meta_view_docs">Documentazione</string>
     <string name="notification_crash_explanation">Scusa! Clicca per altre info.</string>
-    <string name="notification_crash_title">µLauncher è crashato</string>
+    <string name="notification_crash_title">T Launcher è crashato</string>
     <string name="report_crash_button_copy">Copia il rapporto del crash negli appunti</string>
     <string name="report_crash_button_mail">Invia il rapporto per email</string>
     <string name="report_crash_button_report">Crea un bug report in GitHub</string>
-    <string name="report_crash_title">µLauncher è crashato</string>
+    <string name="report_crash_title">T Launcher è crashato</string>
     <string name="send_email">Invia email</string>
     <string name="notification_channel_crash">Info su crash e debug</string>
     <string name="crash_info"><![CDATA[
@@ -331,8 +331,8 @@
         <h2>What can I do now?</h2>
         If this bug appears again and again, you can try several things:
         <ul>
-        <li>Force stop μLauncher</li>
-        <li>Clear μLauncher\'s storage (<strong>Your settings will be lost!</strong>)</li>
+        <li>Force stop T Launcher</li>
+        <li>Clear T Launcher\'s storage (<strong>Your settings will be lost!</strong>)</li>
         <li>Install an older version (<a href=\"https://github.com/jrpie/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.jrpie.android.launcher\">F-Droid</a>)</li>
         </ul>
         ]]></string>

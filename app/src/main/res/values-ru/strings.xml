@@ -48,7 +48,7 @@
     <string name="settings_list_layout_item_text">Список</string>
     <string name="settings_list_layout_item_grid">Сетка</string>
     <string name="settings_meta_cant_select_launcher">Информация о приложении</string>
-    <string name="settings_meta_show_tutorial">Показать обучение по µLauncher</string>
+    <string name="settings_meta_show_tutorial">Показать обучение по T Launcher</string>
     <string name="settings_meta_reset">Сбросить настройки</string>
     <string name="settings_meta_view_code">Показать исходный код</string>
     <string name="settings_meta_report_bug">Сообщить об ошибке</string>
@@ -75,7 +75,7 @@
     <string name="list_app_rename">Переименновать</string>
     <string name="list_apps_search_hint">Поиск</string>
     <string name="list_apps_search_hint_no_auto_launch">Поиск (без автозапуска)</string>
-    <string name="list_other_settings">Настройки μLauncher</string>
+    <string name="list_other_settings">Настройки T Launcher</string>
     <string name="list_other_list">Все приложения</string>
     <string name="list_other_list_private_space">Личное пространство</string>
     <string name="list_other_recent_apps">Недавние приложения</string>
@@ -148,11 +148,11 @@
     <string name="dialog_select_widget_panel_info_no_panels"><![CDATA[Виджеты не найдены. Вы можете создать их через Настройки > Launcher > Управление панелями виджетов.]]></string>
     <string name="content_description_lock">Заблокировать</string>
     <string name="settings_launcher_sensitivity">Чувствительность</string>
-    <string name="settings_general_choose_home_screen">Сделать μLauncher лаунчером по умолчанию</string>
+    <string name="settings_general_choose_home_screen">Сделать T Launcher лаунчером по умолчанию</string>
     <string name="alert_torch_access_exception">Ошибка: Не удаётся получить доступ к фонарику.</string>
     <string name="settings_meta_reset_confirm">Вы готовы отклонить все свои настройки?</string>
-    <string name="dialog_report_bug_info">Спасибо, что помогаете улучшить μLauncher!\nПожалуйста, рассмотрите возможность добавления следующей информации в ваш отчет об ошибке:</string>
-    <string name="settings_meta_join_chat">Вступить в μLauncher чат</string>
+    <string name="dialog_report_bug_info">Спасибо, что помогаете улучшить T Launcher!\nПожалуйста, рассмотрите возможность добавления следующей информации в ваш отчет об ошибке:</string>
+    <string name="settings_meta_join_chat">Вступить в T Launcher чат</string>
     <string name="list_app_favorite_remove">Удалить с избранного</string>
     <string name="list_other_list_favorites">Избранное</string>
     <string name="dialog_ok">Ок</string>
@@ -213,7 +213,7 @@
     <string name="dialog_rename_title">Переименовать %1$s</string>
     <string name="toast_activity_not_found_search_web">Приложение для поиска в интернете не обнаруженно.</string>
     <string name="toast_activity_not_found_browser">Не удалось открыть ссылку: браузер не найден.</string>
-    <string name="widget_clock_description">Стандартные часы μLauncher\'а</string>
+    <string name="widget_clock_description">Стандартные часы T Launcher\'а</string>
     <string name="manage_widget_panels_delete">Удалить</string>
     <string name="widget_panel_default_name">Панель виджетов #%1$d</string>
     <plurals name="widget_panel_number_of_widgets">
@@ -230,7 +230,7 @@
     <string name="device_admin_explanation">Необходимо для блокирования экрана.</string>
     <string name="device_admin_description">Активировать действие блокировки экрана</string>
     <string name="alert_no_torch_found">Не обнаружено камеры со вспышкой.</string>
-    <string name="dialog_consent_accessibility_data_collection">Я соглашаюсь на то что μLauncher не будет собирать никаких данных.</string>
+    <string name="dialog_consent_accessibility_data_collection">Я соглашаюсь на то что T Launcher не будет собирать никаких данных.</string>
     <string name="manage_widget_panels_rename">Переименовать</string>
     <string name="send_email">Отправить Email</string>
 </resources>

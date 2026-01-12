@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="list_other_settings">µLauncher Ayarları</string>
+    <string name="list_other_settings">T Launcher Ayarları</string>
     <string name="list_other_torch">Feneri Aç</string>
     <string name="tutorial_title">Öğretici Video</string>
     <string name="tutorial_start_text">Bu başlatıcıyı öğrenmek birkaç saniyenizi alır!</string>
@@ -10,7 +10,7 @@
     <string name="tutorial_setup_text">Sizin için bazı varsayılan uygulamaları seçtik. İsterseniz şimdi değiştirebilirsiniz:</string>
     <string name="tutorial_setup_text_2">Seçiminizi daha sonra da değiştirebilirsiniz.</string>
     <string name="tutorial_finish_title">Hadi başlayalım!</string>
-    <string name="tutorial_finish_text">Artık başlamaya hazırsın!\n\nUmarım bu sizin için çok değerlidir!\n\n- Finn (Başlatıcı\'yı yapan kişi)\n\tand Josia (birkaç geliştirme yapmış ve μLauncher projesini devam ettiren kişi)</string>
+    <string name="tutorial_finish_text">Artık başlamaya hazırsın!\n\nUmarım bu sizin için çok değerlidir!\n\n- Finn (Başlatıcı\'yı yapan kişi)\n\tand Josia (birkaç geliştirme yapmış ve T Launcher projesini devam ettiren kişi)</string>
     <string name="settings">Ayarlar</string>
     <string name="tutorial_finish_button">Başla</string>
     <string name="ic_menu_alt">Daha fazla seçenek</string>
@@ -27,7 +27,7 @@
 
         <h3>Erişilebilirlik Servisi</h3>
         Aşırı yetkiler ister.
-        µLauncher bu yetkileri sadece ekranı kilitlemek için kullanacaktır.
+        T Launcher bu yetkileri sadece ekranı kilitlemek için kullanacaktır.
         <br/>
         (Böyle bir iddiayla indirdiğiniz rastgele bir uygulamaya gerçekten güvenmemelisiniz ama <a href=\"https://github.com/jrpie/Launcher\">kaynak kodunu</a>.) istediğiniz zaman göz atabilirsiniz.
 
@@ -36,15 +36,15 @@
         Seçimlerinizi sonra da değiştirebilirsiniz.
         ]]></string>
     <string name="alert_lock_screen_failed">Hata: Ekran kilitlenemedi. (Uygulamayı yeni güncellediyseniz, telefon ayarlarında erişilebilirlik hizmetini devre dışı bırakmayı ve yeniden etkinleştirmeyi deneyin)</string>
-    <string name="toast_accessibility_service_not_enabled">µLauncher\'ın erişilebilirlik hizmeti etkin değil. Lütfen ayarlardan etkinleştirin</string>
+    <string name="toast_accessibility_service_not_enabled">T Launcher\'ın erişilebilirlik hizmeti etkin değil. Lütfen ayarlardan etkinleştirin</string>
     <string name="toast_lock_screen_not_supported">Hata: Erişilebilirliği kullanarak ekranı kilitlemek bu cihazda desteklenmez. Lütfen bunun yerine cihaz yöneticisini kullanın.</string>
-    <string name="accessibility_service_name">µLauncher - ekranı kilitle</string>
+    <string name="accessibility_service_name">T Launcher - ekranı kilitle</string>
     <string name="screen_lock_method_dialog_title">Kilitleme Yöntemini Seçin</string>
     <string name="screen_lock_method_use_device_admin">Cihaz Yöneticisini Kullan</string>
     <string name="settings_apps_hide_bound_apps">Bir harekete bağlı olan uygulamaları, uygulama listesinde gösterme</string>
-    <string name="settings_general_choose_home_screen">μLauncher\'ı ana ekran olarak ayarla</string>
+    <string name="settings_general_choose_home_screen">T Launcher\'ı ana ekran olarak ayarla</string>
     <string name="settings_meta_show_tutorial">Başlatıcıyı Öğrenin</string>
-    <string name="accessibility_service_description">µLauncher\'ı erişilebilirlik hizmeti olarak ayarlamak, ekranı kilitlemesine izin verir. Aşırı izinlerin gerekli olduğunu unutmayın. Bu tür izinleri hiçbir uygulamaya umursamadan vermemelisiniz. µLauncher erişilebilirlik hizmetini yalnızca ekranı kilitlemek için kullanacaktır. Emin olmak için kaynak kodunu kontrol edebilirsiniz. Ekranı kilitlemenin µLauncher aygıt yöneticisi izinleri verilerek de gerçekleştirilebileceğini unutmayın. Ancak bu yöntem parmak izi ve yüz kilidi açma ile çalışmaz.</string>
+    <string name="accessibility_service_description">T Launcher\'ı erişilebilirlik hizmeti olarak ayarlamak, ekranı kilitlemesine izin verir. Aşırı izinlerin gerekli olduğunu unutmayın. Bu tür izinleri hiçbir uygulamaya umursamadan vermemelisiniz. T Launcher erişilebilirlik hizmetini yalnızca ekranı kilitlemek için kullanacaktır. Emin olmak için kaynak kodunu kontrol edebilirsiniz. Ekranı kilitlemenin T Launcher aygıt yöneticisi izinleri verilerek de gerçekleştirilebileceğini unutmayın. Ancak bu yöntem parmak izi ve yüz kilidi açma ile çalışmaz.</string>
     <string name="screen_lock_method_use_accessibility">Erişilebilirlik Hizmetini Kullan</string>
     <string name="alert_cant_expand_status_bar_panel">Hata: Durum çubuğu genişletilemiyor.\nBu eylem, yayınlanan Android API\'ının bir parçası olmayan işlevselliği kullanıyor. Ne yazık ki cihazınızda çalışmıyor gibi görünüyor.</string>
     <string name="list_other_expand_settings_panel">Hızlı Ayarlar</string>
@@ -164,7 +164,7 @@
     <string name="settings_theme_font_item_monospace">Tek uzay</string>
     <string name="settings_theme_font_item_serif_monospace">Serif tek uzay</string>
     <string name="settings_meta_fork_contact">Fork\'un geliştiricisiyle iletişime geçin</string>
-    <string name="settings_meta_join_chat">µLauncher sohbetine katılın</string>
+    <string name="settings_meta_join_chat">T Launcher sohbetine katılın</string>
     <string name="settings_meta_privacy">Gizlilik Politikası</string>
     <string name="settings_meta_contact">Asıl geliştirici ile iletişime geçin</string>
     <string name="settings_meta_discord">Discord\'umuza katılın!</string>
@@ -184,7 +184,7 @@
     <string name="alert_requires_android_m">Bu işlevsellik Android 6.0 veya üstünü gerektirir.</string>
     <string name="snackbar_app_hidden">Uygulama gizlendi. Ayarlar\'da tekrar görünür hale getirebilirsiniz.</string>
     <string name="undo">Geri Al</string>
-    <string name="toast_device_admin_not_enabled">Ekranı kilitlemek için µlauncher\'ın cihaz yöneticisi olması gerekir.</string>
+    <string name="toast_device_admin_not_enabled">Ekranı kilitlemek için T Launcher\'ın cihaz yöneticisi olması gerekir.</string>
     <string name="device_admin_explanation">Bu, kilit ekranı eylemi için gereklidir.</string>
     <string name="device_admin_description">Kilit ekranı eylemini etkinleştir</string>
     <string name="alert_no_torch_found">Fenerli kamera algılanmadı.</string>

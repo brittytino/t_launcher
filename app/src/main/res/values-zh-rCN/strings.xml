@@ -47,11 +47,11 @@
     <string name="settings_functionality_auto_keyboard">自动激活搜索</string>
     <string name="settings_launcher_sensitivity">灵敏度</string>
     <string name="settings_meta_cant_select_launcher">应用信息</string>
-    <string name="settings_meta_show_tutorial">查看 µLauncher 的使用教程</string>
+    <string name="settings_meta_show_tutorial">查看 T Launcher 的使用教程</string>
     <string name="settings_meta_reset">重置设置</string>
     <string name="settings_meta_reset_confirm">该操作将丢弃您的所有配置。是否继续?</string>
     <string name="settings_meta_report_bug">错误反馈</string>
-    <string name="settings_meta_fork_contact">联系μLauncher 的作者</string>
+    <string name="settings_meta_fork_contact">联系T Launcher 的作者</string>
     <string name="settings_meta_privacy">隐私政策</string>
     <string name="settings_meta_contact">联系原作者</string>
     <string name="settings_meta_discord">加入我们的 Discord 社区！</string>
@@ -70,7 +70,7 @@
     <string name="list_app_delete">卸载</string>
     <string name="list_app_info">应用信息</string>
     <string name="list_apps_search_hint">搜索</string>
-    <string name="list_other_settings">μLauncher 设置</string>
+    <string name="list_other_settings">T Launcher 设置</string>
     <string name="list_other_list">全部应用</string>
     <string name="list_other_volume_up">增大音量</string>
     <string name="list_other_volume_down">降低音量</string>
@@ -78,10 +78,10 @@
     <string name="list_other_track_next">音乐：下一首</string>
     <string name="list_other_nop">不做任何设置</string>
     <string name="tutorial_title">教程</string>
-    <string name="tutorial_concept_text">μLauncher 的设计理念是简约、高效，无干扰。\n\n不含广告、且不收集任何数据。</string>
+    <string name="tutorial_concept_text">T Launcher 的设计理念是简约、高效，无干扰。\n\n不含广告、且不收集任何数据。</string>
     <string name="tutorial_usage_text_2">您可以通过手势或按键来启动对您来说最重要的应用程序。</string>
-    <string name="settings_general_choose_home_screen">将 μLauncher 设为默认启动器</string>
-    <string name="tutorial_finish_text">您已经准备好开始使用本启动器了！\n\n希望本快捷教程能对您有所帮助！\n\n- Finn（Launcher 的作者）和 Josia（μLauncher 分支的作者和维护者）</string>
+    <string name="settings_general_choose_home_screen">将 T Launcher 设为默认启动器</string>
+    <string name="tutorial_finish_text">您已经准备好开始使用本启动器了！\n\n希望本快捷教程能对您有所帮助！\n\n- Finn（Launcher 的作者）和 Josia（T Launcher 分支的作者和维护者）</string>
     <string name="settings_enabled_gestures_double_swipe">双指滑动手势</string>
     <string name="settings_clock_localized">使用本地日期格式</string>
     <string name="settings_clock_time_visible">显示时间</string>
@@ -103,9 +103,9 @@
     <string name="settings_apps_hide_bound_apps">不要在应用程序列表中显示已被绑定到手势操作的应用</string>
     <string name="alert_requires_android_m">此功能需要 Android 6 或更高版本。</string>
     <string name="snackbar_app_hidden">应用程序已隐藏。您可在设置中让它再次显示。</string>
-    <string name="toast_device_admin_not_enabled">µLauncher 需要激活“设备管理应用”权限才能够锁定屏幕。</string>
+    <string name="toast_device_admin_not_enabled">T Launcher 需要激活“设备管理应用”权限才能够锁定屏幕。</string>
     <string name="device_admin_explanation">这是执行锁屏操作所必需的。</string>
-    <string name="accessibility_service_name">µLauncher</string>
+    <string name="accessibility_service_name">T Launcher</string>
     <string name="list_title_favorite">收藏的应用</string>
     <string name="list_app_favorite_add">添加到收藏夹</string>
     <string name="list_app_favorite_remove">从收藏夹中移除</string>
@@ -137,7 +137,7 @@
     <string name="settings_gesture_description_date">点击桌面日期</string>
     <string name="settings_gesture_description_time">点击桌面时钟</string>
     <string name="settings_meta_view_code">查看源代码</string>
-    <string name="settings_meta_join_chat">加入 μLauncher 的聊天群</string>
+    <string name="settings_meta_join_chat">加入 T Launcher 的聊天群</string>
     <string name="list_other_list_favorites">收藏的应用</string>
     <string name="list_other_lock_screen">锁屏</string>
     <string name="settings_theme_text_shadow">文本阴影</string>
@@ -157,7 +157,7 @@
     <string name="settings_enabled_gestures_edge_swipe_edge_width">边缘宽度</string>
     <string name="list_app_rename">重命名</string>
     <string name="device_admin_description">启用锁屏动作</string>
-    <string name="toast_accessibility_service_not_enabled">μLauncher 的“无障碍”服务未启用，请在设置中启用它。</string>
+    <string name="toast_accessibility_service_not_enabled">T Launcher 的“无障碍”服务未启用，请在设置中启用它。</string>
     <string name="toast_lock_screen_not_supported">错误：此设备不支持使用“无障碍”服务锁定屏幕。请改用激活“设备管理应用”权限。</string>
     <string name="screen_lock_method_use_accessibility">使用“无障碍”服务</string>
     <string name="screen_lock_method_use_device_admin">激活“设备管理应用”权限</string>
@@ -166,7 +166,7 @@
     <string name="list_other_expand_settings_panel">启动器设置</string>
     <string name="alert_lock_screen_failed">错误：锁定屏幕失败。（如果您刚刚升级了本启动器，请尝试在手机设置中手动禁用再重新启用“无障碍”服务。）</string>
     <string name="settings_enabled_gestures_edge_swipe_summary">在桌面边缘进行滑动手势操作</string>
-    <string name="accessibility_service_description">将 µLauncher 设置为“无障碍”服务以允许其锁定屏幕和展示最近应用屏幕。请注意，这会使 µLauncher 获得额外的权限。你永远不应该轻易地授予任何应用程序这样的权限。μLauncher 仅在被用户要求时才会使用“无障碍”服务权限以实现： * 锁定屏幕 * 展示最近应用屏幕。μLauncher 不会使用“无障碍”服务来收集任何数据。您可以审核我们的源代码。请注意，锁定屏幕也可以通过激活 µLauncher 的“设备管理应用”权限来实现，然而，这种方法无法与于指纹解锁和面部解锁兼容。</string>
+    <string name="accessibility_service_description">将 T Launcher 设置为“无障碍”服务以允许其锁定屏幕和展示最近应用屏幕。请注意，这会使 T Launcher 获得额外的权限。你永远不应该轻易地授予任何应用程序这样的权限。T Launcher 仅在被用户要求时才会使用“无障碍”服务权限以实现： * 锁定屏幕 * 展示最近应用屏幕。T Launcher 不会使用“无障碍”服务来收集任何数据。您可以审核我们的源代码。请注意，锁定屏幕也可以通过激活 T Launcher 的“设备管理应用”权限来实现，然而，这种方法无法与于指纹解锁和面部解锁兼容。</string>
     <string name="settings_gesture_back">返回操作</string>
     <string name="dialog_select_color_red">红色</string>
     <string name="dialog_select_color_blue">蓝色</string>
@@ -201,10 +201,10 @@
     <string name="toast_private_space_locked">私人空间已锁定</string>
     <string name="toast_private_space_unlocked">私人空间已解锁</string>
     <string name="toast_private_space_not_available">私人空间不可用</string>
-    <string name="toast_private_space_default_home_screen">µLauncher 需要作为默认启动器才能访问私人空间。</string>
+    <string name="toast_private_space_default_home_screen">T Launcher 需要作为默认启动器才能访问私人空间。</string>
     <string name="toast_activity_not_found_search_web">没有找到处理搜索的应用。</string>
     <string name="toast_activity_not_found_browser">无法打开 URL：找不到浏览器。</string>
-    <string name="dialog_consent_accessibility_privileges">我已知晓，这将赋予 μLauncher 广泛且重要的权限。</string>
+    <string name="dialog_consent_accessibility_privileges">我已知晓，这将赋予 T Launcher 广泛且重要的权限。</string>
     <string name="settings_apps_hide_private_space_apps">在应用程序列表中隐藏私人空间</string>
     <string name="settings_apps_hide_paused_apps">隐藏已被暂停的应用</string>
     <string name="settings_gesture_description_back">返回按键 / 返回手势</string>
@@ -226,7 +226,7 @@
 
         <h3>通过“无障碍”功能</h3>
         需要更多的权限。
-        μLauncher 将这些权限仅用于锁定屏幕。
+        T Launcher 将这些权限仅用于锁定屏幕。
         <br/>
         （对于任何一个从网上下载的应用所做的类似声明，你都不应该抱持“默认为可信”的态度，你可以并应该检查一下它的<a href=\"https://github.com/jrpie/Launcher\">源代码</a>.）
         <br/>
@@ -237,12 +237,12 @@
         你可以在设置中随时更改这个选项。
         ]]></string>
     <string name="list_apps_search_hint_no_auto_launch">搜索（不触发自动启动匹配项）</string>
-    <string name="dialog_consent_accessibility_text"><![CDATA[您即将激活“无障碍”服务。这将授予 μLauncher <strong>广泛且重要的权限</strong>。<br/>但 μLauncher <strong>仅</strong>将这些权限用于：
+    <string name="dialog_consent_accessibility_text"><![CDATA[您即将激活“无障碍”服务。这将授予 T Launcher <strong>广泛且重要的权限</strong>。<br/>但 T Launcher <strong>仅</strong>将这些权限用于：
     <ul>
         <li>锁定屏幕</li>
         <li>展示最近应用屏幕</li>
     </ul>
-µLauncher <strong>绝不会收集任何数据</strong>。尤其是，μLauncher 不会使用“无障碍”服务来收集任何数据。]]></string>
+T Launcher <strong>绝不会收集任何数据</strong>。尤其是，T Launcher 不会使用“无障碍”服务来收集任何数据。]]></string>
     <string name="settings_gesture_description_swipe_larger">（从）左上（滑向）中右（滑向）左下</string>
     <string name="settings_gesture_tap_up">单击 + 上滑</string>
     <string name="settings_gesture_tap_down">单击 + 下滑</string>
@@ -266,9 +266,9 @@
     <string name="list_other_track_play_pause">音乐：播放 / 暂停</string>
     <string name="dialog_report_bug_button_security">报告安全漏洞</string>
     <string name="dialog_report_bug_security_info">请不要在 Github 上以公开的方式报告安全漏洞，请使用以下方式进行报告：</string>
-    <string name="dialog_report_bug_info">感谢您帮助改进 µLauncher！\n请考虑在您的应用程序错误反馈中添加以下信息：</string>
+    <string name="dialog_report_bug_info">感谢您帮助改进 T Launcher！\n请考虑在您的应用程序错误反馈中添加以下信息：</string>
     <string name="dialog_consent_accessibility_other_options">我已知晓，还有其他替代方法（激活“设备管理应用”权限或通过电源按键）。</string>
-    <string name="dialog_consent_accessibility_data_collection">我同意 μLauncher 不收集任何数据。</string>
+    <string name="dialog_consent_accessibility_data_collection">我同意 T Launcher 不收集任何数据。</string>
     <string name="settings_meta_donate">捐赠</string>
     <string name="list_other_volume_adjust">调整音量</string>
     <string name="tutorial_concept_label_version">版本</string>
@@ -278,7 +278,7 @@
     <string name="settings_display_hide_status_bar">隐藏状态栏</string>
     <string name="settings_display_hide_navigation_bar">隐藏导航栏</string>
     <string name="settings_list_reverse_layout">倒序排列应用程序</string>
-    <string name="dialog_consent_accessibility_consent">我同意 μLauncher 使用无障碍服务来提供与无障碍服务无关的其他功能。</string>
+    <string name="dialog_consent_accessibility_consent">我同意 T Launcher 使用无障碍服务来提供与无障碍服务无关的其他功能。</string>
     <string name="settings_tab_actions">快捷操作</string>
     <string name="list_other_recent_apps">最近应用屏幕</string>
     <string name="alert_enable_accessibility_failed">错误：启用“无障碍”服务失败。</string>
@@ -300,18 +300,18 @@
     <string name="dialog_select_widget_panel_info_no_panels"><![CDATA[未发现小部件面板。您可以在“设置 > 启动器 > 设置小部件面板”中进行创建。]]></string>
     <string name="settings_launcher_section_widgets">桌面小部件</string>
     <string name="alert_widget_panel_not_found">该小部件面板不存在</string>
-    <string name="widget_clock_description">μLauncher 默认时钟小部件</string>
+    <string name="widget_clock_description">T Launcher 默认时钟小部件</string>
     <string name="select_widget_title">选择小部件</string>
     <string name="settings_widgets_custom_panels">设置小部件面板</string>
     <string name="dialog_ok">确认</string>
     <plurals name="widget_panel_number_of_widgets">
         <item quantity="other">包含 %1$d 个小部件。</item>
     </plurals>
-    <string name="notification_crash_title">μLauncher 崩溃了</string>
+    <string name="notification_crash_title">T Launcher 崩溃了</string>
     <string name="notification_crash_explanation">抱歉！点击查看更多信息。</string>
     <string name="report_crash_button_copy">复制崩溃报告到剪贴板</string>
     <string name="report_crash_button_mail">通过 Email 发送报告</string>
-    <string name="report_crash_title">μLauncher 崩溃了</string>
+    <string name="report_crash_title">T Launcher 崩溃了</string>
     <string name="report_crash_button_report">在 GitHub 上创建错误反馈</string>
     <string name="send_email">发送 Email</string>
     <string name="notification_channel_crash">崩溃和调试信息</string>
@@ -325,8 +325,8 @@
         <h2>我现在应该怎么做？</h2>
         如果这个错误重复发生，您可以做如下尝试：
         <ul>
-        <li>强行停止 μLauncher</li>
-        <li>清空 μLauncher 的存储空间（<strong>您的设置将被重置！</strong>）</li>
+        <li>强行停止 T Launcher</li>
+        <li>清空 T Launcher 的存储空间（<strong>您的设置将被重置！</strong>）</li>
         <li>安装旧版本（<a href=\"https://github.com/jrpie/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.jrpie.android.launcher\">F-Droid</a>）</li>
         </ul>
         ]]></string>

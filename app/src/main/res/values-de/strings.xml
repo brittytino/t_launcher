@@ -127,7 +127,7 @@
     <string name="settings_meta_contact">Entwickler kontaktieren</string>
     <string name="dialog_report_bug_create_report">Report erstellen</string>
     <string name="settings_meta_fork_contact">Entwickler des Fork kontaktieren</string>
-    <string name="settings_meta_join_chat">Dem μLauncher-Chat beitreten</string>
+    <string name="settings_meta_join_chat">Dem T Launcher-Chat beitreten</string>
     <string name="settings_meta_donate">Spenden</string>
     <string name="settings_meta_privacy">Datenschutzerklärung</string>
     <!--
@@ -146,7 +146,7 @@
     <string name="list_app_rename">Umbenennen</string>
     <string name="list_apps_search_hint">Suchen</string>
     <string name="list_apps_search_hint_no_auto_launch">Suchen (kein Schnellstart)</string>
-    <string name="list_other_settings">μLauncher Einstellungen</string>
+    <string name="list_other_settings">T Launcher Einstellungen</string>
     <string name="list_other_list">Alle Anwendungen</string>
     <string name="list_other_list_favorites">Favoriten</string>
     <string name="list_other_toggle_private_space_lock">Privaten Bereich (ent)sperren</string>
@@ -165,7 +165,7 @@
     <string name="tutorial_title">Tutorial</string>
     <string name="tutorial_start_text">👋\n\nHier eine kurze Erklärung, wie dieser Launcher funktioniert.</string>
     <string name="tutorial_concept_title">Konzept</string>
-    <string name="tutorial_concept_text">µLauncher bietet eine minimalistische, effiziente und ablenkungsfreie Umgebung.\n\nDie App ist freie Software, enthält keine Werbung und sammelt keinerlei Daten.</string>
+    <string name="tutorial_concept_text">T Launcher bietet eine minimalistische, effiziente und ablenkungsfreie Umgebung.\n\nDie App ist freie Software, enthält keine Werbung und sammelt keinerlei Daten.</string>
     <string name="tutorial_concept_text_2">Der Quellcode ist bei GitHub zu finden.</string>
     <string name="tutorial_usage_title">Benutzung</string>
     <string name="tutorial_usage_text">Der Homescreen zeigt nur das Datum und die Uhrzeit. Keine Ablenkung.</string>
@@ -174,7 +174,7 @@
     <string name="tutorial_setup_text">Es wurden Standardapps ausgewählt, die Zuordnung kann hier angepasst werden:</string>
     <string name="tutorial_setup_text_2">Die Auswahl kann in den Einstellungen später jederzeit geändert werden.</string>
     <string name="tutorial_finish_title">Los gehts!</string>
-    <string name="tutorial_finish_text">Es kann losgehen!\n\nWir hoffen, dass diese App hilfreich ist!\n\n- Finn (der Entwickler)\nund Josia (der einige Änderungen vorgenommen hat und den Fork μLauncher entwickelt)</string>
+    <string name="tutorial_finish_text">Es kann losgehen!\n\nWir hoffen, dass diese App hilfreich ist!\n\n- Finn (der Entwickler)\nund Josia (der einige Änderungen vorgenommen hat und den Fork T Launcher entwickelt)</string>
     <string name="tutorial_finish_button">Starten</string>
     <string name="settings">Einstellungen</string>
     <string name="ic_menu_alt">Mehr Optionen</string>
@@ -193,25 +193,25 @@
     <string name="alert_requires_android_m">Diese Funktionalität benötigt Android 6 oder neuer.</string>
     <string name="alert_requires_android_v">Diese Funktionalität benötigt Android 15 oder neuer.</string>
     <string name="snackbar_app_hidden">Die App wurde versteckt. Sie kann in den Einstellungen wieder sichtbar gemacht werden.</string>
-    <string name="toast_device_admin_not_enabled">µLauncher muss Geräteadministrator sein, um den Bildschirm sperren zu dürfen.</string>
-    <string name="device_admin_explanation">Dies ist erforderlich, damit µLauncher den Bildschirm sperren kann.</string>
+    <string name="toast_device_admin_not_enabled">T Launcher muss Geräteadministrator sein, um den Bildschirm sperren zu dürfen.</string>
+    <string name="device_admin_explanation">Dies ist erforderlich, damit T Launcher den Bildschirm sperren kann.</string>
     <string name="device_admin_description">Die Aktion \"Bildschirm sperren\" aktivieren</string>
     <string name="alert_no_torch_found">Es wurde keine geeignete Kamera gefunden.</string>
     <string name="alert_torch_access_exception">Fehler: Kein Zugriff auf die Kamera möglich.</string>
     <string name="settings_actions_lock_method">Methode zum Sperren des Bildschirms wählen</string>
     <string name="dialog_rename_title">%1$s umbenennen</string>
-    <string name="toast_private_space_default_home_screen">μLauncher muss als Standardlauncher eingerichtet sein um auf den privaten Bereich zugreifen zu können.</string>
+    <string name="toast_private_space_default_home_screen">T Launcher muss als Standardlauncher eingerichtet sein um auf den privaten Bereich zugreifen zu können.</string>
     <string name="toast_lock_screen_not_supported">Fehler: Auf diesem Gerät kann der Bildschirm nicht mittels Bedienungshilfe gesperrt werden. Bitte stattdessen Geräteadministrator verwenden.</string>
-    <string name="accessibility_service_name">μLauncher</string>
+    <string name="accessibility_service_name">T Launcher</string>
     <string name="alert_lock_screen_failed">Fehler: Bildschirm konnte nicht gesperrt werden.</string>
     <string name="toast_accessibility_service_not_enabled">Die Bedienungshilfe ist nicht aktiviert. Bitte in den Einstellungen aktivieren</string>
     <string name="screen_lock_method_dialog_title">Methode zum Sperren wählen</string>
     <string name="screen_lock_method_use_accessibility">Bedienungshilfe verwenden</string>
     <string name="screen_lock_method_use_device_admin">Geräteadministrator verwenden</string>
-    <string name="accessibility_service_description">μLauncher als Bedienungshilfe zu aktivieren ermöglicht es μLauncher, den Bildschirm zu sperren. Achtung: Hierfür sind weitgehende Berechtigungen erforderlich. Solche Berechtigungen sollten niemals leichtfertig vergeben werden. μLauncher wird diese Berechtigungen ausschließlich zum Sperren des Bildschirms verwenden. Alternativ kann der Bildschirm auch mithilfe von Geräteadministratorberechtigungen gesperrt werden. Dann ist jedoch ein Entsperren mit Fingerabdruck oder Gesichtserkennung nicht möglich.</string>
+    <string name="accessibility_service_description">T Launcher als Bedienungshilfe zu aktivieren ermöglicht es T Launcher, den Bildschirm zu sperren. Achtung: Hierfür sind weitgehende Berechtigungen erforderlich. Solche Berechtigungen sollten niemals leichtfertig vergeben werden. T Launcher wird diese Berechtigungen ausschließlich zum Sperren des Bildschirms verwenden. Alternativ kann der Bildschirm auch mithilfe von Geräteadministratorberechtigungen gesperrt werden. Dann ist jedoch ein Entsperren mit Fingerabdruck oder Gesichtserkennung nicht möglich.</string>
     <string name="screen_lock_method_dialog_text"><![CDATA[
         <h1>Methode zum Sperren auswählen</h1>
-        Es gibt zwei Möglichkeiten, wie μLauncher den Bildschirm sperren kann.
+        Es gibt zwei Möglichkeiten, wie T Launcher den Bildschirm sperren kann.
         Leider haben beide Nachteile:<br/><br/>
 
 
@@ -222,7 +222,7 @@
 
         <h3>Bedienungshilfe</h3>
         Dies erfordert sehr weitgehende Berechtigungen.
-        µLauncher wird diese ausschließlich zum Sperren des Bildschirms verwenden.
+        T Launcher wird diese ausschließlich zum Sperren des Bildschirms verwenden.
         <br/>
         (Irgendeiner gerade heruntergeladenen App sollte man eine solche Behauptung natürlich nicht einfach glauben.
         Der <a href=\"https://github.com/jrpie/Launcher\">Quelltext</a> dieser App ist jedoch frei verfügbar und kann überprüft werden.)
@@ -261,12 +261,12 @@
     <string name="legal_info_title">Open Source Lizenzen</string>
     <string name="toast_activity_not_found_search_web">Keine App gefunden um die Suche durchzuführen.</string>
     <string name="toast_activity_not_found_browser">URL kann nicht geöffnet werden: kein Browser gefunden.</string>
-    <string name="dialog_consent_accessibility_privileges">Mir ist bewusst, dass μLauncher hierdurch weitreichende Berechtigungen erhält.</string>
+    <string name="dialog_consent_accessibility_privileges">Mir ist bewusst, dass T Launcher hierdurch weitreichende Berechtigungen erhält.</string>
     <string name="dialog_consent_accessibility_other_options">Mir ist bewusst, dass Alternativen existieren (Geräteadministrator oder der Power-Button).</string>
-    <string name="dialog_consent_accessibility_consent">Ich willige ein, dass μLauncher eine Bedienungshilfe für Zwecke verwendet, die nicht unter Barrierefreiheit fallen.</string>
-    <string name="dialog_consent_accessibility_data_collection">Ich willige ein, dass µLauncher keine Daten sammelt.</string>
+    <string name="dialog_consent_accessibility_consent">Ich willige ein, dass T Launcher eine Bedienungshilfe für Zwecke verwendet, die nicht unter Barrierefreiheit fallen.</string>
+    <string name="dialog_consent_accessibility_data_collection">Ich willige ein, dass T Launcher keine Daten sammelt.</string>
     <string name="dialog_consent_accessibility_title">Bedienungshilfe aktivieren</string>
-    <string name="dialog_report_bug_info">Danke für die Mithilfe, μLauncher zu verbessern!\nEs wird darum gebeten, Bug Reports die folgenden Informationen anzufügen, um diese besser nachvollziehen zu können:</string>
+    <string name="dialog_report_bug_info">Danke für die Mithilfe, T Launcher zu verbessern!\nEs wird darum gebeten, Bug Reports die folgenden Informationen anzufügen, um diese besser nachvollziehen zu können:</string>
     <string name="settings_gesture_back">Zurück</string>
     <string name="settings_gesture_description_back">Zurück-Taste oder -Geste</string>
     <string name="settings_gesture_swipe_larger_reverse"><![CDATA[> (Rückwärts)]]></string>
@@ -299,7 +299,7 @@
     <string name="settings_gesture_description_swipe_smaller">Oben rechts -&gt; mitte links -&gt; unten rechts</string>
     <string name="settings_gesture_description_swipe_larger">Oben links -&gt; mitte rechts -&gt; unten links</string>
     <string name="tutorial_app_list_text">In der Appliste kann effizient nach Apps gesucht werden.\n\nDie Liste wird standardmäßig durch Wischen nach oben geöffnet (auch das lässt sich einstellen).</string>
-    <string name="dialog_consent_accessibility_text"><![CDATA[Das Aktivieren der Bedienungshilfe erteilt μLauncher <strong>weitreichende Zugriffsrechte</strong> .<br/>μLauncher wird diese <strong>ausschließlich zum Sperren des Bildschirms</strong> verwenden. μLauncher wird <strong>niemals irgendwelche Daten sammeln</strong>. Insbesondere werden mittels der Bedienungshilfe keine Daten gesammelt.]]></string>
+    <string name="dialog_consent_accessibility_text"><![CDATA[Das Aktivieren der Bedienungshilfe erteilt T Launcher <strong>weitreichende Zugriffsrechte</strong> .<br/>T Launcher wird diese <strong>ausschließlich zum Sperren des Bildschirms</strong> verwenden. T Launcher wird <strong>niemals irgendwelche Daten sammeln</strong>. Insbesondere werden mittels der Bedienungshilfe keine Daten gesammelt.]]></string>
     <string name="settings_gesture_tap_up">Tippen und hoch</string>
     <string name="settings_gesture_description_tap_up">Tippen, dann nach oben wischen</string>
     <string name="settings_gesture_tap_down">Tippen und nach unten</string>
@@ -320,7 +320,7 @@
     <string name="settings_meta_view_docs">Dokumentation</string>
     <string name="select_widget_title">Widget auswählen</string>
     <string name="widget_menu_remove">Entfernen</string>
-    <string name="widget_clock_description">Die Standarduhr des μLaunchers</string>
+    <string name="widget_clock_description">Die Standarduhr des T Launchers</string>
     <string name="manage_widget_panels_delete">Löschen</string>
     <string name="manage_widget_panels_rename">Umbenennen</string>
     <string name="list_other_open_widget_panel">Widget-Panel öffnen</string>
@@ -328,7 +328,7 @@
     <string name="settings_launcher_section_widgets">Widgets</string>
     <string name="send_email">E-Mail senden</string>
     <string name="settings_functionality_auto_close_keyboard">Tastatur beim Scrollen schließen</string>
-    <string name="report_crash_title">μLauncher ist abgestürzt</string>
+    <string name="report_crash_title">T Launcher ist abgestürzt</string>
     <string name="content_description_add_widget_panel">Widget-Panel hinzufügen</string>
     <string name="content_description_close">Schließen</string>
     <plurals name="widget_panel_number_of_widgets">
@@ -341,7 +341,7 @@
     <string name="widget_panels_title">Widget-Panels</string>
     <string name="dialog_select_widget_panel_title">Wähle ein Widget-Panel aus</string>
     <string name="dialog_create_widget_panel_title">Erstelle ein neues Widget-Panel</string>
-    <string name="notification_crash_title">μLauncher ist abgestürzt</string>
+    <string name="notification_crash_title">T Launcher ist abgestürzt</string>
     <string name="notification_channel_crash">Abstürze und Debug-Informationen</string>
     <string name="content_description_add_widget">Widget hinzufügen</string>
 </resources>

@@ -1,4 +1,4 @@
-µLauncher est une application d'écran d'accueil qui vous permet de démarrer des application à partir de gestes ou des boutons de votre appareil.
+T Launcher est une application d'écran d'accueil qui vous permet de démarrer des application à partir de gestes ou des boutons de votre appareil.
 C'est une application minimaliste, efficace, sans distraction et ergonomique.
 
 L'écran d'accueil n'affiche rien de plus que la date, l'heure et votre fond d'écran.

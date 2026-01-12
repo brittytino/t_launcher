@@ -14,7 +14,7 @@ The settings can be opened by binding the Settings action to a gesture (this is 
 ### Choose a wallpaper
 
 This triggers Android's mechanism to change the wallpaper using a photo app, file explorer, or native wallpaper setting app.
-µLauncher uses the system-wide wallpaper, i.e., this change also affects other launchers.
+T Launcher uses the system-wide wallpaper, i.e., this change also affects other launchers.
 
 ### Color Theme
 
