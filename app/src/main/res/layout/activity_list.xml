@@ -93,7 +93,7 @@
         android:id="@+id/list_fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:name="de.jrpie.android.launcher.ui.list.apps.ListFragmentApps"
+        android:name="de.brittytino.android.launcher.ui.list.apps.ListFragmentApps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

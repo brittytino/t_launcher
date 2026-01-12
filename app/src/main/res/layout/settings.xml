@@ -83,7 +83,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-    <de.jrpie.android.launcher.ui.settings.GestureAreaIndicatorOverlayView
+    <de.brittytino.android.launcher.ui.settings.GestureAreaIndicatorOverlayView
         android:id="@+id/gestureAreaIndicatorOverlayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,4 +1,4 @@
-* Documentation at https://launcher.jrpie.de
+* Documentation at https://launcher.brittytino.de
 * Improved layout of widget list (thank you, wassupluke!)
 * Fixed some bugs related to widgets
 * Improved translations (thank you, abdelbasset jabrane, AsLoLoks, class0068, example, Julian Malinowski Lukas Hamm, renar, rimopa, Vladi69, Vossa Excelencia, and anonymous contributors!)

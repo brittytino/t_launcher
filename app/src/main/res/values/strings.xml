@@ -364,7 +364,7 @@
         Requires excessive privileges.
         T Launcher will use those privileges only for locking the screen.
         <br/>
-        (You really should not trust a random app you just downloaded with such a claim, but you can check the <a href=\"https://github.com/jrpie/Launcher\">source code</a>.)
+        (You really should not trust a random app you just downloaded with such a claim, but you can check the <a href=\"https://github.com/brittytino/Launcher\">source code</a>.)
         <br/>
         On some devices, the start-up PIN will no longer be used for encrypting data after activating an accessibility service.
         This can be <a href="https://issuetracker.google.com/issues/37010136#comment36">reactivated</a> afterwards.
@@ -442,7 +442,7 @@
         <ul>
         <li>Force stop T Launcher</li>
         <li>Clear T Launcher\'s storage (<strong>Your settings will be lost!</strong>)</li>
-        <li>Install an older version (<a href=\"https://github.com/jrpie/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.jrpie.android.launcher\">F-Droid</a>)</li>
+        <li>Install an older version (<a href=\"https://github.com/brittytino/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.brittytino.android.launcher\">F-Droid</a>)</li>
         </ul>
         ]]>
     </string>

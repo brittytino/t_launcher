@@ -47,7 +47,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/tutorial_setup_actions_rview_fragment"
-            android:name="de.jrpie.android.launcher.ui.settings.actions.SettingsFragmentActionsRecycler"
+            android:name="de.brittytino.android.launcher.ui.settings.actions.SettingsFragmentActionsRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginVertical="4dp"

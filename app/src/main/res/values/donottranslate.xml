@@ -23,7 +23,7 @@
         <string name="settings_list_reverse_layout_key" translatable="false">list.reverse_layout</string>
         <string name="settings_general_choose_home_screen_key" translatable="false">general.select_launcher</string>
 
-        <!-- values of de.jrpie.android.launcher.preferences.list.ListLayout -->
+        <!-- values of de.brittytino.android.launcher.preferences.list.ListLayout -->
         <string-array name="settings_list_layout_values" translatable="false">
                 <item>DEFAULT</item>
                 <item>TEXT</item>
@@ -38,7 +38,7 @@
                 <item>@string/settings_list_layout_item_grid_only_icons</item>
         </string-array>
 
-        <!-- values de.jrpie.android.launcher.preferences.list.AppName -->
+        <!-- values de.brittytino.android.launcher.preferences.list.AppName -->
         <string-array name="settings_list_app_name_format_values" translatable="false">
             <item>DEFAULT</item>
             <item>UPPERCASE</item>
@@ -116,7 +116,7 @@
         <string name="settings_theme_wallpaper_key" translatable="false">theme.wallpaper</string>
         <string name="settings_theme_font_key" translatable="false">theme.font</string>
 
-        <!-- values of de.jrpie.android.launcher.preferences.theme.Font -->
+        <!-- values of de.brittytino.android.launcher.preferences.theme.Font -->
         <string-array name="settings_theme_font_values" translatable="false">
                 <item>HACK</item>
                 <item>SYSTEM_DEFAULT</item>
@@ -177,16 +177,16 @@
           - URLs
           -
         -->
-        <string name="settings_meta_link_github" translatable="false">https://github.com/jrpie/Launcher</string>
-        <string name="settings_meta_link_docs" translatable="false">https://launcher.jrpie.de/</string>
-        <string name="settings_meta_report_bug_link" translatable="false">https://github.com/jrpie/Launcher/issues/new?template=bug_report.yaml</string>
-        <string name="settings_meta_report_bug_mail" translatable="false">android-launcher-crash@jrpie.de</string>
-        <string name="settings_meta_report_vulnerability_link" translatable="false">https://github.com/jrpie/Launcher/security/policy</string>
-        <string name="settings_meta_fork_contact_url" translatable="false">https://s.jrpie.de/contact</string>
-        <string name="settings_meta_privacy_url" translatable="false">https://s.jrpie.de/android-legal</string>
+        <string name="settings_meta_link_github" translatable="false">https://github.com/brittytino/Launcher</string>
+        <string name="settings_meta_link_docs" translatable="false">https://launcher.brittytino.de/</string>
+        <string name="settings_meta_report_bug_link" translatable="false">https://github.com/brittytino/Launcher/issues/new?template=bug_report.yaml</string>
+        <string name="settings_meta_report_bug_mail" translatable="false">android-launcher-crash@brittytino.de</string>
+        <string name="settings_meta_report_vulnerability_link" translatable="false">https://github.com/brittytino/Launcher/security/policy</string>
+        <string name="settings_meta_fork_contact_url" translatable="false">https://s.brittytino.de/contact</string>
+        <string name="settings_meta_privacy_url" translatable="false">https://s.brittytino.de/android-legal</string>
         <string name="settings_meta_contact_url" translatable="false">https://www.finnmglas.com/contact/</string>
-        <string name="settings_meta_chat_url" translatable="false">https://s.jrpie.de/launcher-chat</string>
-        <string name="settings_meta_donate_url" translatable="false">https://s.jrpie.de/launcher-donate</string>
+        <string name="settings_meta_chat_url" translatable="false">https://s.brittytino.de/launcher-chat</string>
+        <string name="settings_meta_donate_url" translatable="false">https://s.brittytino.de/launcher-donate</string>
 
         <!--
           -
@@ -200,7 +200,7 @@
         <string name="legal_info_text"><![CDATA[
         <h2>T Launcher</h2>
         Modifications to Launcher.
-        <p><a href=\"https://github.com/jrpie/launcher\">github.com/jrpie/launcher</a></p>
+        <p><a href=\"https://github.com/brittytino/launcher\">github.com/brittytino/launcher</a></p>
 
         <p>MIT License</p>
 

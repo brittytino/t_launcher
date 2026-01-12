@@ -11,7 +11,7 @@ Install JDK 17 and the Android SDK.
 Make sure that `JAVA_HOME` and `ANDROID_HOME` are set correctly.
 
 ```bash
-git clone https://github.com/jrpie/Launcher
+git clone https://github.com/brittytino/Launcher
 cd Launcher
 
 ./gradlew assembleDefaultRelease
@@ -46,7 +46,7 @@ for further instructions.
 
 ## CI Pipeline
 
-The [CI pipeline](https://github.com/jrpie/Launcher/actions) automatically creates debug builds.
+The [CI pipeline](https://github.com/brittytino/Launcher/actions) automatically creates debug builds.
 
 {{% hint warning %}}
 Note: These builds are not signed.

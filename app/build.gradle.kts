@@ -34,11 +34,11 @@ val gitCommitProvider = providers.of(GitCommitValueSource::class) {}
 val gitCommit = gitCommitProvider.get()
 
 android {
-    namespace = "de.jrpie.android.launcher"
+    namespace = "de.brittytino.android.launcher"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "de.jrpie.android.launcher"
+        applicationId = "de.brittytino.android.launcher"
         minSdk = 21
         targetSdk = 36
         versionCode = 53

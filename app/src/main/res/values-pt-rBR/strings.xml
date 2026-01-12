@@ -176,7 +176,7 @@
         Exige permissões elevadas.
         O T Launcher usará essas permissões apenas para bloquear a tela.
         <br/>
-        (Você realmente não deveria confiar num app aleatório que você baixou e tá pedindo estas permissões, mas pode verificar o <a href=\"https://github.com/jrpie/Launcher\">código-fonte</a>.)
+        (Você realmente não deveria confiar num app aleatório que você baixou e tá pedindo estas permissões, mas pode verificar o <a href=\"https://github.com/brittytino/Launcher\">código-fonte</a>.)
         <br/>
         Em alguns aparelhos após ativação do Serviço de acessibilidade não será mais exigido o PIN para acessar dados criptografados, na inicialização do celular.
         Isto pode ser <a href="https://issuetracker.google.com/issues/37010136#comment36">reativado</a> depois.

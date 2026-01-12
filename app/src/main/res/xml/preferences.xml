@@ -59,7 +59,7 @@
             android:entries="@array/settings_theme_font_items"
             android:defaultValue="HACK"
             app:useSimpleSummaryProvider="true"/>
-        <de.jrpie.android.launcher.preferences.ColorPreference
+        <de.brittytino.android.launcher.preferences.ColorPreference
             android:key="@string/settings_clock_color_key"
             android:title="@string/settings_clock_color"
             />

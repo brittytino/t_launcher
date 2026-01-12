@@ -279,7 +279,7 @@
         تتطلب صلاحيات واسعة.
         سيستخدم تطبيق T Launcher هذه الصلاحيات فقط لقفل الشاشة.
         <br/>
-        (يجب ألا تثق بتطبيق عشوائي قمت بتحميله للتو بهذا الادعاء، ولكن يمكنك التحقق من <a href=\"https://github.com/jrpie/Launcher\">الكود المصدري</a>.)
+        (يجب ألا تثق بتطبيق عشوائي قمت بتحميله للتو بهذا الادعاء، ولكن يمكنك التحقق من <a href=\"https://github.com/brittytino/Launcher\">الكود المصدري</a>.)
         <br/>
         في بعض الأجهزة، لن يُستخدم رمز PIN الخاص بالتشغيل لتشفير البيانات بعد تفعيل خدمة الوصول.
         يمكن <a href="https://issuetracker.google.com/issues/37010136#comment36">إعادة تفعيل</a> هذا لاحقًا.
@@ -327,7 +327,7 @@
     <ul>
         <li>إيقاف T Launcher بالقوة</li>
         <li>مسح بيانات T Launcher&#39;s (<strong>ستفقد إعداداتك!</strong>)</li>
-        <li>تثبيت إصدار أقدم (<a href="https://github.com/jrpie/Launcher/releases">GitHub</a>, <a href="https://f-droid.org/en/packages/de.jrpie.android.launcher">F-Droid</a>)</li>
+        <li>تثبيت إصدار أقدم (<a href="https://github.com/brittytino/Launcher/releases">GitHub</a>, <a href="https://f-droid.org/en/packages/de.brittytino.android.launcher">F-Droid</a>)</li>
     </ul>
 ]]></string>
     <string name="notification_crash_title">تعطل T Launcher</string>

@@ -8,7 +8,7 @@
     android:longClickable="false"
     tools:context=".ui.widgets.WidgetPanelActivity">
 
-    <de.jrpie.android.launcher.ui.widgets.WidgetContainerView
+    <de.brittytino.android.launcher.ui.widgets.WidgetContainerView
         android:id="@+id/widget_panel_widget_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

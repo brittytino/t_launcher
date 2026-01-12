@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.widgets.manage.ManageWidgetsActivity">
 
-    <de.jrpie.android.launcher.ui.widgets.manage.WidgetManagerView
+    <de.brittytino.android.launcher.ui.widgets.manage.WidgetManagerView
         android:id="@+id/manage_widgets_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -211,7 +211,7 @@
  Requiere privilegios excesivos.
  T Launcher utilizará esos privilegios solo para bloquear la pantalla.
  <br/>
- (Realmente no deberías confiar en una aplicación aleatoria que acabas de descargar con tal afirmación, pero puedes consultar el <a href=\"https://github.com/jrpie/Launcher\">código fuente</a>).
+ (Realmente no deberías confiar en una aplicación aleatoria que acabas de descargar con tal afirmación, pero puedes consultar el <a href=\"https://github.com/brittytino/Launcher\">código fuente</a>).
  <br/>
  En algunos dispositivos, el PIN de inicio ya no se utilizará para cifrar datos después de activar un servicio de accesibilidad.
  Esto se puede <a href="https://issuetracker.google.com/issues/37010136#comment36">reactivar</a> posteriormente.

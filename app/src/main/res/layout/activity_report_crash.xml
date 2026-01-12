@@ -31,7 +31,7 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <de.jrpie.android.launcher.ui.util.HtmlTextView
+            <de.brittytino.android.launcher.ui.util.HtmlTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/crash_info" />

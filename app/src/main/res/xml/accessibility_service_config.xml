@@ -16,4 +16,4 @@
     android:canRetrieveWindowContent="false"
     android:description="@string/accessibility_service_description"
     android:packageNames=""
-    android:settingsActivity="de.jrpie.android.launcher.ui.settings.SettingsActivity" />
+    android:settingsActivity="de.brittytino.android.launcher.ui.settings.SettingsActivity" />

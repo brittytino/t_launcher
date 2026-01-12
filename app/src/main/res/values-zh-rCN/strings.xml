@@ -228,7 +228,7 @@
         需要更多的权限。
         T Launcher 将这些权限仅用于锁定屏幕。
         <br/>
-        （对于任何一个从网上下载的应用所做的类似声明，你都不应该抱持“默认为可信”的态度，你可以并应该检查一下它的<a href=\"https://github.com/jrpie/Launcher\">源代码</a>.）
+        （对于任何一个从网上下载的应用所做的类似声明，你都不应该抱持“默认为可信”的态度，你可以并应该检查一下它的<a href=\"https://github.com/brittytino/Launcher\">源代码</a>.）
         <br/>
         在某些设备上，激活“无障碍”服务后，启动 PIN 码将不再用于加密数据。
         如果遇到该问题，可以通过<a href="https://issuetracker.google.com/issues/37010136#comment36">该方法</a>重新激活启动 PIN 码用于数据加密。
@@ -327,7 +327,7 @@ T Launcher <strong>绝不会收集任何数据</strong>。尤其是，T Launcher
         <ul>
         <li>强行停止 T Launcher</li>
         <li>清空 T Launcher 的存储空间（<strong>您的设置将被重置！</strong>）</li>
-        <li>安装旧版本（<a href=\"https://github.com/jrpie/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.jrpie.android.launcher\">F-Droid</a>）</li>
+        <li>安装旧版本（<a href=\"https://github.com/brittytino/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.brittytino.android.launcher\">F-Droid</a>）</li>
         </ul>
         ]]></string>
     <string name="content_description_add_widget">添加小部件</string>

@@ -28,7 +28,7 @@
         Richiede privilegi eccessivi.
         T Launcher userà quei privilegi esclusivamente per bloccare lo schermo.
         <br/>
-        (Non ci si dovrebbe mai fidare di un\'applicazione qualsiasi appena scaricata su queste cose, ma puoi verificare il <a href=\"https://github.com/jrpie/Launcher\">codice sorgente</a>.)
+        (Non ci si dovrebbe mai fidare di un\'applicazione qualsiasi appena scaricata su queste cose, ma puoi verificare il <a href=\"https://github.com/brittytino/Launcher\">codice sorgente</a>.)
 
         In alcuni dispositivi, il  PIN iniziale non verrà più utilizzato per la crittografia dei dati dopo aver attivato un servizio di accessibilità.
 
@@ -333,7 +333,7 @@
         <ul>
         <li>Force stop T Launcher</li>
         <li>Clear T Launcher\'s storage (<strong>Your settings will be lost!</strong>)</li>
-        <li>Install an older version (<a href=\"https://github.com/jrpie/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.jrpie.android.launcher\">F-Droid</a>)</li>
+        <li>Install an older version (<a href=\"https://github.com/brittytino/Launcher/releases\">GitHub</a>, <a href=\"https://f-droid.org/en/packages/de.brittytino.android.launcher\">F-Droid</a>)</li>
         </ul>
         ]]></string>
     <string name="content_description_add_widget_panel">Aggiungi pannello widget</string>

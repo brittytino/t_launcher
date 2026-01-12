@@ -50,4 +50,4 @@ It has been suggested to add a feature to search contacts from &mu;Launcher. How
 
 
 Here is [overview of alternatives](/docs/examples/contact-search/) suggested by users.
-Also see [#119](https://github.com/jrpie/launcher/issues/119).
+Also see [#119](https://github.com/brittytino/launcher/issues/119).

@@ -143,7 +143,7 @@ This launches an [`Intent.ACTION_WEB_SEARCH`](https://developer.android.com/refe
 If you want to change the default later, go to Android Settings > Apps > select the app > Open by default.
 Note that this is independent of the default browser.
 
-You can also use an app like [&mu;Search](https://git.jrpie.de/jrpie/usearch)
+You can also use an app like [&mu;Search](https://git.brittytino.de/brittytino/usearch)
 to switch between multiple search engines.
 
 {{% hint warning %}}
@@ -191,7 +191,7 @@ There are two methods to lock the screen, and unfortunately, both have downsides
       &mu;Launcher will use those privileges *only* for locking the screen.
       As a rule of thumb, it is [not recommended](https://android.stackexchange.com/questions/248171/is-it-safe-to-give-accessibility-permission-to-an-app)
       to grant access to accessibility services to a random app.
-      Always review the [source code](https://github.com/jrpie/launcher/blob/master/app/src/main/java/de/jrpie/android/launcher/actions/lock/LauncherAccessibilityService.kt) before granting accessibility permissions so you can familiarize yourself with what the code might do.
+      Always review the [source code](https://github.com/brittytino/launcher/blob/master/app/src/main/java/de/brittytino/android/launcher/actions/lock/LauncherAccessibilityService.kt) before granting accessibility permissions so you can familiarize yourself with what the code might do.
     - On some devices, the start-up PIN will no longer be used for encrypting data after activating an accessibility service. This can be [reactivated](https://issuetracker.google.com/issues/37010136#comment36) afterwards.
 
    **type:**&nbsp;`text buttons`

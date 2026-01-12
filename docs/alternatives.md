@@ -380,7 +380,7 @@ Similar to OLauncher?
 ### T Launcher
 
 **License:** `MIT`  
-[Repository](https://github.com/jrpie/launcher) | [F-Droid](https://f-droid.org/en/packages/de.jrpie.android.launcher/)
+[Repository](https://github.com/brittytino/launcher) | [F-Droid](https://f-droid.org/en/packages/de.brittytino.android.launcher/)
 
 **Main mode of interaction:** `Gestures` `Search`
 
@@ -388,7 +388,7 @@ Similar to OLauncher?
 
 :white_check_mark: Search:  `apps`  
 :x: Search history  
-:white_check_mark: Customizable gestures: `35 avilable` [read the docs](https://github.com/jrpie/launcher/blob/master/docs/actions-and-gestures.md)  
+:white_check_mark: Customizable gestures: `35 avilable` [read the docs](https://github.com/brittytino/launcher/blob/master/docs/actions-and-gestures.md)  
 :x: Folders  
 :x: Tags  
 :white_check_mark: Rename apps  
@@ -451,4 +451,4 @@ Feel free to test these and add
 * https://apt.izzysoft.de/fdroid/index/apk/com.saggitt.omega
 * [Even more launchers](https://docs.arcticons.com/faq/supported-launchers) (most of them don't seem to be FOSS)
 
-The code for this page can be found on [GitHub](https://github.com/jrpie/launcher/blob/master/docs/alternatives.md).
+The code for this page can be found on [GitHub](https://github.com/brittytino/launcher/blob/master/docs/alternatives.md).
