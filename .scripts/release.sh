@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script builds all variants of µLauncher to create a release, namely:
+# This script builds all variants of T Launcher to create a release, namely:
 # - app-release.apk (GitHub release; used by F-Droid for reproducible builds)
 # - launcher-accrescent.apks (Accrescent)
 # - app-release.aab (Play Store)

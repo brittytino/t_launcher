@@ -31,7 +31,7 @@ sealed interface Action {
         onSuccess(this)
     }
 
-    // Can the action be used to reach µLauncher settings?
+    // Can the action be used to reach T Launcher settings?
     fun canReachSettings(): Boolean
 
 

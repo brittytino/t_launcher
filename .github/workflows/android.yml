@@ -51,7 +51,7 @@ jobs:
         tag: "pre-release"
         name: "Debug (only for testing)"
         prerelease: true
-        body: "This debug build is updated automatically whenever there is a commit to master. It is signed with a debug certificate and uses the package name `de.brittytino.android.launcher.debug`. Furthermore, the app name is set to `µLauncher [debug]`. **Debug builds are not suited for everyday use.**"
+        body: "This debug build is updated automatically whenever there is a commit to master. It is signed with a debug certificate and uses the package name `de.brittytino.android.launcher.debug`. Furthermore, the app name is set to `T Launcher [debug]`. **Debug builds are not suited for everyday use.**"
         generateReleaseNotes: true
         removeArtifacts: true
         replacesArtifacts: true

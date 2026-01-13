@@ -6,7 +6,7 @@ body:
  - type: markdown
    attributes:
       value: |
-        Thank you for helping to improve µLauncher!
+        Thank you for helping to improve T Launcher!
 
         Before reporting a bug, please make sure it has not been reported previously.
         (In the case that the bug has already been reported, it is still helpful to know which devices are affected. Please leave a comment with your device info on the relevant issue, instead of opening a new report.)
@@ -45,6 +45,6 @@ body:
      label: Your Device
      description: |
        What device are you using? Adding this information helps to reproduce the bug.
-       You can copy this from µLauncher > Settings > Meta > Report Bug.
+       You can copy this from T Launcher > Settings > Meta > Report Bug.
    validations:
      required: false

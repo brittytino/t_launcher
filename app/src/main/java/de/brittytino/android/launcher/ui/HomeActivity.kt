@@ -83,7 +83,7 @@ class HomeActivity : UIObject, LauncherGestureActivity() {
     }
 
     private fun updateSettingsFallbackButtonVisibility() {
-        // If µLauncher settings can not be reached from any action bound to an enabled gesture,
+        // If T Launcher settings can not be reached from any action bound to an enabled gesture,
         // show the fallback button.
         binding.buttonFallbackSettings.visibility = if (
             !Gesture.entries.any { g ->

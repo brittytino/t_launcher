@@ -33,7 +33,7 @@ fun getPrivateSpaceUser(context: Context): UserHandle? {
 }
 
 /**
- * Check whether the user has created a private space and whether µLauncher can access it.
+ * Check whether the user has created a private space and whether T Launcher can access it.
  */
 fun isPrivateSpaceSetUp(
     context: Context,

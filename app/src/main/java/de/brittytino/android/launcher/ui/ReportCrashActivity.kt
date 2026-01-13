@@ -39,8 +39,8 @@ class ReportCrashActivity : AppCompatActivity() {
             writeEmail(
                 this,
                 getString(R.string.settings_meta_report_bug_mail),
-                "Crash in μLauncher",
-                "Hi!\nUnfortunately, μLauncher crashed:\n" +
+                "Crash in T Launcher",
+                "Hi!\nUnfortunately, T Launcher crashed:\n" +
                         "\nDevice Info\n\n${getDeviceInfo()}\n\n" +
                         "\nCrash Log\n\n${report}\n" +
                         "\nAdditional Information\n\n" +

@@ -61,7 +61,7 @@ fun setDefaultHomeScreen(context: Context, checkDefault: Boolean = false) {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
         && context is Activity
-        && checkDefault // using role manager only works when µLauncher is not already the default.
+        && checkDefault // using role manager only works when T Launcher is not already the default.
     ) {
         val roleManager = context.getSystemService(RoleManager::class.java)
         context.startActivityForResult(
@@ -223,7 +223,7 @@ fun getApps(
 // used for the bug report button
 fun getDeviceInfo(): String {
     return """
-        µLauncher version: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})
+        T Launcher version: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})
         Commit ${BuildConfig.GIT_COMMIT.take(8)}
         Android version: ${Build.VERSION.RELEASE} (sdk ${Build.VERSION.SDK_INT})
         Model: ${Build.MODEL}
