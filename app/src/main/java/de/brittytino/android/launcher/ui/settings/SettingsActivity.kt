@@ -19,7 +19,6 @@ import de.brittytino.android.launcher.ui.UIObject
 import de.brittytino.android.launcher.ui.settings.actions.SettingsFragmentActions
 import de.brittytino.android.launcher.ui.settings.launcher.SettingsFragmentLauncher
 import de.brittytino.android.launcher.ui.settings.meta.SettingsFragmentMeta
-import de.brittytino.android.launcher.ui.settings.wellbeing.SettingsFragmentWellbeing
 import de.brittytino.android.launcher.ui.UIObjectActivity
 
 /**
@@ -106,7 +105,6 @@ class SettingsActivity : UIObjectActivity() {
 private val TAB_TITLES = arrayOf(
     R.string.settings_tab_actions,
     R.string.settings_tab_launcher,
-    R.string.settings_tab_wellbeing,
     R.string.settings_tab_meta
 )
 
@@ -117,8 +115,7 @@ class SettingsSectionsPagerAdapter(private val activity: FragmentActivity) :
         return when (position) {
             0 -> SettingsFragmentActions()
             1 -> SettingsFragmentLauncher()
-            2 -> SettingsFragmentWellbeing()
-            3 -> SettingsFragmentMeta()
+            2 -> SettingsFragmentMeta()
             else -> Fragment()
         }
     }
@@ -128,6 +125,6 @@ class SettingsSectionsPagerAdapter(private val activity: FragmentActivity) :
     }
 
     override fun getItemCount(): Int {
-        return 4
+        return 3
     }
 }

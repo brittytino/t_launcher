@@ -103,20 +103,6 @@ fun resetPreferences(context: Context) {
         )
     )
 
-    if (BuildConfig.DEBUG) {
-        LauncherPreferences.widgets().widgets(
-            LauncherPreferences.widgets().widgets().also {
-                it.add(
-                    DebugInfoWidget(
-                        generateInternalId(),
-                        WidgetPosition(1, 1, 10, 4),
-                        WidgetPanel.HOME.id
-                    )
-                )
-            }
-        )
-    }
-
     val hidden: MutableSet<AbstractAppInfo> = mutableSetOf()
 
     if (!BuildConfig.DEBUG) {

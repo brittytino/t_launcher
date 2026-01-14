@@ -14,6 +14,8 @@ import de.brittytino.android.launcher.preferences.LauncherPreferences
 import de.brittytino.android.launcher.ui.tutorial.TutorialActivity
 import de.brittytino.android.launcher.ui.util.LauncherGestureActivity
 
+import de.brittytino.android.launcher.wallpaper.WallpaperManagerHelper
+
 /**
  * [HomeActivity] is the actual application Launcher,
  * what makes this application special / unique.
@@ -63,6 +65,11 @@ class HomeActivity : UIObject, LauncherGestureActivity() {
     override fun onStart() {
         super<LauncherGestureActivity>.onStart()
         super<UIObject>.onStart()
+        
+        // Automatic Wallpaper Rotation
+        Thread {
+            WallpaperManagerHelper.checkAndRotateWallpaper(this)
+        }.start()
 
         // If the tutorial was not finished, start it
         if (!LauncherPreferences.internal().started()) {

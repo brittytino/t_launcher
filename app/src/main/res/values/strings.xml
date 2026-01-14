@@ -18,6 +18,10 @@
       -->
     <string name="settings_title">Settings</string>
 
+    <string name="settings_theme_change_wallpaper_title">Change Wallpaper</string>
+    <string name="settings_theme_change_wallpaper_summary">Click to change to the next pattern. Current: %1$d / %2$d</string>
+    <string name="settings_theme_change_wallpaper_key">theme.change_wallpaper</string>
+
     <string name="settings_tab_wellbeing">Digital Wellbeing</string>
     <string name="settings_wellbeing_delay_key">settings_wellbeing_delay</string>
     <string name="settings_wellbeing_delay_title">App Launch Delay</string>

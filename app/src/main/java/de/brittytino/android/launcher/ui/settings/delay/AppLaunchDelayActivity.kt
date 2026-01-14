@@ -9,6 +9,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
@@ -73,23 +75,36 @@ fun AppLaunchDelayScreen(viewModel: AppLaunchDelayViewModel = viewModel()) {
 
     Column(modifier = Modifier.fillMaxSize().background(Color.Black)) {
         // Search Bar
-        OutlinedTextField(
-            value = searchQuery,
-            onValueChange = viewModel::onSearchQueryChanged,
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
-            placeholder = { Text("Search apps", color = Color.Gray) },
-            singleLine = true,
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(0xFF1E1E1E),
-                unfocusedContainerColor = Color(0xFF1E1E1E),
-                focusedTextColor = Color.White,
-                unfocusedTextColor = Color.White,
-                cursorColor = Color(0xFFBB86FC),
-                focusedIndicatorColor = Color(0xFFBB86FC),
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            shape = MaterialTheme.shapes.medium
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            IconButton(onClick = { (context as? android.app.Activity)?.finish() }) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = viewModel::onSearchQueryChanged,
+                modifier = Modifier.weight(1f),
+                placeholder = { Text("Search apps", color = Color.Gray) },
+                singleLine = true,
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color(0xFF1E1E1E),
+                    unfocusedContainerColor = Color(0xFF1E1E1E),
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    cursorColor = Color(0xFFBB86FC),
+                    focusedIndicatorColor = Color(0xFFBB86FC),
+                    unfocusedIndicatorColor = Color.Transparent
+                ),
+                shape = MaterialTheme.shapes.medium
+            )
+        }
 
         LazyColumn(
              modifier = Modifier.weight(1f)

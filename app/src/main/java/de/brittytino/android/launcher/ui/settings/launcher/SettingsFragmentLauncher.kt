@@ -6,11 +6,13 @@ import android.os.Build
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
 import de.brittytino.android.launcher.R
+import de.brittytino.android.launcher.wallpaper.WallpaperManagerHelper
 import de.brittytino.android.launcher.actions.lock.LockMethod
 import de.brittytino.android.launcher.actions.openAppsList
 import de.brittytino.android.launcher.preferences.LauncherPreferences
 import de.brittytino.android.launcher.preferences.theme.ColorTheme
 import de.brittytino.android.launcher.setDefaultHomeScreen
+import de.brittytino.android.launcher.ui.settings.delay.AppLaunchDelayActivity
 import de.brittytino.android.launcher.ui.widgets.manage.ManageWidgetPanelsActivity
 import de.brittytino.android.launcher.ui.widgets.manage.ManageWidgetsActivity
 
@@ -64,6 +66,13 @@ class SettingsFragmentLauncher : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
+        findPreference<androidx.preference.Preference>(getString(R.string.settings_wellbeing_delay_key))?.apply {
+            setOnPreferenceClickListener {
+                startActivity(Intent(activity, AppLaunchDelayActivity::class.java))
+                true
+            }
+        }
+
         val selectWallpaper = findPreference<androidx.preference.Preference>(
             LauncherPreferences.theme().keys().wallpaper()
         )
@@ -75,6 +84,31 @@ class SettingsFragmentLauncher : PreferenceFragmentCompat() {
             startActivity(intent)
             true
         }
+
+        val changeWallpaper = findPreference<androidx.preference.Preference>(
+            getString(R.string.settings_theme_change_wallpaper_key)
+        )
+        // Update summary initially
+        val currentIndex = WallpaperManagerHelper.getCurrentIndex(requireContext())
+        val totalPatterns = WallpaperManagerHelper.getTotalPatterns()
+        changeWallpaper?.summary = getString(R.string.settings_theme_change_wallpaper_summary, currentIndex, totalPatterns)
+
+        changeWallpaper?.setOnPreferenceClickListener {
+            try {
+                // Run in background to avoid UI thread block on bitmap generation
+                Thread {
+                    val newIndex = WallpaperManagerHelper.advanceWallpaper(requireContext())
+                    requireActivity().runOnUiThread {
+                        changeWallpaper.summary = getString(R.string.settings_theme_change_wallpaper_summary, newIndex, totalPatterns)
+                        android.widget.Toast.makeText(requireContext(), "Wallpaper Changed", android.widget.Toast.LENGTH_SHORT).show()
+                    }
+                }.start()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            true
+        }
+
         val chooseHomeScreen = findPreference<androidx.preference.Preference>(
             LauncherPreferences.general().keys().chooseHomeScreen()
         )
