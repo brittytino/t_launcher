@@ -26,6 +26,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.system.exitProcess
+import de.brittytino.android.launcher.data.AppDatabase
+import de.brittytino.android.launcher.leetcode.api.LeetCodeApi
+import de.brittytino.android.launcher.leetcode.data.LeetCodeRepository
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 
 
 const val APP_WIDGET_HOST_ID = 42
@@ -36,6 +43,7 @@ class Application : android.app.Application() {
     val privateSpaceLocked = MutableLiveData<Boolean>()
     lateinit var appWidgetHost: AppWidgetHost
     lateinit var appWidgetManager: AppWidgetManager
+    lateinit var leetCodeRepository: LeetCodeRepository
 
     private val profileAvailabilityBroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -116,6 +124,20 @@ class Application : android.app.Application() {
         if (Build.VERSION.SDK_INT >= VERSION_CODES.M) {
             torchManager = TorchManager(this)
         }
+        
+        // Init LeetCode Repository
+        val db = AppDatabase.getDatabase(this)
+        val interceptor = HttpLoggingInterceptor().apply {
+             level = if(BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        }
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://leetcode.com/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val api = retrofit.create(LeetCodeApi::class.java)
+        leetCodeRepository = LeetCodeRepository(api, db.leetCodeDao())
 
         appWidgetHost = AppWidgetHost(this.applicationContext, APP_WIDGET_HOST_ID)
         appWidgetManager = AppWidgetManager.getInstance(this.applicationContext)

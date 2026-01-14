@@ -97,6 +97,7 @@
     </string-array>
 
     <string-array name="default_messengers">
+        <item>{\"type\": \"action:launcher\", \"value\": \"developer_panel\"}</item>
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"de.spiritcroc.riotx\", \"activityName\": null}}</item> <!-- SchildiChat -->
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"io.element.android.x\", \"activityName\": null}}</item> <!-- Element X -->
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"im.vector.app\", \"activityName\": null}}</item> <!-- Element -->

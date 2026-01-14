@@ -19,9 +19,20 @@ preference-ktx = "1.2.1"
 recyclerview = "1.4.0"
 serialization = "2.1.20"
 room = "2.8.4"
+retrofit = "2.9.0"
+okhttp = "4.12.0"
+retrofit-kotlinx-serialization = "1.0.0"
+coil = "2.5.0"
 compose-bom = "2025.01.00"
 
 [libraries]
+# Networking
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
 # AndroidX dependencies
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }

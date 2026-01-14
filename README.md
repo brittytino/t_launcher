@@ -54,7 +54,6 @@ T_Launcher supports a comprehensive set of gestures to suit your workflow:
 
 You can install T_Launcher from the following sources:
 
-<a href="https://f-droid.org/packages/de.brittytino.android.launcher/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
 <a href="https://github.com/brittytino/launcher/releases/latest"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80"></a>
 
 ## Contributing
@@ -74,7 +73,6 @@ Based on [finnmglas/Launcher][original-repo].
   [toolate]: https://toolate.othing.xyz/projects/brittytino-launcher/
   [issues]: https://github.com/brittytino/Launcher/issues/
   [fork]: https://github.com/brittytino/Launcher/fork/
-  [store-fdroid]: https://f-droid.org/packages/de.brittytino.android.launcher/
   [shield-release]: https://img.shields.io/github/v/release/brittytino/Launcher?style=flat
   [latest-release]: https://github.com/brittytino/Launcher/releases/latest
   [shield-contribute]: https://img.shields.io/badge/contributions-welcome-007ec6.svg?style=flat

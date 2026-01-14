@@ -1,5 +1,34 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Custom Dark Dialog Theme -->
+    <style name="LauncherAlertDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
+        <!-- Dialog Window Background -->
+        <item name="android:windowBackground">@drawable/dialog_background_dark</item>
+        <item name="android:colorBackground">@color/finnmglasTheme_background_color</item>
+        
+        <!-- Text Colors -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">#cccccc</item>
+        <item name="android:textColorHint">#808080</item>
+        
+        <!-- Input Field Colors -->
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="colorControlNormal">#cccccc</item>
+        <item name="colorControlActivated">@color/finnmglasTheme_accent_color</item>
+        <item name="colorControlHighlight">@color/finnmglasTheme_accent_color</item>
+        
+        <!-- Button Colors -->
+        <item name="colorAccent">@color/finnmglasTheme_accent_color</item>
+        
+        <!-- App Compat Specific -->
+        <item name="alertDialogStyle">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="AlertDialog.AppCompat">
+        <item name="android:background">@color/finnmglasTheme_background_color</item>
+    </style>
+
     <!-- Base theme for Launcher -->
     <style name="launcherBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/finnmglasTheme_background_color</item>
@@ -20,6 +49,8 @@
 
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowAnimationStyle">@style/WindowFadeTransition</item>
+        <item name="android:alertDialogTheme">@style/LauncherAlertDialogTheme</item>
+        <item name="alertDialogTheme">@style/LauncherAlertDialogTheme</item>
     </style>
 
     <style name="launcherHomeTheme" parent="launcherBaseTheme">
@@ -53,6 +84,7 @@
         <item name="android:colorBackground">@color/lightTheme_background_color</item>
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
         <item name="android:textColor">@color/lightTheme_text_color</item>
+        <item name="android:alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert</item>
     </style>
 
     <style name="colorThemeDynamic">

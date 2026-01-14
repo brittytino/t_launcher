@@ -22,6 +22,7 @@ import de.brittytino.android.launcher.preferences.LauncherPreferences
 import de.brittytino.android.launcher.ui.list.AbstractListActivity
 import de.brittytino.android.launcher.ui.list.AppListActivity
 import de.brittytino.android.launcher.ui.settings.SettingsActivity
+import de.brittytino.android.launcher.leetcode.ui.DeveloperPanelActivity
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -50,6 +51,21 @@ enum class LauncherAction(
         R.drawable.baseline_settings_24,
         ::openSettings,
         true
+    ),
+    DEVELOPER_PANEL(
+        "developer_panel",
+        R.string.action_developer_panel,
+        R.drawable.baseline_code_24,
+        { context -> 
+             if (LauncherPreferences.leetcode().enabled()) {
+                 val intent = Intent(context, DeveloperPanelActivity::class.java)
+                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                 context.startActivity(intent)
+             } else {
+                 Toast.makeText(context, R.string.leetcode_feature_disabled, Toast.LENGTH_SHORT).show()
+             }
+        },
+        available = { LauncherPreferences.leetcode().enabled() }
     ),
     CHOOSE(
         "choose",
