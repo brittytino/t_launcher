@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/settings_tab_wellbeing">
+        <Preference
+            android:key="@string/settings_wellbeing_delay_key"
+            android:title="@string/settings_wellbeing_delay_title"
+            android:summary="@string/settings_wellbeing_delay_summary"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

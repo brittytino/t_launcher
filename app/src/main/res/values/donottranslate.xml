@@ -177,11 +177,11 @@
           - URLs
           -
         -->
-        <string name="settings_meta_link_github" translatable="false">https://github.com/brittytino/Launcher</string>
+        <string name="settings_meta_link_github" translatable="false">https://github.com/brittytino/t_launcher</string>
         <string name="settings_meta_link_docs" translatable="false">https://launcher.brittytino.de/</string>
-        <string name="settings_meta_report_bug_link" translatable="false">https://github.com/brittytino/Launcher/issues/new?template=bug_report.yaml</string>
+        <string name="settings_meta_report_bug_link" translatable="false">https://github.com/brittytino/t_launcher/issues/new?template=bug_report.yaml</string>
         <string name="settings_meta_report_bug_mail" translatable="false">android-launcher-crash@brittytino.de</string>
-        <string name="settings_meta_report_vulnerability_link" translatable="false">https://github.com/brittytino/Launcher/security/policy</string>
+        <string name="settings_meta_report_vulnerability_link" translatable="false">https://github.com/brittytino/t_launcher/security/policy</string>
         <string name="settings_meta_fork_contact_url" translatable="false">https://s.brittytino.de/contact</string>
         <string name="settings_meta_privacy_url" translatable="false">https://s.brittytino.de/android-legal</string>
         <string name="settings_meta_contact_url" translatable="false">https://www.finnmglas.com/contact/</string>

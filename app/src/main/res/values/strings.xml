@@ -18,6 +18,11 @@
       -->
     <string name="settings_title">Settings</string>
 
+    <string name="settings_tab_wellbeing">Digital Wellbeing</string>
+    <string name="settings_wellbeing_delay_key">settings_wellbeing_delay</string>
+    <string name="settings_wellbeing_delay_title">App Launch Delay</string>
+    <string name="settings_wellbeing_delay_summary">Add intentional friction to selected apps</string>
+
     <string name="settings_tab_actions">Actions</string>
     <string name="settings_tab_launcher">Launcher</string>
     <string name="settings_tab_meta">Meta</string>

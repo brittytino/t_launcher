@@ -8,6 +8,7 @@ import javax.inject.Inject
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.serialization)
 }
@@ -39,7 +40,7 @@ android {
 
     defaultConfig {
         applicationId = "de.brittytino.android.launcher"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
         versionCode = 53
         versionName = "0.2.8"
@@ -97,7 +98,7 @@ android {
     }
     buildFeatures {
         buildConfig = true
-        compose = false
+        compose = true
         dataBinding = true
         viewBinding = true
     }
@@ -123,6 +124,20 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.runtime.livedata)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+
     implementation(libs.androidx.activity)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
@@ -135,7 +150,7 @@ dependencies {
     implementation(libs.google.material)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.jonahbauer.android.preference.annotations)
-    annotationProcessor(libs.jonahbauer.android.preference.annotations)
+    kapt(libs.jonahbauer.android.preference.annotations)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.test.ext.junit)

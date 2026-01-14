@@ -48,6 +48,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.settings.delay.AppLaunchDelayActivity"
+            android:label="App Launch Delay"
+            android:theme="@style/launcherBaseTheme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.settings.delay.AppLaunchDelayOverlayActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" 
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true" />
+        <activity
             android:name=".ui.HomeActivity"
             android:clearTaskOnLaunch="true"
             android:configChanges="orientation|screenSize"

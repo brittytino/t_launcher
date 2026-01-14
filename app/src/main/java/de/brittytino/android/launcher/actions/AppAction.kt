@@ -5,6 +5,7 @@ import android.app.Service
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.content.pm.LauncherApps
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
@@ -14,7 +15,12 @@ import de.brittytino.android.launcher.R
 import de.brittytino.android.launcher.apps.AppInfo
 import de.brittytino.android.launcher.apps.AbstractAppInfo.Companion.INVALID_USER
 import de.brittytino.android.launcher.apps.DetailedAppInfo
+import de.brittytino.android.launcher.data.AppDatabase
 import de.brittytino.android.launcher.ui.list.apps.openSettings
+import de.brittytino.android.launcher.ui.settings.delay.AppLaunchDelayOverlayActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -23,6 +29,63 @@ import kotlinx.serialization.Serializable
 class AppAction(val app: AppInfo) : Action {
 
     override fun invoke(context: Context, rect: Rect?): Boolean {
+        val packageName = app.packageName
+        
+        if (packageName != context.packageName) {
+             val db = AppDatabase.getDatabase(context)
+             CoroutineScope(Dispatchers.Main).launch {
+                 try {
+                     val delayEntity = db.appLaunchDelayDao().getDelayForApp(packageName)
+                     
+                     val pm = context.packageManager
+                     val isSystem = try {
+                        (pm.getApplicationInfo(packageName, 0).flags and ApplicationInfo.FLAG_SYSTEM) != 0
+                     } catch (e: Exception) { false }
+
+                     val telecomManager = context.getSystemService(Context.TELECOM_SERVICE) as? android.telecom.TelecomManager
+                     val defaultDialer = telecomManager?.defaultDialerPackage
+                     val isDefaultDialer = defaultDialer == packageName
+                     
+                     // Allow system apps, dialer, and self to bypass
+                     if (!isSystem && !isDefaultDialer && delayEntity != null && delayEntity.enabled && delayEntity.delaySeconds > 0) {
+                          val activityInfo = app.getLauncherActivityInfo(context)
+                          val intent = Intent(context, AppLaunchDelayOverlayActivity::class.java).apply {
+                              putExtra("EXTRA_PACKAGE_NAME", packageName)
+                              putExtra("EXTRA_DELAY_SECONDS", delayEntity.delaySeconds)
+                              putExtra("EXTRA_SOURCE_RECT", rect)
+                              if (activityInfo != null) {
+                                   putExtra("EXTRA_USER_HANDLE", activityInfo.user)
+                                   putExtra("EXTRA_COMPONENT_NAME", activityInfo.componentName)
+                              }
+                              addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                          }
+                          try {
+                            context.startActivity(intent)
+                          } catch (e: Exception) {
+                            launchOrPrompt(context, rect)
+                          }
+                     } else {
+                         launchOrPrompt(context, rect)
+                     }
+                 } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(context, "Launch check failed", Toast.LENGTH_SHORT).show()
+                 }
+            }
+            return true
+        }
+
+        return launchOrPrompt(context, rect)
+    }
+
+    private fun launchOrPrompt(context: Context, rect: Rect?): Boolean {
+        if (performLaunch(context, rect)) {
+            return true
+        }
+        return showLaunchFailureDialog(context)
+    }
+
+    private fun performLaunch(context: Context, rect: Rect?): Boolean {
         val packageName = app.packageName
         if (app.user != INVALID_USER) {
             val launcherApps =
@@ -49,7 +112,10 @@ class AppAction(val app: AppInfo) : Action {
             }
             return true
         }
+        return false
+    }
 
+    private fun showLaunchFailureDialog(context: Context): Boolean {
         /* check if app is installed */
         if (isAvailable(context)) {
             AlertDialog.Builder(
@@ -67,6 +133,11 @@ class AppAction(val app: AppInfo) : Action {
             return true
         }
         return false
+    }
+
+    // kept for compatibility if needed, though override is above
+    fun old_invoke(context: Context, rect: Rect?): Boolean {
+        return false // stub
     }
 
     override fun label(context: Context): String {
