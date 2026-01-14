@@ -20,6 +20,10 @@ T_Launcher is a sophisticated Android home screen designed to eliminate distract
 ## Key Features
 
 *   **Dynamic Motivational Engine:** Every day, a new high-contrast wallpaper is generated with a unique geometric pattern (Bauhaus, Cyber, Hexagon, etc.) and a hard-hitting quote to keep you focused.
+*   **Developer Panel (new):** Stay consistent with your coding goals. Features a built-in LeetCode dashboard with:
+    *   **Daily Problem:** Quick access to the daily challenge.
+    *   **Activity Heatmap:** Visualize your submission consistency over time.
+    *   **Friends Leaderboard:** Track your friends' progress.
 *   **"Timebomber" Aesthetic:** A sleek, oversized clock dominates the top of the screen, ensuring you are always aware of passing time.
 *   **Distraction-Free Interface:** No icons on the home screen. Only the time, the date, and the mission.
 *   **Efficient App Search:** Instantly find and launch apps with a powerful search function invoked by swiping up or pressing back.
@@ -58,7 +62,7 @@ You can install T_Launcher from the following sources:
 
 ## Contributing
 
-We welcome contributions to improve T_Launcher!
+**Contributors are welcomed!** We'd love your help to improve T_Launcher.
 
 *   **Translations:** Help us reach more users by improving translations on [Weblate][toolate].
 *   **Code:** T_Launcher is open source. Feel free to fork the repository, open issues, or submit pull requests.

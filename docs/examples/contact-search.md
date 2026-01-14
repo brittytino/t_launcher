@@ -4,8 +4,8 @@
 
 # Contact Search
 
-&mu;Launcher does not implement a contact search feature.
-This is a [deliberate decision](/docs/declined-features#search-contacts) to keep &mu;Launcher minimal.
+T_Launcher does not implement a contact search feature.
+This is a [deliberate decision](/docs/declined-features#search-contacts) to keep T_Launcher minimal.
 However, there are several other options to search your contacts:
 
 
@@ -24,7 +24,7 @@ This might however require one or two additional clicks to navigate to the searc
 ## KISS Launcher's search
 
 [KISS Launcher](https://kisslauncher.com) is itself a formidable minimal launcher following a slightly different philosophy.[^1]
-If you prefer KISS's search feature, but also want to use &mu;Launcher's gesture-based home screen, you can set &mu;Launcher as your home screen, configure KISS Launcher to launch directly into search
+If you prefer KISS's search feature, but also want to use T_Launcher's gesture-based home screen, you can set T_Launcher as your home screen, configure KISS Launcher to launch directly into search
 (KISS settings > User experience > Keyboard options > Display keyboard on start) and bind KISS to a gesture.
 
 ## Key Mapper

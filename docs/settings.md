@@ -5,7 +5,7 @@
 # Settings
 
 Tweaks and customizations can be made from within the settings page.
-The settings can be opened by binding the Settings action to a gesture (this is especially useful when configuring &mu;Launcher for the first time) or from the settings icon in the app drawer.[^1]
+The settings can be opened by binding the Settings action to a gesture (this is especially useful when configuring T_Launcher for the first time) or from the settings icon in the app drawer.[^1]
 
 [^1]: i.e., the 'All Apps', 'Favorite Apps', and 'Private Space' views.
 
@@ -19,7 +19,7 @@ T Launcher uses the system-wide wallpaper, i.e., this change also affects other 
 ### Color Theme
 
 Several color themes are available.
-The light them enforces a solid [background](#background-app-list-and-settings) to keep the text readable. It is mainly intended for devices with a monochrome screen.
+The light theme enforces a solid [background](#background-app-list-and-settings) to keep the text readable. It is mainly intended for devices with a monochrome screen.
 The dynamic theme uses colors from Material You and is only available on devices supporting this feature.
 
 
@@ -188,7 +188,7 @@ There are two methods to lock the screen, and unfortunately, both have downsides
 2. **`Accessibility Service`**
 
     - Requires excessive privileges.
-      &mu;Launcher will use those privileges *only* for locking the screen.
+      T_Launcher will use those privileges *only* for locking the screen.
       As a rule of thumb, it is [not recommended](https://android.stackexchange.com/questions/248171/is-it-safe-to-give-accessibility-permission-to-an-app)
       to grant access to accessibility services to a random app.
       Always review the [source code](https://github.com/brittytino/launcher/blob/master/app/src/main/java/de/brittytino/android/launcher/actions/lock/LauncherAccessibilityService.kt) before granting accessibility permissions so you can familiarize yourself with what the code might do.
@@ -199,7 +199,7 @@ There are two methods to lock the screen, and unfortunately, both have downsides
    **options:**&nbsp;`USE DEVICE ADMIN`,`USE ACCESSIBILITY SERVICE`
 
 {{% hint warning %}}
-Due to [Accrescent's policy on accessibility services](https://accrescent.app/docs/guide/publish/requirements.html#androidaccessibilityserviceaccessibilityservice) the version of &mu;Launcher distributed via Accrescent doesn't include an accessibility service. Device admin is always used and this setting is disabled.
+Due to [Accrescent's policy on accessibility services](https://accrescent.app/docs/guide/publish/requirements.html#androidaccessibilityserviceaccessibilityservice) the version of T_Launcher distributed via Accrescent doesn't include an accessibility service. Device admin is always used and this setting is disabled.
 {{% /hint %}}
 
 ## Apps

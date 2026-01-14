@@ -4,4 +4,4 @@
 +++
 
 # Examples and Hacks
-This section contains some examples how &mu;Launcher can be tweaked.
+This section contains some examples how T_Launcher can be tweaked.

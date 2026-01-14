@@ -7,9 +7,9 @@ title = 'Known Bugs'
 
 Before reporting a bug, please check whether it has already been filed in the [issue tracker](https://github.com/brittytino/launcher/issues).
 
-I'll try to fix bug related to &mu;Launcher, however some problems
+I'll try to fix bug related to T_Launcher, however some problems
 are caused by Android itself (or a vendor's modified version of Android)
-and can't be fixed on &mu;Launcher's side.
+and can't be fixed on T_Launcher's side.
 If there is a ___reasonable___ workaround, I might still add it.
 However, note that I don't own a Samsung / Huawei / Sony / ... device,
 hence I have no means to debug vendor specific problems.

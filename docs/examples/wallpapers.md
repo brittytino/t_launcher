@@ -8,7 +8,7 @@ Some other launchers, notably [OLauncher](/docs/alternatives/#olauncher),
 have an option to show daily changing wallpapers.
 
 Aiming for [composability](https://en.wikipedia.org/wiki/Unix_philosophy),
-&mu;Launcher simply shows the wallpaper set by the system.
+T_Launcher simply shows the wallpaper set by the system.
 You can use [Live Wallpapers](https://android-developers.googleblog.com/2010/02/live-wallpapers.html) for
 daily changing wallpapers, slideshows and the like.
 Furthermore, there exist apps which automatically change the system wallpaper,

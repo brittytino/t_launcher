@@ -42,8 +42,8 @@ android {
         applicationId = "de.brittytino.android.launcher"
         minSdk = 23
         targetSdk = 36
-        versionCode = 53
-        versionName = "0.2.8"
+        versionCode = 54
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -57,8 +57,8 @@ android {
             )
         }
         debug {
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
+            // applicationIdSuffix = ".debug"
+            // versionNameSuffix = "-debug"
         }
     }
 

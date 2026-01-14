@@ -4,7 +4,7 @@ title = 'Declined Features'
 
 # Declined Features
 
-&mu;Launcher aims to be minimal software.
+T_Launcher aims to be minimal software.
 This necessitates to decline certain feature suggestions (which is of course always a hard decision).
 The following is a list of features suggested to me, which I ultimately decided not to implement.
 Please do not request these features again.
@@ -17,7 +17,7 @@ This is possible using a [live wallpaper](/docs/examples/wallpapers/).
 
 ## Apps on the Home Screen
 
-This doesn't fit &mu;Launcher's concept well.
+This doesn't fit T_Launcher's concept well.
 Moreover, it is possible to achieve this using [widgets](/docs/examples/apps-on-home-screen/).
 
 ## Fancy Clock Faces
@@ -37,16 +37,16 @@ Use [Termux:Widget](/docs/examples/wallpapers/) instead.
 
 ## Search Contacts
 
-It has been suggested to add a feature to search contacts from &mu;Launcher. However:
+It has been suggested to add a feature to search contacts from T_Launcher. However:
 
- * There is not much gained by adding this functionality to &mu;Launcher. What would the UX for a contact search in &mu;Launcher look like? There would be a new action that opens a list of contacts. However, instead of using this action, one can just bind any contacts app to a gesture. Keeping things separate has several advantages:
+ * There is not much gained by adding this functionality to T_Launcher. What would the UX for a contact search in T_Launcher look like? There would be a new action that opens a list of contacts. However, instead of using this action, one can just bind any contacts app to a gesture. Keeping things separate has several advantages:
      * it allows to replace the home screen and the contact searching apps independently,
      * it allows to update them independently,
      * no single app gets excessive permissions,
-     * the workload of maintaining &mu;Launcher stays reasonably manageable.
+     * the workload of maintaining T_Launcher stays reasonably manageable.
 
  * Accessing contacts is a sensitive permission. I don't want my home screen to access my contact book.
- * Implementing such a feature in &mu;Launcher would only work for the contacts of the user profile where &mu;Launcher is installed. &mu;Launcher can list apps from all profiles through the LauncherApps API, but there is no way to access contacts from other profiles (for a very good reason).
+ * Implementing such a feature in T_Launcher would only work for the contacts of the user profile where T_Launcher is installed. T_Launcher can list apps from all profiles through the LauncherApps API, but there is no way to access contacts from other profiles (for a very good reason).
 
 
 Here is [overview of alternatives](/docs/examples/contact-search/) suggested by users.

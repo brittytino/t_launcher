@@ -7,7 +7,7 @@
 Apps that are not needed all the time are shown in the app drawer.
 There are several such drawers, but the basic concept is the same.
 Besides regular apps, app drawers also show [pinned shortcuts](https://developer.android.com/develop/ui/views/launch/shortcuts/creating-shortcuts)[^1].
-&mu;Launcher treats apps and shortcuts in the same way.
+T_Launcher treats apps and shortcuts in the same way.
 
 The idea of the app drawer is to search for apps using the keyboard.
 By default[^2], an app is launched automatically once it is the only app matching the query.

@@ -4,7 +4,7 @@
 
 # Showing Apps on the Home Screen
 
-Even though this is somewhat contrary to the general idea of &mu;Launcher,
+Even though this is somewhat contrary to the general idea of T_Launcher,
 it is possible to show apps on the home screen using widgets.
 
 Users suggested:
