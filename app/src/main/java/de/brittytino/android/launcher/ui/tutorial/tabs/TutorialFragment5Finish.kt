@@ -32,6 +32,19 @@ class TutorialFragment5Finish : Fragment(), UIObject {
         super<Fragment>.onStart()
         super<UIObject>.onStart()
         requestNotificationPermission(requireActivity())
+
+        binding.tutorialFinishButtonStart.scaleX = 0.8f
+        binding.tutorialFinishButtonStart.scaleY = 0.8f
+        binding.tutorialFinishButtonStart.alpha = 0f
+        
+        binding.tutorialFinishButtonStart.animate()
+            .scaleX(1f)
+            .scaleY(1f)
+            .alpha(1f)
+            .setDuration(800)
+            .setStartDelay(300)
+            .setInterpolator(android.view.animation.OvershootInterpolator())
+            .start()
     }
 
 

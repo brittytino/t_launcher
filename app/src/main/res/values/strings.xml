@@ -296,14 +296,13 @@
       - Tutorial
       -
       -->
-    <string name="tutorial_title">Tutorial</string>
-    <string name="tutorial_start_text">👋\n\nTake a few seconds to learn how to use this Launcher!</string>
+    <string name="tutorial_title">Welcome</string>
+    <string name="tutorial_start_text">Experience a minimal, distraction-free home screen.\n\nTake a moment to learn the basics.</string>
 
     <string name="tutorial_concept_title">Concept</string>
-    <string name="tutorial_concept_text">T Launcher is designed to be minimal, efficient and free of distraction.
-        \n\nIt contains no ads and collects no data.</string>
-    <string name="tutorial_concept_text_2">It is free software (MIT license)!\nMake sure to check out the repository!</string>
-    <string name="tutorial_concept_label_version">Version</string>
+    <string name="tutorial_concept_text">T Launcher is engineered for focus.\n\nNo icons. No ads. No data collection. Just you and your goals.</string>
+    <string name="tutorial_concept_text_2">Open Source &amp; Privacy First.</string>
+    <string name="tutorial_concept_label_version">Version 1.0.0</string>
 
     <string name="tutorial_usage_title">Usage</string>
     <string name="tutorial_usage_text">Your home screen contains the local date and time. No distraction.</string>
@@ -318,9 +317,9 @@
     <string name="tutorial_setup_text">We chose some default apps for you. You can change them now if you want to:</string>
     <string name="tutorial_setup_text_2">You can also change your selection later.</string>
 
-    <string name="tutorial_finish_title">Let\'s go!</string>
-    <string name="tutorial_finish_text">You are ready to get started!\n\nI hope this is of great value to you!\n\n- Finn (who made Launcher) and Josia (who made some improvements and maintains the fork T Launcher)</string>
-    <string name="tutorial_finish_button">Start</string>
+    <string name="tutorial_finish_title">You are ready.</string>
+    <string name="tutorial_finish_text">Everything is set.\n\nEnjoy the focus.</string>
+    <string name="tutorial_finish_button">Begin Journey</string>
 
 
     <string name="settings">Settings</string>
