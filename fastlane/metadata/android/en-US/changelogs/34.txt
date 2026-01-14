@@ -1,9 +1,0 @@
-* Option to choose clock color
-* Added dynamic color theme; removed light theme
-* Added consent dialog for accessibility service
-
-* Added Turkish translation (thank you, Sarp Küçük!)
-* Added Italian translation (thank you, Samantha!)
-* Improved Portuguese translation (thank you, "Vossa Excelencia"!)
-
-* Fixed bug with gesture navigation in app drawer. Pressing back now closes the drawer immediately.

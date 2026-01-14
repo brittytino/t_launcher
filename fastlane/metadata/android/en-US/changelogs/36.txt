@@ -1,6 +1,0 @@
-* new feature: prefix query with space to disable auto launch temporarily
-* improved search: diacritics are now ignored unless they appear in the query. (Android 7+)
-* added list of open source licenses
-* updated accessibility service warning
-* improved French translation (thank you, Alexandre Ancel and Nin Dan!)
-* improved Portuguese translation (thank you, "Vossa Excelencia"!)

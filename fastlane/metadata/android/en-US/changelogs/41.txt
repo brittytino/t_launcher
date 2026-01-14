@@ -1,5 +1,0 @@
- * Improved tutorial (thank you, wassupluke!)
- * Added Japanese translation (thank you, anmoti!)
- * Improved Chinese translation (thank you, nobody!)
- * Fixed bug where gesture navigation triggered long click
- * Fixed bug: switching from grayscale icons back to normal now works as expected

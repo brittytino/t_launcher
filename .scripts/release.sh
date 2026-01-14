@@ -44,8 +44,8 @@ echo " Default Release (apk) "
 echo "======================="
 
 ./gradlew clean
-./gradlew assembleDefaultRelease
-mv app/build/outputs/apk/default/release/app-default-release-unsigned.apk "$OUTPUT_DIR/app-release.apk"
+./gradlew assembleRelease
+mv app/build/outputs/apk/release/app-release-unsigned.apk "$OUTPUT_DIR/app-release.apk"
 "$BUILD_TOOLS_DIR/apksigner" sign --ks "$KEYSTORE" \
     --ks-key-alias key0 \
     --ks-pass="pass:$KEYSTORE_PASS" \
@@ -63,8 +63,8 @@ echo " Default Release (aab) "
 echo "======================="
 
 ./gradlew clean
-./gradlew bundleDefaultRelease
-mv app/build/outputs/bundle/defaultRelease/app-default-release.aab "$OUTPUT_DIR/app-release.aab"
+./gradlew bundleRelease
+mv app/build/outputs/bundle/release/app-release.aab "$OUTPUT_DIR/app-release.aab"
 "$BUILD_TOOLS_DIR/apksigner" sign --ks "$KEYSTORE" \
     --ks-key-alias key0 \
     --ks-pass="pass:$KEYSTORE_PASS" \
@@ -72,20 +72,3 @@ mv app/build/outputs/bundle/defaultRelease/app-default-release.aab "$OUTPUT_DIR/
     --v1-signing-enabled=true --v2-signing-enabled=true --v3-signing-enabled=true --v4-signing-enabled=true \
     --min-sdk-version=21 \
     "$OUTPUT_DIR/app-release.aab"
-
-echo
-echo "======================="
-echo " Accrescent (apks) "
-echo "======================="
-
-./gradlew clean
-./gradlew bundleAccrescentRelease
-mv app/build/outputs/bundle/accrescentRelease/app-accrescent-release.aab "$OUTPUT_DIR/app-accrescent-release.aab"
-
-# build apks using bundletool from https://github.com/google/bundletool/releases
-"$JAVA_HOME/bin/java" -jar /opt/android/bundletool.jar build-apks \
-    --bundle="$OUTPUT_DIR/app-accrescent-release.aab" --output="$OUTPUT_DIR/launcher-accrescent.apks" \
-    --ks="$KEYSTORE_ACCRESCENT" \
-    --ks-pass="pass:$KEYSTORE_ACCRESCENT_PASS" \
-    --ks-key-alias="key0" \
-    --key-pass="pass:$KEYSTORE_ACCRESCENT_PASS"

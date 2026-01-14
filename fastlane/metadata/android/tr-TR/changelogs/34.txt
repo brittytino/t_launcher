@@ -1,9 +1,0 @@
-* Saat rengini seçme seçeneği
-* Dinamik renk teması eklendi; açık tema kaldırıldı
-* Erişilebilirlik hizmeti için onay iletişim kutusu eklendi
-
-* Türkçe çeviri eklendi (teşekkürler, Ahmet Çeliker!)
-* İtalyanca çeviri eklendi (teşekkürler, Samantha!)
-* Portekizce çeviri iyileştirildi (teşekkürler, "Vossa Excelencia"!)
-
-* Uygulama çekmecesinde hareketle gezinmeyle ilgili hata düzeltildi. Artık geri basıldığında çekmece hemen kapanıyor.

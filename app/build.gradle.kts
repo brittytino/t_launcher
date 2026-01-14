@@ -62,31 +62,10 @@ android {
         }
     }
 
-    val distributionDimension = "distribution"
-    flavorDimensions += distributionDimension
 
     defaultConfig {
         buildConfigField("String", "GIT_COMMIT", "\"${gitCommit}\"")
-    }
-
-    productFlavors {
-        create("default") {
-            dimension = distributionDimension
-            isDefault = true
-            buildConfigField("boolean", "USE_ACCESSIBILITY_SERVICE", "true")
-        }
-        create("accrescent") {
-            dimension = distributionDimension
-            applicationIdSuffix = ".accrescent"
-            versionNameSuffix = "+accrescent"
-            buildConfigField("boolean", "USE_ACCESSIBILITY_SERVICE", "false")
-        }
-    }
-
-    sourceSets {
-        this.getByName("accrescent") {
-            this.java.srcDir("src/accrescent")
-        }
+        buildConfigField("boolean", "USE_ACCESSIBILITY_SERVICE", "true")
     }
 
     compileOptions {
@@ -120,6 +99,11 @@ android {
 
     lint {
         abortOnError = false
+    }
+
+    sourceSets {
+        val main = getByName("main")
+        main.java.srcDirs("build/generated/source/kapt/main", "build/generated/source/kaptKotlin/main")
     }
 }
 

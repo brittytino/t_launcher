@@ -144,8 +144,8 @@ class AppsRecyclerAdapter(
         }
 
 
-        popup.setOnMenuItemClickListener {
-            when (it.itemId) {
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
                 R.id.app_menu_delete -> {
                     appInfo.getRawInfo().uninstall(activity); true
                 }

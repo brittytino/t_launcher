@@ -1,9 +1,0 @@
-* Matrix ve Discord'da sohbet
-* Hareket algılama iyileştirildi
-* Hareket açıklamaları iyileştirildi
-* Yeni eylem: Ekranı kilitle - teşekkürler, yzqzss!
-* Yeni eylem: Meşaleyi aç
-* Yeni eylem: Hızlı ayarları aç
-* Fransızca çevirisi iyileştirildi - teşekkürler, toby-bro!
-* Portekizce çevirisi iyileştirildi - teşekkürler, "Vossa Excelencia"!
-* Bazı hatalar düzeltildi

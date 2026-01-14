@@ -1,6 +1,0 @@
-* Reworked storage format for settings. The old format will be converted automatically.
-* Added an option to search the web from the app list.
-* Set device admin as the preferred method for locking the screen.
-* Added a warning that enabling an accessibility service might interfere with encryption.
-* Fixed a bug in the renaming dialog.
-* Made the lock screen dialog scrollable.

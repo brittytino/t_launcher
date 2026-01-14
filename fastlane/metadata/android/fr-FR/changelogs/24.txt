@@ -1,8 +1,0 @@
-* Ajout d'options pour le thème de couleur, la police, l'arrière-plan, les icônes monochromes
-* Ajout d'options pour la date et l'heure
-* Ajout d'une option pour autoriser la rotation
-* Amélioration de l'algorithme de recherche
-* Traduction en portugais brésilien - merci, Jonatas de Almeida Barros !
-* Correction d'un bug : les applications sélectionnées disparaissaient des paramètres
-* Amélioration de la qualité du code
-* Traductions mises à jour

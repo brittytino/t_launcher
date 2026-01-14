@@ -1,6 +1,0 @@
-* Alternative layouts for app list (grid, text)
-* Fixed bug: renaming of apps works properly now
-
-* Updated Chinese translation (thank you, yzqzss!)
-* Updated Portuguese translation (thank you, "Vossa Excelencia"!)
-

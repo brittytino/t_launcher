@@ -1,7 +1,0 @@
-* Fixed bug in detection of two finger gestures
-* Added 8 new gestures: <,>,V,Λ and reversed versions
-* Back is now treated as a regular gesture and can be assigned freely
-* Improved support for private space
-* Improved Portuguese translation (thank you, "Vossa Excelencia"!)
-* Improved Turkish translation (thank you, Ahmet Çeliker!)
-* Improved Italian translation (thank you, Nicola Bortoletto!)

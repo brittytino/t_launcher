@@ -1,1 +1,0 @@
-Ekranı kilitlemek için Cihaz Yöneticisi yerine Erişilebilirlik Hizmetini kullanma seçeneği eklendi.

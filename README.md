@@ -16,31 +16,28 @@ It is *minimal, efficient and free of distraction*.
 
 
 <a href="https://f-droid.org/packages/de.brittytino.android.launcher/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
-<a href="https://accrescent.app/app/de.brittytino.android.launcher.accrescent"><img alt="Get it on Accrescent" src="https://accrescent.app/badges/get-it-on.png" height="80"></a>
 <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/{%22id%22:%22de.brittytino.android.launcher%22,%22url%22:%22https://github.com/brittytino/Launcher%22,%22author%22:%22brittytino%22,%22name%22:%22%c2%b5Launcher%22,%22additionalSettings%22:%22{\%22apkFilterRegEx\%22:\%22release\%22,\%22invertAPKFilter\%22:false,\%22about\%22:\%22%c2%b5Launcher%20is%20a%20minimal%20home%20screen.\%22}%22}"><img src="https://raw.githubusercontent.com/ImranR98/Obtainium/b1c8ac6f2ab08497189721a788a5763e28ff64cd/assets/graphics/badge_obtainium.png" alt="Get it on Obtainium" height="80"></a>
 <a href="https://github.com/brittytino/launcher/releases/latest"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80"></a>
 
-You can also [get it on Google Play](https://play.google.com/store/apps/details?id=de.brittytino.android.launcher), but I don't recommend that.
-
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg"
+<img src="docs/screenshots/1.jpg"
      alt="screenshot"
      height="400">
-     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg"
+     <img src="docs/screenshots/2.jpg"
      alt="screenshot"
      height="400">
-     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg"
+     <img src="docs/screenshots/3.jpg"
      alt="screenshot"
      height="400">
-     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.jpg"
+     <img src="docs/screenshots/4.jpg"
      alt="screenshot"
      height="400">
-     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.jpg"
+     <img src="docs/screenshots/5.jpg"
      alt="screenshot"
      height="400">
-     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7.jpg"
+     <img src="docs/screenshots/7.jpg"
      alt="screenshot"
      height="400">
-     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8.jpg"
+     <img src="docs/screenshots/8.jpg"
      alt="screenshot"
      height="400">
 
@@ -113,8 +110,6 @@ You can also [add it to Obtainium](https://apps.obtainium.imranr.dev/redirect?r=
 
 <!-- Download links / stores -->
 
-  [store-googleplay]: https://play.google.com/store/apps/details?id=de.brittytino.android.launcher
-  [store-googleplay-badgecampain]: https://play.google.com/store/apps/details?id=de.brittytino.android.launcher&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1
   [store-fdroid]: https://f-droid.org/packages/de.brittytino.android.launcher/
 
 <!-- Shields and Badges -->

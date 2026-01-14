@@ -1,5 +1,0 @@
-* Uygulama listesi için alternatif düzenler (ızgara, metin)
-* Hata düzeltildi: Uygulamaların yeniden adlandırılması artık düzgün çalışıyor
-
-* Çince çeviri güncellendi (teşekkürler, yzqzss!)
-* Portekizce çeviri güncellendi (teşekkürler, "Vossa Excelencia"!)

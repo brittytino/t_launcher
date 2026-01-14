@@ -1,1 +1,0 @@
-* Fixed bug where keyboard does not open automatically

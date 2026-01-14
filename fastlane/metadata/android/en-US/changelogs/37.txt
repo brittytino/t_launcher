@@ -1,8 +1,0 @@
-* basic support for private space (Android 15)
-* reintroduced light theme
-* improved Portuguese translation (thank you, "Vossa Excelencia"!)
-* improved German translation
-* added version name to settings
-* dialog for bug reports
-* improved clock performance
-* fixed some bugs

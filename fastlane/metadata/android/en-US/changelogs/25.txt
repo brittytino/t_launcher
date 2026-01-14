@@ -1,4 +1,0 @@
-* Favorite apps
-* Option to hide apps
-* Support for apps with multiple main activities
-* Fixed layout of settings on small screens

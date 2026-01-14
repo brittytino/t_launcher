@@ -1,8 +1,0 @@
-* private space için temel destek (Android 15)
-* light tema yeniden tanıtıldı
-* Portekizce çeviri iyileştirildi (teşekkürler, "Vossa Excelencia"!)
-* Almanca çeviri iyileştirildi
-* ayarlara sürüm adı eklendi
-* hata raporları için iletişim kutusu
-* saat performansı iyileştirildi
-* bazı hatalar düzeltildi

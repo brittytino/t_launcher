@@ -27,6 +27,7 @@ import androidx.core.graphics.drawable.toBitmap
 import de.brittytino.android.launcher.Application
 import de.brittytino.android.launcher.R
 import de.brittytino.android.launcher.apps.AbstractDetailedAppInfo
+import de.brittytino.android.launcher.apps.AppInfo
 import de.brittytino.android.launcher.ui.UIObjectActivity
 import kotlinx.coroutines.delay
 
@@ -106,7 +107,7 @@ fun DelayOverlayScreen(
     val appInfo = remember(packageName) {
         // This is inefficient but we need to find the app info.
         // Assuming apps are loaded.
-        app.apps.value?.find { it.packageName == packageName }
+        app.apps.value?.find { (it.getRawInfo() as? AppInfo)?.packageName == packageName }
     }
 
     LaunchedEffect(key1 = true) {
