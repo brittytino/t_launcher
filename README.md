@@ -2,142 +2,87 @@
 [![][shield-release]][latest-release]
 [![Android CI](https://github.com/brittytino/Launcher/actions/workflows/android.yml/badge.svg)](https://github.com/brittytino/Launcher/actions/workflows/android.yml)
 [![][shield-license]][license]
-[![Chat on Matrix](https://matrix.to/img/matrix-badge.svg)][matrix]
 [![Chat on Discord](https://img.shields.io/badge/discord-join%20chat-007ec6.svg?style=flat)][discord]
-
-
-
 
 # T_Launcher
 
+**Minimal. Efficient. Unapologetic.**
 
-T_Launcher is an Android home screen that lets you launch apps using swipe gestures and button presses.
-It is *minimal, efficient and free of distraction*.
+T_Launcher is a sophisticated Android home screen designed to eliminate distractions and force productivity. Unlike standard minimalist launchers, T_Launcher actively pushes you to be better with dynamic, high-contrast wallpapers and daily motivational "rage-bait" quotes.
 
+<p align="center">
+  <img src="docs/screenshots/1.jpg" alt="Home Screen" width="23%">
+  <img src="docs/screenshots/2.jpg" alt="App Drawer" width="23%">
+  <img src="docs/screenshots/3.jpg" alt="Settings" width="23%">
+  <img src="docs/screenshots/4.jpg" alt="Search" width="23%">
+</p>
+
+## Key Features
+
+*   **Dynamic Motivational Engine:** Every day, a new high-contrast wallpaper is generated with a unique geometric pattern (Bauhaus, Cyber, Hexagon, etc.) and a hard-hitting quote to keep you focused.
+*   **"Timebomber" Aesthetic:** A sleek, oversized clock dominates the top of the screen, ensuring you are always aware of passing time.
+*   **Distraction-Free Interface:** No icons on the home screen. Only the time, the date, and the mission.
+*   **Efficient App Search:** Instantly find and launch apps with a powerful search function invoked by swiping up or pressing back.
+*   **Privacy-Focused:** No ads, no trackers, and compatible with work profiles.
+
+## Visuals & Patterns
+
+T_Launcher features a custom graphics engine that generates unique art daily:
+*   **Patterns:** Includes Hexagon Hives, Bauhaus Geometry, Cyber Lines, Abstract Splatter, and more.
+*   **Color Harmony:** Uses advanced color theory (split-complementary, triadic) to generate vibrant, high-energy palettes that never look dull.
+*   **Rage-Bait Quotes:** Over 50+ hand-picked lines designed to destroy procrastination (e.g., "Comfort is a slow death", "Sugar is poison").
+
+## Gestures & Customization
+
+T_Launcher supports a comprehensive set of gestures to suit your workflow:
+
+*   **Inputs:**
+    *   Swipe Up / Down / Left / Right
+    *   Two-finger Swipes
+    *   Edge Swipes
+    *   Double Tap & Long Press
+    *   Volume Buttons
+    *   Custom Drawings (<, >, V, Λ)
+
+*   **Actions:**
+    *   Launch custom apps
+    *   Open app lists (All, Favorites, Private)
+    *   Toggle system settings (Torch, Volume, Media Controls)
+    *   Lock screen & more
+
+## Installation
+
+You can install T_Launcher from the following sources:
 
 <a href="https://f-droid.org/packages/de.brittytino.android.launcher/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/{%22id%22:%22de.brittytino.android.launcher%22,%22url%22:%22https://github.com/brittytino/Launcher%22,%22author%22:%22brittytino%22,%22name%22:%22%c2%b5Launcher%22,%22additionalSettings%22:%22{\%22apkFilterRegEx\%22:\%22release\%22,\%22invertAPKFilter\%22:false,\%22about\%22:\%22%c2%b5Launcher%20is%20a%20minimal%20home%20screen.\%22}%22}"><img src="https://raw.githubusercontent.com/ImranR98/Obtainium/b1c8ac6f2ab08497189721a788a5763e28ff64cd/assets/graphics/badge_obtainium.png" alt="Get it on Obtainium" height="80"></a>
 <a href="https://github.com/brittytino/launcher/releases/latest"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80"></a>
-
-<img src="docs/screenshots/1.jpg"
-     alt="screenshot"
-     height="400">
-     <img src="docs/screenshots/2.jpg"
-     alt="screenshot"
-     height="400">
-     <img src="docs/screenshots/3.jpg"
-     alt="screenshot"
-     height="400">
-     <img src="docs/screenshots/4.jpg"
-     alt="screenshot"
-     height="400">
-     <img src="docs/screenshots/5.jpg"
-     alt="screenshot"
-     height="400">
-     <img src="docs/screenshots/7.jpg"
-     alt="screenshot"
-     height="400">
-     <img src="docs/screenshots/8.jpg"
-     alt="screenshot"
-     height="400">
-
-
-T_Launcher is a fork of [finnmglas's app Launcher][original-repo].
-An incomplete list of changes can be found [here](docs/launcher.md).
-
-## Features
-
-T_Launcher only displays the date, time and a wallpaper.
-Pressing back or swiping up (this can be configured) opens a list
-of all installed apps, which can be searched efficiently.
-
-The following gestures are available:
- - volume up / down,
- - swipe up / down / left / right,
- - swipe with two fingers,
- - swipe on the left / right resp. top / bottom edge,
- - tap, then swipe up / down / left / right,
- - draw < / > / V / Λ
- - click on date / time,
- - double click,
- - long click,
- - back button.
-
-To every gesture you can bind one of the following actions:
- - launch an app,
- - open a list of all / favorite / private apps,
- - open T_Launcher settings,
- - toggle private space lock,
- - lock the screen,
- - toggle the torch,
- - volume up / down,
- - go to previous / next audio track.
-
-
-
-T_Launcher is compatible with [work profile](https://www.android.com/enterprise/work-profile/),
-so apps like [Shelter](https://gitea.angry.im/PeterCxy/Shelter) can be used.
-
-By default the font is set to [Hack][hack-font], but other fonts can be selected.
-
-
 
 ## Contributing
 
-There are several ways to contribute to this app:
-* You can add or improve [translations][toolate].
-     <br><img src="https://toolate.othing.xyz/widget/brittytino-launcher/launcher/horizontal-auto.svg" alt="translation status">
-* If you find a bug or have an idea for a new feature you can [join the chat][chat] or open an [issue][issues]. Please note that I work on this project in my free time. Thus I might not respond immediately and not all ideas will be implemented.
-* You can implement a new feature yourself:
-  - Create a fork of this repository: [![][shield-gh-fork]][fork]
-  - Create a new branch named `feature/<your feature>` or `fix/<your fix>` and commit your changes.
-  - Open a new pull request.
+We welcome contributions to improve T_Launcher!
 
+*   **Translations:** Help us reach more users by improving translations on [Weblate][toolate].
+*   **Code:** T_Launcher is open source. Feel free to fork the repository, open issues, or submit pull requests.
+*   **Community:** Join our [Discord][discord] or [Matrix][matrix] chat to discuss features and get support.
 
-See [build.md](docs/build.md) for instructions how to build this project.
-The [CI pipeline](https://github.com/brittytino/Launcher/actions) automatically creates debug builds.
-Note that those are not signed and not suitable for everyday use!
-The latest debug build can be found [here](https://github.com/brittytino/launcher/releases/tag/pre-release).
-You can also [add it to Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22de.brittytino.android.launcher.debug%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fbrittytino%2Flauncher%22%2C%22author%22%3A%22brittytino%22%2C%22name%22%3A%22%CE%BCLauncher%20%5Bdebug%5D%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Atrue%2C%5C%22fallbackToOlderReleases%5C%22%3Afalse%2C%5C%22filterReleaseTitlesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22filterReleaseNotesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22verifyLatestTag%5C%22%3Afalse%2C%5C%22sortMethodChoice%5C%22%3A%5C%22date%5C%22%2C%5C%22useLatestAssetDateAsReleaseDate%5C%22%3Atrue%2C%5C%22releaseTitleAsVersion%5C%22%3Afalse%2C%5C%22trackOnly%5C%22%3Afalse%2C%5C%22versionExtractionRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22matchGroupToUse%5C%22%3A%5C%22%5C%22%2C%5C%22versionDetection%5C%22%3Afalse%2C%5C%22releaseDateAsVersion%5C%22%3Afalse%2C%5C%22useVersionCodeAsOSVersion%5C%22%3Afalse%2C%5C%22apkFilterRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22autoApkFilterByArch%5C%22%3Atrue%2C%5C%22appName%5C%22%3A%5C%22%5C%22%2C%5C%22appAuthor%5C%22%3A%5C%22%5C%22%2C%5C%22shizukuPretendToBeGooglePlay%5C%22%3Afalse%2C%5C%22allowInsecure%5C%22%3Afalse%2C%5C%22exemptFromBackgroundUpdates%5C%22%3Afalse%2C%5C%22skipUpdateNotifications%5C%22%3Afalse%2C%5C%22about%5C%22%3A%5C%22%5C%22%2C%5C%22refreshBeforeDownload%5C%22%3Afalse%7D%22%2C%22overrideSource%22%3Anull%7D).
+Based on [finnmglas/Launcher][original-repo].
 
 ---
+
   [hack-font]: https://sourcefoundry.org/hack/
   [original-repo]: https://github.com/finnmglas/Launcher
   [toolate]: https://toolate.othing.xyz/projects/brittytino-launcher/
   [issues]: https://github.com/brittytino/Launcher/issues/
   [fork]: https://github.com/brittytino/Launcher/fork/
-
-
-<!-- Download links / stores -->
-
   [store-fdroid]: https://f-droid.org/packages/de.brittytino.android.launcher/
-
-<!-- Shields and Badges -->
-
   [shield-release]: https://img.shields.io/github/v/release/brittytino/Launcher?style=flat
   [latest-release]: https://github.com/brittytino/Launcher/releases/latest
   [shield-contribute]: https://img.shields.io/badge/contributions-welcome-007ec6.svg?style=flat
   [shield-license]: https://img.shields.io/badge/license-MIT-007ec6?style=flat
-
   [shield-gh-watch]: https://img.shields.io/github/watchers/brittytino/Launcher?label=Watch&style=social
   [shield-gh-star]: https://img.shields.io/github/stars/brittytino/Launcher?label=Star&style=social
   [shield-gh-fork]: https://img.shields.io/github/forks/brittytino/Launcher?label=Fork&style=social
   [matrix]: https://s.brittytino.de/launcher-matrix
   [discord]: https://s.brittytino.de/launcher-discord
   [chat]: https://s.brittytino.de/launcher-chat
-
-<!-- Star History -->
-
-## Star History
-
-<a href="https://www.star-history.com/#brittytino/t_launcher&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=brittytino/t_launcher&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=brittytino/t_launcher&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=brittytino/t_launcher&type=date&legend=top-left" />
- </picture>
-</a>
-
-<!-- Helpful resources -->
-
   [license]: https://github.com/brittytino/Launcher/blob/master/LICENSE
