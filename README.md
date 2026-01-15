@@ -24,6 +24,11 @@ T_Launcher is a sophisticated Android home screen designed to eliminate distract
     *   **Daily Problem:** Quick access to the daily challenge.
     *   **Activity Heatmap:** Visualize your submission consistency over time.
     *   **Friends Leaderboard:** Track your friends' progress.
+*   **Focus Mode (Major Update):** A strictly enforced distraction-free environment designed to break addiction loops.
+    *   **Immersive Isolation:** Completely suppresses the wallpaper and widgets, replacing them with a solid, edge-to-edge dark/light theme (including system bars) to eliminate visual noise.
+    *   **Strict Governance:** Enforces a 15-minute cooldown between pauses, with a non-extendable 2-minute limit per pause.
+    *   **App Whitelisting:** Select exactly which apps are allowed; all others are blocked.
+    *   **Intentional Friction:** Requires confirmation to start and authentication to exit.
 *   **"Timebomber" Aesthetic:** A sleek, oversized clock dominates the top of the screen, ensuring you are always aware of passing time.
 *   **Distraction-Free Interface:** No icons on the home screen. Only the time, the date, and the mission.
 *   **Efficient App Search:** Instantly find and launch apps with a powerful search function invoked by swiping up or pressing back.
