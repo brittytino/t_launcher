@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-    The accessibility service is only used for locking the screen.
-
-    * android:accessibilityEventTypes is unspecified intentionally, as we don't want to listen to any
-    events.
-    * android:packageNames is set to an empty list, as we don't want to interact or read data from
-    any app.
+    The accessibility service is used for locking the screen and enforcing Focus Mode.
 -->
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged"
     android:accessibilityFlags="flagDefault"
     android:canRequestEnhancedWebAccessibility="false"
     android:canRequestFilterKeyEvents="false"
     android:canRequestTouchExplorationMode="false"
     android:canRetrieveWindowContent="false"
     android:description="@string/accessibility_service_description"
-    android:packageNames=""
     android:settingsActivity="de.brittytino.android.launcher.ui.settings.SettingsActivity" />

@@ -26,6 +26,11 @@
             android:hint="e.g. neetcode"
             android:dependency="@string/settings_leetcode_enabled_key"
             app:useSimpleSummaryProvider="true" />
+        
+        <Preference
+            android:key="pref_focus_mode"
+            android:title="Focus Mode"
+            android:summary="Strict distraction-free mode to block apps" />
     </PreferenceCategory>
 
     <PreferenceCategory

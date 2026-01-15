@@ -73,6 +73,13 @@ class SettingsFragmentLauncher : PreferenceFragmentCompat() {
             }
         }
 
+        findPreference<androidx.preference.Preference>("pref_focus_mode")?.apply {
+            setOnPreferenceClickListener {
+                startActivity(Intent(activity, de.brittytino.android.launcher.ui.focus.FocusModeActivity::class.java))
+                true
+            }
+        }
+
         val selectWallpaper = findPreference<androidx.preference.Preference>(
             LauncherPreferences.theme().keys().wallpaper()
         )

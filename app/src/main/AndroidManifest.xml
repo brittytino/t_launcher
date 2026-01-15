@@ -137,5 +137,17 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility_service_config" />
         </service>
+
+        <activity
+            android:name=".ui.focus.FocusModeActivity"
+            android:exported="false"
+            android:label="Focus Mode" />
+
+        <activity
+            android:name=".ui.focus.FocusModeOverlayActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 </manifest>

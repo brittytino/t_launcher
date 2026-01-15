@@ -7,6 +7,7 @@ import de.brittytino.android.launcher.actions.Action
 import de.brittytino.android.launcher.actions.AppAction
 import de.brittytino.android.launcher.actions.Gesture
 import de.brittytino.android.launcher.actions.ShortcutAction
+import de.brittytino.android.launcher.data.FocusModeRepository
 import de.brittytino.android.launcher.preferences.LauncherPreferences
 import java.util.Locale
 import kotlin.text.Regex.Companion.escape
@@ -20,8 +21,29 @@ class AppFilter(
 ) {
 
     operator fun invoke(apps: List<AbstractDetailedAppInfo>): List<AbstractDetailedAppInfo> {
+        val repo = FocusModeRepository(context)
+        // If Active or Unlock Pending, filter apps.
+        // If Paused, we allow access to all apps (user can browse/launch from launcher),
+        // but the session is still "Active" logic-wise.
+        val shouldFilter = repo.focusState == FocusModeRepository.FocusState.ACTIVE || 
+                           repo.focusState == FocusModeRepository.FocusState.UNLOCK_PENDING
+                           
+        val currentApps = if (shouldFilter) {
+            apps.filter { app ->
+                val raw = app.getRawInfo()
+                val packageName = when (raw) {
+                    is AppInfo -> raw.packageName
+                    is PinnedShortcutInfo -> raw.packageName
+                    else -> null
+                }
+                packageName != null && repo.isAppAllowed(packageName)
+            }
+        } else {
+            apps
+        }
+
         var apps =
-            apps.sortedBy { app -> app.getCustomLabel(context).lowercase(Locale.ROOT) }
+            currentApps.sortedBy { app -> app.getCustomLabel(context).lowercase(Locale.ROOT) }
 
         val hidden = LauncherPreferences.apps().hidden() ?: setOf()
         val favorites = LauncherPreferences.apps().favorites() ?: setOf()

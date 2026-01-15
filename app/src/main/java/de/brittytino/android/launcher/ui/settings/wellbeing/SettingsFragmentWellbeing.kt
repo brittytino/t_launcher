@@ -17,5 +17,12 @@ class SettingsFragmentWellbeing : PreferenceFragmentCompat() {
                 true
             }
         }
+
+        findPreference<Preference>("pref_focus_mode")?.apply {
+            setOnPreferenceClickListener {
+                startActivity(Intent(activity, de.brittytino.android.launcher.ui.focus.FocusModeActivity::class.java))
+                true
+            }
+        }
     }
 }

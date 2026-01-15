@@ -16,8 +16,26 @@ class LauncherAccessibilityService : AccessibilityService() {
     override fun onInterrupt() {}
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        // Intentionally left blank, we are not interested in any AccessibilityEvents.
-        // DO NOT ADD ANY CODE HERE!
+        if (event == null) return
+        
+        if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            val packageName = event.packageName?.toString() ?: return
+            val repo = de.brittytino.android.launcher.data.FocusModeRepository(this)
+            
+            // Block if ACTIVE or UNLOCK_PENDING.
+            // If PAUSED, we allow access (prompt: "allow temporary access... within the launcher UI")
+            // We assume launches are from launcher or user is just checking something briefly.
+            // Strict "origin" check is omitted to avoid blocking valid flows like permissions/recents.
+            val shouldEnforce = repo.focusState == de.brittytino.android.launcher.data.FocusModeRepository.FocusState.ACTIVE ||
+                                repo.focusState == de.brittytino.android.launcher.data.FocusModeRepository.FocusState.UNLOCK_PENDING
+
+            if (shouldEnforce && !repo.isAppAllowed(packageName)) {
+                // Focus Mode Violation!
+                val intent = Intent(this, de.brittytino.android.launcher.ui.focus.FocusModeOverlayActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NO_ANIMATION
+                startActivity(intent)
+            }
+        }
     }
 
     companion object {

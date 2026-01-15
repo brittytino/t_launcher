@@ -7,6 +7,11 @@
             android:key="@string/settings_wellbeing_delay_key"
             android:title="@string/settings_wellbeing_delay_title"
             android:summary="@string/settings_wellbeing_delay_summary"/>
+        
+        <Preference
+            android:key="pref_focus_mode"
+            android:title="Focus Mode"
+            android:summary="Strict distraction-free mode" />
     </PreferenceCategory>
 
 </PreferenceScreen>
