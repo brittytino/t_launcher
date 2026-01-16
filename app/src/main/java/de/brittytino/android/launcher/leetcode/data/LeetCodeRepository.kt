@@ -39,7 +39,7 @@ class LeetCodeRepository(
                 variables = mapOf("username" to username)
             )
             val response = api.getUserProfile(query)
-            val user = response.data?.matchedUser
+            val user = response.body()?.data?.matchedUser
             
             if (user != null) {
                 val entity = LeetCodeUserEntity(
@@ -89,7 +89,7 @@ class LeetCodeRepository(
                 variables = emptyMap()
             )
             val response = api.getUserProfile(query) // Reusing same endpoint w/ different query
-            val active = response.data?.activeDailyCodingChallengeQuestion
+            val active = response.body()?.data?.activeDailyCodingChallengeQuestion
             
             if (active != null) {
                 val entity = DailyProblemEntity(

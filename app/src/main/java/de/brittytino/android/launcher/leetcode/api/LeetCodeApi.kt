@@ -1,11 +1,12 @@
 package de.brittytino.android.launcher.leetcode.api
 
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface LeetCodeApi {
     @POST("graphql")
-    suspend fun getUserProfile(@Body query: GraphQLQuery): GraphQLResponse
+    suspend fun getUserProfile(@Body query: GraphQLQuery): Response<GraphQLResponse>
 }
 
 data class GraphQLQuery(
