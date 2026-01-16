@@ -65,9 +65,18 @@ You can install T_Launcher from the following sources:
 
 <a href="https://github.com/brittytino/launcher/releases/latest"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80"></a>
 
+## Documentation
+
+Comprehensive documentation can be found in the [`docs/`](docs/) directory.
+
+*   [Build Instructions](docs/build.md)
+*   [User Guide](docs/_index.md)
+
 ## Contributing
 
 **Contributors are welcomed!** We'd love your help to improve T_Launcher.
+
+Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 *   **Translations:** Help us reach more users by improving translations on [Weblate][toolate].
 *   **Code:** T_Launcher is open source. Feel free to fork the repository, open issues, or submit pull requests.
