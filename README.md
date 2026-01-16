@@ -1,14 +1,17 @@
 <!-- Shields from shields.io -->
 [![][shield-release]][latest-release]
+[![GitHub Downloads](https://img.shields.io/github/downloads/brittytino/t_launcher/total?style=flat&label=Downloads)][latest-release]
 [![Android CI](https://github.com/brittytino/t_launcher/actions/workflows/android.yml/badge.svg)](https://github.com/brittytino/t_launcher/actions/workflows/android.yml)
 [![][shield-license]][license]
-[![Chat on Discord](https://img.shields.io/badge/discord-join%20chat-007ec6.svg?style=flat)][discord]
+[![GitHub Stars](https://img.shields.io/github/stars/brittytino/t_launcher?style=flat)][repo]
 
 # T_Launcher
 
 **Minimal. Efficient. Unapologetic.**
 
 T_Launcher is a sophisticated Android home screen designed to eliminate distractions and force productivity. Unlike standard minimalist launchers, T_Launcher actively pushes you to be better with dynamic, high-contrast wallpapers and daily motivational "rage-bait" quotes.
+
+> **✨ Built for Focus | 🎨 Dynamic Wallpapers | 🚫 Zero Trackers | 🔓 100% Open Source**
 
 <p align="center">
   <img src="docs/screenshots/1.jpg" alt="Home Screen" width="23%">
@@ -59,11 +62,29 @@ T_Launcher supports a comprehensive set of gestures to suit your workflow:
     *   Toggle system settings (Torch, Volume, Media Controls)
     *   Lock screen & more
 
-## Installation
+## Download
 
-You can install T_Launcher from the following sources:
+### Direct Download (Recommended)
 
-<a href="https://github.com/brittytino/launcher/releases/latest"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80"></a>
+<a href="https://github.com/brittytino/t_launcher/releases/latest">
+  <img src="https://img.shields.io/badge/Download%20APK-Latest%20Release-success?style=for-the-badge&logo=android" alt="Download APK" height="60">
+</a>
+
+**Current Version:** Check the [Releases](https://github.com/brittytino/t_launcher/releases) page for the latest APK.
+
+### Coming Soon
+
+<img src="https://img.shields.io/badge/F--Droid-Coming%20Soon-inactive?style=for-the-badge&logo=f-droid" alt="F-Droid" height="50">
+
+**Requirements:** Android 6.0 (API 23) or higher
+
+**Installation Steps:**
+1. Download the APK from [Releases](https://github.com/brittytino/t_launcher/releases/latest)
+2. Enable "Install from Unknown Sources" in your Android settings
+3. Open the downloaded APK and install
+4. Set T_Launcher as your default launcher
+
+For detailed instructions, see [INSTALL.md](INSTALL.md).
 
 ## Documentation
 
@@ -82,8 +103,15 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct]
 *   **Code:** T_Launcher is open source. Feel free to fork the repository, open issues, or submit pull requests.
 *   **Community:** Join our [Discord][discord] or [Matrix][matrix] chat to discuss features and get support.
 
+## Project Stats
+
+![GitHub Downloads](https://img.shields.io/github/downloads/brittytino/t_launcher/total?style=flat-square&label=Total%20Downloads)
+![GitHub Issues](https://img.shields.io/github/issues/brittytino/t_launcher?style=flat-square)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/brittytino/t_launcher?style=flat-square)
+
 ---
 
+  [repo]: https://github.com/brittytino/t_launcher
   [hack-font]: https://sourcefoundry.org/hack/
   [toolate]: https://toolate.othing.xyz/projects/brittytino-launcher/
   [issues]: https://github.com/brittytino/t_launcher/issues/
@@ -98,4 +126,4 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct]
   [matrix]: https://s.brittytino.de/launcher-matrix
   [discord]: https://s.brittytino.de/launcher-discord
   [chat]: https://s.brittytino.de/launcher-chat
-  [license]: https://github.com/brittytino/t_launcher/blob/master/LICENSE
+  [license]: https://github.com/brittytino/t_launcher/blob/main/LICENSE

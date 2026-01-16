@@ -1,0 +1,46 @@
+T_Launcher is a sophisticated Android home screen designed to eliminate distractions and force productivity.
+
+KEY FEATURES:
+
+• Dynamic Motivational Engine
+Every day generates a new high-contrast wallpaper with unique geometric patterns (Bauhaus, Cyber, Hexagon) and motivational quotes to keep you focused.
+
+• Developer Panel
+Built-in LeetCode dashboard featuring:
+  - Daily coding challenges
+  - Activity heatmap for consistency tracking
+  - Friends leaderboard
+
+• Focus Mode
+Strictly enforced distraction-free environment:
+  - Immersive isolation with solid themes
+  - 15-minute cooldown between pauses
+  - App whitelisting
+  - Authentication-required exit
+
+• Distraction-Free Interface
+No icons on home screen. Only time, date, and your mission.
+
+• Privacy-Focused
+Zero ads, zero trackers, compatible with work profiles.
+
+• Comprehensive Gestures
+Supports swipes, edge gestures, volume buttons, and custom drawings.
+
+CUSTOMIZATION:
+
+• Multiple wallpaper patterns
+• Advanced color theory palettes
+• 50+ motivational quotes
+• Gesture-based app launching
+• Customizable shortcuts and actions
+
+TECHNICAL:
+
+• Lightweight (~20 MB)
+• Open source (MIT License)
+• Kotlin + Jetpack Compose
+• No special permissions required
+• Works on Android 6.0+
+
+Join the community: https://github.com/brittytino/t_launcher
