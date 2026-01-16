@@ -2,6 +2,8 @@ package de.brittytino.android.launcher.leetcode.data
 
 import de.brittytino.android.launcher.leetcode.api.GraphQLQuery
 import de.brittytino.android.launcher.leetcode.api.LeetCodeApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class LeetCodeRepository(
     private val api: LeetCodeApi,
@@ -38,7 +40,9 @@ class LeetCodeRepository(
                 query = queryStr,
                 variables = mapOf("username" to username)
             )
-            val response = api.getUserProfile(query)
+            val response = withContext(Dispatchers.IO) {
+                api.getUserProfile(query).execute()
+            }
             val user = response.body()?.data?.matchedUser
             
             if (user != null) {
@@ -88,7 +92,9 @@ class LeetCodeRepository(
                 query = queryStr,
                 variables = emptyMap()
             )
-            val response = api.getUserProfile(query) // Reusing same endpoint w/ different query
+            val response = withContext(Dispatchers.IO) {
+                api.getUserProfile(query).execute()
+            }
             val active = response.body()?.data?.activeDailyCodingChallengeQuestion
             
             if (active != null) {
