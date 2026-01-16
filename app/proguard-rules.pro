@@ -28,3 +28,24 @@
 -dontwarn javax.annotation.processing.AbstractProcessor
 -dontwarn javax.annotation.processing.SupportedAnnotationTypes
 -dontwarn javax.annotation.processing.SupportedSourceVersion
+
+# Retrofit 2 & Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-keepattributes EnclosingMethod
+-keepattributes InnerClasses
+
+# Keep LeetCode API Models for Gson reflection
+-keep class de.brittytino.android.launcher.leetcode.api.** { *; }
+-keep class de.brittytino.android.launcher.leetcode.data.** { *; }
+
+# Keep calls to Retrofit interfaces
+-keep class retrofit2.** { *; }
+-keepattributes Exceptions
+
+# Kotlin Coroutines
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+-keepclassmembers class kotlinx.coroutines.android.AndroidExceptionPreHandler {
+    <init>();
+}
