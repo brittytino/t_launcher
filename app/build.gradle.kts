@@ -42,7 +42,7 @@ android {
         applicationId = "de.brittytino.android.launcher"
         minSdk = 23
         targetSdk = 36
-        versionCode = 54
+        versionCode = 1
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

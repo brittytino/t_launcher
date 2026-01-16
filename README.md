@@ -1,6 +1,6 @@
 <!-- Shields from shields.io -->
 [![][shield-release]][latest-release]
-[![Android CI](https://github.com/brittytino/Launcher/actions/workflows/android.yml/badge.svg)](https://github.com/brittytino/Launcher/actions/workflows/android.yml)
+[![Android CI](https://github.com/brittytino/t_launcher/actions/workflows/android.yml/badge.svg)](https://github.com/brittytino/t_launcher/actions/workflows/android.yml)
 [![][shield-license]][license]
 [![Chat on Discord](https://img.shields.io/badge/discord-join%20chat-007ec6.svg?style=flat)][discord]
 
@@ -82,23 +82,20 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct]
 *   **Code:** T_Launcher is open source. Feel free to fork the repository, open issues, or submit pull requests.
 *   **Community:** Join our [Discord][discord] or [Matrix][matrix] chat to discuss features and get support.
 
-Based on [finnmglas/Launcher][original-repo].
-
 ---
 
   [hack-font]: https://sourcefoundry.org/hack/
-  [original-repo]: https://github.com/finnmglas/Launcher
   [toolate]: https://toolate.othing.xyz/projects/brittytino-launcher/
-  [issues]: https://github.com/brittytino/Launcher/issues/
-  [fork]: https://github.com/brittytino/Launcher/fork/
-  [shield-release]: https://img.shields.io/github/v/release/brittytino/Launcher?style=flat
-  [latest-release]: https://github.com/brittytino/Launcher/releases/latest
+  [issues]: https://github.com/brittytino/t_launcher/issues/
+  [fork]: https://github.com/brittytino/t_launcher/fork/
+  [shield-release]: https://img.shields.io/github/v/release/brittytino/t_launcher?style=flat
+  [latest-release]: https://github.com/brittytino/t_launcher/releases/latest
   [shield-contribute]: https://img.shields.io/badge/contributions-welcome-007ec6.svg?style=flat
   [shield-license]: https://img.shields.io/badge/license-MIT-007ec6?style=flat
-  [shield-gh-watch]: https://img.shields.io/github/watchers/brittytino/Launcher?label=Watch&style=social
-  [shield-gh-star]: https://img.shields.io/github/stars/brittytino/Launcher?label=Star&style=social
-  [shield-gh-fork]: https://img.shields.io/github/forks/brittytino/Launcher?label=Fork&style=social
+  [shield-gh-watch]: https://img.shields.io/github/watchers/brittytino/t_launcher?label=Watch&style=social
+  [shield-gh-star]: https://img.shields.io/github/stars/brittytino/t_launcher?label=Star&style=social
+  [shield-gh-fork]: https://img.shields.io/github/forks/brittytino/t_launcher?label=Fork&style=social
   [matrix]: https://s.brittytino.de/launcher-matrix
   [discord]: https://s.brittytino.de/launcher-discord
   [chat]: https://s.brittytino.de/launcher-chat
-  [license]: https://github.com/brittytino/Launcher/blob/master/LICENSE
+  [license]: https://github.com/brittytino/t_launcher/blob/master/LICENSE

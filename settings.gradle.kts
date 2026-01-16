@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Launcher"
+rootProject.name = "T_Launcher"
 include(":app")
