@@ -69,9 +69,9 @@
 
     <!-- Swipe right - Phone -->
     <string-array name="default_right">
-        <item>{"type": "action:app", "app": {"packageName": "com.google.android.dialer", "activityName": null}}</item>
-        <item>{"type": "action:app", "app": {"packageName": "com.android.dialer", "activityName": null}}</item>
-        <item>{"type": "action:app", "app": {"packageName": "com.android.phone", "activityName": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.dialer\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.dialer\", \"activityName\": null}}</item>
+        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.phone\", \"activityName\": null}}</item>
     </string-array>
 
     <!-- Swipe right (top) -->

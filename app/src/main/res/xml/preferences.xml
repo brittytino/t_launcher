@@ -23,7 +23,7 @@
             android:title="LeetCode Username"
             android:dialogTitle="Connect LeetCode Profile"
             android:dialogMessage="Enter your public LeetCode username to sync your heatmap and solution stats."
-            android:hint="e.g. neetcode"
+            android:hint="e.g. tinobritty"
             android:dependency="@string/settings_leetcode_enabled_key"
             app:useSimpleSummaryProvider="true" />
         

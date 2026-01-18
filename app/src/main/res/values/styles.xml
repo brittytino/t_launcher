@@ -85,6 +85,7 @@
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
         <item name="android:textColor">@color/lightTheme_text_color</item>
         <item name="android:alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert</item>
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert</item>
     </style>
 
     <style name="colorThemeDynamic">
@@ -147,7 +148,7 @@
     </style>
 
     <style name="fontSystemSf">
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
     <style name="fontInter">
@@ -155,35 +156,35 @@
     </style>
 
     <style name="fontProximaNova">
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
     <style name="fontLato">
-        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="fontMontserrat">
-        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
     <style name="fontNunito">
-        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:fontFamily">sans-serif-rounded</item>
     </style>
 
     <style name="fontPoppins">
-        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
     <style name="fontSourceSans3">
-        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
     <style name="fontManrope">
-        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="fontNotoSans">
-        <item name="android:fontFamily">@font/noto_sans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="PopupMenuCustom" parent="@android:style/Widget.PopupMenu" tools:keep="@style/PopupMenuCustom">

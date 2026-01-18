@@ -64,7 +64,18 @@ class DeveloperPanelActivity : ComponentActivity() {
         val factory = DeveloperPanelViewModelFactory(application as Application)
         val viewModel = androidx.lifecycle.ViewModelProvider(this, factory).get(DeveloperPanelViewModel::class.java)
 
-        // Sync logic is now handled by the ViewModel's init block based on data staleness.
+        // Check standard preferences for username from Settings to ensure consistency
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val prefUsername = prefs.getString("leetcode_username", null)
+        val currentProfile = viewModel.myProfile.value
+
+        if (!prefUsername.isNullOrBlank()) {
+             // Sync if no profile loaded yet OR if settings username differs from current profile
+             if (currentProfile == null || currentProfile.username != prefUsername) {
+                  viewModel.sync(prefUsername, true)
+             }
+        }
+
         // We only check if the feature is enabled.
         if (!LauncherPreferences.leetcode().enabled()) {
             finish()
