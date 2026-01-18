@@ -67,13 +67,11 @@
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.torproject.torbrowser\", \"activityName\": null}}</item> <!-- Tor Browser -->
     </string-array>
 
-    <!-- Swipe right - Mail -->
+    <!-- Swipe right - Phone -->
     <string-array name="default_right">
-        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"net.thunderbird.android\", \"activityName\": null}}</item> <!-- Thunderbird -->
-        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.fsck.k9\", \"activityName\": null}}</item> <!-- k9-mail -->
-        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"de.web.mobile.android.mail\", \"activityName\": null}}</item> <!-- WebMail -->
-        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.samsung.android.email.provider\", \"activityName\": null}}</item> <!-- Samsung Mail -->
-        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.google.android.gm\", \"activityName\": null}}</item> <!-- Google Mail -->
+        <item>{"type": "action:app", "app": {"packageName": "com.google.android.dialer", "activityName": null}}</item>
+        <item>{"type": "action:app", "app": {"packageName": "com.android.dialer", "activityName": null}}</item>
+        <item>{"type": "action:app", "app": {"packageName": "com.android.phone", "activityName": null}}</item>
     </string-array>
 
     <!-- Swipe right (top) -->
@@ -82,11 +80,6 @@
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.sec.android.app.popupcalculator\", \"activityName\": null}}</item> <!-- Samsung Calculator -->
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.mian.gitnex\", \"activityName\": null}}</item> <!-- GitNex -->
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.github.android\", \"activityName\": null}}</item> <!-- GitHub Android -->
-    </string-array>
-            <!-- Default: open phone/dialer apps -->
-            <item>{"type": "action:app", "app": {"packageName": "com.google.android.dialer", "activityName": null}}</item>
-            <item>{"type": "action:app", "app": {"packageName": "com.android.dialer", "activityName": null}}</item>
-            <item>{"type": "action:app", "app": {"packageName": "com.android.phone", "activityName": null}}</item>
     </string-array>
 
         <!-- Swipe left - Developer Panel (default) -->
