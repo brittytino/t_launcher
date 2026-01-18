@@ -82,6 +82,11 @@
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.github.android\", \"activityName\": null}}</item> <!-- GitHub Android -->
     </string-array>
 
+    <!-- Swipe right (bottom) -->
+    <string-array name="default_right_bottom">
+        <item>{\"type\": \"action:launcher\", \"value\": \"choose\"}</item>
+    </string-array>
+
         <!-- Swipe left - Developer Panel (default) -->
         <string-array name="default_left">
             <item>{"type": "action:launcher", "value": "developer_panel"}</item>
