@@ -20,6 +20,8 @@ enum class Font(val id: Int) {
     PROXIMA_NOVA(R.style.fontProximaNova),
     SYSTEM_SF(R.style.fontSystemSf),
     NOTO_SANS(R.style.fontNotoSans),
+    // Kept for backward compatibility to prevent crashes on update
+    HACK(R.style.fontHack),
     ;
 
     fun applyToTheme(theme: Resources.Theme) {
