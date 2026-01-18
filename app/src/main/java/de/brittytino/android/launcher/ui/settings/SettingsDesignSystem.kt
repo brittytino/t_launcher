@@ -21,13 +21,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import de.brittytino.android.launcher.preferences.theme.ColorTheme
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalView
+import android.app.Activity
+import androidx.core.view.WindowCompat
 
 @Composable
 fun SettingsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) {
+    val themePreference = LauncherPreferences.theme().colorTheme()
+    val effectiveDarkTheme = when (themePreference) {
+        ColorTheme.LIGHT -> false
+        ColorTheme.DARK -> true
+        ColorTheme.DEFAULT -> true
+        else -> darkTheme
+    }
+
+    val colorScheme = if (effectiveDarkTheme) {
         darkColorScheme(
             primary = Color(0xFFBB86FC),
             secondary = Color(0xFF03DAC6),
@@ -51,6 +64,18 @@ fun SettingsTheme(
             onSurface = Color.Black,
             error = Color(0xFFB00020)
         )
+    }
+
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as? Activity)?.window
+            window?.let {
+                val insetsController = WindowCompat.getInsetsController(it, view)
+                insetsController.isAppearanceLightStatusBars = !effectiveDarkTheme
+                insetsController.isAppearanceLightNavigationBars = !effectiveDarkTheme
+            }
+        }
     }
 
     // Map selected launcher font to a Compose FontFamily so Compose UI reflects the chosen font
