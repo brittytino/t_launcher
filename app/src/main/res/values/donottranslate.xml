@@ -116,42 +116,20 @@
         <string name="settings_theme_wallpaper_key" translatable="false">theme.wallpaper</string>
         <string name="settings_theme_font_key" translatable="false">theme.font</string>
 
-        <!-- values of de.brittytino.android.launcher.preferences.theme.Font -->
+        <!-- visible values for de.brittytino.android.launcher.preferences.theme.Font -->
         <string-array name="settings_theme_font_values" translatable="false">
-                <item>HACK</item>
                 <item>SYSTEM_DEFAULT</item>
-                <item>SANS_SERIF</item>
-                <item>SERIF</item>
-                <item>MONOSPACE</item>
-                <item>SERIF_MONOSPACE</item>
-                <item>SYSTEM_SF</item>
                 <item>INTER</item>
-                <item>PROXIMA_NOVA</item>
-                <item>LATO</item>
                 <item>MONTSERRAT</item>
-                <item>NUNITO</item>
-                <item>POPPINS</item>
-                <item>SOURCE_SANS_3</item>
-                <item>MANROPE</item>
+                <item>LATO</item>
                 <item>NOTO_SANS</item>
         </string-array>
-        <!-- names for @array/settings_theme_font_values -->
+        <!-- names for @array/settings_theme_font_values (visible list) -->
         <string-array name="settings_theme_font_items" translatable="false">
-                <item>@string/settings_theme_font_item_hack</item>
                 <item>@string/settings_theme_font_item_system_default</item>
-                <item>@string/settings_theme_font_item_sans_serif</item>
-                <item>@string/settings_theme_font_item_serif</item>
-                <item>@string/settings_theme_font_item_monospace</item>
-                <item>@string/settings_theme_font_item_serif_monospace</item>
-                <item>@string/settings_theme_font_item_system_sf</item>
                 <item>@string/settings_theme_font_item_inter</item>
-                <item>@string/settings_theme_font_item_proxima_nova</item>
-                <item>@string/settings_theme_font_item_lato</item>
                 <item>@string/settings_theme_font_item_montserrat</item>
-                <item>@string/settings_theme_font_item_nunito</item>
-                <item>@string/settings_theme_font_item_poppins</item>
-                <item>@string/settings_theme_font_item_source_sans_3</item>
-                <item>@string/settings_theme_font_item_manrope</item>
+                <item>@string/settings_theme_font_item_lato</item>
                 <item>@string/settings_theme_font_item_noto_sans</item>
         </string-array>
         <string name="settings_theme_monochrome_icons_key" translatable="false">theme.monochrome_icons</string>

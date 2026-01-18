@@ -9,6 +9,10 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import de.brittytino.android.launcher.preferences.LauncherPreferences
+import de.brittytino.android.launcher.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,8 +53,29 @@ fun SettingsTheme(
         )
     }
 
+    // Map selected launcher font to a Compose FontFamily so Compose UI reflects the chosen font
+    val selected = LauncherPreferences.theme().font()
+    val fontFamily = when (selected) {
+        de.brittytino.android.launcher.preferences.theme.Font.INTER -> FontFamily(Font(R.font.inter))
+        de.brittytino.android.launcher.preferences.theme.Font.MONTSERRAT -> FontFamily(Font(R.font.montserrat))
+        de.brittytino.android.launcher.preferences.theme.Font.LATO -> FontFamily(Font(R.font.lato))
+        de.brittytino.android.launcher.preferences.theme.Font.NOTO_SANS -> FontFamily(Font(R.font.noto_sans))
+        else -> FontFamily.Default
+    }
+
+    // Build a typography that uses the selected family for main text styles
+    val baseTypo = Typography()
+    val typography = baseTypo.copy(
+        titleLarge = baseTypo.titleLarge.copy(fontFamily = fontFamily),
+        titleMedium = baseTypo.titleMedium.copy(fontFamily = fontFamily),
+        bodyLarge = baseTypo.bodyLarge.copy(fontFamily = fontFamily),
+        bodyMedium = baseTypo.bodyMedium.copy(fontFamily = fontFamily),
+        labelLarge = baseTypo.labelLarge.copy(fontFamily = fontFamily)
+    )
+
     MaterialTheme(
         colorScheme = colorScheme,
+        typography = typography,
         content = content
     )
 }

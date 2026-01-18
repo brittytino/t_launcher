@@ -149,7 +149,6 @@
     <string name="settings_theme_font">Font</string>
 
     <!-- names for @array/settings_theme_font_values -->
-    <string name="settings_theme_font_item_hack" translatable="false">Hack</string>
     <string name="settings_theme_font_item_system_default">System default</string>
     <string name="settings_theme_font_item_sans_serif">Sans serif</string>
     <string name="settings_theme_font_item_serif">Serif</string>

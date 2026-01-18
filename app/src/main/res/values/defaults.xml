@@ -83,12 +83,16 @@
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"org.mian.gitnex\", \"activityName\": null}}</item> <!-- GitNex -->
         <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.github.android\", \"activityName\": null}}</item> <!-- GitHub Android -->
     </string-array>
-
-    <!-- Swipe right (bottom) -->
-    <string-array name="default_right_bottom">
-        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.documentsui\", \"activityName\": null}}</item> <!-- File Manager -->
-        <item>{\"type\": \"action:app\", \"app\": {\"packageName\": \"com.android.google.documentsui\", \"activityName\": null}}</item> <!-- File Manager -->
+            <!-- Default: open phone/dialer apps -->
+            <item>{"type": "action:app", "app": {"packageName": "com.google.android.dialer", "activityName": null}}</item>
+            <item>{"type": "action:app", "app": {"packageName": "com.android.dialer", "activityName": null}}</item>
+            <item>{"type": "action:app", "app": {"packageName": "com.android.phone", "activityName": null}}</item>
     </string-array>
+
+        <!-- Swipe left - Developer Panel (default) -->
+        <string-array name="default_left">
+            <item>{"type": "action:launcher", "value": "developer_panel"}</item>
+        </string-array>
 
     <!-- Swipe double right -->
     <string-array name="default_double_right">

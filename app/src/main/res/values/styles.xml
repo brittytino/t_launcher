@@ -126,8 +126,8 @@
     </style>
 
     <style name="fontHack">
-        <item name="android:fontFamily">@font/hack</item>
-        <!--<item name="android:textSize">18sp</item>-->
+        <!-- Hack font removed; keep style name for compatibility but point to Inter -->
+        <item name="android:fontFamily">@font/inter</item>
     </style>
 
     <style name="fontMonospace">
@@ -147,7 +147,7 @@
     </style>
 
     <style name="fontSystemSf">
-        <item name="android:fontFamily">@font/system_sf</item>
+        <item name="android:fontFamily">@font/inter</item>
     </style>
 
     <style name="fontInter">
@@ -155,7 +155,7 @@
     </style>
 
     <style name="fontProximaNova">
-        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:fontFamily">@font/inter</item>
     </style>
 
     <style name="fontLato">
@@ -167,19 +167,19 @@
     </style>
 
     <style name="fontNunito">
-        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:fontFamily">@font/lato</item>
     </style>
 
     <style name="fontPoppins">
-        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="fontSourceSans3">
-        <item name="android:fontFamily">@font/source_sans_3</item>
+        <item name="android:fontFamily">@font/lato</item>
     </style>
 
     <style name="fontManrope">
-        <item name="android:fontFamily">@font/manrope</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="fontNotoSans">
