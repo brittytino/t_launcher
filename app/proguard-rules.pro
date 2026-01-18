@@ -49,3 +49,12 @@
 -keepclassmembers class kotlinx.coroutines.android.AndroidExceptionPreHandler {
     <init>();
 }
+
+# Keep Preferences and Theme Enums (Models)
+# Crucial for the generated LauncherPreferences and Enum serialization
+-keep class de.brittytino.android.launcher.preferences.** { *; }
+-keep class de.brittytino.android.launcher.preferences.theme.** { *; }
+
+# Keep Wallpaper Manager Helper
+-keep class de.brittytino.android.launcher.wallpaper.WallpaperManagerHelper { *; }
+
