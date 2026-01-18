@@ -22,6 +22,10 @@ enum class Font(val id: Int) {
     NOTO_SANS(R.style.fontNotoSans),
     // Kept for backward compatibility to prevent crashes on update
     HACK(R.style.fontHack),
+    MONOSPACE(R.style.fontMonospace),
+    SERIF(R.style.fontSerif),
+    SANS_SERIF(R.style.fontSansSerif),
+    SERIF_MONOSPACE(R.style.fontSerifMonospace),
     ;
 
     fun applyToTheme(theme: Resources.Theme) {
