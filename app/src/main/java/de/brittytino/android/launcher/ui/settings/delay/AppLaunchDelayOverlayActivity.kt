@@ -46,6 +46,11 @@ class AppLaunchDelayOverlayActivity : UIObjectActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
+        // Full screen setup
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.statusBarColor = android.graphics.Color.TRANSPARENT
+        window.navigationBarColor = android.graphics.Color.TRANSPARENT
+        
         val packageName = intent.getStringExtra("EXTRA_PACKAGE_NAME")
         val delaySeconds = intent.getIntExtra("EXTRA_DELAY_SECONDS", 0)
         val userHandle = intent.getParcelableExtra<UserHandle>("EXTRA_USER_HANDLE")

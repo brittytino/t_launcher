@@ -54,29 +54,34 @@ import de.brittytino.android.launcher.ui.settings.IconArrow
 import java.util.concurrent.TimeUnit
 import androidx.compose.material3.HorizontalDivider // Correct import for M3
 
-val PauseIcon: ImageVector
-    get() = ImageVector.Builder(
-        name = "Pause",
-        defaultWidth = 24.dp,
-        defaultHeight = 24.dp,
-        viewportWidth = 24f,
-        viewportHeight = 24f
-    ).apply {
-        path(fill = SolidColor(Color.Black)) {
-            moveTo(6f, 19f)
-            horizontalLineToRelative(4f)
-            verticalLineTo(5f)
-            horizontalLineTo(6f)
-            verticalLineToRelative(14f)
-            close()
-            moveTo(14f, 5f)
-            verticalLineToRelative(14f)
-            horizontalLineToRelative(4f)
-            verticalLineTo(5f)
-            horizontalLineToRelative(-4f)
-            close()
-        }
-    }.build()
+@Composable
+fun PauseIcon(): ImageVector {
+    val color = MaterialTheme.colorScheme.onSurface
+    return remember(color) {
+        ImageVector.Builder(
+            name = "Pause",
+            defaultWidth = 24.dp,
+            defaultHeight = 24.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        ).apply {
+            path(fill = SolidColor(color)) {
+                moveTo(6f, 19f)
+                horizontalLineToRelative(4f)
+                verticalLineTo(5f)
+                horizontalLineTo(6f)
+                verticalLineToRelative(14f)
+                close()
+                moveTo(14f, 5f)
+                verticalLineToRelative(14f)
+                horizontalLineToRelative(4f)
+                verticalLineTo(5f)
+                horizontalLineToRelative(-4f)
+                close()
+            }
+        }.build()
+    }
+}
 
 
 
@@ -256,25 +261,25 @@ fun StartFocusConfirmationDialog(focusState: FocusModeViewModel.FocusStateModel,
     Dialog(onDismissRequest = onDismiss) {
         Card(
             shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFF2C2C2C))
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
         ) {
             Column(modifier = Modifier.padding(24.dp)) {
-                Text("Turn On Focus Mode?", style = MaterialTheme.typography.headlineSmall, color = Color.White)
-                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.Gray.copy(alpha = 0.2f))
+                Text("Turn On Focus Mode?", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f))
                 
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                     Text("• ${focusState.focusApps.size} apps allowed.", color = Color.White)
-                     Text("• Other apps will be blocked.", color = Color.White)
-                     if (focusState.isQuietMode) Text("• Notifications from hidden apps silently blocked.", color = Color.White)
-                     Text("• Pause allowed once every 15m (max 2m).", color = Color.White)
-                     Text("• Authenticaton required to exit.", color = Color.White)
+                     Text("• ${focusState.focusApps.size} apps allowed.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                     Text("• Other apps will be blocked.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                     if (focusState.isQuietMode) Text("• Notifications from hidden apps silently blocked.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                     Text("• Pause allowed once every 15m (max 2m).", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                     Text("• Authenticaton required to exit.", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
 
                 Spacer(Modifier.height(24.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = onDismiss) { Text("Cancel") }
+                    TextButton(onClick = onDismiss) { Text("Cancel", color = MaterialTheme.colorScheme.primary) }
                     Button(onClick = onConfirm, colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)) {
-                        Text("Turn On Focus", color = Color.Black)
+                        Text("Turn On Focus", color = MaterialTheme.colorScheme.onPrimary)
                     }
                 }
             }
@@ -297,14 +302,14 @@ fun UnlockDialog(
     Dialog(onDismissRequest = onCancel) {
         Card(
             shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFF2C2C2C))
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
         ) {
             Column(modifier = Modifier.padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("Unlock Focus Mode", style = MaterialTheme.typography.headlineSmall, color = Color.White)
+                Text("Unlock Focus Mode", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 
                 Spacer(Modifier.height(16.dp))
                 if (lockType == FocusModeRepository.LockType.RANDOM_STRING) {
-                    Text("Type this phrase:", color = Color.Gray)
+                    Text("Type this phrase:", color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f))
                     Text(requiredPhrase, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
                 }
 
@@ -312,24 +317,24 @@ fun UnlockDialog(
                     value = text,
                     onValueChange = { text = it; error = false },
                     placeholder = { 
-                        Text(if (lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD) "Enter password" else "Enter phrase", color = Color.Gray) 
+                        Text(if (lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD) "Enter password" else "Enter phrase", color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)) 
                     },
                     singleLine = true,
                     visualTransformation = if (lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD && !passwordVisible) PasswordVisualTransformation() else VisualTransformation.None,
                     trailingIcon = {
                         if (lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD) {
                             TextButton(onClick = { passwordVisible = !passwordVisible }) {
-                                Text(if (passwordVisible) "Hide" else "Show", color = Color.Gray)
+                                Text(if (passwordVisible) "Hide" else "Show", color = MaterialTheme.colorScheme.primary)
                             }
                         }
                     },
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White,
+                        focusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
                         focusedContainerColor = Color.Transparent,
                         unfocusedContainerColor = Color.Transparent,
-                        focusedBorderColor = Color(0xFF5F6368),
-                        unfocusedBorderColor = Color(0xFF5F6368)
+                        focusedBorderColor = MaterialTheme.colorScheme.outline,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
                     ),
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -338,7 +343,7 @@ fun UnlockDialog(
                 }
                 Spacer(Modifier.height(24.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = onCancel) { Text("Cancel") }
+                    TextButton(onClick = onCancel) { Text("Cancel", color = MaterialTheme.colorScheme.primary) }
                     TextButton(onClick = { 
                          val isValid = when(lockType) {
                              FocusModeRepository.LockType.CUSTOM_PASSWORD -> text == customPassword
@@ -346,7 +351,7 @@ fun UnlockDialog(
                              else -> true
                          }
                          if (isValid) onUnlock() else error = true
-                    }) { Text("Unlock") }
+                    }) { Text("Unlock", color = MaterialTheme.colorScheme.primary) }
                 }
             }
         }
@@ -367,10 +372,10 @@ fun SetPasswordDialog(onConfirm: (String) -> Unit, onDismiss: () -> Unit) {
     Dialog(onDismissRequest = onDismiss) {
         Card(
             shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFF2C2C2C))
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
         ) {
             Column(modifier = Modifier.padding(24.dp)) {
-                Text("Set Password", style = MaterialTheme.typography.headlineSmall, color = Color.White)
+                Text("Set Password", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Spacer(Modifier.height(16.dp))
 
                 OutlinedTextField(
@@ -379,21 +384,21 @@ fun SetPasswordDialog(onConfirm: (String) -> Unit, onDismiss: () -> Unit) {
                         password = it
                         if (error != null) error = null 
                     },
-                    label = { Text("Password (min 8 chars)", color = Color.Gray) },
+                    label = { Text("Password (min 8 chars)", color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha=0.7f)) },
                     singleLine = true,
                     visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     trailingIcon = {
                         TextButton(onClick = { passwordVisible = !passwordVisible }) {
-                            Text(if (passwordVisible) "Hide" else "Show", color = Color.Gray)
+                            Text(if (passwordVisible) "Hide" else "Show", color = MaterialTheme.colorScheme.primary)
                         }
                     },
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White,
+                        focusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
                         focusedContainerColor = Color.Transparent,
                         unfocusedContainerColor = Color.Transparent,
-                        focusedBorderColor = Color(0xFF5F6368),
-                        unfocusedBorderColor = Color(0xFF5F6368)
+                        focusedBorderColor = MaterialTheme.colorScheme.outline,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
                     ),
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -406,21 +411,21 @@ fun SetPasswordDialog(onConfirm: (String) -> Unit, onDismiss: () -> Unit) {
                         confirmPassword = it
                         if (error != null) error = null 
                     },
-                    label = { Text("Confirm password", color = Color.Gray) },
+                    label = { Text("Confirm password", color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)) },
                     singleLine = true,
                     visualTransformation = if (confirmVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     trailingIcon = {
                         TextButton(onClick = { confirmVisible = !confirmVisible }) {
-                            Text(if (confirmVisible) "Hide" else "Show", color = Color.Gray)
+                            Text(if (confirmVisible) "Hide" else "Show", color = MaterialTheme.colorScheme.primary)
                         }
                     },
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White,
+                        focusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
                         focusedContainerColor = Color.Transparent,
                         unfocusedContainerColor = Color.Transparent,
-                        focusedBorderColor = Color(0xFF5F6368),
-                        unfocusedBorderColor = Color(0xFF5F6368)
+                        focusedBorderColor = MaterialTheme.colorScheme.outline,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
                     ),
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -432,7 +437,7 @@ fun SetPasswordDialog(onConfirm: (String) -> Unit, onDismiss: () -> Unit) {
 
                 Spacer(Modifier.height(24.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = onDismiss) { Text("Cancel") }
+                    TextButton(onClick = onDismiss) { Text("Cancel", color = MaterialTheme.colorScheme.primary) }
                     TextButton(onClick = { 
                         if (password.length < 8) {
                             error = "Password must be at least 8 characters"
@@ -441,43 +446,13 @@ fun SetPasswordDialog(onConfirm: (String) -> Unit, onDismiss: () -> Unit) {
                         } else {
                             onConfirm(password)
                         }
-                    }) { Text("Confirm") }
+                    }) { Text("Confirm", color = MaterialTheme.colorScheme.primary) }
                 }
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun FocusModeDashboard(
-    focusState: FocusModeViewModel.FocusStateModel,
-    appsCount: Int,
-    onOpenAppSelector: () -> Unit,
-    onToggleQuietMode: (Boolean) -> Unit,
-    onSetLockType: (FocusModeRepository.LockType) -> Unit,
-    onStartFocus: () -> Unit,
-    onStopFocus: () -> Unit,
-    onBack: () -> Unit
-) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Focus Mode", fontWeight = FontWeight.Bold) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = Color.White)
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = Color.White,
-                    navigationIconContentColor = Color.White
-                )
-            )
-        },
-        containerColor = MaterialTheme.colorScheme.background
-    ) { padding ->
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FocusModeDashboard(
@@ -528,7 +503,7 @@ fun FocusModeDashboard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = if(focusState.state == FocusModeRepository.FocusState.ACTIVE) PauseIcon else Icons.Filled.PlayArrow,
+                    imageVector = if(focusState.state == FocusModeRepository.FocusState.ACTIVE) PauseIcon() else Icons.Filled.PlayArrow,
                     contentDescription = null,
                     tint = contentColor
                 )
@@ -609,34 +584,32 @@ fun FocusModeDashboard(
         }
     }
 }
-    }
-}
 
 @Composable
 fun PauseConfirmationDialog(onConfirm: () -> Unit, onDismiss: () -> Unit) {
     Dialog(onDismissRequest = onDismiss) {
         Card(
             shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFF2C2C2C))
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
         ) {
             Column(modifier = Modifier.padding(24.dp)) {
-                Text("Pause Focus Mode", style = MaterialTheme.typography.headlineSmall, color = Color.White)
+                Text("Pause Focus Mode", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Spacer(Modifier.height(16.dp))
                 Text(
                     "Focus will pause for a maximum of 2 minutes only. It will automatically resume afterwards.",
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Spacer(Modifier.height(8.dp))
                 Text(
                      "Duration: 02:00",
                      style = MaterialTheme.typography.titleMedium,
-                     color = Color(0xFFFFB74D),
+                     color = Color(0xFFFFB74D), // Keep Orange for warning
                      fontWeight = FontWeight.Bold
                 )
                 
                 Spacer(Modifier.height(24.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = onDismiss) { Text("Cancel") }
+                    TextButton(onClick = onDismiss) { Text("Cancel", color = MaterialTheme.colorScheme.primary) }
                     Button(onClick = onConfirm, colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFB74D))) {
                         Text("Start Pause (2m)", color = Color.Black)
                     }

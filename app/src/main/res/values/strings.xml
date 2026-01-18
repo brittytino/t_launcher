@@ -25,7 +25,7 @@
     <string name="settings_leetcode_enabled_key">settings_leetcode_enabled_key</string>
 
     <string name="settings_theme_change_wallpaper_title">Change Wallpaper</string>
-    <string name="settings_theme_change_wallpaper_summary">Click to change to the next pattern. Current: %1$d / %2$d</string>
+    <string name="settings_theme_change_wallpaper_summary">Tap to generate a new motivational pattern instantly.</string>
     <string name="settings_theme_change_wallpaper_key">theme.change_wallpaper</string>
 
     <string name="settings_tab_wellbeing">Digital Wellbeing</string>

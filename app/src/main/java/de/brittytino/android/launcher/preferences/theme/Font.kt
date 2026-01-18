@@ -9,21 +9,16 @@ import de.brittytino.android.launcher.R
 
 @Suppress("unused")
 enum class Font(val id: Int) {
-    HACK(R.style.fontHack),
     SYSTEM_DEFAULT(R.style.fontSystemDefault),
-    SANS_SERIF(R.style.fontSansSerif),
-    SERIF(R.style.fontSerifMonospace),
-    MONOSPACE(R.style.fontMonospace),
-    SERIF_MONOSPACE(R.style.fontSerifMonospace),
-    SYSTEM_SF(R.style.fontSystemSf),
     INTER(R.style.fontInter),
-    PROXIMA_NOVA(R.style.fontProximaNova),
-    LATO(R.style.fontLato),
-    MONTSERRAT(R.style.fontMontserrat),
-    NUNITO(R.style.fontNunito),
-    POPPINS(R.style.fontPoppins),
-    SOURCE_SANS_3(R.style.fontSourceSans3),
     MANROPE(R.style.fontManrope),
+    MONTSERRAT(R.style.fontMontserrat),
+    LATO(R.style.fontLato),
+    POPPINS(R.style.fontPoppins),
+    NUNITO(R.style.fontNunito),
+    SOURCE_SANS_3(R.style.fontSourceSans3),
+    PROXIMA_NOVA(R.style.fontProximaNova),
+    SYSTEM_SF(R.style.fontSystemSf),
     NOTO_SANS(R.style.fontNotoSans),
     ;
 

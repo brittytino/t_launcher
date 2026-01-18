@@ -24,6 +24,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import de.brittytino.android.launcher.Application
 import de.brittytino.android.launcher.R
 import de.brittytino.android.launcher.apps.AbstractDetailedAppInfo
@@ -36,16 +38,30 @@ import de.brittytino.android.launcher.ui.settings.SettingsTheme
 class AppLaunchDelayActivity : UIObjectActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Full screen setup
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.statusBarColor = android.graphics.Color.TRANSPARENT
+        window.navigationBarColor = android.graphics.Color.TRANSPARENT
+
         setContent {
             SettingsTheme {
-                AppLaunchDelayScreen()
+                 Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    Box(modifier = Modifier.systemBarsPadding()) {
+                        AppLaunchDelayScreen(onBack = { finish() })
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-fun AppLaunchDelayScreen(viewModel: AppLaunchDelayViewModel = viewModel()) {
+fun AppLaunchDelayScreen(viewModel: AppLaunchDelayViewModel = viewModel(), onBack: () -> Unit) {
     val context = LocalContext.current
     val app = context.applicationContext as Application
     val installedApps by app.apps.observeAsState(emptyList())
@@ -67,6 +83,15 @@ fun AppLaunchDelayScreen(viewModel: AppLaunchDelayViewModel = viewModel()) {
             onValueChange = viewModel::onSearchQueryChanged,
             modifier = Modifier.fillMaxWidth().padding(16.dp),
             placeholder = { Text("Search apps") },
+            leadingIcon = {
+                IconButton(onClick = onBack) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack, 
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onBackground
+                    )
+                }
+            },
             singleLine = true,
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.Transparent,
