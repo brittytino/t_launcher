@@ -49,6 +49,14 @@ class SelectActionActivity : AbstractListActivity() {
             intent.putExtra(KEY_FOR_GESTURE, gesture.id) // for which action we choose the app
             context.startActivity(intent)
         }
+
+        fun selectForWidget(context: Context, widgetId: Int, slot: Int) {
+            val intent = Intent(context, SelectActionActivity::class.java)
+            intent.putExtra(KEY_HIDDEN_VISIBILITY, AppFilter.Companion.AppSetVisibility.VISIBLE)
+            intent.putExtra(KEY_FOR_WIDGET_ID, widgetId)
+            intent.putExtra(KEY_FOR_WIDGET_SLOT, slot)
+            context.startActivity(intent)
+        }
     }
 }
 

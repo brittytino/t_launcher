@@ -24,12 +24,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import de.brittytino.android.launcher.data.FocusModeRepository
 import de.brittytino.android.launcher.viewmodel.FocusModeViewModel
+import de.brittytino.android.launcher.ui.settings.SettingsTheme
 
 class FocusModeOverlayActivity : ComponentActivity() {
     private val viewModel: FocusModeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Full screen setup - allow drawing behind bars to ensure solid color covers everything
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.statusBarColor = android.graphics.Color.TRANSPARENT
+        window.navigationBarColor = android.graphics.Color.TRANSPARENT
         
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -38,15 +44,7 @@ class FocusModeOverlayActivity : ComponentActivity() {
         })
 
         setContent {
-            MaterialTheme(
-                colorScheme = darkColorScheme(
-                    background = Color.Black,
-                    surface = Color(0xFF1E1E1E),
-                    primary = Color(0xFF42A5F5),
-                    onBackground = Color.White,
-                    onSurface = Color.White
-                )
-            ) {
+            SettingsTheme {
                 FocusOverlayScreen(
                     viewModel = viewModel,
                     onUnlockSuccess = {
@@ -89,7 +87,7 @@ fun FocusOverlayScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         when (focusState.state) {
@@ -109,7 +107,7 @@ fun FocusOverlayScreen(
             }
             else -> {
                 // Should not happen here ideally, or showing spinner waiting for finish
-                CircularProgressIndicator(color = Color.White)
+                CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
             }
         }
     }
@@ -124,28 +122,28 @@ fun FocusActiveScreen(onUnlockRequest: () -> Unit) {
             // Let's safe-play with Text or a simple circle
             imageVector = androidx.compose.material.icons.Icons.Default.Lock,
             contentDescription = null,
-            tint = Color.White,
+            tint = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.size(64.dp)
         )
         Spacer(modifier = Modifier.height(24.dp))
         Text(
             "Focus Mode Active",
             style = MaterialTheme.typography.displaySmall,
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             "Access to this app is restricted.",
             style = MaterialTheme.typography.bodyLarge,
-            color = Color.Gray
+            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
         )
         Spacer(modifier = Modifier.height(48.dp))
         Button(
             onClick = onUnlockRequest,
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF42A5F5))
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
         ) {
-            Text("Unlock")
+            Text("Unlock", color = MaterialTheme.colorScheme.onPrimary)
         }
     }
 }
@@ -168,27 +166,27 @@ fun FocusUnlockScreen(
         Text(
             "Unlock Focus Mode",
             style = MaterialTheme.typography.headlineMedium,
-            color = Color.White
+            color = MaterialTheme.colorScheme.onBackground
         )
         Spacer(modifier = Modifier.height(24.dp))
 
         if (lockType == FocusModeRepository.LockType.RANDOM_STRING) {
             Text(
                 "Type the following phrase:",
-                color = Color.Gray
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 requiredPhrase,
                 style = MaterialTheme.typography.titleLarge,
-                color = Color(0xFF42A5F5),
+                color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
         } else if (lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD) {
             Text(
                 "Enter your password:",
-                color = Color.Gray
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
             )
         }
 
@@ -203,11 +201,13 @@ fun FocusUnlockScreen(
             singleLine = true,
             isError = error,
             colors = OutlinedTextFieldDefaults.colors(
-                focusedTextColor = Color.White,
-                unfocusedTextColor = Color.White,
-                cursorColor = Color.White,
-                focusedBorderColor = Color.White,
-                unfocusedBorderColor = Color.Gray
+                focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
+                cursorColor = MaterialTheme.colorScheme.primary,
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
+                errorBorderColor = MaterialTheme.colorScheme.error,
+                errorLabelColor = MaterialTheme.colorScheme.error
             ),
             modifier = Modifier.fillMaxWidth()
         )
@@ -224,7 +224,7 @@ fun FocusUnlockScreen(
 
         Row {
             TextButton(onClick = onCancel) {
-                Text("Cancel", color = Color.Gray)
+                Text("Cancel", color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f))
             }
             Spacer(modifier = Modifier.width(16.dp))
             Button(
@@ -240,9 +240,9 @@ fun FocusUnlockScreen(
                         error = true
                     }
                 },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF5350))
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
             ) {
-                Text("Unlock")
+                Text("Unlock", color = MaterialTheme.colorScheme.onError)
             }
         }
     }

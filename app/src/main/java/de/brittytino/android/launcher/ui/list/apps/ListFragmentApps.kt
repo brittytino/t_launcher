@@ -82,6 +82,8 @@ class ListFragmentApps : Fragment(), UIObject {
         appsRecyclerAdapter =
             AppsRecyclerAdapter(
                 listActivity, binding.root, listActivity.intention, listActivity.forGesture,
+                forWidgetId = listActivity.forWidgetId,
+                forWidgetSlot = listActivity.forWidgetSlot,
                 appFilter = AppFilter(
                     requireContext(),
                     "",

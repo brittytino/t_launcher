@@ -2,25 +2,33 @@ package de.brittytino.android.launcher.wallpaper
 
 import android.app.WallpaperManager
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.Typeface
+import android.text.Layout
+import android.text.StaticLayout
+import android.text.TextPaint
+import androidx.core.graphics.ColorUtils
 import de.brittytino.android.launcher.preferences.LauncherPreferences
 import java.util.Calendar
+import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.sin
+import kotlin.math.sqrt
 import kotlin.random.Random
 
 object WallpaperManagerHelper {
 
     private const val KEY_WALLPAPER_DATE = "wallpaper_rotation_date"
-    private const val KEY_WALLPAPER_INDEX = "wallpaper_rotation_index"
-    private const val TOTAL_PATTERNS = 30
+    private const val KEY_WALLPAPER_INDEX = "wallpaper_rotation_index" // Kept for legacy compatibility, but logic changes
 
     fun checkAndRotateWallpaper(context: Context) {
         val prefs = LauncherPreferences.getSharedPreferences()
@@ -28,37 +36,38 @@ object WallpaperManagerHelper {
         val today = getStartOfDay()
 
         if (today != lastDate) {
-            val currentIndex = prefs.getInt(KEY_WALLPAPER_INDEX, 0)
-            val nextIndex = (currentIndex + 1) % TOTAL_PATTERNS
-            
-            applyWallpaper(context, nextIndex)
+            // New day, new purely random generation. 
+            // We no longer cycle sequentially. Every day is a fresh roll.
+            generateAndSetWallpaper(context, today)
             
             prefs.edit()
                 .putLong(KEY_WALLPAPER_DATE, today)
-                .putInt(KEY_WALLPAPER_INDEX, nextIndex)
                 .apply()
         }
     }
 
-    fun advanceWallpaper(context: Context): Int {
-        val prefs = LauncherPreferences.getSharedPreferences()
-        val currentIndex = prefs.getInt(KEY_WALLPAPER_INDEX, 0)
-        val nextIndex = (currentIndex + 1) % TOTAL_PATTERNS
-        
-        applyWallpaper(context, nextIndex)
-        
-        prefs.edit()
-             .putInt(KEY_WALLPAPER_INDEX, nextIndex)
-             .apply()
-             
-        return nextIndex + 1 // Return 1-based index for UI
-    }
-    
-    fun getCurrentIndex(context: Context): Int {
-        return LauncherPreferences.getSharedPreferences().getInt(KEY_WALLPAPER_INDEX, 0) + 1
+    fun forceRegenerate(context: Context) {
+        // Force a new seed based on time including current millis for instant variation
+        generateAndSetWallpaper(context, System.currentTimeMillis())
     }
 
-    fun getTotalPatterns(): Int = TOTAL_PATTERNS
+    // Compatibility methods for SettingsFragmentLauncher
+    fun getCurrentIndex(context: Context): Int {
+        // Since we switched to random generation, index is less relevant. 
+        // We return 0 or a generic value.
+        return 0
+    }
+
+    fun getTotalPatterns(): Int {
+        // Generative art doesn't have a fixed count, but we can return relative variety.
+        return 10
+    }
+
+    fun advanceWallpaper(context: Context): Int {
+        forceRegenerate(context)
+        // Return a random index to simulate change in UI if needed, or just 0
+        return (0..9).random()
+    }
 
     private fun getStartOfDay(): Long {
         val calendar = Calendar.getInstance()
@@ -69,501 +78,556 @@ object WallpaperManagerHelper {
         return calendar.timeInMillis
     }
     
-    private fun applyWallpaper(context: Context, index: Int) {
+    private fun generateAndSetWallpaper(context: Context, seed: Long) {
         try {
             val metrics = context.resources.displayMetrics
-            // Use a slightly smaller size if memory is an issue, but metrics is best for wallpaper
             val width = metrics.widthPixels
             val height = metrics.heightPixels
             
             val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
             
-            drawPattern(index, canvas, width, height)
+            WallpaperEngine.generate(canvas, width, height, seed)
             
             WallpaperManager.getInstance(context).setBitmap(bitmap)
-            
-            // Allow bitmap to be GC'd
-            // bitmap.recycle() // WallpaperManager copies it, but we should let it go.
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
+}
 
-    private fun drawPattern(index: Int, canvas: Canvas, w: Int, h: Int) {
-        val paint = Paint().apply { isAntiAlias = true }
+/**
+ * The Dynamic Motivational Wallpaper Engine v2
+ * "Unapologetic Focus Edition"
+ */
+private object WallpaperEngine {
+    
+    data class Palette(val background: Int, val accent1: Int, val accent2: Int, val text: Int, val isDark: Boolean)
 
-        // Use index to consistently seed background color variation
-        val seed = index * 54321L
+    // Families of generative art
+    private const val FAMILY_COUNT = 10
+
+    fun generate(canvas: Canvas, w: Int, h: Int, seed: Long) {
         val rng = Random(seed)
-
-        // VIBRANT & MIXED PALETTE
-        // User wants "mixed colors not on same palette", "bright", "contrast".
         
-        // 1. Background Color
-        val bgHue = (index * 137.508f + rng.nextFloat() * 20f) % 360f // Base hue
-        // High saturation for "bright" look, but maybe distinct brightness
-        val bgSat = 0.6f + (rng.nextFloat() * 0.4f) // 60-100% Saturation
-        val bgBri = 0.15f + (rng.nextFloat() * 0.35f) // 15-50% Brightness (Keep it somewhat dark for text contrast usually)
+        // 1. Generate Bold, Attractive Palette
+        val palette = generateDynamicPalette(rng)
         
-        val bgColor = Color.HSVToColor(floatArrayOf(bgHue, bgSat, bgBri))
-        canvas.drawColor(bgColor)
-
-        // 2. Pattern Color - High Contrast
-        // Use Split Complementary or Triadic for "not on same palette" look
-        val useTriadic = rng.nextBoolean()
-        val accentHue = if (useTriadic) (bgHue + 120f) % 360f else (bgHue + 180f) % 360f
+        canvas.drawColor(palette.background)
         
-        val accentSat = 0.8f + (rng.nextFloat() * 0.2f) // Very distinct
-        val accentBri = 0.7f + (rng.nextFloat() * 0.3f) // Bright patterns
-        val alpha = 80 // More visible patterns
-
-        paint.color = Color.HSVToColor(alpha, floatArrayOf(accentHue, accentSat, accentBri))
-        paint.style = Paint.Style.FILL
-
-        // INCREASED PATTERN VARIETY (12 patterns)
-        when(index % 12) {
-            0 -> drawGradientMesh(canvas, w, h, paint, rng)
-            1 -> drawGeometricConstellation(canvas, w, h, paint, rng)
-            2 -> drawSubtleWaves(canvas, w, h, paint, rng)
-            3 -> drawModernGrid(canvas, w, h, paint, rng)
-            4 -> drawRadialPulse(canvas, w, h, paint, rng)
-            5 -> drawHexagonHive(canvas, w, h, paint, rng)
-            6 -> drawAbstractShapes(canvas, w, h, paint, rng)
-            7 -> drawCyberLines(canvas, w, h, paint, rng)
-            8 -> drawSplatter(canvas, w, h, paint, rng)
-            9 -> drawCircuitBoard(canvas, w, h, paint, rng)
-            10 -> drawBauhaus(canvas, w, h, paint, rng)
-            11 -> drawFloatingBubbles(canvas, w, h, paint, rng)
+        // 2. Select a Random Geometric Family
+        // We select purely based on RNG, ensuring uniqueness every time
+        val familyIndex = rng.nextInt(FAMILY_COUNT)
+        
+        val paint = Paint().apply { isAntiAlias = true }
+        
+        when(familyIndex) {
+            0 -> drawBauhaus(canvas, w, h, paint, palette, rng)
+            1 -> drawCyberGrid(canvas, w, h, paint, palette, rng)
+            2 -> drawHexagonHive(canvas, w, h, paint, palette, rng)
+            3 -> drawIsometricBlocks(canvas, w, h, paint, palette, rng)
+            4 -> drawRadialFracture(canvas, w, h, paint, palette, rng)
+            5 -> drawBrutalistLines(canvas, w, h, paint, palette, rng)
+            6 -> drawWaveInterference(canvas, w, h, paint, palette, rng)
+            7 -> drawModularSquares(canvas, w, h, paint, palette, rng)
+            8 -> drawAbstractShards(canvas, w, h, paint, palette, rng)
+            9 -> drawMixedBag(canvas, w, h, paint, palette, rng) // New mixed mode
+            else -> drawBauhaus(canvas, w, h, paint, palette, rng)
         }
-
-        // Add Motivational Text Overlay
-        drawMotivationalText(canvas, w, h, rng, bgColor)
+        
+        // 3. Draw Quote Layer - "No Brainrot"
+        drawHardHittingQuote(canvas, w, h, palette, rng)
+        
+        // 4. Texture Overlay for polish
+        drawNoise(canvas, w, h, rng, palette.isDark)
+    }
+    
+    private fun drawNoise(c: Canvas, w: Int, h: Int, rng: Random, isDark: Boolean) {
+        val paint = Paint()
+        paint.color = if (isDark) Color.WHITE else Color.BLACK
+        paint.alpha = 5 // Very subtle
+        val dens = (w * h) / 1000 // Density
+        for(i in 0 until dens) {
+            c.drawPoint(rng.nextFloat() * w, rng.nextFloat() * h, paint)
+        }
     }
 
-    private fun drawMotivationalText(canvas: Canvas, w: Int, h: Int, rng: Random, bgColor: Int) {
-        val quotes = listOf(
-            "Comfort is a slow death.",
-            "They want you to fail. Don't.",
-            "Your potential is wasted on scrolling.",
-            "Build the empire, leave the noise.",
-            "Be a monster, then learn to control it.",
-            "Embrace the suck. Love the grind.",
-            "Mediocrity is a disease. Get cured.",
-            "Sleep faster. Work harder.",
-            "Pain is weakness leaving the body.",
-            "Discipline equals freedom.",
-            "No one is coming to save you.",
-            "Stop being a spectator in your own life.",
-            "Do it tired. Do it scared. Do it now.",
-            "Excuses sound best to the person making them.",
-            "Your future self is watching you right now.",
-            "Don't wish for it. Work for it.",
-            "Stay hungry. Stay foolish.",
-            "Action cures fear.",
-            "Focus on the solution, not the problem.",
-            "Make them regret doubting you.",
-            "Obsession beats talent.",
-            "Normalize being obsessed with your goals.",
-            "You are your only limit.",
-            "Dream big. Work hard. Stay humble.",
-            "Small progress is still progress.",
-            "Consistency is key.",
-            "Trust the process.",
-            "Create the life you can't wait to wake up to.",
-            "Focus on being productive instead of busy.",
-            "Don't stop until you're proud.",
-            "Prove them wrong.",
-            "Success is the best revenge.",
-            "Your only competition is who you were yesterday.",
-            "Mindset is everything.",
-            "Hustle until your haters ask if you're hiring.",
-            "Don't talk, just act. Don't say, just show.",
-            "The hard way is the right way.",
-            "If it was easy, everyone would do it.",
-            "Be the hardest worker in the room.",
-            "Don't decrease the goal. Increase the effort.",
-            "Your time is limited, don't waste it.",
-            "What you do today can improve all your tomorrows.",
-            "Success doesn't come to you, you go to it.",
-            "The secret of getting ahead is getting started.",
-            "It always seems impossible until it's done.",
-            "Don't count the days, make the days count.",
-            "The best way to predict the future is to create it.",
-            "Opportunities don't happen, you create them.",
-            "You become what you believe.",
-            "Believe you can and you're halfway there.",
-            "The only way to do great work is to love what you do.",
-            "Reject modernity, embrace masculinity.",
-            "Sugar is poison. Don't touch it.",
-            "Code represents your mind. Keep it clean.",
-            "A man who conquers himself is greater than one who conquers a thousand men in battle."
-        )
-
-        val quote = quotes[rng.nextInt(quotes.size)]
-
-        // Calculate contrasting text color
-        // If background is dark, use light text. If light, use dark.
-        // Since we generate mostly vibrant/dark backgrounds, white/off-white is usually safe,
-        // but let's be smart.
-        val bgLuminance = Color.luminance(bgColor)
-        val baseTextColor = if (bgLuminance > 0.5) Color.BLACK else Color.WHITE
+    private fun generateDynamicPalette(rng: Random): Palette {
+        // "Attractive bg color like red, orange, yellow"
+        // We use HSV to control saturation and brightness while allowing random hues.
         
-        // Add a subtle tint of the primary color to the text for harmony
-        val textHSV = FloatArray(3)
-        Color.colorToHSV(bgColor, textHSV)
-        textHSV[1] = 0.1f // Very low saturation (almost grey/white)
-        textHSV[2] = if (bgLuminance > 0.5) 0.2f else 0.95f // Value based on contrast needed
-        val harmonyTextColor = Color.HSVToColor(textHSV)
+        val hue = rng.nextFloat() * 360f
+        
+        // High saturation for "Attractive" look (70-95%)
+        val saturation = 0.7f + rng.nextFloat() * 0.25f
+        
+        // Brightness: Avoid pure black/white to look "designed". 
+        // 0.2 to 0.8 range.
+        val brightness = 0.2f + rng.nextFloat() * 0.6f
+        
+        val bgInt = Color.HSVToColor(floatArrayOf(hue, saturation, brightness))
+        
+        // Calculate Text Color based on Luminance for readability
+        val lum = ColorUtils.calculateLuminance(bgInt)
+        val isDark = lum < 0.5
+        val textInt = if (isDark) {
+            Color.argb(240, 255, 255, 255) // White-ish
+        } else {
+            Color.argb(230, 20, 20, 20) // Black-ish
+        }
+        
+        // Accents: 
+        // Triadic or Complementary to ensure they "match"
+        val accentHue1 = (hue + 120f + (rng.nextFloat() * 20 - 10)) % 360f // Triadic variation
+        val accentHue2 = (hue + 240f + (rng.nextFloat() * 20 - 10)) % 360f
+        
+        val a1 = Color.HSVToColor(floatArrayOf(accentHue1, 0.9f, 0.9f))
+        val a2 = Color.HSVToColor(floatArrayOf(accentHue2, 0.8f, 0.95f))
+        
+        return Palette(bgInt, a1, a2, textInt, isDark)
+    }
 
+    // --- PATTERNS ---
 
-        val textPaint = Paint().apply {
-            isAntiAlias = true
-            color = harmonyTextColor
-            textAlign = Paint.Align.CENTER
-            // Use sans-serif-condensed for a modern, sleek look or Serif for elegance
-            // Randomly choose between a few good fonts
-            typeface = if (rng.nextBoolean()) 
-                Typeface.create("sans-serif-condensed", Typeface.BOLD)
-            else 
-                Typeface.create(Typeface.SERIF, Typeface.BOLD_ITALIC)
+    private fun drawBauhaus(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        val count = rng.nextInt(3, 8)
+        for (i in 0 until count) {
+            p.color = if (rng.nextBoolean()) pal.accent1 else pal.accent2
+            p.alpha = rng.nextInt(80, 200)
+            p.style = Paint.Style.FILL
             
-            setShadowLayer(15f, 0f, 0f, if (bgLuminance > 0.5) Color.GRAY else Color.BLACK)
-        }
-
-        // Layout Logic
-        // Position: CENTER of the screen, as requested.
-        val centerX = w / 2f
-        
-        // Vertical Position:
-        // User requested: "text center of the mobile" but also "below date and time".
-        // Clock is top (taking ~25%). We place text at 55% to be clearly below but central.
-        val centerY = h * 0.55f
-
-        // Word Wrap Logic
-        val targetWidth = w * 0.8f // 80% of screen width
-        val words = quote.split(" ")
-        val lines = mutableListOf<String>()
-        var currentLine = ""
-        
-        // Dynamic text sizing based on length
-        var textSize = w * 0.065f // Baseline size
-        if (quote.length > 50) textSize *= 0.8f // Shrink for long quotes
-        if (quote.length < 20) textSize *= 1.2f // Grow for short impacts
-        textPaint.textSize = textSize
-
-        for (word in words) {
-            val testLine = if (currentLine.isEmpty()) word else "$currentLine $word"
-            if (textPaint.measureText(testLine) < targetWidth) {
-                currentLine = testLine
-            } else {
-                lines.add(currentLine)
-                currentLine = word
-            }
-        }
-        lines.add(currentLine)
-
-        // Draw Lines
-        val lineHeight = textPaint.descent() - textPaint.ascent()
-        val totalBlockHeight = lines.size * lineHeight
-        var drawY = centerY - (totalBlockHeight / 2f) + -textPaint.ascent() // V-Center text block at target Y
-
-        lines.forEach { line ->
-            canvas.drawText(line, centerX, drawY, textPaint)
-            drawY += lineHeight
-        }
-    }
-
-    private fun drawGradientMesh(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        // Large soft circles creating a mesh-like gradient effect
-        val count = 8
-        for(i in 0 until count) {
+            val shape = rng.nextInt(3)
             val cx = rng.nextFloat() * w
             val cy = rng.nextFloat() * h
-            val r = maxOf(w, h) * (0.3f + rng.nextFloat() * 0.4f)
-            c.drawCircle(cx, cy, r, p)
-        }
-    }
-
-    private fun drawGeometricConstellation(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        val points = mutableListOf<Pair<Float, Float>>()
-        val count = 40
-        p.style = Paint.Style.FILL
-        
-        // Generate points
-        for(i in 0 until count) {
-            points.add(Pair(rng.nextFloat() * w, rng.nextFloat() * h))
-        }
-        
-        // Draw connections if close enough
-        p.style = Paint.Style.STROKE
-        p.strokeWidth = 2f
-        val connectionDist = maxOf(w, h) * 0.15f
-        
-        for(i in 0 until count) {
-            for(j in i+1 until count) {
-                val (x1, y1) = points[i]
-                val (x2, y2) = points[j]
-                val dist = Math.hypot((x2-x1).toDouble(), (y2-y1).toDouble()).toFloat()
-                if(dist < connectionDist) {
-                    val alphaScale = (1.0f - (dist / connectionDist))
-                    p.alpha = (30 * alphaScale).toInt() // Fade out distant connections
-                    c.drawLine(x1, y1, x2, y2, p)
+            val size = rng.nextFloat() * (w / 2) + 100
+            
+            when(shape) {
+                0 -> c.drawCircle(cx, cy, size / 2, p)
+                1 -> { // Rect with potential rotation
+                    c.save()
+                    c.rotate(rng.nextFloat() * 90, cx, cy)
+                    c.drawRect(cx - size/2, cy - size/2, cx + size/2, cy + size/2, p)
+                    c.restore()
+                }
+                2 -> { // Arch
+                    c.drawArc(RectF(cx - size, cy - size, cx + size, cy + size), 0f, 180f, true, p)
                 }
             }
-        }
-    }
-
-    private fun drawSubtleWaves(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        p.style = Paint.Style.STROKE
-        p.strokeWidth = 3f
-        val path = Path()
-        
-        val lines = 15
-        val stepY = h / lines.toFloat()
-        
-        for (i in 0..lines + 2) {
-            val baseY = i * stepY
-            path.reset()
-            path.moveTo(0f, baseY)
-            
-            val amplitude = w * 0.05f
-            val frequency = rng.nextFloat() * 2 + 1
-            
-            for (x in 0..w step 20) {
-                 val relX = x / w.toFloat()
-                 val yOffset = kotlin.math.sin(relX * Math.PI * 2 * frequency + (i * 0.5f)) * amplitude
-                 path.lineTo(x.toFloat(), baseY + yOffset.toFloat())
-            }
-            c.drawPath(path, p)
         }
     }
     
-    private fun drawModernGrid(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
+    private fun drawMixedBag(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        // Combination of lines and shapes for maximum uniqueness
+        drawCyberGrid(c, w, h, p, pal, rng) // Base
+        drawAbstractShards(c, w, h, p, pal, rng) // Overlay
+    }
+
+    private fun drawCyberGrid(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        p.strokeWidth = 3f
+        p.color = pal.accent1
+        p.alpha = 50
         p.style = Paint.Style.STROKE
-        p.strokeWidth = 4f
-        val gridSize = maxOf(w, h) / 8f
         
-        // Isometric-ish pattern
-        for (y in -2..(h/gridSize).toInt() + 2) {
-            for (x in -2..(w/gridSize).toInt() + 2) {
-                if (rng.nextFloat() > 0.7f) { // Random sparsity
-                    val px = x * gridSize
-                    val py = y * gridSize
-                    
-                    // Randomly choose horizontal, vertical or diagonal elements
-                    when(rng.nextInt(3)) {
-                        0 -> c.drawLine(px, py, px + gridSize, py, p)
-                        1 -> c.drawLine(px, py, px, py + gridSize, p)
-                        2 -> c.drawLine(px, py + gridSize, px + gridSize, py, p)
-                    }
-                }
-            }
+        val gridSize = 120f
+        // Perspective twist?
+        c.save()
+        // c.rotate(10f, w/2f, h/2f) // Maybe too dizzying
+        
+        for (x in -200..w+200 step gridSize.toInt()) {
+            c.drawLine(x.toFloat(), 0f, x.toFloat(), h.toFloat(), p)
+        }
+        for (y in -200..h+200 step gridSize.toInt()) {
+             c.drawLine(0f, y.toFloat(), w.toFloat(), y.toFloat(), p)
+        }
+        c.restore()
+        
+        // Glitch Blocks
+        p.style = Paint.Style.FILL
+        for (i in 0 until 12) {
+            p.color = if (rng.nextBoolean()) pal.accent2 else pal.accent1
+            p.alpha = rng.nextInt(120, 220)
+            val bw = rng.nextInt(50, 400).toFloat()
+            val bh = rng.nextInt(20, 80).toFloat()
+            val bx = rng.nextFloat() * w
+            val by = rng.nextFloat() * h
+            c.drawRect(bx, by, bx + bw, by + bh, p)
         }
     }
 
-    private fun drawRadialPulse(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
+    private fun drawHexagonHive(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        val size = rng.nextInt(70, 180).toFloat()
+        val width = sqrt(3.0) * size
+        val height = 2 * size
+        val xStep = width
+        val yStep = height * 0.75
+        
+        var row = 0
+        for (y in -200..h + 200 step yStep.toInt()) {
+            val offset = if (row % 2 == 1) width / 2 else 0.0
+            for (x in -200..w + 200 step xStep.toInt()) {
+                if (rng.nextFloat() > 0.65) continue 
+                
+                val cx = x + offset
+                val cy = y.toDouble()
+                
+                // Fill
+                p.style = Paint.Style.FILL
+                p.color = ColorUtils.blendARGB(pal.background, pal.accent1, 0.1f)
+                drawHexagon(c, cx.toFloat(), cy.toFloat(), size * 0.95f, p)
+                
+                // Stroke
+                p.style = Paint.Style.STROKE
+                p.strokeWidth = 4f
+                p.color = pal.accent1
+                p.alpha = 80
+                drawHexagon(c, cx.toFloat(), cy.toFloat(), size * 0.95f, p)
+                
+                // Random Accent
+                if (rng.nextFloat() > 0.9) {
+                    p.style = Paint.Style.FILL
+                    p.color = pal.accent2
+                    p.alpha = 200
+                    drawHexagon(c, cx.toFloat(), cy.toFloat(), size * 0.95f, p)
+                }
+            }
+            row++
+        }
+    }
+    
+    private fun drawHexagon(c: Canvas, x: Float, y: Float, radius: Float, p: Paint) {
+        val path = Path()
+        for (i in 0 until 6) {
+            val angle = Math.toRadians((60 * i - 30).toDouble())
+            val px = x + radius * cos(angle).toFloat()
+            val py = y + radius * sin(angle).toFloat()
+            if (i == 0) path.moveTo(px, py) else path.lineTo(px, py)
+        }
+        path.close()
+        c.drawPath(path, p)
+    }
+
+    private fun drawIsometricBlocks(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+         val count = rng.nextInt(20, 50)
+         for (i in 0 until count) {
+             val x = rng.nextFloat() * w
+             val y = rng.nextFloat() * h
+             val s = rng.nextFloat() * 120 + 40
+             
+             drawCube(c, x, y, s, p, pal, rng)
+         }
+    }
+    
+    private fun drawCube(c: Canvas, x: Float, y: Float, size: Float, p: Paint, pal: Palette, rng: Random) {
+        // Top
+        val pathTop = Path().apply {
+            moveTo(x, y)
+            lineTo(x + size, y - size/2)
+            lineTo(x + 2*size, y)
+            lineTo(x + size, y + size/2)
+            close()
+        }
+        p.style = Paint.Style.FILL
+        p.color = pal.accent1
+        p.alpha = 220
+        c.drawPath(pathTop, p)
+        
+        // Right
+        val pathRight = Path().apply {
+            moveTo(x + size, y + size/2)
+            lineTo(x + 2*size, y)
+            lineTo(x + 2*size, y + size)
+            lineTo(x + size, y + size * 1.5f)
+            close()
+        }
+        p.color = pal.accent2
+        p.alpha = 180
+        c.drawPath(pathRight, p)
+        
+        // Left - Darker
+        val pathLeft = Path().apply {
+             moveTo(x, y)
+             lineTo(x + size, y + size/2)
+             lineTo(x + size, y + size * 1.5f)
+             lineTo(x, y + size)
+             close()
+        }
+        p.color = Color.BLACK 
+        p.alpha = 80
+        c.drawPath(pathLeft, p)
+    }
+
+    private fun drawRadialFracture(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        val cx = w / 2f
+        val cy = h / 2f
+        val maxR = max(w, h).toFloat()
+        val spikes = rng.nextInt(12, 40)
+        
+        p.style = Paint.Style.FILL
+        for (i in 0 until spikes) {
+            val angleStart = (360f / spikes) * i
+            val angleSwivel = (360f / spikes)
+            
+            p.color = if (i % 2 == 0) pal.accent1 else ColorUtils.blendARGB(pal.background, Color.BLACK, 0.2f)
+            if (rng.nextBoolean()) p.color = pal.accent2
+            p.alpha = rng.nextInt(40, 180)
+            
+            c.drawArc(
+                RectF(cx - maxR, cy - maxR, cx + maxR, cy + maxR), 
+                angleStart, angleSwivel, true, p
+            )
+        }
+        // Center Void or Sun
+        p.color = if (pal.isDark) Color.BLACK else Color.WHITE
+        p.alpha = 255
+        c.drawCircle(cx, cy, 150f, p)
+    }
+
+    private fun drawBrutalistLines(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.STROKE
-        p.strokeWidth = 2f
+        p.strokeCap = Paint.Cap.SQUARE
         
-        val cx = w * (0.2f + rng.nextFloat() * 0.6f)
-        val cy = h * (0.2f + rng.nextFloat() * 0.6f)
-        
-        val rings = 20
-        val maxR = maxOf(w, h) * 0.6f
-        
-        for(i in 1..rings) {
-            val r = (i / rings.toFloat()) * maxR
-            // Random dashing effect
-             if (rng.nextFloat() > 0.3f) {
-                 c.drawCircle(cx, cy, r, p)
+        val count = rng.nextInt(10, 25)
+        for (i in 0 until count) {
+             val thickness = rng.nextFloat() * 80 + 20
+             p.strokeWidth = thickness
+             p.color = if (rng.nextBoolean()) pal.accent1 else pal.text
+             p.alpha = rng.nextInt(60, 255)
+             
+             val x1 = rng.nextFloat() * w
+             val y1 = rng.nextFloat() * h
+             
+             if (rng.nextBoolean()) {
+                 c.drawLine(x1, 0f, x1, h.toFloat(), p)
+             } else {
+                 c.drawLine(0f, y1, w.toFloat(), y1, p)
              }
         }
+        
+        p.style = Paint.Style.FILL
+        val circleCount = rng.nextInt(1, 4)
+        for (j in 0 until circleCount) {
+            p.color = pal.accent2
+            c.drawCircle(rng.nextFloat() * w, rng.nextFloat() * h, rng.nextFloat() * 200, p)
+        }
     }
 
-    private fun drawHexagonHive(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        val radius = maxOf(w, h) * 0.08f
-        val xOffset = radius * 1.5f
-        val yOffset = radius * 1.732f // sqrt(3)
-        
+    private fun drawWaveInterference(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.STROKE
         p.strokeWidth = 3f
-
-        for (row in 0..(h/yOffset).toInt() + 1) {
-            for (col in 0..(w/xOffset).toInt() + 1) {
-                if (rng.nextFloat() > 0.4f) {
-                    val cx = col * xOffset + (if (row % 2 == 1) xOffset / 2f else 0f)
-                    val cy = row * yOffset
-                    
-                    val path = Path()
-                    for (i in 0..6) {
-                        val angle = Math.toRadians(60.0 * i - 30.0)
-                        val x = cx + radius * cos(angle).toFloat()
-                        val y = cy + radius * sin(angle).toFloat()
-                        if (i == 0) path.moveTo(x, y) else path.lineTo(x, y)
-                    }
-                    c.drawPath(path, p)
-                }
-            }
-        }
-    }
-
-    private fun drawAbstractShapes(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        p.style = Paint.Style.FILL
-        val count = 15
-        val originalColor = p.color
-        val hsv = FloatArray(3)
-        Color.colorToHSV(originalColor, hsv)
-
-        for(i in 0 until count) {
-            // Vary color slightly for each shape
-            hsv[0] = (hsv[0] + rng.nextFloat() * 40 - 20) % 360f 
-            p.color = Color.HSVToColor(100, hsv) // Higher alpha
-
-            val cx = rng.nextFloat() * w
-            val cy = rng.nextFloat() * h
-            val size = w * (0.1f + rng.nextFloat() * 0.3f)
-
-            when(rng.nextInt(3)) {
-                0 -> c.drawCircle(cx, cy, size/2, p)
-                1 -> c.drawRect(cx - size/2, cy - size/2, cx + size/2, cy + size/2, p)
-                2 -> {
-                    val path = Path()
-                    path.moveTo(cx, cy - size/2)
-                    path.lineTo(cx + size/2, cy + size/2)
-                    path.lineTo(cx - size/2, cy + size/2)
-                    path.close()
-                    c.drawPath(path, p)
-                }
-            }
-        }
-        p.color = originalColor // Restore
-    }
-
-    private fun drawCyberLines(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        p.style = Paint.Style.STROKE
-        p.strokeWidth = 4f
-        val lineCount = 25
+        val lines = 60
+        val step = h / lines.toFloat()
         
-        for(i in 0 until lineCount) {
-            val startX = rng.nextFloat() * w
-            val startY = rng.nextFloat() * h
-            val length = w * (0.2f + rng.nextFloat() * 0.6f)
-            val angle = if(rng.nextBoolean()) 45f else -45f
-            
-            val endX = startX + length * cos(Math.toRadians(angle.toDouble())).toFloat()
-            val endY = startY + length * sin(Math.toRadians(angle.toDouble())).toFloat()
-            
-            p.alpha = 50 + rng.nextInt(100)
-            c.drawLine(startX, startY, endX, endY, p)
-            
-            // Decorative dot at start
-            p.style = Paint.Style.FILL
-            c.drawCircle(startX, startY, 6f, p)
-            p.style = Paint.Style.STROKE
-        }
-    }
-
-    private fun drawSplatter(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        p.style = Paint.Style.FILL
-        val splats = 8
-        
-        for(i in 0 until splats) {
-            val cx = rng.nextFloat() * w
-            val cy = rng.nextFloat() * h
-            val baseR = w * (0.05f + rng.nextFloat() * 0.1f)
-            
-            // Main blob
-            c.drawCircle(cx, cy, baseR, p)
-            
-            // Satellites
-            val satellites = 5 + rng.nextInt(10)
-            for(j in 0 until satellites) {
-                val dist = baseR * (1.2f + rng.nextFloat())
-                val angle = rng.nextFloat() * Math.PI * 2
-                val sx = cx + dist * cos(angle).toFloat()
-                val sy = cy + dist * sin(angle).toFloat()
-                c.drawCircle(sx, sy, baseR * (0.1f + rng.nextFloat() * 0.3f), p)
-            }
-        }
-    }
-
-    private fun drawCircuitBoard(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        p.style = Paint.Style.STROKE
-        p.strokeWidth = 3f
-        val traces = 30
-        
-        for(i in 0 until traces) {
-            var cx = rng.nextFloat() * w
-            var cy = rng.nextFloat() * h
-            val segments = 3 + rng.nextInt(4)
+        for (i in 0..lines) {
             val path = Path()
-            path.moveTo(cx, cy)
+            val yBase = i * step
             
-            // Start dot
-            p.style = Paint.Style.FILL
-            c.drawCircle(cx, cy, 5f, p)
-            p.style = Paint.Style.STROKE
+            p.color = pal.accent1 // Use accent instead of white
+            p.alpha = 40 + (i * 215 / lines).coerceAtMost(215)
             
-            for(j in 0 until segments) {
-                val len = w * (0.05f + rng.nextFloat() * 0.1f)
-                val dir = rng.nextInt(4) // 0:R, 1:D, 2:L, 3:U
-                when(dir) {
-                    0 -> cx += len
-                    1 -> cy += len
-                    2 -> cx -= len
-                    3 -> cy -= len
-                }
-                path.lineTo(cx, cy)
+            path.moveTo(0f, yBase)
+            val freq = 0.01f + rng.nextFloat() * 0.02f
+            val phase = rng.nextFloat() * 10
+            
+            for (x in 0..w step 25) {
+                 val amp = 80f + rng.nextFloat() * 40f
+                 val y = yBase + sin(x * freq + i * 0.1f + phase) * amp
+                 path.lineTo(x.toFloat(), y.toFloat())
             }
             c.drawPath(path, p)
-             // End dot
-            p.style = Paint.Style.FILL
-            c.drawCircle(cx, cy, 5f, p)
-            p.style = Paint.Style.STROKE
         }
     }
 
-    private fun drawBauhaus(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        // Geometric primitives in a grid-less composition
-        val elements = 12
-        p.style = Paint.Style.FILL
-        
-        for(i in 0 until elements) {
-             val cx = rng.nextFloat() * w
-             val cy = rng.nextFloat() * h
-             val size = w * (0.1f + rng.nextFloat() * 0.4f)
-             
-             // Randomly modify alpha for overlay effect
-             p.alpha = 50 + rng.nextInt(100)
-             
-             when(rng.nextInt(4)) {
-                 0 -> c.drawRect(cx, cy, cx + size, cy + size, p) // Square
-                 1 -> c.drawCircle(cx, cy, size/2, p) // Circle
-                 2 -> c.drawRect(cx, cy, cx + size/4, cy + size*2, p) // Tall thin rect
-                 3 -> c.drawArc(RectF(cx, cy, cx+size, cy+size), 0f, 180f, true, p) // Semi-circle
+    private fun drawModularSquares(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+         val cols = rng.nextInt(4, 10)
+         val size = w / cols.toFloat()
+         val rows = (h / size).toInt() + 1
+         
+         for (r in 0..rows) {
+             for (col in 0..cols) {
+                 if (rng.nextFloat() > 0.55) continue 
+                 
+                 val x = col * size
+                 val y = r * size
+                 val gap = size * 0.1f
+                 
+                 p.style = Paint.Style.FILL
+                 p.color = if (rng.nextFloat() > 0.7) pal.accent2 else pal.accent1
+                 p.alpha = rng.nextInt(60, 180)
+                 
+                 val rect = RectF(x + gap, y + gap, x + size - gap, y + size - gap)
+                 c.drawRoundRect(rect, 25f, 25f, p)
+                 
+                 if (rng.nextFloat() > 0.6) {
+                     p.strokeWidth = 5f
+                     p.style = Paint.Style.STROKE
+                     p.color = pal.text
+                     p.alpha = 100
+                     c.drawLine(x + size/2, y + size/2, x + size*1.5f, y + size/2, p)
+                 }
              }
-        }
+         }
     }
 
-    private fun drawFloatingBubbles(c: Canvas, w: Int, h: Int, p: Paint, rng: Random) {
-        val bubbles = 40
-        p.style = Paint.Style.STROKE
-        p.strokeWidth = 2f
-        
-        for(i in 0 until bubbles) {
+    private fun drawAbstractShards(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        val count = rng.nextInt(15, 30)
+        p.style = Paint.Style.FILL
+        for (i in 0 until count) {
+            val path = Path()
             val cx = rng.nextFloat() * w
             val cy = rng.nextFloat() * h
-            val r = w * (0.02f + rng.nextFloat() * 0.08f)
             
-            c.drawCircle(cx, cy, r, p)
+            path.moveTo(cx, cy)
+            path.lineTo(cx + rng.nextInt(-400, 400), cy + rng.nextInt(-400, 400))
+            path.lineTo(cx + rng.nextInt(-400, 400), cy + rng.nextInt(-400, 400))
+            path.close()
             
-            // Highlight shine
-            val shinePath = Path()
-            shinePath.addArc(RectF(cx-r*0.7f, cy-r*0.7f, cx+r*0.3f, cy+r*0.3f), 180f, 90f)
-            c.drawPath(shinePath, p)
+            p.color = if (rng.nextBoolean()) pal.accent1 else pal.accent2
+            p.alpha = rng.nextInt(30, 120)
+            c.drawPath(path, p)
         }
     }
 
-    // Deprecated helpers removed or replaced above
+
+    // --- QUOTE ENGINE ---
+    
+    private val QUOTES = listOf(
+        // Classic Discipline
+        "COMFORT IS A SLOW DEATH.",
+        "THEY WANT YOU TO FAIL.\nDON'T.",
+        "BUILD THE EMPIRE,\nLEAVE THE NOISE.",
+        "BE A MONSTER,\nTHEN LEARN TO CONTROL IT.",
+        "EMBRACE THE SUCK.",
+        "MEDIOCRITY IS A DISEASE.\nGET CURED.",
+        "SLEEP FASTER.",
+        "PAIN IS WEAKNESS\nLEAVING THE BODY.",
+        "DISCIPLINE EQUALS FREEDOM.",
+        "NO ONE IS COMING\nTO SAVE YOU.",
+        
+        // Anti-Brainrot / Focus
+        "NO INSTAGRAM.",
+        "NO TIKTOK.\nNO BRAINROT.",
+        "REJECT DEGENERACY.",
+        "SCROLLING IS A TRAP.",
+        "CONSUME LESS.\nCREATE MORE.",
+        "YOUR PHONE IS A TOOL,\nNOT A DRUG.",
+        "BREAK THE LOOP.",
+        "REALITY IS BETTER\nTHAN THE FEED.",
+        "DOPAMINE DETOX.\nSTART NOW.",
+        "FOCUS ON YOUR GOAL.",
+        
+        // Hard Work / LeetCode
+        "LEETCODE OR STARVE.",
+        "CODE REPRESENTS YOUR MIND.\nKEEP IT CLEAN.",
+        "10X ENGINEER OR NOTHING.",
+        "SHIP IT.",
+        "DEBUG YOUR LIFE.",
+        "COMPILE SUCCESS.",
+        "WHILE(ALIVE) {\n  GRIND();\n}",
+        "DON'T BOTHER OTHERS.\nDO YOUR WORK.",
+        "STAY HUNGRY.",
+        "OBSESSION BEATS TALENT.",
+        
+        // Health / Fitness / Life
+        "F*CK PROCRASTINATION.",
+        "NO FAP.\nRETAIN POWER.",
+        "BE A GENTLEMAN.",
+        "LIFT HEAVY STONES.",
+        "WORKOUT COMPLETE?",
+        "HEALTH IS WEALTH.",
+        "EAT CLEAN.\nTRAIN DIRTY.",
+        "SUGAR IS POISON.",
+        "REJECT MODERNITY,\nEMBRACE MASCULINITY.",
+        "STRONG BODY,\nSTRONG MIND.",
+        
+        // Stoic / Hard Hitting
+        "MEMENTO MORI.",
+        "YOU ARE DYING.",
+        "DO IT SCARED.",
+        "EXCUSES ARE FOR LOSERS.",
+        "YOUR FUTURE SELF IS WATCHING.",
+        "DON'T WISH FOR IT.\nWORK FOR IT.",
+        "ACTION CURES FEAR.",
+        "MAKE THEM REGRET DOUBTING YOU.",
+        "YOU ARE YOUR ONLY LIMIT.",
+        "TRUST THE PROCESS.",
+        "PROVE THEM WRONG.",
+        "SUCCESS IS THE BEST REVENGE.",
+        "MINDSET IS EVERYTHING.",
+        "THE HARD WAY IS THE RIGHT WAY.",
+        "IF IT WAS EASY,\nEVERYONE WOULD DO IT.",
+        "INCREASE THE EFFORT.",
+        "YOUR TIME IS LIMITED.",
+        "STOP BEING A SPECTATOR.",
+        "LEVEL UP IRL."
+    )
+
+    private fun drawHardHittingQuote(c: Canvas, w: Int, h: Int, pal: Palette, rng: Random) {
+        val quote = QUOTES.random(rng)
+        
+        val textPaint = TextPaint().apply {
+            isAntiAlias = true
+            color = pal.text
+            textSize = 80f 
+            typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
+            if (pal.isDark) {
+                setShadowLayer(15f, 0f, 0f, Color.BLACK)
+            } else {
+                setShadowLayer(8f, 0f, 0f, Color.WHITE)
+            }
+            letterSpacing = 0.04f
+        }
+        
+        // Check fit
+        if (w < 900) textPaint.textSize = 65f
+        if (quote.length > 60) textPaint.textSize = 55f
+        
+        // Dynamic Layout
+        // 0: Top-Left, 1: Top-Right, 2: Bottom-Left, 3: Bottom-Right
+        val quadrant = rng.nextInt(4)
+        val margin = 100
+        val maxTextWidth = w - (margin * 2)
+        
+        val alignment = if (quadrant == 1 || quadrant == 3) Layout.Alignment.ALIGN_OPPOSITE else Layout.Alignment.ALIGN_NORMAL
+        
+        val builder = StaticLayout.Builder.obtain(quote, 0, quote.length, textPaint, maxTextWidth)
+            .setAlignment(alignment)
+            .setLineSpacing(0f, 1.1f)
+            .setIncludePad(false)
+            
+        val staticLayout = builder.build()
+        val textH = staticLayout.height
+        
+        var x = margin.toFloat()
+        var y = margin.toFloat()
+        
+        when(quadrant) {
+            0 -> { // Top-Left
+                y = margin.toFloat() + 200 // Clear clock area
+            }
+            1 -> { // Top-Right
+                y = margin.toFloat() + 200
+            }
+            2 -> { // Bottom-Left
+                y = (h - textH - margin * 3).toFloat()
+            }
+            3 -> { // Bottom-Right
+                y = (h - textH - margin * 3).toFloat()
+            }
+        }
+        
+        c.save()
+        c.translate(x, y)
+        
+        // Vertical Accent Bar
+        val barPaint = Paint().apply { color = pal.accent1; strokeWidth = 12f }
+        // If aligned right (quadrant 1,3), bar is on the right
+        if (quadrant == 1 || quadrant == 3) {
+            c.drawLine(w - margin * 2f + 40f, 0f, w - margin * 2f + 40f, textH.toFloat(), barPaint)
+        } else {
+            c.drawLine(-40f, 0f, -40f, textH.toFloat(), barPaint)
+        }
+
+        staticLayout.draw(c)
+        c.restore()
+    }
 }

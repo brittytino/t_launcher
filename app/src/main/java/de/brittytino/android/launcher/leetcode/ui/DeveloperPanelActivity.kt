@@ -52,6 +52,10 @@ import java.time.Instant
 import androidx.compose.foundation.Canvas
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.preference.PreferenceManager
+import androidx.compose.runtime.saveable.rememberSaveable
+import org.json.JSONObject
+
+import de.brittytino.android.launcher.ui.settings.SettingsTheme
 
 class DeveloperPanelActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,29 +64,15 @@ class DeveloperPanelActivity : ComponentActivity() {
         val factory = DeveloperPanelViewModelFactory(application as Application)
         val viewModel = androidx.lifecycle.ViewModelProvider(this, factory).get(DeveloperPanelViewModel::class.java)
 
-        // Check standard preferences for username from Settings
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val prefUsername = prefs.getString("leetcode_username", null)
-        
-        if (!prefUsername.isNullOrBlank()) {
-            viewModel.sync(prefUsername, true)
-        }
-        
+        // Sync logic is now handled by the ViewModel's init block based on data staleness.
+        // We only check if the feature is enabled.
         if (!LauncherPreferences.leetcode().enabled()) {
             finish()
             return
         }
 
         setContent {
-            val darkColors = darkColorScheme(
-                background = Color(0xFF121212),
-                surface = Color(0xFF1E1E1E),
-                onBackground = Color.White,
-                onSurface = Color.White,
-                primary = Color(0xFFFFA116),
-                secondary = Color(0xFF434343)
-            )
-            MaterialTheme(colorScheme = darkColors) {
+            SettingsTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -106,6 +96,17 @@ fun DeveloperPanelScreen(viewModel: DeveloperPanelViewModel) {
     val loading by viewModel.loadingState.collectAsState()
     val error by viewModel.errorState.collectAsState()
     
+    // Auto-save username to preferences when profile is loaded
+    val context = LocalContext.current
+    LaunchedEffect(myProfile) {
+        myProfile?.let { profile ->
+            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+            if (prefs.getString("leetcode_username", null) != profile.username) {
+                prefs.edit().putString("leetcode_username", profile.username).apply()
+            }
+        }
+    }
+    
     var showFriendDialog by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
@@ -115,10 +116,10 @@ fun DeveloperPanelScreen(viewModel: DeveloperPanelViewModel) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Dev Panel", style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
+            Text("Dev Panel", style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.onBackground)
             if (myProfile != null) {
                IconButton(onClick = { viewModel.sync(myProfile!!.username, true) }) {
-                   Icon(Icons.Default.Refresh, contentDescription = "Refresh", tint = Color.LightGray)
+                   Icon(Icons.Default.Refresh, contentDescription = "Refresh", tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))
                }
             }
         }
@@ -163,10 +164,10 @@ fun DeveloperPanelScreen(viewModel: DeveloperPanelViewModel) {
 
                 item {
                     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(top = 16.dp)) {
-                        Text("Your Friends", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = Color.White)
+                        Text("Your Friends", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.onBackground)
                         Spacer(modifier = Modifier.weight(1f))
                         IconButton(onClick = { showFriendDialog = true }) {
-                            Icon(Icons.Default.Add, contentDescription = "Add Friend", tint = Color.White)
+                            Icon(Icons.Default.Add, contentDescription = "Add Friend", tint = MaterialTheme.colorScheme.onBackground)
                         }
                     }
                 }
@@ -198,7 +199,7 @@ fun DeveloperPanelScreen(viewModel: DeveloperPanelViewModel) {
 
 @Composable
 fun SetupScreen(onSync: (String) -> Unit, loading: Boolean) {
-    var username by remember { mutableStateOf("") }
+    var username by rememberSaveable { mutableStateOf("") }
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -211,8 +212,8 @@ fun SetupScreen(onSync: (String) -> Unit, loading: Boolean) {
                 tint = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.height(24.dp))
-            Text("Welcome to Developer Panel", style = MaterialTheme.typography.headlineSmall, color = Color.White)
-            Text("Track your LeetCode consistency", style = MaterialTheme.typography.bodyMedium, color = Color.Gray)
+            Text("Welcome to Developer Panel", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onBackground)
+            Text("Track your LeetCode consistency", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f))
             
             Spacer(modifier = Modifier.height(32.dp))
             
@@ -224,9 +225,10 @@ fun SetupScreen(onSync: (String) -> Unit, loading: Boolean) {
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    unfocusedBorderColor = Color.DarkGray,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.LightGray
+                    unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                    cursorColor = MaterialTheme.colorScheme.primary
                 )
             )
             Spacer(modifier = Modifier.height(24.dp))
@@ -238,9 +240,9 @@ fun SetupScreen(onSync: (String) -> Unit, loading: Boolean) {
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
             ) {
                 if (loading) {
-                    CircularProgressIndicator(modifier = Modifier.size(24.dp), color = Color.Black)
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.onPrimary)
                 } else {
-                    Text("Connect Profile", color = Color.Black, fontWeight = FontWeight.Bold)
+                    Text("Connect Profile", color = MaterialTheme.colorScheme.onPrimary, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -290,33 +292,33 @@ fun ProfileCard(user: LeetCodeUserEntity, isMe: Boolean, onRefresh: (() -> Unit)
                         .crossfade(true)
                         .build(),
                     contentDescription = "Avatar",
-                    modifier = Modifier.size(56.dp).background(Color(0xFF2C2C2C), RoundedCornerShape(12.dp)).padding(2.dp)
+                    modifier = Modifier.size(56.dp).background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(12.dp)).padding(2.dp)
                 )
                 
                 Spacer(modifier = Modifier.width(16.dp))
                 
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(text = user.username, style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold), color = Color.White)
+                    Text(text = user.username, style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.onSurface)
                     user.realName?.let {
-                        Text(text = it, style = MaterialTheme.typography.bodyMedium, color = Color.Gray)
+                        Text(text = it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
                     }
                 }
                 
                 Surface(
-                    color = Color(0xFF2C2C2C),
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     shape = RoundedCornerShape(8.dp)
                 ) {
                     Text(
                         text = if(user.ranking > 0) "#${user.ranking}" else "N/A",
                         modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                         style = MaterialTheme.typography.labelMedium,
-                        color = Color.LightGray
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 
                 if (onDelete != null) {
                    IconButton(onClick = onDelete) {
-                       Icon(Icons.Default.Delete, contentDescription = "Remove", tint = Color.Gray)
+                       Icon(Icons.Default.Delete, contentDescription = "Remove", tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
                    }
                 }
             }
@@ -341,9 +343,9 @@ fun ProfileCard(user: LeetCodeUserEntity, isMe: Boolean, onRefresh: (() -> Unit)
                         Text(
                             text = "${user.totalSolved}",
                             style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onSurface
                         )
-                        Text("Solved", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+                        Text("Solved", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
                     }
                 }
                 
@@ -359,13 +361,14 @@ fun ProfileCard(user: LeetCodeUserEntity, isMe: Boolean, onRefresh: (() -> Unit)
 
 @Composable
 fun CircularProgressChart(easy: Int, medium: Int, hard: Int, total: Int) {
-    val totalQuestions = 3000f // Approximate total, or use what the API returns if available. 
+    val totalQuestions = 3500f // Approximate total questions on LeetCode
     // Usually the API returns totalQuestions. For now we use solved as the circle parts relative to each other?
     // The image shows a full ring. Let's assume the ring represents the proportion of solved relative to total.
     // Or just the distribution.
     
     // To match the image style: A background ring, and then colored arcs.
     val strokeWidth = 8.dp
+    val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
     
     Canvas(modifier = Modifier.fillMaxSize()) {
         val diameter = size.minDimension
@@ -374,7 +377,7 @@ fun CircularProgressChart(easy: Int, medium: Int, hard: Int, total: Int) {
         
         // Background track
         drawCircle(
-            color = Color(0xFF2C2C2C), 
+            color = trackColor, 
             style = androidx.compose.ui.graphics.drawscope.Stroke(width = stroke)
         )
         
@@ -426,7 +429,7 @@ fun CircularProgressChart(easy: Int, medium: Int, hard: Int, total: Int) {
 @Composable
 fun StatItem(label: String, value: String, color: Color) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(label, style = MaterialTheme.typography.labelMedium, color = Color.Gray)
+        Text(label, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
         Text(value, style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = color)
     }
 }
@@ -440,7 +443,7 @@ fun HeatmapCard(json: String) {
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
-            Text("Submission Heatmap", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = Color.White)
+            Text("Submission Heatmap", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.onSurface)
             Spacer(modifier = Modifier.height(16.dp))
             Heatmap(json)
         }
@@ -467,6 +470,13 @@ fun Heatmap(json: String) {
         list
     }
     
+    // Normalize timestamps to LocalDate for matching (optimized map)
+    val submissionDates = remember(submissions) {
+        submissions.entries.associate { (ts, count) ->
+            Instant.ofEpochSecond(ts).atZone(ZoneId.systemDefault()).toLocalDate() to count
+        }
+    }
+    
     var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
     var selectedCount by remember { mutableStateOf(0) }
 
@@ -480,12 +490,9 @@ fun Heatmap(json: String) {
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     weekChunk.forEach { date ->
                          // Match count
-                         val count = submissions.filterKeys { 
-                             val keyDate = Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()).toLocalDate()
-                             keyDate == date
-                         }.values.sum()
+                         val count = submissionDates[date] ?: 0
                          
-                         val color = calculateHeatmapColor(count)
+                         val color = calculateHeatmapColor(count, MaterialTheme.colorScheme.surfaceVariant)
                          
                          Box(
                             modifier = Modifier
@@ -508,15 +515,15 @@ fun Heatmap(json: String) {
                 onDismissRequest = { selectedDate = null }
             ) {
                 Surface(
-                   color = Color(0xFF2C2C2C),
-                   contentColor = Color.White,
+                   color = MaterialTheme.colorScheme.inverseSurface,
+                   contentColor = MaterialTheme.colorScheme.inverseOnSurface,
                    shape = RoundedCornerShape(4.dp),
                    shadowElevation = 4.dp,
                    modifier = Modifier.padding(bottom = 8.dp)
                 ) {
                     Column(modifier = Modifier.padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Text("${selectedCount} submissions", style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold))
-                        Text(selectedDate.toString(), style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+                        Text(selectedDate.toString(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.inverseOnSurface.copy(alpha = 0.7f))
                     }
                 }
             }
@@ -527,22 +534,22 @@ fun Heatmap(json: String) {
     
     // Legend
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
-        Text("Less", style = MaterialTheme.typography.labelSmall, color = Color.Gray, modifier = Modifier.padding(end = 4.dp))
+        Text("Less", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), modifier = Modifier.padding(end = 4.dp))
         listOf(0, 2, 5, 8, 12).forEach { 
              Box(
                 modifier = Modifier
                     .padding(horizontal = 2.dp)
                     .size(10.dp)
-                    .background(calculateHeatmapColor(it), RoundedCornerShape(2.dp))
+                    .background(calculateHeatmapColor(it, MaterialTheme.colorScheme.surfaceVariant), RoundedCornerShape(2.dp))
             )
         }
-        Text("More", style = MaterialTheme.typography.labelSmall, color = Color.Gray, modifier = Modifier.padding(start = 4.dp))
+        Text("More", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), modifier = Modifier.padding(start = 4.dp))
     }
 }
 
-fun calculateHeatmapColor(count: Int): Color {
+fun calculateHeatmapColor(count: Int, emptyColor: Color): Color {
     return when {
-        count == 0 -> Color(0xFF2C2C2C)
+        count == 0 -> emptyColor
         count in 1..2 -> Color(0xFF382800) // Deep Brown
         count in 3..5 -> Color(0xFFD99000) // Medium Orange
         count in 6..9 -> Color(0xFFFFC01E) // Gold
@@ -553,6 +560,11 @@ fun calculateHeatmapColor(count: Int): Color {
 @Composable
 fun DailyProblemCard(problem: DailyProblemEntity) {
     val surfaceColor = MaterialTheme.colorScheme.surface
+    val date = try {
+        LocalDate.parse(problem.date)
+    } catch (e: Exception) {
+        LocalDate.now()
+    }
     Card(
         colors = CardDefaults.cardColors(containerColor = surfaceColor),
         shape = RoundedCornerShape(16.dp),
@@ -645,7 +657,7 @@ fun DailyProblemCard(problem: DailyProblemEntity) {
                 ) {
                     Text("Solve Now", color = Color.Black, fontWeight = FontWeight.Bold)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Icon(Icons.Default.ArrowForward, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
+                    Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                 }
             }
         }
@@ -654,14 +666,15 @@ fun DailyProblemCard(problem: DailyProblemEntity) {
 
 fun parseSubmissionCalendar(json: String): Map<Long, Int> {
     return try {
-        val clean = json.trim().removePrefix("{").removeSuffix("}")
-        if (clean.isEmpty()) return emptyMap()
-        clean.split(",").associate {
-            val parts = it.split(":")
-            val timestamp = parts[0].trim().removeSurrounding("\"").toLong()
-            val count = parts[1].trim().toInt()
-            timestamp to count
+        val jsonObject = JSONObject(json)
+        val map = mutableMapOf<Long, Int>()
+        val keys = jsonObject.keys()
+        while (keys.hasNext()) {
+            val key = keys.next()
+            // Key is unix timestamp string
+            map[key.toLong()] = jsonObject.getInt(key)
         }
+        map
     } catch (e: Exception) {
         emptyMap()
     }

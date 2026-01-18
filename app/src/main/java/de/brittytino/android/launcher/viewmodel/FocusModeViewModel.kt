@@ -45,6 +45,7 @@ class FocusModeViewModel(application: Application) : AndroidViewModel(applicatio
     private fun checkPauseExpiration() {
         if (repository.focusState == FocusModeRepository.FocusState.PAUSED) {
             val elapsed = System.currentTimeMillis() - repository.lastPauseTimestamp
+            // stored pauseTimeRemaining is the balance available at start of this pause session
             if (elapsed >= repository.pauseTimeRemaining) {
                  repository.pauseTimeRemaining = 0
                  // Auto-resume if time expired
@@ -60,8 +61,8 @@ class FocusModeViewModel(application: Application) : AndroidViewModel(applicatio
         activePauseTimer?.cancel()
         activePauseTimer = object : CountDownTimer(duration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                 repository.pauseTimeRemaining = millisUntilFinished
-                 // Update state periodically if needed, but for now we just rely on end
+                 // Update memory state only to avoid IO thrashing
+                 _focusState.value = _focusState.value.copy(pauseTimeRemaining = millisUntilFinished)
             }
             override fun onFinish() {
                 resumeFocus()
@@ -120,11 +121,8 @@ class FocusModeViewModel(application: Application) : AndroidViewModel(applicatio
         
         repository.pauseTimeRemaining = 120000L // Reset to 2 minutes
         
-        // Ensure last pause timestamp is far in the past so first pause is allowed immediately? or strict?
-        // Requirement: "Focus may only be paused once every 15 minutes." 
-        // If I start fresh, I should probably allow pause.
-        // If I just finished a session where I paused, and I start again immediately... 
-        // Strict: "Persist... compare against current time". So it carries over sessions.
+        // Reset pause timestamp so new session isn't blocked by previous session's cooldown
+        repository.lastPauseTimestamp = 0
         
         repository.focusState = FocusModeRepository.FocusState.ACTIVE
         refreshState()

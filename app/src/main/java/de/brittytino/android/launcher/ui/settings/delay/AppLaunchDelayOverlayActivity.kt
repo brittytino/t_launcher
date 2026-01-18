@@ -24,6 +24,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import de.brittytino.android.launcher.Application
 import de.brittytino.android.launcher.R
 import de.brittytino.android.launcher.apps.AbstractDetailedAppInfo
@@ -32,6 +38,8 @@ import de.brittytino.android.launcher.ui.UIObjectActivity
 import kotlinx.coroutines.delay
 
 import androidx.compose.runtime.saveable.rememberSaveable
+
+import de.brittytino.android.launcher.ui.settings.SettingsTheme
 
 class AppLaunchDelayOverlayActivity : UIObjectActivity() {
 
@@ -54,7 +62,7 @@ class AppLaunchDelayOverlayActivity : UIObjectActivity() {
         // UIObjectActivity handles back press? We can override onBackPressed or use BackHandler in Compose.
 
         setContent {
-            MaterialTheme(colorScheme = darkColorScheme()) {
+            SettingsTheme {
                 DelayOverlayScreen(
                     packageName = packageName,
                     initialDelaySeconds = delaySeconds,
@@ -101,12 +109,9 @@ fun DelayOverlayScreen(
 ) {
     var timeLeft by rememberSaveable { mutableStateOf(initialDelaySeconds) }
     
-    // Safety: App Icon Loading
     val context = LocalContext.current
     val app = context.applicationContext as Application
     val appInfo = remember(packageName) {
-        // This is inefficient but we need to find the app info.
-        // Assuming apps are loaded.
         app.apps.value?.find { (it.getRawInfo() as? AppInfo)?.packageName == packageName }
     }
 
@@ -117,71 +122,102 @@ fun DelayOverlayScreen(
         }
     }
 
+    val progress by animateFloatAsState(
+        targetValue = if (initialDelaySeconds > 0) timeLeft.toFloat() / initialDelaySeconds.toFloat() else 0f,
+        animationSpec = tween(durationMillis = 1000, easing = androidx.compose.animation.core.LinearEasing),
+        label = "ProgressAnimation"
+    )
+    
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.95f)),
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         Card(
             modifier = Modifier
-                .padding(32.dp)
+                .padding(24.dp)
                 .fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFF1E1E1E))
+            shape = RoundedCornerShape(28.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
         ) {
             Column(
-                modifier = Modifier.padding(32.dp),
+                modifier = Modifier
+                    .padding(vertical = 40.dp, horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(24.dp)
+                verticalArrangement = Arrangement.spacedBy(32.dp)
             ) {
-                // Icon
-                if (appInfo != null) {
-                    Image(
-                        bitmap = appInfo.getIcon(context).toBitmap().asImageBitmap(),
-                        contentDescription = null,
-                        modifier = Modifier.size(64.dp)
-                    )
+                // Header: App Icon & Name
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    if (appInfo != null) {
+                        Image(
+                            bitmap = appInfo.getIcon(context).toBitmap().asImageBitmap(),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(72.dp)
+                                .clip(CircleShape)
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = appInfo.getLabel(),
+                            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.onSurface,
+                            textAlign = TextAlign.Center
+                        )
+                    } else {
+                         Box(modifier = Modifier.size(72.dp).background(MaterialTheme.colorScheme.onSurface.copy(alpha=0.2f), CircleShape))
+                    }
+                    
+                    Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = appInfo.getLabel(),
-                        style = MaterialTheme.typography.titleLarge,
-                        color = Color.White
+                        text = "Take a breath.",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha=0.6f)
                     )
-                } else {
-                     // Fallback
-                     Text(text = "App", style = MaterialTheme.typography.titleLarge)
                 }
 
-                // Digital Wellbeing Message
-                Text(
-                    text = "Pause. Decide if this is worth it.",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = Color.Gray
-                )
-
-                // Countdown
+                // Countdown Circle
                  Box(contentAlignment = Alignment.Center) {
                     CircularProgressIndicator(
-                        progress = { timeLeft.toFloat() / initialDelaySeconds.toFloat() },
-                        modifier = Modifier.size(120.dp),
-                        strokeWidth = 8.dp,
-                        color = Color(0xFFBB86FC),
-                        trackColor = Color.DarkGray,
+                        progress = { 1f }, // Track
+                        modifier = Modifier.size(160.dp),
+                        strokeWidth = 12.dp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                        trackColor = Color.Transparent,
                     )
-                    Text(
-                        text = "$timeLeft",
-                        style = MaterialTheme.typography.displayMedium,
-                        color = Color.White
+                    CircularProgressIndicator(
+                        progress = { progress },
+                        modifier = Modifier.size(160.dp),
+                        strokeWidth = 12.dp,
+                        color = MaterialTheme.colorScheme.primary,
+                        strokeCap = androidx.compose.ui.graphics.StrokeCap.Round
                     )
+                    
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = "$timeLeft",
+                            style = MaterialTheme.typography.displayLarge.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Text(
+                            text = "seconds",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha=0.6f)
+                        )
+                    }
                 }
 
-                // Buttons
+                // Action Buttons
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Button(
+                    OutlinedButton(
                         onClick = onCancel,
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Gray)
+                        modifier = Modifier.weight(1f).height(50.dp),
+                        colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.onSurface),
+                        border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha=0.5f))
                     ) {
                         Text("Cancel")
                     }
@@ -189,12 +225,13 @@ fun DelayOverlayScreen(
                     Button(
                         onClick = onComplete,
                         enabled = timeLeft == 0,
+                        modifier = Modifier.weight(1f).height(50.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFFBB86FC),
-                            disabledContainerColor = Color.DarkGray
+                            containerColor = MaterialTheme.colorScheme.primary,
+                            disabledContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha=0.12f)
                         )
                     ) {
-                        Text(if (timeLeft > 0) "Wait" else "Open App")
+                        Text(if (timeLeft > 0) "Wait" else "Open")
                     }
                 }
             }

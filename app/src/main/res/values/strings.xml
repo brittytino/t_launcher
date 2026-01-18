@@ -155,6 +155,16 @@
     <string name="settings_theme_font_item_serif">Serif</string>
     <string name="settings_theme_font_item_monospace">Monospace</string>
     <string name="settings_theme_font_item_serif_monospace">Serif monospace</string>
+    <string name="settings_theme_font_item_system_sf" translatable="false">System (SF Style)</string>
+    <string name="settings_theme_font_item_inter" translatable="false">Inter</string>
+    <string name="settings_theme_font_item_proxima_nova" translatable="false">Proxima Nova</string>
+    <string name="settings_theme_font_item_lato" translatable="false">Lato</string>
+    <string name="settings_theme_font_item_montserrat" translatable="false">Montserrat</string>
+    <string name="settings_theme_font_item_nunito" translatable="false">Nunito</string>
+    <string name="settings_theme_font_item_poppins" translatable="false">Poppins</string>
+    <string name="settings_theme_font_item_source_sans_3" translatable="false">Source Sans 3</string>
+    <string name="settings_theme_font_item_manrope" translatable="false">Manrope</string>
+    <string name="settings_theme_font_item_noto_sans" translatable="false">Noto Sans</string>
     <string name="settings_theme_monochrome_icons">Monochrome app icons</string>
 
     <string name="settings_launcher_section_date_time"><![CDATA[Date & time]]></string>

@@ -124,6 +124,16 @@
                 <item>SERIF</item>
                 <item>MONOSPACE</item>
                 <item>SERIF_MONOSPACE</item>
+                <item>SYSTEM_SF</item>
+                <item>INTER</item>
+                <item>PROXIMA_NOVA</item>
+                <item>LATO</item>
+                <item>MONTSERRAT</item>
+                <item>NUNITO</item>
+                <item>POPPINS</item>
+                <item>SOURCE_SANS_3</item>
+                <item>MANROPE</item>
+                <item>NOTO_SANS</item>
         </string-array>
         <!-- names for @array/settings_theme_font_values -->
         <string-array name="settings_theme_font_items" translatable="false">
@@ -133,6 +143,16 @@
                 <item>@string/settings_theme_font_item_serif</item>
                 <item>@string/settings_theme_font_item_monospace</item>
                 <item>@string/settings_theme_font_item_serif_monospace</item>
+                <item>@string/settings_theme_font_item_system_sf</item>
+                <item>@string/settings_theme_font_item_inter</item>
+                <item>@string/settings_theme_font_item_proxima_nova</item>
+                <item>@string/settings_theme_font_item_lato</item>
+                <item>@string/settings_theme_font_item_montserrat</item>
+                <item>@string/settings_theme_font_item_nunito</item>
+                <item>@string/settings_theme_font_item_poppins</item>
+                <item>@string/settings_theme_font_item_source_sans_3</item>
+                <item>@string/settings_theme_font_item_manrope</item>
+                <item>@string/settings_theme_font_item_noto_sans</item>
         </string-array>
         <string name="settings_theme_monochrome_icons_key" translatable="false">theme.monochrome_icons</string>
 

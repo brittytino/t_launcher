@@ -13,6 +13,13 @@ import android.widget.Toast
 import de.brittytino.android.launcher.R
 
 class LauncherAccessibilityService : AccessibilityService() {
+    private lateinit var repo: de.brittytino.android.launcher.data.FocusModeRepository
+
+    override fun onCreate() {
+        super.onCreate()
+        repo = de.brittytino.android.launcher.data.FocusModeRepository(this)
+    }
+
     override fun onInterrupt() {}
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
@@ -20,7 +27,13 @@ class LauncherAccessibilityService : AccessibilityService() {
         
         if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             val packageName = event.packageName?.toString() ?: return
-            val repo = de.brittytino.android.launcher.data.FocusModeRepository(this)
+            
+            // Quiet Mode: Collapse shade/recents if handled by SystemUI
+            // This is a rough active defense against distractions
+            if (repo.isQuietMode && "com.android.systemui" == packageName) {
+                performGlobalAction(GLOBAL_ACTION_BACK)
+                return
+            }
             
             // Block if ACTIVE or UNLOCK_PENDING.
             // If PAUSED, we allow access (prompt: "allow temporary access... within the launcher UI")

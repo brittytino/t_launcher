@@ -70,8 +70,9 @@ class FocusModeRepository(context: Context) {
 
     fun isAppAllowed(packageName: String): Boolean {
         // Always allow system essentials and the launcher itself
+        // com.android.settings removed to prevent Force Stop exploit in strict mode.
+        // com.android.systemui allowed for basic nav, but strictly monitored by Service for shade/recents.
         if (packageName == "com.android.systemui" || 
-            packageName == "com.android.settings" || // Often needed
             packageName == "com.google.android.dialer" || // Phone
             packageName == "com.android.dialer" ||
             packageName == "de.brittytino.android.launcher") {

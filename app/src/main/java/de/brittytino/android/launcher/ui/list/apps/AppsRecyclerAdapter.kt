@@ -25,6 +25,7 @@ import de.brittytino.android.launcher.preferences.list.AppNameFormat
 import de.brittytino.android.launcher.preferences.list.ListLayout
 import de.brittytino.android.launcher.ui.list.AbstractListActivity
 import de.brittytino.android.launcher.ui.transformGrayscale
+import de.brittytino.android.launcher.widgets.FavoritesWidget
 
 /**
  * A [RecyclerView] (efficient scrollable list) containing all apps on the users device.
@@ -40,6 +41,8 @@ class AppsRecyclerAdapter(
     val root: View,
     private val intention: AbstractListActivity.Companion.Intention = AbstractListActivity.Companion.Intention.VIEW,
     private val forGesture: String? = "",
+    private val forWidgetId: Int? = null,
+    private val forWidgetSlot: Int? = null,
     private var appFilter: AppFilter = AppFilter(activity, ""),
     private val layout: ListLayout,
     private val nameFormat: AppNameFormat
@@ -194,6 +197,25 @@ class AppsRecyclerAdapter(
 
             AbstractListActivity.Companion.Intention.PICK -> {
                 activity.finish()
+
+                if (forWidgetId != null && forWidgetSlot != null) {
+                    val widgets = LauncherPreferences.widgets().widgets()
+                    val widget = widgets?.find { it.id == forWidgetId }
+                    if (widget is FavoritesWidget) {
+                        val rawInfo = appInfo.getRawInfo()
+                        if (rawInfo is AppInfo) {
+                            // Store as "packageName|userHash" to support Work Profiles
+                            val data = "${rawInfo.packageName}|${rawInfo.user}"
+                            widget.favorites[forWidgetSlot] = data
+                            
+                            // Force update to trigger SharedPreferences listener
+                            val newWidgets = widgets.toMutableSet()
+                            LauncherPreferences.widgets().widgets(newWidgets) 
+                        }
+                    }
+                    return
+                }
+
                 forGesture ?: return
                 val gesture = Gesture.byId(forGesture) ?: return
                 Action.setActionForGesture(gesture, appInfo.getAction())

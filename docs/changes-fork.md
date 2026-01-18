@@ -33,7 +33,7 @@ The decision to create a hard fork was made two years later.-->
 ## Visual
 
 - This app uses the system wallpaper instead of a custom solution.
-- The font has been changed to [Hack][hack-font], other fonts can be selected.
+- The font has been changed to Montserrat, other fonts can be selected.
 - Font Awesome Icons were replaced by Material icons.
 - The gear button on the home screen was removed. A smaller button is shown at the top right when necessary.
 

@@ -56,7 +56,7 @@
             android:title="@string/settings_theme_font"
             android:entryValues="@array/settings_theme_font_values"
             android:entries="@array/settings_theme_font_items"
-            android:defaultValue="HACK"
+            android:defaultValue="MONTSERRAT"
             app:useSimpleSummaryProvider="true"/>
 
         <SwitchPreference
@@ -86,7 +86,7 @@
             android:title="@string/settings_theme_font"
             android:entryValues="@array/settings_theme_font_values"
             android:entries="@array/settings_theme_font_items"
-            android:defaultValue="HACK"
+            android:defaultValue="MONTSERRAT"
             app:useSimpleSummaryProvider="true"/>
         <de.brittytino.android.launcher.preferences.ColorPreference
             android:key="@string/settings_clock_color_key"

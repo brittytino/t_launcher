@@ -23,15 +23,17 @@ T_Launcher is a sophisticated Android home screen designed to eliminate distract
 ## Key Features
 
 *   **Dynamic Motivational Engine:** Every day, a new high-contrast wallpaper is generated with a unique geometric pattern (Bauhaus, Cyber, Hexagon, etc.) and a hard-hitting quote to keep you focused.
-*   **Developer Panel (new):** Stay consistent with your coding goals. Features a built-in LeetCode dashboard with:
+*   **Adaptive Theme Engine (New):** Full support for System Light and Dark modes. Whether you prefer the stark contrast of white or the deep focus of black, the entire UI (Focus Mode, Developer Panel, App Delay) adapts seamlessly to your preference without compromising on the distinctive "T_Launcher" aesthetic.
+*   **Developer Panel:** Stay consistent with your coding goals. Features a built-in LeetCode dashboard with:
     *   **Daily Problem:** Quick access to the daily challenge.
-    *   **Activity Heatmap:** Visualize your submission consistency over time.
+    *   **Activity Heatmap:** Visualize your submission consistency over time (now theme-aware).
     *   **Friends Leaderboard:** Track your friends' progress.
 *   **Focus Mode (Major Update):** A strictly enforced distraction-free environment designed to break addiction loops.
-    *   **Immersive Isolation:** Completely suppresses the wallpaper and widgets, replacing them with a solid, edge-to-edge dark/light theme (including system bars) to eliminate visual noise.
+    *   **Immersive Isolation:** Completely suppresses the wallpaper and widgets, replacing them with a solid, edge-to-edge theme-compliant background to eliminate visual noise.
     *   **Strict Governance:** Enforces a 15-minute cooldown between pauses, with a non-extendable 2-minute limit per pause.
     *   **App Whitelisting:** Select exactly which apps are allowed; all others are blocked.
     *   **Intentional Friction:** Requires confirmation to start and authentication to exit.
+*   **Smart App Launch Delay:** Adds a customizable friction layer (e.g., 3-15 seconds) before opening distracting apps. Now featuring a redesigned, theme-adaptive countdown interface that forces you to reconsider your decision.
 *   **"Timebomber" Aesthetic:** A sleek, oversized clock dominates the top of the screen, ensuring you are always aware of passing time.
 *   **Distraction-Free Interface:** No icons on the home screen. Only the time, the date, and the mission.
 *   **Efficient App Search:** Instantly find and launch apps with a powerful search function invoked by swiping up or pressing back.

@@ -146,6 +146,46 @@
         <item name="android:fontFamily">serif</item>
     </style>
 
+    <style name="fontSystemSf">
+        <item name="android:fontFamily">@font/system_sf</item>
+    </style>
+
+    <style name="fontInter">
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="fontProximaNova">
+        <item name="android:fontFamily">@font/proxima_nova</item>
+    </style>
+
+    <style name="fontLato">
+        <item name="android:fontFamily">@font/lato</item>
+    </style>
+
+    <style name="fontMontserrat">
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="fontNunito">
+        <item name="android:fontFamily">@font/nunito</item>
+    </style>
+
+    <style name="fontPoppins">
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="fontSourceSans3">
+        <item name="android:fontFamily">@font/source_sans_3</item>
+    </style>
+
+    <style name="fontManrope">
+        <item name="android:fontFamily">@font/manrope</item>
+    </style>
+
+    <style name="fontNotoSans">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+
     <style name="PopupMenuCustom" parent="@android:style/Widget.PopupMenu" tools:keep="@style/PopupMenuCustom">
         <item name="android:popupBackground">#252827</item>
     </style>

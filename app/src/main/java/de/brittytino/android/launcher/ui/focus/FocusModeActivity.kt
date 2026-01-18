@@ -44,6 +44,13 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.activity.compose.BackHandler
 import android.content.Intent
 import de.brittytino.android.launcher.ui.HomeActivity
+import de.brittytino.android.launcher.ui.settings.SettingsTheme
+import de.brittytino.android.launcher.ui.settings.SettingsScaffold
+import de.brittytino.android.launcher.ui.settings.SettingsSectionHeader
+import de.brittytino.android.launcher.ui.settings.SettingsCard
+import de.brittytino.android.launcher.ui.settings.SettingsItem
+import de.brittytino.android.launcher.ui.settings.SettingsToggle
+import de.brittytino.android.launcher.ui.settings.IconArrow
 import java.util.concurrent.TimeUnit
 import androidx.compose.material3.HorizontalDivider // Correct import for M3
 
@@ -71,6 +78,8 @@ val PauseIcon: ImageVector
         }
     }.build()
 
+
+
 class FocusModeActivity : ComponentActivity() {
     private val viewModel: FocusModeViewModel by viewModels()
 
@@ -83,35 +92,13 @@ class FocusModeActivity : ComponentActivity() {
         window.navigationBarColor = android.graphics.Color.TRANSPARENT
 
         setContent {
-            val isDark = isSystemInDarkTheme()
-            val focusBackgroundColor = if (isDark) Color.Black else Color.White
-            val contentColor = if (isDark) Color.White else Color.Black
-            
-            MaterialTheme(
-                colorScheme = if (isDark) {
-                    darkColorScheme(
-                        background = Color.Black,
-                        surface = Color.Black,
-                        primary = Color(0xFF42A5F5),
-                        onBackground = Color.White,
-                        onSurface = Color.White
-                    )
-                } else {
-                    lightColorScheme(
-                        background = Color.White,
-                        surface = Color.White,
-                        primary = Color(0xFF42A5F5),
-                         onBackground = Color.Black,
-                        onSurface = Color.Black
-                    )
-                }
-            ) {
+            SettingsTheme {
                 // Surface ensures background color fills the screen including behind bars
                 // Using Box with background explicitly to guarantee coverage
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(focusBackgroundColor)
+                        .background(MaterialTheme.colorScheme.background)
                 ) {
                     // Content is padded to avoid overlap with system bars, but background remains full
                     Box(modifier = Modifier.systemBarsPadding()) {
@@ -491,179 +478,137 @@ fun FocusModeDashboard(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .padding(padding)
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FocusModeDashboard(
+    focusState: FocusModeViewModel.FocusStateModel,
+    appsCount: Int,
+    onOpenAppSelector: () -> Unit,
+    onToggleQuietMode: (Boolean) -> Unit,
+    onSetLockType: (FocusModeRepository.LockType) -> Unit,
+    onStartFocus: () -> Unit,
+    onStopFocus: () -> Unit,
+    onBack: () -> Unit
+) {
+    SettingsScaffold {
+        // Title
+        Text(
+            "Focus Mode", 
+            style = MaterialTheme.typography.headlineMedium, 
+            fontWeight = FontWeight.Bold, 
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.padding(bottom = 16.dp, start = 8.dp)
+        )
+
+        // Status Card
+        SettingsCard {
             val buttonText = when(focusState.state) {
                 FocusModeRepository.FocusState.ACTIVE -> "Pause Focus"
                 FocusModeRepository.FocusState.PAUSED -> "Continue Focus"
                 else -> "Start Focus"
             }
-            // Use Bold Pause if Active, Play if Paused/Inactive
-            val buttonIcon = when(focusState.state) {
-                FocusModeRepository.FocusState.ACTIVE -> PauseIcon
-                else -> Icons.Filled.PlayArrow
-            } 
             val buttonColor = when(focusState.state) {
                 FocusModeRepository.FocusState.PAUSED -> Color(0xFFFFB74D) // Orange
-                FocusModeRepository.FocusState.ACTIVE -> {
-                     // Check cooldown to visuals? 
-                     // Maybe dim button if cooldown active?
-                     // Currently request says "clearly display... remaining pause cooldown".
-                     MaterialTheme.colorScheme.primary
-                }
+                FocusModeRepository.FocusState.ACTIVE -> MaterialTheme.colorScheme.secondaryContainer
                 else -> MaterialTheme.colorScheme.primary
             }
-            val textColor = Color.Black
-
-            // Start Focus Card
-            Card(
-                colors = CardDefaults.cardColors(containerColor = buttonColor),
-                shape = RoundedCornerShape(24.dp),
+            val contentColor = when(focusState.state) {
+                 FocusModeRepository.FocusState.PAUSED -> Color.Black
+                 FocusModeRepository.FocusState.ACTIVE -> MaterialTheme.colorScheme.onSecondaryContainer
+                 else -> MaterialTheme.colorScheme.onPrimary
+            }
+            
+            // Main Action Button
+             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .background(buttonColor)
                     .clickable { onStartFocus() }
+                    .padding(24.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(24.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column {
-                        Text(buttonText, style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold), color = textColor)
-                        if (focusState.state == FocusModeRepository.FocusState.INACTIVE) {
-                           Text("${appsCount} apps allowed", style = MaterialTheme.typography.bodyMedium, color = textColor.copy(alpha = 0.7f))
-                        } else if (focusState.state == FocusModeRepository.FocusState.ACTIVE) {
-                           // Show cooldown info if any
+                Icon(
+                    imageVector = if(focusState.state == FocusModeRepository.FocusState.ACTIVE) PauseIcon else Icons.Filled.PlayArrow,
+                    contentDescription = null,
+                    tint = contentColor
+                )
+                Spacer(Modifier.width(16.dp))
+                Column {
+                    Text(buttonText, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = contentColor)
+                    if (focusState.state == FocusModeRepository.FocusState.ACTIVE) {
                            val now = System.currentTimeMillis()
                            val elapsed = now - focusState.lastPauseTimestamp
                            val cooldown = 15 * 60 * 1000L
                            if (elapsed < cooldown) {
                                val remainingMins = TimeUnit.MILLISECONDS.toMinutes(cooldown - elapsed) + 1
-                               Text("Pause cooldown: ${remainingMins}m", style = MaterialTheme.typography.bodyMedium, color = textColor.copy(alpha = 0.7f))
+                               Text("Pause cooldown: ${remainingMins}m", style = MaterialTheme.typography.bodyMedium, color = contentColor.copy(alpha = 0.7f))
                            } else {
-                               Text("Pause available (2m)", style = MaterialTheme.typography.bodyMedium, color = textColor.copy(alpha = 0.7f))
+                               Text("Pause available (2m)", style = MaterialTheme.typography.bodyMedium, color = contentColor.copy(alpha = 0.7f))
                            }
-                        } else if (focusState.state == FocusModeRepository.FocusState.PAUSED) {
-                            // Show remaining pause time
-                            val secs = TimeUnit.MILLISECONDS.toSeconds(focusState.pauseTimeRemaining)
-                            val min = secs / 60
-                            val s = secs % 60
-                            val timeStr = String.format("%02d:%02d", min, s)
-                            Text("Resuming in $timeStr", style = MaterialTheme.typography.bodyMedium, color = textColor.copy(alpha = 0.7f))
-                        }
+                    } else if (focusState.state == FocusModeRepository.FocusState.PAUSED) {
+                        val secs = TimeUnit.MILLISECONDS.toSeconds(focusState.pauseTimeRemaining)
+                        val min = secs / 60
+                        val s = secs % 60
+                        val timeStr = String.format("%02d:%02d", min, s)
+                        Text("Resuming in $timeStr", style = MaterialTheme.typography.bodyMedium, color = contentColor)
+                    } else {
+                        Text("Break the loop", style = MaterialTheme.typography.bodyMedium, color = contentColor.copy(alpha = 0.7f))
                     }
-                    Icon(buttonIcon, contentDescription = null, tint = textColor, modifier = Modifier.size(32.dp))
                 }
             }
+        }
+        
+        if (focusState.state != FocusModeRepository.FocusState.INACTIVE) {
+             Spacer(Modifier.height(16.dp))
+             SettingsCard {
+                 SettingsItem(
+                     title = "Stop Focus Mode",
+                     textColor = MaterialTheme.colorScheme.error,
+                     onClick = onStopFocus
+                 )
+             }
+        }
 
-            if (focusState.state != FocusModeRepository.FocusState.INACTIVE) {
-                 OutlinedButton(
-                     onClick = onStopFocus, 
-                     modifier = Modifier.fillMaxWidth(),
-                     border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.error),
-                     colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error)
-                 ) {
-                     Text("Stop & Unlock Focus")
-                 }
-            }
+        SettingsSectionHeader("Configuration")
 
-            Text("Focus Settings", color = Color.Gray, style = MaterialTheme.typography.labelLarge)
-
-            // Focus Apps Item
+        SettingsCard {
             SettingsItem(
                 title = "Focus Apps",
                 subtitle = "$appsCount apps allowed",
-                icon = Icons.Filled.Home,
-                onClick = onOpenAppSelector
+                onClick = onOpenAppSelector,
+                action = { IconArrow() }
             )
-
-            HorizontalDivider(color = Color.Gray.copy(alpha = 0.2f))
             
-            Text("Focus Lock", color = Color.Gray, style = MaterialTheme.typography.labelLarge)
+            HorizontalDivider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
 
-            // Lock Type Selection
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
-                    .padding(8.dp)
-            ) {
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .clickable { onSetLockType(FocusModeRepository.LockType.RANDOM_STRING) }
-                        .padding(12.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RadioButton(
-                        selected = focusState.lockType == FocusModeRepository.LockType.RANDOM_STRING,
-                        onClick = { onSetLockType(FocusModeRepository.LockType.RANDOM_STRING) }
+            SettingsItem(
+                title = "Quiet Mode",
+                subtitle = "Collapse notification shade",
+                action = { 
+                    SettingsToggle(
+                        checked = focusState.isQuietMode, 
+                        onCheckedChange = onToggleQuietMode
                     )
-                    Spacer(Modifier.width(8.dp))
-                    Column {
-                        Text("Random string", fontWeight = FontWeight.SemiBold)
-                        Text("Set random phrase to unlock", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
-                    }
                 }
-                
-                HorizontalDivider(color = Color.Gray.copy(alpha = 0.1f), modifier = Modifier.padding(horizontal = 16.dp))
-
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .clickable { onSetLockType(FocusModeRepository.LockType.CUSTOM_PASSWORD) }
-                        .padding(12.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RadioButton(
-                        selected = focusState.lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD,
-                        onClick = { onSetLockType(FocusModeRepository.LockType.CUSTOM_PASSWORD) }
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Column {
-                        Text("Custom password", fontWeight = FontWeight.SemiBold)
-                        Text("Set password to unlock", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
-                    }
-                }
-            }
-
-            Text("Notifications", color = Color.Gray, style = MaterialTheme.typography.labelLarge)
-            
-            // Quiet Mode
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(Icons.Filled.Notifications, contentDescription = null, tint = Color.Gray)
-                Spacer(Modifier.width(16.dp))
-                Column(Modifier.weight(1f)) {
-                    Text("Quiet Mode", fontWeight = FontWeight.SemiBold)
-                    Text("Stay focused by hiding alerts", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
-                }
-                Switch(
-                    checked = focusState.isQuietMode,
-                    onCheckedChange = onToggleQuietMode
-                )
-            }
-            
-            Text(
-                "Note: Ensure ‘Hide Notifications’ access is enabled in system settings. Your notifications stay on your device; we never collect or share your data.",
-                style = MaterialTheme.typography.bodySmall,
-                color = Color.Gray,
-                modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
+        
+        SettingsSectionHeader("Lock Method")
+        SettingsCard {
+            SettingsItem(
+                title = "Random Phrase",
+                onClick = { onSetLockType(FocusModeRepository.LockType.RANDOM_STRING) },
+                action = { SettingsToggle(checked = focusState.lockType == FocusModeRepository.LockType.RANDOM_STRING, onCheckedChange = { onSetLockType(FocusModeRepository.LockType.RANDOM_STRING) }) }
+            )
+            SettingsItem(
+                title = "Password",
+                subtitle = if (focusState.lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD && !focusState.customPassword.isNullOrEmpty()) "Password set" else "Setup required",
+                onClick = { onSetLockType(FocusModeRepository.LockType.CUSTOM_PASSWORD) },
+                action = { SettingsToggle(checked = focusState.lockType == FocusModeRepository.LockType.CUSTOM_PASSWORD, onCheckedChange = { onSetLockType(FocusModeRepository.LockType.CUSTOM_PASSWORD) }) }
+            )
+        }
+    }
+}
     }
 }
 
@@ -703,24 +648,7 @@ fun PauseConfirmationDialog(onConfirm: () -> Unit, onDismiss: () -> Unit) {
 
 @Composable
 fun SettingsItem(title: String, subtitle: String, icon: ImageVector?, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
-            .clickable(onClick = onClick)
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        if (icon != null) {
-            Icon(icon, contentDescription = null, tint = Color.Gray)
-            Spacer(Modifier.width(16.dp))
-        }
-        Column(Modifier.weight(1f)) {
-            Text(title, fontWeight = FontWeight.SemiBold)
-            Text(subtitle, style = MaterialTheme.typography.bodySmall, color = Color.Gray)
-        }
-        Icon(Icons.Filled.ArrowForward, contentDescription = null, tint = Color.Gray)
-    }
+    // Deprecated: Removed in favor of SettingsDesignSystem
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -731,43 +659,46 @@ fun FocusAppSelector(
     onToggleApp: (String, Boolean) -> Unit,
     onBack: () -> Unit
 ) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Focus Apps") },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = Color.White)
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = Color.White,
-                    navigationIconContentColor = Color.White
-                )
+    SettingsScaffold {
+        // Header
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(bottom = 8.dp)
+        ) {
+            IconButton(onClick = onBack) {
+                Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.onBackground)
+            }
+            Text(
+                "Select Apps",
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.onBackground
             )
-        },
-        containerColor = MaterialTheme.colorScheme.background
-    ) { padding ->
-        Column(Modifier.padding(padding)) {
+        }
+
+        // Content
+        Card(
+             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+             modifier = Modifier.weight(1f).fillMaxWidth(),
+             shape = RoundedCornerShape(16.dp)
+        ) {
             LazyColumn {
                 items(allApps) { app ->
                     val packageName = getPackageName(app) ?: return@items
                     val isSelected = selectedApps.contains(packageName)
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onToggleApp(packageName, !isSelected) }
-                            .padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(app.getLabel(), modifier = Modifier.weight(1f), color = Color.White)
-                        Switch(
-                            checked = isSelected,
-                            onCheckedChange = { onToggleApp(packageName, it) }
-                        )
-                    }
-                    HorizontalDivider(color = Color.Gray.copy(alpha = 0.1f))
+                    
+                    SettingsItem(
+                        title = app.getLabel(),
+                        subtitle = null,
+                        icon = null, 
+                        action = {
+                            SettingsToggle(
+                                checked = isSelected,
+                                onCheckedChange = { onToggleApp(packageName, it) }
+                            )
+                        },
+                        onClick = { onToggleApp(packageName, !isSelected) }
+                    )
+                    HorizontalDivider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
                 }
             }
         }

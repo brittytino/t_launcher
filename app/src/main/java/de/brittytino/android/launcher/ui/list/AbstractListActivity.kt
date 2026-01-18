@@ -24,6 +24,8 @@ sealed class AbstractListActivity : UIObjectActivity() {
 
     // TODO: only needed for [SelectActionActivity]
     var forGesture: String? = null
+    var forWidgetId: Int? = null
+    var forWidgetSlot: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,12 @@ sealed class AbstractListActivity : UIObjectActivity() {
             hiddenVisibility = bundle.getSerializable(KEY_HIDDEN_VISIBILITY)
                     as? AppFilter.Companion.AppSetVisibility ?: hiddenVisibility
             forGesture = bundle.getString(KEY_FOR_GESTURE)
+            if (bundle.containsKey(KEY_FOR_WIDGET_ID)) {
+                forWidgetId = bundle.getInt(KEY_FOR_WIDGET_ID)
+            }
+            if (bundle.containsKey(KEY_FOR_WIDGET_SLOT)) {
+                forWidgetSlot = bundle.getInt(KEY_FOR_WIDGET_SLOT)
+            }
         }
     }
 
@@ -55,6 +63,8 @@ sealed class AbstractListActivity : UIObjectActivity() {
         const val KEY_PRIVATE_SPACE_VISIBILITY = "privateSpaceVisibility"
         const val KEY_HIDDEN_VISIBILITY = "hiddenVisibility"
         const val KEY_FOR_GESTURE = "forGesture"
+        const val KEY_FOR_WIDGET_ID = "forWidgetId"
+        const val KEY_FOR_WIDGET_SLOT = "forWidgetSlot"
 
         enum class Intention {
             VIEW, // used for [AppListActivity]

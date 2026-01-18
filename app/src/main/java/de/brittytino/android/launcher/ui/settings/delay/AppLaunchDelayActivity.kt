@@ -21,6 +21,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.animation.AnimatedVisibility
 import de.brittytino.android.launcher.Application
 import de.brittytino.android.launcher.R
 import de.brittytino.android.launcher.apps.AbstractDetailedAppInfo
@@ -28,16 +31,13 @@ import de.brittytino.android.launcher.apps.AppInfo
 import de.brittytino.android.launcher.data.AppLaunchDelayEntity
 import de.brittytino.android.launcher.ui.UIObjectActivity
 import de.brittytino.android.launcher.viewmodel.AppLaunchDelayViewModel
+import de.brittytino.android.launcher.ui.settings.SettingsTheme
 
 class AppLaunchDelayActivity : UIObjectActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            // Apply theme here? For now just MaterialTheme.
-            // Ideally we would bridge existing XML theme to Compose.
-            MaterialTheme(
-                colorScheme = darkColorScheme() // Enforce dark/strict look?
-            ) {
+            SettingsTheme {
                 AppLaunchDelayScreen()
             }
         }
@@ -60,7 +60,7 @@ fun AppLaunchDelayScreen(viewModel: AppLaunchDelayViewModel = viewModel()) {
         }
     }
 
-    Column(modifier = Modifier.fillMaxSize().background(Color.Black)) {
+    Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         // Search Bar
         OutlinedTextField(
             value = searchQuery,
@@ -71,8 +71,8 @@ fun AppLaunchDelayScreen(viewModel: AppLaunchDelayViewModel = viewModel()) {
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.Transparent,
                 unfocusedContainerColor = Color.Transparent,
-                focusedTextColor = Color.White,
-                unfocusedTextColor = Color.White
+                focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                unfocusedTextColor = MaterialTheme.colorScheme.onBackground
             )
         )
 
@@ -122,13 +122,11 @@ fun AppLaunchDelayRow(
 
                 // Assuming appInfo.icon is a Drawable
                 // Compose Image needs ImageBitmap or Painter
-                if (icon != null) {
-                    Image(
-                        bitmap = icon.toBitmap().asImageBitmap(),
-                        contentDescription = null,
-                        modifier = Modifier.size(48.dp)
-                    )
-                }
+                Image(
+                    bitmap = icon.toBitmap().asImageBitmap(),
+                    contentDescription = null,
+                    modifier = Modifier.size(48.dp)
+                )
 
                 Spacer(modifier = Modifier.width(16.dp))
 
@@ -169,7 +167,9 @@ fun DelaySelector(
     currentDelay: Int,
     onDelaySelected: (Int) -> Unit
 ) {
-    Column {
+    var rawInput by remember(currentDelay) { mutableStateOf(currentDelay.toString()) }
+
+    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth()
@@ -177,23 +177,62 @@ fun DelaySelector(
             TChip(
                 text = "10s",
                 selected = currentDelay == 10,
-                onClick = { onDelaySelected(10) }
+                onClick = { onDelaySelected(10); rawInput = "10" }
             )
             TChip(
                 text = "30s",
                 selected = currentDelay == 30,
-                onClick = { onDelaySelected(30) }
+                onClick = { onDelaySelected(30); rawInput = "30" }
+            )
+            TChip(
+                text = "1m",
+                selected = currentDelay == 60,
+                onClick = { onDelaySelected(60); rawInput = "60" }
+            )
+             TChip(
+                text = "5m",
+                selected = currentDelay == 300,
+                onClick = { onDelaySelected(300); rawInput = "300" }
             )
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Text("Custom: ${currentDelay}s", color = Color.Gray)
+        OutlinedTextField(
+            value = rawInput,
+            onValueChange = { newValue ->
+                if (newValue.all { it.isDigit() }) {
+                    rawInput = newValue
+                    val intVal = newValue.toIntOrNull()
+                    if (intVal != null) {
+                         // Clamp to 3600
+                         onDelaySelected(intVal.coerceAtMost(3600))
+                    }
+                }
+            },
+            label = { Text("Custom Seconds (Max 3600)") },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.Transparent,
+                unfocusedContainerColor = Color.Transparent,
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White,
+                focusedLabelColor = Color(0xFFBB86FC),
+                unfocusedLabelColor = Color.Gray,
+                cursorColor = Color(0xFFBB86FC),
+                focusedIndicatorColor = Color(0xFFBB86FC)
+            ),
+            modifier = Modifier.fillMaxWidth()
+        )
+        
         Slider(
-            value = currentDelay.toFloat().coerceIn(0f, 60f),
-            onValueChange = { onDelaySelected(it.toInt()) },
-            valueRange = 0f..60f,
-            steps = 59
+            value = currentDelay.toFloat().coerceIn(0f, 3600f),
+            onValueChange = { 
+                val i = it.toInt()
+                onDelaySelected(i)
+                rawInput = i.toString()
+            },
+            valueRange = 0f..3600f,
+            steps = 0 // Continuous or too many steps
         )
     }
 }
@@ -203,7 +242,7 @@ fun DelaySelector(
 fun TCard(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     Card(
         modifier = modifier,
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF1E1E1E))
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         content()
     }
@@ -216,8 +255,8 @@ fun TChip(text: String, selected: Boolean, onClick: () -> Unit) {
         onClick = onClick,
         label = { Text(text) },
         colors = FilterChipDefaults.filterChipColors(
-            selectedContainerColor = Color(0xFFBB86FC),
-            selectedLabelColor = Color.Black
+            selectedContainerColor = MaterialTheme.colorScheme.primary,
+            selectedLabelColor = MaterialTheme.colorScheme.onPrimary
         )
     )
 }
@@ -228,8 +267,8 @@ fun TSwitch(checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
         checked = checked,
         onCheckedChange = onCheckedChange,
         colors = SwitchDefaults.colors(
-            checkedThumbColor = Color(0xFFBB86FC),
-            checkedTrackColor = Color(0xFF3700B3)
+            checkedThumbColor = MaterialTheme.colorScheme.primary,
+            checkedTrackColor = MaterialTheme.colorScheme.primaryContainer
         )
     )
 }
