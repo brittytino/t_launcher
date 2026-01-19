@@ -1,4 +1,4 @@
-<!-- Shields from shields.io -->
+﻿<!-- Shields from shields.io -->
 [![][shield-release]][latest-release]
 [![GitHub Downloads](https://img.shields.io/github/downloads/brittytino/t_launcher/total?style=flat&label=Downloads)][latest-release]
 [![Android CI](https://github.com/brittytino/t_launcher/actions/workflows/android.yml/badge.svg)](https://github.com/brittytino/t_launcher/actions/workflows/android.yml)
@@ -9,123 +9,89 @@
 
 **Minimal. Efficient. Unapologetic.**
 
-T_Launcher is a sophisticated Android home screen designed to eliminate distractions and force productivity. Unlike standard minimalist launchers, T_Launcher actively pushes you to be better with dynamic, high-contrast wallpapers and daily motivational "rage-bait" quotes.
+T_Launcher is a sophisticated Android home screen designed to eliminate distractions and enforce productivity. It is strict by design, prioritizing user focus over endless customization.
 
-> **✨ Built for Focus | 🎨 Dynamic Wallpapers | 🚫 Zero Trackers | 🔓 100% Open Source**
+> **T Launcher is a continuation and significant rework of the unmaintained project originally created by Finn Glas. While inspired by the original architecture, the current codebase introduces substantial changes in design, enforcement logic, and user experience.**
 
-<p align="center">
-  <img src="docs/screenshots/1.jpg" alt="Home Screen" width="23%">
-  <img src="docs/screenshots/2.jpg" alt="App Drawer" width="23%">
-  <img src="docs/screenshots/3.jpg" alt="Settings" width="23%">
-  <img src="docs/screenshots/4.jpg" alt="Search" width="23%">
+<p align=center>
+  <img src=docs/screenshots/1.jpeg alt=Home Screen width=23%>
+  <img src=docs/screenshots/3.jpeg alt=App Drawer width=23%>
+  <img src=docs/screenshots/2.jpeg alt=Settings width=23%>
+  <img src=docs/screenshots/4.jpeg alt=Focus Mode width=23%>
 </p>
+<p align=center>
+  <img src=docs/screenshots/5.jpeg alt=Dev Panel width=23%>
+  <img src=docs/screenshots/6.jpeg alt=Launch Delay width=23%>
+</p>
+
+## Philosophy
+
+T_Launcher is not built to satisfy every user request. It is a tool with a specific opinion on how a smartphone should be used: **as a utility, not a slot machine.**
+
+*   **Strict by Design:** Features that encourage mindless scrolling or clutter are intentionally omitted.
+*   **Focus First:** Every design decision is measured against its ability to keep the user focused.
+*   **Utility over Vanity:** Aesthetics serve the function of readability and calm, not decoration.
+
+**For a deeper dive into the "why" behind T_Launcher, read the official developer's perspective: [T_Launcher Blog Post](https://www.tinobritty.me/blog/t-launcher)**
+
+## Project Status: Phases
+
+We follow an Evolutionary Agile approach.
+
+*    **Phase 1: Core Stability** (App launch pipeline, Focus Mode enforcement, State persistence)
+*    **Phase 2: UX Hardening** (We are here - Navigation correctness, Lock states, Error flows)
+*    **Phase 3: Opinion Freeze** (Locking down the feature set)
+*    **Phase 4: Contributor-Friendly** (Opening up for broader community maintenance)
 
 ## Key Features
 
-*   **Dynamic Motivational Engine:** Every day, a new high-contrast wallpaper is generated with a unique geometric pattern (Bauhaus, Cyber, Hexagon, etc.) and a hard-hitting quote to keep you focused.
-*   **Adaptive Theme Engine (New):** Full support for System Light and Dark modes. Whether you prefer the stark contrast of white or the deep focus of black, the entire UI (Focus Mode, Developer Panel, App Delay) adapts seamlessly to your preference without compromising on the distinctive "T_Launcher" aesthetic.
-*   **Developer Panel:** Stay consistent with your coding goals. Features a built-in LeetCode dashboard with:
-    *   **Daily Problem:** Quick access to the daily challenge.
-    *   **Activity Heatmap:** Visualize your submission consistency over time (now theme-aware).
-    *   **Friends Leaderboard:** Track your friends' progress.
-*   **Focus Mode (Major Update):** A strictly enforced distraction-free environment designed to break addiction loops.
-    *   **Immersive Isolation:** Completely suppresses the wallpaper and widgets, replacing them with a solid, edge-to-edge theme-compliant background to eliminate visual noise.
-    *   **Strict Governance:** Enforces a 15-minute cooldown between pauses, with a non-extendable 2-minute limit per pause.
-    *   **App Whitelisting:** Select exactly which apps are allowed; all others are blocked.
-    *   **Intentional Friction:** Requires confirmation to start and authentication to exit.
-*   **Smart App Launch Delay:** Adds a customizable friction layer (e.g., 3-15 seconds) before opening distracting apps. Now featuring a redesigned, theme-adaptive countdown interface that forces you to reconsider your decision.
-*   **"Timebomber" Aesthetic:** A sleek, oversized clock dominates the top of the screen, ensuring you are always aware of passing time.
-*   **Distraction-Free Interface:** No icons on the home screen. Only the time, the date, and the mission.
-*   **Efficient App Search:** Instantly find and launch apps with a powerful search function invoked by swiping up or pressing back.
-*   **Privacy-Focused:** No ads, no trackers, and compatible with work profiles.
-
-## Visuals & Patterns
-
-T_Launcher features a custom graphics engine that generates unique art daily:
-*   **Patterns:** Includes Hexagon Hives, Bauhaus Geometry, Cyber Lines, Abstract Splatter, and more.
-*   **Color Harmony:** Uses advanced color theory (split-complementary, triadic) to generate vibrant, high-energy palettes that never look dull.
-*   **Rage-Bait Quotes:** Over 50+ hand-picked lines designed to destroy procrastination (e.g., "Comfort is a slow death", "Sugar is poison").
-
-## Gestures & Customization
-
-T_Launcher supports a comprehensive set of gestures to suit your workflow:
-
-*   **Inputs:**
-    *   Swipe Up / Down / Left / Right
-    *   Two-finger Swipes
-    *   Edge Swipes
-    *   Double Tap & Long Press
-    *   Volume Buttons
-    *   Custom Drawings (<, >, V, Λ)
-
-*   **Actions:**
-    *   Launch custom apps
-    *   Open app lists (All, Favorites, Private)
-    *   Toggle system settings (Torch, Volume, Media Controls)
-    *   Lock screen & more
+*   **Focus Enforcement:**
+    *   **Focus Mode:** Strict 15-minute cooldowns, blocked apps, and intentional friction.
+    *   **Launch Delays:** Customizable pauses (3-15s) before opening problematic apps.
+*   **Dynamic Aesthetics:**
+    *   **Motivational Engine:** Daily high-contrast wallpapers with productivity-focused quotes.
+    *   **Adaptive Theme:** Seamless Light/Dark mode integration across the entire UI.
+*   **Developer Tools:**
+    *   **LeetCode Integration:** Built-in dashboard to track daily coding consistency.
+    *   **Heatmap & Stats:** Visual progress tracking directly on your home screen.
+*   **Minimalist Interface:**
+    *   **Timebomber Clock:** High-visibility time awareness.
+    *   **Text-Only Home:** No icons, no widgets, just the time and your agenda.
+    *   **Universal Search:** Instant app access via gestures.
+*   **Privacy:** 100% Open Source, Zero Trackers, Offline-first.
 
 ## Download
 
 ### Direct Download (Recommended)
 
-<a href="https://github.com/brittytino/t_launcher/releases/latest">
-  <img src="https://img.shields.io/badge/Download%20APK-Latest%20Release-success?style=for-the-badge&logo=android" alt="Download APK" height="60">
+<a href=https://github.com/brittytino/t_launcher/releases/latest>
+  <img src=https://img.shields.io/badge/Download%20APK-Latest%20Release-success?style=for-the-badge&logo=android alt=Download APK height=60>
 </a>
 
-**Current Version:** Check the [Releases](https://github.com/brittytino/t_launcher/releases) page for the latest APK.
-
-### Coming Soon
-
-<img src="https://img.shields.io/badge/F--Droid-Coming%20Soon-inactive?style=for-the-badge&logo=f-droid" alt="F-Droid" height="50">
-
-**Requirements:** Android 6.0 (API 23) or higher
-
-**Installation Steps:**
-1. Download the APK from [Releases](https://github.com/brittytino/t_launcher/releases/latest)
-2. Enable "Install from Unknown Sources" in your Android settings
-3. Open the downloaded APK and install
-4. Set T_Launcher as your default launcher
-
-For detailed instructions, see [INSTALL.md](INSTALL.md).
+**Requirements:** Android 6.0 (API 23) or higher.
 
 ## Documentation
 
-Comprehensive documentation can be found in the [`docs/`](docs/) directory.
+Comprehensive documentation can be found in the [docs/](docs/) directory.
 
+*   [Installation Guide](INSTALL.md)
 *   [Build Instructions](docs/build.md)
-*   [User Guide](docs/_index.md)
+*   [Changes from Original](docs/changes-fork.md)
 
 ## Contributing
 
-**Contributors are welcomed!** We'd love your help to improve T_Launcher.
+We welcome contributions that align with the project's philosophy. Please read the [Contributing Guidelines](CONTRIBUTING.md) **before** opening an issue or PR to understand our strict feature policy.
 
-Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for details on our code of conduct, and the process for submitting pull requests to us.
+## License
 
-*   **Translations:** Help us reach more users by improving translations on [Weblate][toolate].
-*   **Code:** T_Launcher is open source. Feel free to fork the repository, open issues, or submit pull requests.
-*   **Community:** Join our [Discord][discord] or [Matrix][matrix] chat to discuss features and get support.
-
-## Project Stats
-
-![GitHub Downloads](https://img.shields.io/github/downloads/brittytino/t_launcher/total?style=flat-square&label=Total%20Downloads)
-![GitHub Issues](https://img.shields.io/github/issues/brittytino/t_launcher?style=flat-square)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/brittytino/t_launcher?style=flat-square)
+Distributed under the MIT License. See LICENSE for more information.
 
 ---
 
   [repo]: https://github.com/brittytino/t_launcher
-  [hack-font]: https://sourcefoundry.org/hack/
   [toolate]: https://toolate.othing.xyz/projects/brittytino-launcher/
-  [issues]: https://github.com/brittytino/t_launcher/issues/
-  [fork]: https://github.com/brittytino/t_launcher/fork/
-  [shield-release]: https://img.shields.io/github/v/release/brittytino/t_launcher?style=flat
   [latest-release]: https://github.com/brittytino/t_launcher/releases/latest
-  [shield-contribute]: https://img.shields.io/badge/contributions-welcome-007ec6.svg?style=flat
+  [shield-release]: https://img.shields.io/github/v/release/brittytino/t_launcher?style=flat
   [shield-license]: https://img.shields.io/badge/license-MIT-007ec6?style=flat
-  [shield-gh-watch]: https://img.shields.io/github/watchers/brittytino/t_launcher?label=Watch&style=social
-  [shield-gh-star]: https://img.shields.io/github/stars/brittytino/t_launcher?label=Star&style=social
-  [shield-gh-fork]: https://img.shields.io/github/forks/brittytino/t_launcher?label=Fork&style=social
-  [matrix]: https://s.brittytino.de/launcher-matrix
-  [discord]: https://s.brittytino.de/launcher-discord
-  [chat]: https://s.brittytino.de/launcher-chat
   [license]: https://github.com/brittytino/t_launcher/blob/main/LICENSE
+

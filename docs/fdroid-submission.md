@@ -82,8 +82,8 @@ Categories:
   - System
 License: MIT
 AuthorName: Tino Britty J
-AuthorEmail: android-launcher@brittytino.de
-AuthorWebSite: https://github.com/brittytino
+AuthorEmail: brittytino08@gmail.com
+AuthorWebSite: https://tinobritty.me
 SourceCode: https://github.com/brittytino/t_launcher
 IssueTracker: https://github.com/brittytino/t_launcher/issues
 Changelog: https://github.com/brittytino/t_launcher/releases

@@ -6,11 +6,14 @@ body:
  - type: markdown
    attributes:
       value: |
-        Thank you for helping to improve T Launcher!
+        **Bug Report Protocol**
 
-        Before reporting a bug, please make sure it has not been reported previously.
-        (In the case that the bug has already been reported, it is still helpful to know which devices are affected. Please leave a comment with your device info on the relevant issue, instead of opening a new report.)
-        Also make sure to check the [documentation](https://launcher.brittytino.de/), in particular the documentation of the erroneous feature and list of [known bugs](https://launcher.brittytino.de/docs/known-issues/).
+        Please perform the following checks before submitting:
+        1. Verify this has not been reported previously.
+        2. Check the [Known Issues](https://codeberg.org/brittytino/t_launcher/src/branch/main/docs/known-issues.md).
+        3. Ensure you can reproduce this on the latest version.
+
+        *Note: If this is a UX complaint rather than a crash/functional error, please use the Feature Request form which covers philosophy checks.*
  - type: textarea
    id: bug
    attributes:

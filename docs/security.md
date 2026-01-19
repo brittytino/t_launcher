@@ -66,7 +66,7 @@ to open the list of recent apps.
 Enabling T_Launcher's accessibility service grants excessive permissions to the app.
 Do not enable the accessibility service if you don't need it.
 Before enabling, make sure that you obtained your copy of T_Launcher from a source you trust.
-The official sources can be found [here](https://launcher.brittytino.de/).
+The official sources can be found [here](https://t.tinobritty.me/).
 {{% /hint %}}
 
 Due to [Accrescent's policy](https://accrescent.app/docs/guide/publish/requirements.html#androidaccessibilityserviceaccessibilityservice) on accessibility services,
@@ -91,7 +91,7 @@ When sharing a crash log, please make sure that it doesn't contain personal info
 ## Reporting Security Issues
 
 For security related issues, please use the contact information
-from the [security.txt](https://brittytino.de/.well-known/security.txt) on my website
+from the [security.txt](https://tinobritty.me/.well-known/security.txt) on official website
 or [report a vulnerability](https://github.com/brittytino/Launcher/security/advisories/new) on github.
 
 {{% hint danger %}}

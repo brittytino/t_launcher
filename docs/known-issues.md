@@ -5,7 +5,7 @@ title = 'Known Bugs'
 # Known Bugs
 
 
-Before reporting a bug, please check whether it has already been filed in the [issue tracker](https://github.com/brittytino/launcher/issues).
+Before reporting a bug, please check whether it has already been filed in the [issue tracker](https://github.com/brittytino/t_launcher/issues).
 
 I'll try to fix bug related to T_Launcher, however some problems
 are caused by Android itself (or a vendor's modified version of Android)
@@ -17,7 +17,7 @@ Moreover I don't have the time to clean up after every random vendor who messes 
 
 ## Android Issues
 
-See also the relevant [list of issues](https://github.com/brittytino/launcher/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22android%20issue%22) in the issue tracker.
+See also the relevant [list of issues](https://github.com/brittytino/t_launcher/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22android%20issue%22) in the issue tracker.
 
 Please upvote the following issues in Android's issue tracker:
 * [401872146](https://issuetracker.google.com/issues/401872146) - a bug related to touch detection.

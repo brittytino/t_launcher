@@ -4,6 +4,8 @@
 
 # App Drawer
 
+<img src="../screenshots/3.jpeg" alt="App Drawer" width="300"/>
+
 Apps that are not needed all the time are shown in the app drawer.
 There are several such drawers, but the basic concept is the same.
 Besides regular apps, app drawers also show [pinned shortcuts](https://developer.android.com/develop/ui/views/launch/shortcuts/creating-shortcuts)[^1].

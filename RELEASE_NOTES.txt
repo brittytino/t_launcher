@@ -1,0 +1,14 @@
+v1.0.11 (Release 111)
+
+## What's New
+*   **Brand Update:** Official alignment with `tinobritty.me` portfolio.
+*   **Documentation:** New landing page at `t.tinobritty.me`.
+*   **Crash Fix:** Resolved `IllegalArgumentException` in App List (Key 'com.heytap.market' duplication).
+*   **Developer Info:** Updated contact and support emails to `brittytino08@gmail.com`.
+
+## Installation
+1.  Download `app-release.apk`.
+2.  Install on Android 6.0+.
+
+## SHA-256 Checksum
+(Run `Get-FileHash app-release.apk` in PowerShell to generate)

@@ -176,15 +176,15 @@
           -
         -->
         <string name="settings_meta_link_github" translatable="false">https://github.com/brittytino/t_launcher</string>
-        <string name="settings_meta_link_docs" translatable="false">https://launcher.brittytino.de/</string>
+        <string name="settings_meta_link_docs" translatable="false">https://t.tinobritty.me/</string>
         <string name="settings_meta_report_bug_link" translatable="false">https://github.com/brittytino/t_launcher/issues/new?template=bug_report.yaml</string>
-        <string name="settings_meta_report_bug_mail" translatable="false">android-launcher-crash@brittytino.de</string>
+        <string name="settings_meta_report_bug_mail" translatable="false">brittytino08@gmail.com</string>
         <string name="settings_meta_report_vulnerability_link" translatable="false">https://github.com/brittytino/t_launcher/security/policy</string>
-        <string name="settings_meta_fork_contact_url" translatable="false">https://s.brittytino.de/contact</string>
-        <string name="settings_meta_privacy_url" translatable="false">https://s.brittytino.de/android-legal</string>
+        <string name="settings_meta_fork_contact_url" translatable="false">https://tinobritty.me/contact</string>
+        <string name="settings_meta_privacy_url" translatable="false">https://tinobritty.me/android-legal</string>
         <string name="settings_meta_contact_url" translatable="false">https://www.finnmglas.com/contact/</string>
-        <string name="settings_meta_chat_url" translatable="false">https://s.brittytino.de/launcher-chat</string>
-        <string name="settings_meta_donate_url" translatable="false">https://s.brittytino.de/launcher-donate</string>
+        <string name="settings_meta_chat_url" translatable="false">https://tinobritty.me/launcher-chat</string>
+        <string name="settings_meta_donate_url" translatable="false">https://tinobritty.me/launcher-donate</string>
 
         <!--
           -

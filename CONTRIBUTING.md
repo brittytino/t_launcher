@@ -45,9 +45,21 @@ We will then take care of the issue as soon as possible.
 
 ### Suggesting Enhancements
 
-This section guides you through submitting an enhancement suggestion for T_Launcher, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+**Important: T_Launcher is strict by design.**
+Before suggesting a feature, please understand that T_Launcher follows a specific philosophy: **Minimal. Efficient. Unapologetic.**
 
-<!-- Omitted: Guidelines for suggesting enhancements. -->
+We prioritize focus and efficiency over customization. Features that add clutter, reduce friction for distracting apps, or complicate the core experience will likely be declined. This is not personal; it is to maintain the tool's integrity.
+
+**The Development Cycle:**
+1.  **Scope:** We define a small, strict scope for each iteration.
+2.  **Pre-release:** Features are released early for testing.
+3.  **Observation:** We observe usage and feedback.
+4.  **Harden/Remove:** Features are either polished or removed if they don't fit.
+
+When submitting a feature request:
+*   Explain *why* this enhances focus or efficiency.
+*   Check if it contradicts the "strict by design" philosophy.
+*   Understand that "no" is a healthy answer for this project.
 
 ### Your First Code Contribution
 

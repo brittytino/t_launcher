@@ -1,29 +1,34 @@
----
-title: T_Launcher Documentation
+﻿---
+title: T_Launcher - Minimalist Android Launcher
 type: docs
 ---
 
-# T_Launcher Documentation
+# T_Launcher
 
-Welcome to the documentation for **T_Launcher**.
+**Minimal. Efficient. Unapologetic.**
 
-T_Launcher is a sophisticated, minimalist Android home screen designed to eliminate distractions and force productivity.
+T_Launcher is a sophisticated Android home screen designed to eliminate distractions and force productivity.
+It enforces a strict philosophy: **Utility over Vanity**.
 
-## Getting Started
+<center>
+<h2>
+<a href=https://github.com/brittytino/t_launcher/releases/latest>Download Latest APK</a>
+</h2>
+</center>
 
-*   [Build Instructions](build.md)
-*   [Actions and Gestures](actions-and-gestures.md)
-*   [App Drawer](app-drawer.md)
-*   [Settings](settings.md)
+## Documentation
 
-## Features
+Welcome to the official documentation.
 
-*   **Dynamic Wallpapers:** Unique patterns and quotes every day.
-*   **Developer Panel:** LeetCode stats and heatmap integration.
-*   **Timebomber Clock:** Stay aware of time.
+*   [**Getting Started**](actions-and-gestures.md) - Gestures, actions, and basic usage.
+*   [**App Drawer**](app-drawer.md) - Efficient app management.
+*   [**Settings**](settings.md) - Customization within constraints.
+*   [**Build Instructions**](build.md) - Compile from source.
 
-## Support
+## Developer & Philosophy
 
-*   [Known Issues](known-issues.md)
-*   [Security](security.md)
-*   [Contributing](contributing.md)
+*   [**Changes from Original**](changes-fork.md)
+*   [**Contributing**](contributing.md)
+
+Check out the developer's perspective on the [Official Blog](https://www.tinobritty.me/blog/t-launcher).
+

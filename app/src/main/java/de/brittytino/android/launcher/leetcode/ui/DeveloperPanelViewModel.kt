@@ -28,30 +28,42 @@ class DeveloperPanelViewModel(
 
     init {
         viewModelScope.launch {
-            // Fetch daily problem in background
-            repository.syncDailyProblem()
+            // Fetch daily problem in background silently
+            try {
+                repository.syncDailyProblem()
+            } catch (e: Exception) {
+                // Ignore network errors for background sync
+            }
             
             // Auto-refresh if stale (e.g. > 6 hours old) when VM is created (screen opened)
             myProfile.collect { profile ->
                 if (profile != null) {
                     val staleness = System.currentTimeMillis() - profile.lastUpdated
                     if (staleness > 6 * 60 * 60 * 1000) {
-                        sync(profile.username, true)
+                        sync(profile.username, true, silent = true)
                     }
                 }
             }
         }
     }
 
-    fun sync(username: String, isMe: Boolean = false) {
+    fun sync(username: String, isMe: Boolean = false, silent: Boolean = false) {
         viewModelScope.launch {
-            _loadingState.value = true
+            if (!silent) _loadingState.value = true
             _errorState.value = null
             val result = repository.syncUser(username, isMe)
             if (result.isFailure) {
-                _errorState.value = result.exceptionOrNull()?.message ?: "Unknown error"
+                // Only show error if explicit user action or if we have no data at all
+                if (!silent || (isMe && myProfile.value == null)) {
+                    val msg = result.exceptionOrNull()?.message ?: "Unknown error"
+                    // User friendly error mapping
+                    _errorState.value = if (msg.contains("Unable to resolve host")) {
+                         // Only show offline error if we truly have no data to show
+                         if (isMe && myProfile.value != null) null else "Offline Mode: Unable to connect"
+                    } else msg
+                }
             }
-            _loadingState.value = false
+            if (!silent) _loadingState.value = false
         }
     }
 

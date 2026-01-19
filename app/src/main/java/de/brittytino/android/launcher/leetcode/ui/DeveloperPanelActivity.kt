@@ -62,19 +62,10 @@ class DeveloperPanelActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         
         val factory = DeveloperPanelViewModelFactory(application as Application)
-        val viewModel = androidx.lifecycle.ViewModelProvider(this, factory).get(DeveloperPanelViewModel::class.java)
-
-        // Check standard preferences for username from Settings to ensure consistency
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val prefUsername = prefs.getString("leetcode_username", null)
-        val currentProfile = viewModel.myProfile.value
-
-        if (!prefUsername.isNullOrBlank()) {
-             // Sync if no profile loaded yet OR if settings username differs from current profile
-             if (currentProfile == null || currentProfile.username != prefUsername) {
-                  viewModel.sync(prefUsername, true)
-             }
-        }
+        // Use standard ViewModelProvider to ensure the same instance is used across configuration changes if needed,
+        // but primarily we just want consistency. Ideally we inject this or use a single source.
+        // However, we will instantiate it inside compose to keep it simple, BUT we will move the sync logic to a SideEffect or LaunchedEffect
+        // to avoid incorrect state in onCreate vs Compose.
 
         // We only check if the feature is enabled.
         if (!LauncherPreferences.leetcode().enabled()) {
@@ -109,6 +100,18 @@ fun DeveloperPanelScreen(viewModel: DeveloperPanelViewModel) {
     
     // Auto-save username to preferences when profile is loaded
     val context = LocalContext.current
+    
+    // Initial Sync Check (One-time)
+    LaunchedEffect(Unit) {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val prefUsername = prefs.getString("leetcode_username", null)
+        
+        // If we have a username in prefs but no profile loaded yet, try to sync
+        if (!prefUsername.isNullOrBlank() && viewModel.myProfile.value == null) {
+            viewModel.sync(prefUsername, true)
+        }
+    }
+
     LaunchedEffect(myProfile) {
         myProfile?.let { profile ->
             val prefs = PreferenceManager.getDefaultSharedPreferences(context)
@@ -149,7 +152,18 @@ fun DeveloperPanelScreen(viewModel: DeveloperPanelViewModel) {
                 modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
             ) {
                 Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = error ?: "", color = MaterialTheme.colorScheme.onErrorContainer, modifier = Modifier.weight(1f))
+                    val errorText = if (error?.contains("Unable to resolve host") == true || error?.contains("timeout") == true) 
+                        "Offline Mode: Showing cached data"
+                    else 
+                        error ?: ""
+                        
+                    Icon(
+                        imageVector = if(errorText.contains("Offline")) Icons.Default.Info else Icons.Default.Info, // Could utilize non-material icons safely?
+                        contentDescription = null, 
+                        tint = MaterialTheme.colorScheme.onErrorContainer
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(text = errorText, color = MaterialTheme.colorScheme.onErrorContainer, modifier = Modifier.weight(1f))
                     Button(onClick = { viewModel.clearError() }) { Text("Dismiss") }
                 }
             }
@@ -183,7 +197,10 @@ fun DeveloperPanelScreen(viewModel: DeveloperPanelViewModel) {
                     }
                 }
                 
-                items(friends) { friend ->
+                items(
+                    items = friends,
+                    key = { friend -> friend.username }
+                ) { friend ->
                      ProfileCard(
                          user = friend, 
                          isMe = false, 

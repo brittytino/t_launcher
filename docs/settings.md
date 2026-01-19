@@ -4,6 +4,8 @@
 
 # Settings
 
+<img src="../screenshots/2.jpeg" alt="Settings Screen" width="300"/>
+
 Tweaks and customizations can be made from within the settings page.
 The settings can be opened by binding the Settings action to a gesture (this is especially useful when configuring T_Launcher for the first time) or from the settings icon in the app drawer.[^1]
 
@@ -143,7 +145,7 @@ This launches an [`Intent.ACTION_WEB_SEARCH`](https://developer.android.com/refe
 If you want to change the default later, go to Android Settings > Apps > select the app > Open by default.
 Note that this is independent of the default browser.
 
-You can also use an app like [&mu;Search](https://git.brittytino.de/brittytino/usearch)
+You can also use an app like [&mu;Search](https://github.com/brittytino/usearch)
 to switch between multiple search engines.
 
 {{% hint warning %}}

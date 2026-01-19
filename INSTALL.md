@@ -113,4 +113,4 @@ F-Droid submission is in progress. Once approved, you'll be able to install dire
 - 📖 [Documentation](docs/)
 - 🐛 [Report a Bug](https://github.com/brittytino/t_launcher/issues/new?template=bug_report.yaml)
 - 💬 [Discussions](https://github.com/brittytino/t_launcher/discussions)
-- 👥 [Community Chat](https://s.brittytino.de/launcher-chat)
+- 👥 [Community Chat](https://tinobritty.me/launcher-chat)

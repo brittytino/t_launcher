@@ -4,6 +4,8 @@
 
 # Actions and Gestures
 
+<img src="../screenshots/1.jpeg" alt="Home Screen" width="300"/>
+
 T Launcher's central mechanism for accessing important functionality quickly
 is to bind actions (e.g., launching an app) to gestures (e.g., swiping up).
 These bindings can be configured in T Launcher Settings > ACTIONS.

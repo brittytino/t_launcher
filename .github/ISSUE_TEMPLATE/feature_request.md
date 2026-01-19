@@ -1,24 +1,23 @@
----
+﻿---
 name: Feature request
-about: Suggest an idea for this project
-title: '[feature] '
+about: Suggest an idea, keeping the project's strict philosophy in mind.
+title: '
 labels: enhancement
-assignees: ''
+assignees: '
 
 ---
 
-# <!--MANDATORY--> Please describe the problem to be solved
+**Strict Philosophy Check**
+*   [ ] I have read the philosophy in the README.
+*   [ ] This feature does NOT increase clutter or distraction.
+*   [ ] I understand this may be declined if it violates the minimal utility design.
 
-<!-- Add a clear and concise description of the addressed problem. Don't say "add a button such that ... " but **why** this button should be added. This is very important as it allows to discuss alternative solutions. -->
+**Problem Statement**
+A clear and concise description of what the problem is. explain **why** this is a problem for focus or efficiency.
 
-# <!--OPTIONAL--> Describe the solution you would suggest
+**Proposed Solution**
+Describe the solution you would like. Be specific about how it fits into the current UI.
 
-<!-- A description of the solution, e.g. "add a button to the settings activity. When clicking that button ..."  -->
+**Alternatives Considered**
+Describe any alternative solutions or features you've considered.
 
-# <!--OPTIONAL--> Describe alternative solutions you've considered
-
-<!-- A description of any alternative solutions or features you've considered. -->
-
-# <!--OPTIONAL--> Additional info
-
-<!-- Add any other info, comments or screenshots about the feature request here. -->
