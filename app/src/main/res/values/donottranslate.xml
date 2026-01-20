@@ -184,7 +184,7 @@
         <string name="settings_meta_privacy_url" translatable="false">https://tinobritty.me/android-legal</string>
         <string name="settings_meta_contact_url" translatable="false">https://www.finnmglas.com/contact/</string>
         <string name="settings_meta_chat_url" translatable="false">https://tinobritty.me/launcher-chat</string>
-        <string name="settings_meta_donate_url" translatable="false">https://tinobritty.me/launcher-donate</string>
+        <string name="settings_meta_donate_url" translatable="false">https://github.com/sponsors/brittytino</string>
 
         <!--
           -
