@@ -1,3 +1,9 @@
+v1.0.14 (Release 114)
+
+## What's New
+*   **Wallpaper Engine Enhancements:** Improved text alignment and spacing for quotes and accent bars.
+*   **Aesthetic Polishing:** Refined visual components for a more premium look.
+
 v1.0.11 (Release 111)
 
 ## What's New

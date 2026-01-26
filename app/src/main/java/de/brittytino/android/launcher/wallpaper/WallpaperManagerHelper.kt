@@ -131,51 +131,58 @@ private object WallpaperEngine {
     }
 
     private fun generateModernPalette(rng: Random): Palette {
-        val paletteType = rng.nextInt(5)
+        val paletteType = rng.nextInt(6)
         
         val (bg, a1, a2, a3, isDark) = when(paletteType) {
-            0 -> { // Warm sunset
-                val bg = Color.rgb(255, 159, 122)
-                val a1 = Color.rgb(255, 205, 148)
-                val a2 = Color.rgb(255, 236, 179)
-                val a3 = Color.rgb(252, 182, 159)
+            0 -> { // Deep Ocean
+                val bg = Color.rgb(20, 33, 61)
+                val a1 = Color.rgb(252, 163, 17)
+                val a2 = Color.rgb(229, 80, 57)
+                val a3 = Color.rgb(69, 162, 158)
+                Tuple5(bg, a1, a2, a3, true)
+            }
+            1 -> { // Sunset Vibes
+                val bg = Color.rgb(255, 94, 77)
+                val a1 = Color.rgb(255, 224, 102)
+                val a2 = Color.rgb(253, 135, 135)
+                val a3 = Color.rgb(255, 159, 67)
                 Tuple5(bg, a1, a2, a3, false)
             }
-            1 -> { // Ocean breeze
-                val bg = Color.rgb(135, 206, 235)
-                val a1 = Color.rgb(173, 216, 230)
-                val a2 = Color.rgb(176, 224, 230)
-                val a3 = Color.rgb(100, 149, 237)
-                Tuple5(bg, a1, a2, a3, false)
+            2 -> { // Purple Night
+                val bg = Color.rgb(88, 24, 69)
+                val a1 = Color.rgb(199, 0, 57)
+                val a2 = Color.rgb(255, 195, 0)
+                val a3 = Color.rgb(144, 12, 63)
+                Tuple5(bg, a1, a2, a3, true)
             }
-            2 -> { // Fresh mint
-                val bg = Color.rgb(152, 251, 152)
-                val a1 = Color.rgb(144, 238, 144)
-                val a2 = Color.rgb(173, 255, 173)
-                val a3 = Color.rgb(119, 221, 119)
-                Tuple5(bg, a1, a2, a3, false)
+            3 -> { // Electric Blue
+                val bg = Color.rgb(6, 82, 221)
+                val a1 = Color.rgb(255, 107, 107)
+                val a2 = Color.rgb(254, 202, 87)
+                val a3 = Color.rgb(72, 219, 251)
+                Tuple5(bg, a1, a2, a3, true)
             }
-            3 -> { // Lavender dream
-                val bg = Color.rgb(230, 190, 255)
-                val a1 = Color.rgb(216, 191, 216)
-                val a2 = Color.rgb(221, 160, 221)
-                val a3 = Color.rgb(238, 210, 238)
-                Tuple5(bg, a1, a2, a3, false)
+            4 -> { // Fresh Green
+                val bg = Color.rgb(16, 172, 132)
+                val a1 = Color.rgb(255, 211, 42)
+                val a2 = Color.rgb(255, 124, 67)
+                val a3 = Color.rgb(89, 98, 117)
+                Tuple5(bg, a1, a2, a3, true)
             }
-            else -> { // Golden hour
-                val bg = Color.rgb(255, 218, 121)
-                val a1 = Color.rgb(255, 239, 186)
-                val a2 = Color.rgb(255, 228, 148)
-                val a3 = Color.rgb(255, 204, 92)
+            else -> { // Vibrant Magenta
+                val bg = Color.rgb(235, 47, 150)
+                val a1 = Color.rgb(251, 197, 49)
+                val a2 = Color.rgb(131, 56, 236)
+                val a3 = Color.rgb(58, 134, 255)
                 Tuple5(bg, a1, a2, a3, false)
             }
         }
         
         val lum = ColorUtils.calculateLuminance(bg)
         val textColor = if (lum > 0.5) {
-            Color.argb(240, 40, 40, 40)
+            Color.argb(250, 30, 30, 30)
         } else {
-            Color.argb(250, 255, 255, 255)
+            Color.argb(255, 255, 255, 255)
         }
         
         return Palette(bg, a1, a2, a3, textColor, isDark)
@@ -185,13 +192,13 @@ private object WallpaperEngine {
 
     // Pattern 1: Minimal Gradient Circles
     private fun drawMinimalGradientCircles(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
-        val circles = rng.nextInt(3, 6)
+        val circles = rng.nextInt(4, 8)
         p.style = Paint.Style.FILL
         
         for (i in 0 until circles) {
             val cx = rng.nextFloat() * w
             val cy = rng.nextFloat() * h
-            val radius = rng.nextFloat() * 300 + 200
+            val radius = rng.nextFloat() * 350 + 250
             
             val color = when(i % 3) {
                 0 -> pal.accent1
@@ -200,7 +207,7 @@ private object WallpaperEngine {
             }
             
             p.color = color
-            p.alpha = rng.nextInt(40, 80)
+            p.alpha = rng.nextInt(60, 110)
             c.drawCircle(cx, cy, radius, p)
         }
     }
@@ -208,16 +215,16 @@ private object WallpaperEngine {
     // Pattern 2: Soft Waves
     private fun drawSoftWaves(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.FILL
-        val waveCount = 4
+        val waveCount = 5
         
         for (i in 0 until waveCount) {
             val path = Path()
-            val yStart = h * (i.toFloat() / waveCount)
+            val yStart = h * (i.toFloat() / waveCount) - 200
             
             path.moveTo(0f, yStart)
             
-            for (x in 0..w step 50) {
-                val y = yStart + sin(x * 0.01 + i * 1.5) * 80
+            for (x in 0..w step 30) {
+                val y = yStart + sin(x * 0.008 + i * 2.0) * 120
                 path.lineTo(x.toFloat(), y.toFloat())
             }
             
@@ -230,7 +237,7 @@ private object WallpaperEngine {
                 1 -> pal.accent2
                 else -> pal.accent3
             }
-            p.alpha = 60
+            p.alpha = 85
             c.drawPath(path, p)
         }
     }
@@ -238,50 +245,56 @@ private object WallpaperEngine {
     // Pattern 3: Clean Geometry
     private fun drawCleanGeometry(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.FILL
-        val shapes = rng.nextInt(4, 8)
+        val shapes = rng.nextInt(6, 12)
         
         for (i in 0 until shapes) {
             val x = rng.nextFloat() * w
             val y = rng.nextFloat() * h
-            val size = rng.nextFloat() * 200 + 100
+            val size = rng.nextFloat() * 280 + 150
             
             p.color = when(i % 3) {
                 0 -> pal.accent1
                 1 -> pal.accent2
                 else -> pal.accent3
             }
-            p.alpha = rng.nextInt(50, 90)
+            p.alpha = rng.nextInt(70, 130)
+            
+            c.save()
+            c.translate(x, y)
+            c.rotate(rng.nextFloat() * 45)
             
             if (rng.nextBoolean()) {
                 c.drawRoundRect(
-                    RectF(x - size/2, y - size/2, x + size/2, y + size/2),
-                    30f, 30f, p
+                    RectF(-size/2, -size/2, size/2, size/2),
+                    40f, 40f, p
                 )
             } else {
-                c.drawCircle(x, y, size/2, p)
+                c.drawCircle(0f, 0f, size/2, p)
             }
+            
+            c.restore()
         }
     }
 
     // Pattern 4: Gentle Dots
     private fun drawGentleDots(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.FILL
-        val spacing = 120
+        val spacing = 100
         
-        for (x in 0 until w step spacing) {
-            for (y in 0 until h step spacing) {
-                if (rng.nextFloat() > 0.4) {
-                    val radius = rng.nextFloat() * 30 + 10
+        for (x in -spacing until w + spacing step spacing) {
+            for (y in -spacing until h + spacing step spacing) {
+                if (rng.nextFloat() > 0.35) {
+                    val radius = rng.nextFloat() * 50 + 25
                     
                     p.color = when(rng.nextInt(3)) {
                         0 -> pal.accent1
                         1 -> pal.accent2
                         else -> pal.accent3
                     }
-                    p.alpha = rng.nextInt(60, 100)
+                    p.alpha = rng.nextInt(80, 140)
                     
-                    val offsetX = rng.nextFloat() * 40 - 20
-                    val offsetY = rng.nextFloat() * 40 - 20
+                    val offsetX = rng.nextFloat() * 60 - 30
+                    val offsetY = rng.nextFloat() * 60 - 30
                     
                     c.drawCircle(x + offsetX, y + offsetY, radius, p)
                 }
@@ -292,24 +305,24 @@ private object WallpaperEngine {
     // Pattern 5: Modern Arcs
     private fun drawModernArcs(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.STROKE
-        p.strokeWidth = 20f
+        p.strokeWidth = 30f
         p.strokeCap = Paint.Cap.ROUND
         
-        val arcs = rng.nextInt(5, 10)
+        val arcs = rng.nextInt(8, 15)
         
         for (i in 0 until arcs) {
             val cx = rng.nextFloat() * w
             val cy = rng.nextFloat() * h
-            val radius = rng.nextFloat() * 300 + 100
+            val radius = rng.nextFloat() * 400 + 200
             val startAngle = rng.nextFloat() * 360
-            val sweepAngle = rng.nextFloat() * 180 + 60
+            val sweepAngle = rng.nextFloat() * 200 + 80
             
             p.color = when(i % 3) {
                 0 -> pal.accent1
                 1 -> pal.accent2
                 else -> pal.accent3
             }
-            p.alpha = rng.nextInt(70, 120)
+            p.alpha = rng.nextInt(90, 150)
             
             c.drawArc(
                 RectF(cx - radius, cy - radius, cx + radius, cy + radius),
@@ -321,11 +334,11 @@ private object WallpaperEngine {
     // Pattern 6: Soft Grid
     private fun drawSoftGrid(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.STROKE
-        p.strokeWidth = 2f
+        p.strokeWidth = 3f
         p.color = pal.accent1
-        p.alpha = 30
+        p.alpha = 60
         
-        val spacing = 150
+        val spacing = 120
         
         for (x in 0 until w step spacing) {
             c.drawLine(x.toFloat(), 0f, x.toFloat(), h.toFloat(), p)
@@ -336,7 +349,7 @@ private object WallpaperEngine {
         }
         
         p.style = Paint.Style.FILL
-        val highlights = rng.nextInt(8, 15)
+        val highlights = rng.nextInt(12, 20)
         
         for (i in 0 until highlights) {
             val x = rng.nextFloat() * w
@@ -347,24 +360,24 @@ private object WallpaperEngine {
                 1 -> pal.accent2
                 else -> pal.accent3
             }
-            p.alpha = rng.nextInt(50, 90)
+            p.alpha = rng.nextInt(100, 160)
             
-            c.drawCircle(x, y, rng.nextFloat() * 40 + 20, p)
+            c.drawCircle(x, y, rng.nextFloat() * 60 + 30, p)
         }
     }
 
     // Pattern 7: Floating Shapes
     private fun drawFloatingShapes(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.FILL
-        val shapes = rng.nextInt(6, 12)
+        val shapes = rng.nextInt(8, 16)
         
         for (i in 0 until shapes) {
             c.save()
             
             val x = rng.nextFloat() * w
             val y = rng.nextFloat() * h
-            val size = rng.nextFloat() * 150 + 80
-            val rotation = rng.nextFloat() * 45
+            val size = rng.nextFloat() * 200 + 120
+            val rotation = rng.nextFloat() * 60
             
             c.translate(x, y)
             c.rotate(rotation)
@@ -374,11 +387,11 @@ private object WallpaperEngine {
                 1 -> pal.accent2
                 else -> pal.accent3
             }
-            p.alpha = rng.nextInt(40, 80)
+            p.alpha = rng.nextInt(80, 140)
             
             c.drawRoundRect(
                 RectF(-size/2, -size/2, size/2, size/2),
-                25f, 25f, p
+                35f, 35f, p
             )
             
             c.restore()
@@ -390,57 +403,79 @@ private object WallpaperEngine {
         p.style = Paint.Style.STROKE
         p.strokeCap = Paint.Cap.ROUND
         
-        val lines = rng.nextInt(8, 15)
+        val lines = rng.nextInt(10, 18)
         
         for (i in 0 until lines) {
-            p.strokeWidth = rng.nextFloat() * 15 + 5
+            p.strokeWidth = rng.nextFloat() * 25 + 10
             p.color = when(i % 3) {
                 0 -> pal.accent1
                 1 -> pal.accent2
                 else -> pal.accent3
             }
-            p.alpha = rng.nextInt(50, 90)
+            p.alpha = rng.nextInt(80, 140)
             
             val x1 = rng.nextFloat() * w
             val y1 = rng.nextFloat() * h
-            val x2 = rng.nextFloat() * w
-            val y2 = rng.nextFloat() * h
+            val length = rng.nextFloat() * 400 + 200
             
-            c.drawLine(x1, y1, x2, y2, p)
+            if (rng.nextBoolean()) {
+                c.drawLine(x1, y1, x1 + length, y1, p)
+            } else {
+                c.drawLine(x1, y1, x1, y1 + length, p)
+            }
         }
     }
 
     private val INSPIRATIONAL_QUOTES = listOf(
-        "Today is a new beginning",
-        "Believe in yourself",
-        "Make today amazing",
-        "Choose joy",
-        "You are capable of amazing things",
-        "Dream big, work hard",
-        "Be kind to yourself",
-        "Progress over perfection",
-        "Stay positive",
-        "Embrace the journey",
-        "You are enough",
-        "Create your own sunshine",
-        "Be the light",
-        "Small steps every day",
-        "Breathe and believe",
-        "Trust the process",
-        "Keep growing",
-        "You've got this",
-        "Stay focused",
-        "Be present",
-        "Choose gratitude",
-        "Find your balance",
-        "Celebrate small wins",
-        "Stay curious",
-        "Be authentic",
-        "Spread kindness",
-        "Take it one day at a time",
-        "Your best is enough",
-        "Keep moving forward",
-        "Appreciate this moment"
+        "Smile, you’re doing great",
+        "Today looks good on you",
+        "Soft heart, strong vibes",
+        "You’re kind of magical",
+        "Confidence is your glow",
+        "Take it easy, superstar",
+        "You’re someone’s good mood",
+        "Chase joy, not stress",
+        "You make ordinary cute",
+        "Slow down, you’re golden",
+        "Pretty calm, pretty capable",
+        "You’re allowed to shine",
+        "Good things suit you",
+        "A little charm goes far",
+        "You have main character energy",
+        "Gentle progress is still progress",
+        "You’re effortlessly cool",
+        "Trust yourself, always",
+        "You make today brighter",
+        "Sweet mind, sharp soul",
+        "You’re doing better than you think",
+        "Soft smile, strong heart",
+        "You bring good vibes",
+        "Grace looks great on you",
+        "Calm is your superpower",
+        "You’re quietly impressive",
+        "Warm thoughts only",
+        "You glow differently today",
+        "Small wins are still wins",
+        "You have a lovely presence",
+        "Chill, you’ve got this",
+        "You’re easy to believe in",
+        "Kind looks good on you",
+        "You make moments softer",
+        "A little sparkle never hurts",
+        "You’re someone worth rooting for",
+        "Today feels lucky with you in it",
+        "You’re beautifully unstoppable",
+        "Peace suits you",
+        "You’re subtle but powerful",
+        "You make effort look cute",
+        "Your vibe is comforting",
+        "You’re doing just fine",
+        "Sweet energy, strong spirit",
+        "You’re quietly glowing",
+        "You make calm contagious",
+        "You’re allowed to take space",
+        "You’re charm without trying",
+        "Today is on your side"
     )
 
     private fun drawInspirationalQuote(c: Canvas, w: Int, h: Int, pal: Palette, rng: Random) {
@@ -449,35 +484,81 @@ private object WallpaperEngine {
         val textPaint = TextPaint().apply {
             isAntiAlias = true
             color = pal.text
-            textSize = 60f
-            typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL)
-            letterSpacing = 0.05f
+            textSize = 72f
+            typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
+            letterSpacing = 0.08f
             if (pal.isDark) {
-                setShadowLayer(10f, 0f, 2f, Color.argb(100, 0, 0, 0))
+                setShadowLayer(12f, 0f, 3f, Color.argb(150, 0, 0, 0))
             } else {
-                setShadowLayer(8f, 0f, 2f, Color.argb(80, 255, 255, 255))
+                setShadowLayer(10f, 0f, 3f, Color.argb(120, 0, 0, 0))
             }
         }
         
-        if (w < 900) textPaint.textSize = 48f
-        if (quote.length > 25) textPaint.textSize = 52f
+        if (w < 900) textPaint.textSize = 58f
+        if (quote.length > 25) textPaint.textSize = 62f
         
-        val margin = 80
-        val maxTextWidth = w - (margin * 2)
+        val quadrant = rng.nextInt(4)
+        val margin = 100
+        val maxTextWidth = w - (margin * 3)
+        
+        val alignment = when(quadrant) {
+            0, 2 -> Layout.Alignment.ALIGN_NORMAL
+            else -> Layout.Alignment.ALIGN_OPPOSITE
+        }
         
         val builder = StaticLayout.Builder.obtain(quote, 0, quote.length, textPaint, maxTextWidth)
-            .setAlignment(Layout.Alignment.ALIGN_CENTER)
-            .setLineSpacing(0f, 1.2f)
+            .setAlignment(alignment)
+            .setLineSpacing(8f, 1.15f)
             .setIncludePad(false)
             
         val staticLayout = builder.build()
         val textHeight = staticLayout.height
         
-        val y = (h - textHeight) / 2f
-        val x = margin.toFloat()
+        var x = margin.toFloat()
+        var y = margin.toFloat()
+        
+        when(quadrant) {
+            0 -> {
+                y = (margin * 2.5f) + 100
+            }
+            1 -> {
+                y = (margin * 2.5f) + 100
+            }
+            2 -> {
+                y = (h - textHeight - margin * 2.5f).toFloat()
+            }
+            3 -> {
+                y = (h - textHeight - margin * 2.5f).toFloat()
+            }
+        }
         
         c.save()
         c.translate(x, y)
+        
+        val accentBarPaint = Paint().apply {
+            color = pal.accent1
+            strokeWidth = 8f
+            style = Paint.Style.FILL
+        }
+        
+        val barWidth = 80f
+        val barHeight = textHeight + 30f
+        
+        when(quadrant) {
+            0, 2 -> {
+                c.drawRoundRect(
+                    RectF(-40f, -15f, -40f + barWidth, -15f + barHeight),
+                    4f, 4f, accentBarPaint
+                )
+            }
+            1, 3 -> {
+                c.drawRoundRect(
+                    RectF(maxTextWidth + 40f - barWidth, -15f, maxTextWidth + 40f, -15f + barHeight),
+                    4f, 4f, accentBarPaint
+                )
+            }
+        }
+        
         staticLayout.draw(c)
         c.restore()
     }
