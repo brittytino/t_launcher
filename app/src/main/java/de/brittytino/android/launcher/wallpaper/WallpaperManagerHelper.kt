@@ -7,7 +7,6 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
-import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.Typeface
 import android.text.Layout
@@ -17,18 +16,14 @@ import androidx.core.graphics.ColorUtils
 import de.brittytino.android.launcher.preferences.LauncherPreferences
 import java.util.Calendar
 import kotlin.math.PI
-import kotlin.math.abs
 import kotlin.math.cos
-import kotlin.math.max
-import kotlin.math.min
 import kotlin.math.sin
-import kotlin.math.sqrt
 import kotlin.random.Random
 
 object WallpaperManagerHelper {
 
     private const val KEY_WALLPAPER_DATE = "wallpaper_rotation_date"
-    private const val KEY_WALLPAPER_INDEX = "wallpaper_rotation_index" // Kept for legacy compatibility, but logic changes
+    private const val KEY_WALLPAPER_INDEX = "wallpaper_rotation_index"
 
     fun checkAndRotateWallpaper(context: Context) {
         val prefs = LauncherPreferences.getSharedPreferences()
@@ -36,10 +31,7 @@ object WallpaperManagerHelper {
         val today = getStartOfDay()
 
         if (today != lastDate) {
-            // New day, new purely random generation. 
-            // We no longer cycle sequentially. Every day is a fresh roll.
             generateAndSetWallpaper(context, today)
-            
             prefs.edit()
                 .putLong(KEY_WALLPAPER_DATE, today)
                 .apply()
@@ -47,26 +39,20 @@ object WallpaperManagerHelper {
     }
 
     fun forceRegenerate(context: Context) {
-        // Force a new seed based on time including current millis for instant variation
         generateAndSetWallpaper(context, System.currentTimeMillis())
     }
 
-    // Compatibility methods for SettingsFragmentLauncher
     fun getCurrentIndex(context: Context): Int {
-        // Since we switched to random generation, index is less relevant. 
-        // We return 0 or a generic value.
         return 0
     }
 
     fun getTotalPatterns(): Int {
-        // Generative art doesn't have a fixed count, but we can return relative variety.
-        return 10
+        return 8
     }
 
     fun advanceWallpaper(context: Context): Int {
         forceRegenerate(context)
-        // Return a random index to simulate change in UI if needed, or just 0
-        return (0..9).random()
+        return (0..7).random()
     }
 
     private fun getStartOfDay(): Long {
@@ -96,225 +82,387 @@ object WallpaperManagerHelper {
     }
 }
 
-/**
- * The Dynamic Motivational Wallpaper Engine v2
- * "Unapologetic Focus Edition"
- */
 private object WallpaperEngine {
     
-    data class Palette(val background: Int, val accent1: Int, val accent2: Int, val text: Int, val isDark: Boolean)
+    data class Palette(
+        val background: Int,
+        val accent1: Int,
+        val accent2: Int,
+        val accent3: Int,
+        val text: Int,
+        val isDark: Boolean
+    )
 
-    // Families of generative art
-    private const val FAMILY_COUNT = 10
+    private const val PATTERN_COUNT = 8
 
     fun generate(canvas: Canvas, w: Int, h: Int, seed: Long) {
         val rng = Random(seed)
         
-        // 1. Generate Bold, Attractive Palette
-        val palette = generateDynamicPalette(rng)
-        
+        val palette = generateModernPalette(rng)
         canvas.drawColor(palette.background)
         
-        // 2. Select a Random Modern Style
-        // Focus on clean, neat, and bright aesthetics
-        val styleIndex = rng.nextInt(3) // Transitioning to fewer, higher quality styles
-        
+        val patternIndex = rng.nextInt(PATTERN_COUNT)
         val paint = Paint().apply { isAntiAlias = true }
         
-        when(styleIndex) {
-            0 -> drawMeshGradient(canvas, w, h, paint, palette, rng)
-            1 -> drawSoftBlobs(canvas, w, h, paint, palette, rng)
-            2 -> drawMinimalistGradients(canvas, w, h, paint, palette, rng)
-            else -> drawMeshGradient(canvas, w, h, paint, palette, rng)
+        when(patternIndex) {
+            0 -> drawMinimalGradientCircles(canvas, w, h, paint, palette, rng)
+            1 -> drawSoftWaves(canvas, w, h, paint, palette, rng)
+            2 -> drawCleanGeometry(canvas, w, h, paint, palette, rng)
+            3 -> drawGentleDots(canvas, w, h, paint, palette, rng)
+            4 -> drawModernArcs(canvas, w, h, paint, palette, rng)
+            5 -> drawSoftGrid(canvas, w, h, paint, palette, rng)
+            6 -> drawFloatingShapes(canvas, w, h, paint, palette, rng)
+            7 -> drawMinimalLines(canvas, w, h, paint, palette, rng)
+            else -> drawMinimalGradientCircles(canvas, w, h, paint, palette, rng)
         }
         
-        // 3. Draw Quote Layer - Refreshing and Motivational
-        drawRefreshingQuote(canvas, w, h, palette, rng)
-        
-        // 4. Subtle Texture Overlay
-        drawNoise(canvas, w, h, rng, palette.isDark)
+        drawInspirationalQuote(canvas, w, h, palette, rng)
+        drawSubtleTexture(canvas, w, h, rng, palette.isDark)
     }
     
-    private fun drawNoise(c: Canvas, w: Int, h: Int, rng: Random, isDark: Boolean) {
+    private fun drawSubtleTexture(c: Canvas, w: Int, h: Int, rng: Random, isDark: Boolean) {
         val paint = Paint()
         paint.color = if (isDark) Color.WHITE else Color.BLACK
-        paint.alpha = 5 // Very subtle
-        val dens = (w * h) / 1000 // Density
-        for(i in 0 until dens) {
+        paint.alpha = 3
+        val density = (w * h) / 2000
+        for(i in 0 until density) {
             c.drawPoint(rng.nextFloat() * w, rng.nextFloat() * h, paint)
         }
     }
 
-    private fun generateDynamicPalette(rng: Random): Palette {
-        // Bright, vibrant, and clean colors
-        val hue = rng.nextFloat() * 360f
+    private fun generateModernPalette(rng: Random): Palette {
+        val paletteType = rng.nextInt(5)
         
-        // High saturation for vibrant look (60-90%)
-        val saturation = 0.6f + rng.nextFloat() * 0.3f
-        
-        // Higher brightness for "neat and clean" feel (0.5 to 0.95)
-        val brightness = 0.5f + rng.nextFloat() * 0.45f
-        
-        val bgInt = Color.HSVToColor(floatArrayOf(hue, saturation, brightness))
-        
-        // Calculate Text Color based on Luminance for readability
-        val lum = ColorUtils.calculateLuminance(bgInt)
-        val isDark = lum < 0.6 // Slightly higher threshold for "darkness" to ensure contrast
-        val textInt = if (isDark) {
-            Color.WHITE
-        } else {
-            Color.BLACK
+        val (bg, a1, a2, a3, isDark) = when(paletteType) {
+            0 -> { // Warm sunset
+                val bg = Color.rgb(255, 159, 122)
+                val a1 = Color.rgb(255, 205, 148)
+                val a2 = Color.rgb(255, 236, 179)
+                val a3 = Color.rgb(252, 182, 159)
+                Tuple5(bg, a1, a2, a3, false)
+            }
+            1 -> { // Ocean breeze
+                val bg = Color.rgb(135, 206, 235)
+                val a1 = Color.rgb(173, 216, 230)
+                val a2 = Color.rgb(176, 224, 230)
+                val a3 = Color.rgb(100, 149, 237)
+                Tuple5(bg, a1, a2, a3, false)
+            }
+            2 -> { // Fresh mint
+                val bg = Color.rgb(152, 251, 152)
+                val a1 = Color.rgb(144, 238, 144)
+                val a2 = Color.rgb(173, 255, 173)
+                val a3 = Color.rgb(119, 221, 119)
+                Tuple5(bg, a1, a2, a3, false)
+            }
+            3 -> { // Lavender dream
+                val bg = Color.rgb(230, 190, 255)
+                val a1 = Color.rgb(216, 191, 216)
+                val a2 = Color.rgb(221, 160, 221)
+                val a3 = Color.rgb(238, 210, 238)
+                Tuple5(bg, a1, a2, a3, false)
+            }
+            else -> { // Golden hour
+                val bg = Color.rgb(255, 218, 121)
+                val a1 = Color.rgb(255, 239, 186)
+                val a2 = Color.rgb(255, 228, 148)
+                val a3 = Color.rgb(255, 204, 92)
+                Tuple5(bg, a1, a2, a3, false)
+            }
         }
         
-        // Accents: Harmonious and bright
-        val accentHue1 = (hue + 15f + rng.nextFloat() * 30) % 360f // Analogous
-        val accentHue2 = (hue + 180f + (rng.nextFloat() * 40 - 20)) % 360f // Complementary
+        val lum = ColorUtils.calculateLuminance(bg)
+        val textColor = if (lum > 0.5) {
+            Color.argb(240, 40, 40, 40)
+        } else {
+            Color.argb(250, 255, 255, 255)
+        }
         
-        val a1 = Color.HSVToColor(floatArrayOf(accentHue1, saturation * 0.8f, brightness * 0.9f))
-        val a2 = Color.HSVToColor(floatArrayOf(accentHue2, saturation * 0.7f, brightness * 1.0f))
-        
-        return Palette(bgInt, a1, a2, textInt, isDark)
+        return Palette(bg, a1, a2, a3, textColor, isDark)
     }
 
-    // --- PATTERNS ---
+    private data class Tuple5<A, B, C, D, E>(val a: A, val b: B, val c: C, val d: D, val e: E)
 
-    private fun drawMeshGradient(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
-        val count = rng.nextInt(4, 8)
-        for (i in 0 until count) {
+    // Pattern 1: Minimal Gradient Circles
+    private fun drawMinimalGradientCircles(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        val circles = rng.nextInt(3, 6)
+        p.style = Paint.Style.FILL
+        
+        for (i in 0 until circles) {
             val cx = rng.nextFloat() * w
             val cy = rng.nextFloat() * h
-            val radius = rng.nextFloat() * w * 1.5f + w * 0.5f
+            val radius = rng.nextFloat() * 300 + 200
             
-            val color = if (rng.nextBoolean()) pal.accent1 else pal.accent2
-            val shader = android.graphics.RadialGradient(
-                cx, cy, radius,
-                color, Color.TRANSPARENT,
-                android.graphics.Shader.TileMode.CLAMP
+            val color = when(i % 3) {
+                0 -> pal.accent1
+                1 -> pal.accent2
+                else -> pal.accent3
+            }
+            
+            p.color = color
+            p.alpha = rng.nextInt(40, 80)
+            c.drawCircle(cx, cy, radius, p)
+        }
+    }
+
+    // Pattern 2: Soft Waves
+    private fun drawSoftWaves(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        p.style = Paint.Style.FILL
+        val waveCount = 4
+        
+        for (i in 0 until waveCount) {
+            val path = Path()
+            val yStart = h * (i.toFloat() / waveCount)
+            
+            path.moveTo(0f, yStart)
+            
+            for (x in 0..w step 50) {
+                val y = yStart + sin(x * 0.01 + i * 1.5) * 80
+                path.lineTo(x.toFloat(), y.toFloat())
+            }
+            
+            path.lineTo(w.toFloat(), h.toFloat())
+            path.lineTo(0f, h.toFloat())
+            path.close()
+            
+            p.color = when(i % 3) {
+                0 -> pal.accent1
+                1 -> pal.accent2
+                else -> pal.accent3
+            }
+            p.alpha = 60
+            c.drawPath(path, p)
+        }
+    }
+
+    // Pattern 3: Clean Geometry
+    private fun drawCleanGeometry(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        p.style = Paint.Style.FILL
+        val shapes = rng.nextInt(4, 8)
+        
+        for (i in 0 until shapes) {
+            val x = rng.nextFloat() * w
+            val y = rng.nextFloat() * h
+            val size = rng.nextFloat() * 200 + 100
+            
+            p.color = when(i % 3) {
+                0 -> pal.accent1
+                1 -> pal.accent2
+                else -> pal.accent3
+            }
+            p.alpha = rng.nextInt(50, 90)
+            
+            if (rng.nextBoolean()) {
+                c.drawRoundRect(
+                    RectF(x - size/2, y - size/2, x + size/2, y + size/2),
+                    30f, 30f, p
+                )
+            } else {
+                c.drawCircle(x, y, size/2, p)
+            }
+        }
+    }
+
+    // Pattern 4: Gentle Dots
+    private fun drawGentleDots(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        p.style = Paint.Style.FILL
+        val spacing = 120
+        
+        for (x in 0 until w step spacing) {
+            for (y in 0 until h step spacing) {
+                if (rng.nextFloat() > 0.4) {
+                    val radius = rng.nextFloat() * 30 + 10
+                    
+                    p.color = when(rng.nextInt(3)) {
+                        0 -> pal.accent1
+                        1 -> pal.accent2
+                        else -> pal.accent3
+                    }
+                    p.alpha = rng.nextInt(60, 100)
+                    
+                    val offsetX = rng.nextFloat() * 40 - 20
+                    val offsetY = rng.nextFloat() * 40 - 20
+                    
+                    c.drawCircle(x + offsetX, y + offsetY, radius, p)
+                }
+            }
+        }
+    }
+
+    // Pattern 5: Modern Arcs
+    private fun drawModernArcs(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        p.style = Paint.Style.STROKE
+        p.strokeWidth = 20f
+        p.strokeCap = Paint.Cap.ROUND
+        
+        val arcs = rng.nextInt(5, 10)
+        
+        for (i in 0 until arcs) {
+            val cx = rng.nextFloat() * w
+            val cy = rng.nextFloat() * h
+            val radius = rng.nextFloat() * 300 + 100
+            val startAngle = rng.nextFloat() * 360
+            val sweepAngle = rng.nextFloat() * 180 + 60
+            
+            p.color = when(i % 3) {
+                0 -> pal.accent1
+                1 -> pal.accent2
+                else -> pal.accent3
+            }
+            p.alpha = rng.nextInt(70, 120)
+            
+            c.drawArc(
+                RectF(cx - radius, cy - radius, cx + radius, cy + radius),
+                startAngle, sweepAngle, false, p
+            )
+        }
+    }
+
+    // Pattern 6: Soft Grid
+    private fun drawSoftGrid(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        p.style = Paint.Style.STROKE
+        p.strokeWidth = 2f
+        p.color = pal.accent1
+        p.alpha = 30
+        
+        val spacing = 150
+        
+        for (x in 0 until w step spacing) {
+            c.drawLine(x.toFloat(), 0f, x.toFloat(), h.toFloat(), p)
+        }
+        
+        for (y in 0 until h step spacing) {
+            c.drawLine(0f, y.toFloat(), w.toFloat(), y.toFloat(), p)
+        }
+        
+        p.style = Paint.Style.FILL
+        val highlights = rng.nextInt(8, 15)
+        
+        for (i in 0 until highlights) {
+            val x = rng.nextFloat() * w
+            val y = rng.nextFloat() * h
+            
+            p.color = when(i % 3) {
+                0 -> pal.accent1
+                1 -> pal.accent2
+                else -> pal.accent3
+            }
+            p.alpha = rng.nextInt(50, 90)
+            
+            c.drawCircle(x, y, rng.nextFloat() * 40 + 20, p)
+        }
+    }
+
+    // Pattern 7: Floating Shapes
+    private fun drawFloatingShapes(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
+        p.style = Paint.Style.FILL
+        val shapes = rng.nextInt(6, 12)
+        
+        for (i in 0 until shapes) {
+            c.save()
+            
+            val x = rng.nextFloat() * w
+            val y = rng.nextFloat() * h
+            val size = rng.nextFloat() * 150 + 80
+            val rotation = rng.nextFloat() * 45
+            
+            c.translate(x, y)
+            c.rotate(rotation)
+            
+            p.color = when(i % 3) {
+                0 -> pal.accent1
+                1 -> pal.accent2
+                else -> pal.accent3
+            }
+            p.alpha = rng.nextInt(40, 80)
+            
+            c.drawRoundRect(
+                RectF(-size/2, -size/2, size/2, size/2),
+                25f, 25f, p
             )
             
-            p.shader = shader
-            p.alpha = rng.nextInt(100, 200)
-            c.drawRect(0f, 0f, w.toFloat(), h.toFloat(), p)
-        }
-        p.shader = null
-    }
-
-    private fun drawSoftBlobs(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
-        val count = rng.nextInt(3, 6)
-        for (i in 0 until count) {
-            val cx = rng.nextFloat() * w
-            val cy = rng.nextFloat() * h
-            val rx = rng.nextFloat() * w * 0.6f + w * 0.2f
-            val ry = rng.nextFloat() * h * 0.6f + h * 0.2f
-            
-            p.color = if (rng.nextBoolean()) pal.accent1 else pal.accent2
-            p.alpha = rng.nextInt(40, 100)
-            p.style = Paint.Style.FILL
-            
-            c.save()
-            c.rotate(rng.nextFloat() * 360f, cx, cy)
-            c.drawOval(cx - rx, cy - ry, cx + rx, cy + ry, p)
             c.restore()
         }
     }
 
-    private fun drawMinimalistGradients(canvas: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
-        val x1 = rng.nextFloat() * w
-        val y1 = rng.nextFloat() * h
-        val x2 = rng.nextFloat() * w
-        val y2 = rng.nextFloat() * h
-        
-        val shader = android.graphics.LinearGradient(
-            x1, y1, x2, y2,
-            pal.accent1, pal.accent2,
-            android.graphics.Shader.TileMode.CLAMP
-        )
-        
-        p.shader = shader
-        p.alpha = 150
-        canvas.drawRect(0f, 0f, w.toFloat(), h.toFloat(), p)
-        p.shader = null
-        
-        // Add one subtle line or simple shape
-        p.color = pal.text
-        p.alpha = 30
-        p.strokeWidth = 2f
+    // Pattern 8: Minimal Lines
+    private fun drawMinimalLines(c: Canvas, w: Int, h: Int, p: Paint, pal: Palette, rng: Random) {
         p.style = Paint.Style.STROKE
-        if (rng.nextBoolean()) {
-            canvas.drawCircle(rng.nextFloat() * w, rng.nextFloat() * h, rng.nextFloat() * 300f + 100f, p)
-        } else {
-            val y = rng.nextFloat() * h
-            canvas.drawLine(0f, y, w.toFloat(), y, p)
+        p.strokeCap = Paint.Cap.ROUND
+        
+        val lines = rng.nextInt(8, 15)
+        
+        for (i in 0 until lines) {
+            p.strokeWidth = rng.nextFloat() * 15 + 5
+            p.color = when(i % 3) {
+                0 -> pal.accent1
+                1 -> pal.accent2
+                else -> pal.accent3
+            }
+            p.alpha = rng.nextInt(50, 90)
+            
+            val x1 = rng.nextFloat() * w
+            val y1 = rng.nextFloat() * h
+            val x2 = rng.nextFloat() * w
+            val y2 = rng.nextFloat() * h
+            
+            c.drawLine(x1, y1, x2, y2, p)
         }
     }
 
-
-    // --- QUOTE ENGINE ---
-    
-    private val QUOTES = listOf(
-        "Make today amazing.",
-        "Small steps every day.",
-        "Believe in the magic of new beginnings.",
-        "Your potential is endless.",
-        "Focus on the good.",
-        "Kindness costs nothing.",
-        "Radiate positivity.",
-        "Enjoy the little things.",
-        "Stay humble, work hard, be kind.",
-        "The best is yet to come.",
-        "Dream big, stay focused.",
-        "Happiness is a choice.",
-        "Keep moving forward.",
-        "Be the reason someone smiles today.",
-        "Growth is a journey, not a destination.",
-        "Every day is a fresh start.",
-        "Choose joy.",
-        "Your only limit is you.",
-        "Stay curious.",
-        "Cultivate gratitude.",
-        "Progress over perfection.",
-        "You are doing great.",
-        "Listen to your heart.",
-        "Embrace the journey.",
-        "One day at a time.",
-        "Spread love everywhere you go.",
-        "Be yourself, everyone else is taken.",
-        "The secret of getting ahead is getting started.",
-        "Start each day with a grateful heart.",
-        "Great things never come from comfort zones.",
-        "Do what makes your soul shine.",
-        "You got this.",
-        "Breathe and enjoy the moment.",
-        "Focus on your goals, the rest is noise.",
-        "Adventure awaits.",
-        "Life is beautiful.",
-        "Everything happens for a reason.",
-        "Patience is power.",
-        "Keep it simple.",
-        "Look for the rainbow in every storm."
+    private val INSPIRATIONAL_QUOTES = listOf(
+        "Today is a new beginning",
+        "Believe in yourself",
+        "Make today amazing",
+        "Choose joy",
+        "You are capable of amazing things",
+        "Dream big, work hard",
+        "Be kind to yourself",
+        "Progress over perfection",
+        "Stay positive",
+        "Embrace the journey",
+        "You are enough",
+        "Create your own sunshine",
+        "Be the light",
+        "Small steps every day",
+        "Breathe and believe",
+        "Trust the process",
+        "Keep growing",
+        "You've got this",
+        "Stay focused",
+        "Be present",
+        "Choose gratitude",
+        "Find your balance",
+        "Celebrate small wins",
+        "Stay curious",
+        "Be authentic",
+        "Spread kindness",
+        "Take it one day at a time",
+        "Your best is enough",
+        "Keep moving forward",
+        "Appreciate this moment"
     )
 
-    private fun drawRefreshingQuote(c: Canvas, w: Int, h: Int, pal: Palette, rng: Random) {
-        val quote = QUOTES.random(rng)
+    private fun drawInspirationalQuote(c: Canvas, w: Int, h: Int, pal: Palette, rng: Random) {
+        val quote = INSPIRATIONAL_QUOTES.random(rng)
         
         val textPaint = TextPaint().apply {
             isAntiAlias = true
             color = pal.text
-            textSize = 70f 
-            typeface = Typeface.create("sans-serif-light", Typeface.NORMAL)
-            if (pal.isDark) {
-                setShadowLayer(10f, 0f, 0f, Color.argb(100, 0, 0, 0))
-            } else {
-                setShadowLayer(10f, 0f, 0f, Color.argb(100, 255, 255, 255))
-            }
+            textSize = 60f
+            typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL)
             letterSpacing = 0.05f
+            if (pal.isDark) {
+                setShadowLayer(10f, 0f, 2f, Color.argb(100, 0, 0, 0))
+            } else {
+                setShadowLayer(8f, 0f, 2f, Color.argb(80, 255, 255, 255))
+            }
         }
         
-        // Check fit
-        if (w < 900) textPaint.textSize = 60f
-        if (quote.length > 40) textPaint.textSize = 50f
+        if (w < 900) textPaint.textSize = 48f
+        if (quote.length > 25) textPaint.textSize = 52f
         
-        val margin = 120
+        val margin = 80
         val maxTextWidth = w - (margin * 2)
         
         val builder = StaticLayout.Builder.obtain(quote, 0, quote.length, textPaint, maxTextWidth)
@@ -323,23 +471,13 @@ private object WallpaperEngine {
             .setIncludePad(false)
             
         val staticLayout = builder.build()
-        val textH = staticLayout.height
+        val textHeight = staticLayout.height
         
-        // Centered position for a "clean" look
+        val y = (h - textHeight) / 2f
         val x = margin.toFloat()
-        val y = (h / 2f) - (textH / 2f)
         
         c.save()
         c.translate(x, y)
-        
-        // Subtle decorative line above
-        val linePaint = Paint().apply { 
-            color = pal.text
-            alpha = 60
-            strokeWidth = 2f 
-        }
-        c.drawLine(maxTextWidth * 0.4f, -40f, maxTextWidth * 0.6f, -40f, linePaint)
-
         staticLayout.draw(c)
         c.restore()
     }
