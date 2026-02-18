@@ -34,13 +34,27 @@ class DeveloperPanelViewModel(
             } catch (e: Exception) {
                 // Ignore network errors for background sync
             }
-            
+        }
+
+        viewModelScope.launch {
             // Auto-refresh if stale (e.g. > 6 hours old) when VM is created (screen opened)
             myProfile.collect { profile ->
                 if (profile != null) {
                     val staleness = System.currentTimeMillis() - profile.lastUpdated
                     if (staleness > 6 * 60 * 60 * 1000) {
                         sync(profile.username, true, silent = true)
+                    }
+                }
+            }
+        }
+
+        viewModelScope.launch {
+            // Auto-refresh friends if stale
+            friends.collect { friendList ->
+                friendList.forEach { friend ->
+                    val staleness = System.currentTimeMillis() - friend.lastUpdated
+                    if (staleness > 6 * 60 * 60 * 1000) {
+                        sync(friend.username, isMe = false, silent = true)
                     }
                 }
             }
